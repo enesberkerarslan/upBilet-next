@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="tr" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="tr">
+    <meta name="language" content="Turkish">
+    <meta name="google" content="notranslate">
+    <meta name="format-detection" content="telephone=no">
+    <title>UpBilet - E-posta Şablonu</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #ffffff;
+        }
+        
+        /* Container */
+        .email-container {
+            max-width: 520px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        
+        /* Header */
+        .header {
+            background: #615FFF;
+            padding: 18px 10px 14px 10px;
+            text-align: center;
+        }
+        .logo {
+            display: inline-block;
+            margin-bottom: 6px;
+            text-decoration: none !important;
+        }
+        .logo:hover {
+            text-decoration: none !important;
+        }
+        .logo h1 {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .header-subtitle {
+            color: #ffffff;
+            font-size: 13px;
+            margin-top: 2px;
+            opacity: 0.9;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+        
+        .header-subtitle {
+            color: #ffffff;
+            font-size: 16px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        /* Content */
+        .content {
+            padding: 28px 18px;
+            background-color: #ffffff;
+        }
+        
+        .greeting {
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            font-size: 16px;
+            color: #000000;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        /* Event Card */
+        .event-card {
+            background: #ffffff;
+            border: 1px solid #F4F4F5;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .event-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #46BDC5 0%, #5EDE99 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .event-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #ffffff;
+            color: #615FFF;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .event-content {
+            padding: 20px;
+        }
+        
+        .event-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #09090B;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .event-details {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #09090B;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .event-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #F4F4F5;
+        }
+        
+        .price {
+            font-size: 20px;
+            font-weight: 600;
+            color: #09090B;
+        }
+        
+        .price-currency {
+            font-size: 14px;
+            color: #09090B;
+            margin-left: 4px;
+        }
+        
+        .cta-button {
+            background: #615FFF;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #4b46e6;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #615FFF;
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        
+
+        
+        .footer-text {
+            font-size: 12px;
+            color: #a1a1aa;
+            line-height: 1.5;
+        }
+        
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .greeting {
+                font-size: 20px;
+            }
+            
+            .event-content {
+                padding: 15px;
+            }
+            
+            .event-title {
+                font-size: 16px;
+            }
+            
+            .footer {
+                padding: 20px 15px;
+            }
+            
+            .footer-link {
+                display: inline-block;
+                margin: 0 10px;
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #ffffff;
+            }
+            
+            .email-container {
+                background-color: #ffffff;
+            }
+            
+            .content {
+                background-color: #ffffff;
+            }
+            
+            .greeting {
+                color: #ffffff;
+            }
+            
+            .message {
+                color: #09090B;
+            }
+            
+            .event-card {
+                background: #ffffff;
+                border-color: #F4F4F5;
+            }
+            
+            .event-title {
+                color: #09090B;
+            }
+            
+            .event-details {
+                color: #09090B;
+            }
+            
+            .price {
+                color: #09090B;
+            }
+            
+            .price-currency {
+                color: #363642;
+            }
+        }
+    </style>
+</head>
+<body lang="tr">
+    <div class="email-container" lang="tr">
+        <!-- Header -->
+        <div class="header">
+            <a href="https://upbilet.com" class="logo">
+                <svg width="136" height="40" viewBox="0 0 136 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_323_3)">
+                        <path d="M72.5605 24.7485C70.1703 24.7485 68.2255 22.8037 68.2255 20.4135C68.2255 18.0236 70.1703 16.0796 72.5605 16.0796C74.9504 16.0796 76.8955 18.0236 76.8955 20.4135C76.8955 22.8037 74.9504 24.7485 72.5605 24.7485ZM72.5605 10.7958C71.0005 10.7958 69.5286 11.1688 68.2255 11.8295V6.00676H65.4875C64.0814 6.00676 62.9425 7.14636 62.9425 8.55399V29.5843H65.5842C66.39 29.5843 67.1111 29.2214 67.5957 28.653C69.0443 29.5279 70.743 30.0326 72.5605 30.0326C77.873 30.0326 82.1785 25.7264 82.1785 20.4135C82.1785 15.1021 77.8734 10.7958 72.5605 10.7958Z" fill="#ffffff"/>
+                        <path d="M85.0495 30.0323H90.3336V11.7224H85.0495V30.0323Z" fill="#ffffff"/>
+                        <path d="M90.3071 9.10618C90.3071 7.66083 89.1362 6.49141 87.6923 6.49141H85.075V10.2896H90.3071V9.10618Z" fill="#ffffff"/>
+                        <path d="M98.4887 30.0323H93.2046V6.49105H95.8628C97.3125 6.49105 98.4884 7.66587 98.4884 9.11553V30.0323H98.4887Z" fill="#ffffff"/>
+                        <path d="M130.023 25.2396C129.322 25.2396 128.756 24.6712 128.756 23.9707V16.9509C130.176 16.9157 131.318 15.7545 131.318 14.326V11.6972H128.756V9.13205C128.756 7.67305 127.572 6.49033 126.113 6.49033H123.471V25.2396C123.471 27.8864 125.618 30.0326 128.264 30.0326H131.345V25.2396H130.023H130.023Z" fill="#ffffff"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.74662 0.000158999H9.47232L10.5412 1.88453L11.5669 0.000158999H59.3399V36.0372H41.4694V35.2457V30.9639V30.0323H46.1528C51.3367 30.0323 55.5388 25.8307 55.5388 20.6464C55.5388 15.4628 51.3367 11.2604 46.1528 11.2604H43.8689C38.6854 11.2604 34.483 15.4628 34.483 20.6464V30.0323H34.4894V34.4542V35.2457V36.0372H41.4683V36.5103C41.4683 38.4375 39.9054 40.0003 37.9783 40.0003C36.0508 40.0003 34.488 38.4378 34.488 36.5103V36.0372H11.564L10.4948 34.1528L9.46945 36.0372H3.74591C1.69016 36.0372 -0.000572205 34.3515 -0.000572205 32.2907V25.8874C4.34445 25.8874 7.8671 22.3644 7.8671 18.0194C7.8671 13.674 4.34445 10.1514 -0.000572205 10.1514V3.74628C-0.000572205 1.6855 1.68549 -0.000200272 3.74591 -0.000200272L3.74662 0.000158999ZM23.4868 29.598C24.2222 29.3494 25.3435 28.6258 26.3214 27.1348C26.3214 28.4954 27.424 29.598 28.7846 29.598H31.6052V19.141L31.6128 18.6032C31.6128 18.7153 31.6099 18.8303 31.6052 18.9452C31.6052 19.0203 31.6052 19.08 31.6052 19.113V18.9452C31.6052 18.8924 31.6052 18.8342 31.6052 18.7674V11.2777H29.0084C27.525 11.2777 26.3214 12.4812 26.3214 13.9643V21.1159C26.3214 22.9569 24.7668 24.4403 22.9026 24.3239C21.1867 24.2157 19.8941 22.7064 19.8941 20.9895V11.2935C19.8941 11.2849 19.8879 11.2773 19.879 11.2773H14.6257C14.6196 11.2838 14.6164 11.2867 14.6103 11.2935L14.5962 21.2007C14.5962 28.0448 18.5716 31.2686 23.4868 29.5976V29.598ZM45.6858 24.5229H40.4616V20.6464C40.4616 18.5087 42.2005 16.7702 44.3378 16.7702H45.6858C47.8231 16.7702 49.5619 18.5087 49.5619 20.6464C49.5619 22.7837 47.8227 24.5229 45.6858 24.5229Z" fill="#ffffff"/>
+                        <path d="M106.837 19.1334C107.384 17.3669 109.034 16.0793 110.978 16.0793C112.923 16.0793 114.571 17.3669 115.119 19.1334H106.837ZM113.6 23.8658C112.872 24.4198 111.965 24.7488 110.982 24.7488C109.375 24.7488 107.556 23.7379 107.077 22.1308H120.448C120.531 21.6692 120.581 21.1957 120.596 20.7135L120.595 20.4135C120.595 14.8998 115.954 10.4678 110.365 10.8149C105.574 11.1127 101.676 15.0108 101.379 19.7999C101.308 20.9352 101.434 22.0313 101.727 23.0574H101.732C102.934 27.2698 106.934 30.3032 111.595 30.014C115.393 29.7779 118.629 27.2781 119.956 23.8661H113.6L113.6 23.8658Z" fill="#ffffff"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_323_3">
+                            <rect width="136" height="40" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </a>
+            <div class="header-subtitle">Gideceğin her etkinlik bir tık uzağında.</div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <h1 class="greeting">Merhaba [Kullanıcı Adı],</h1>
+            
+            <p class="message">
+                Bu hafta için özel olarak seçtiğimiz etkinlikleri sizlerle paylaşmak istiyoruz. 
+                Favori takımlarınızın maçları ve daha birçok etkinlik için biletlerimizi inceleyebilirsiniz.
+            </p>
+            
+            <!-- Featured Event -->
+            <div class="event-card">
+                <div class="event-image">
+                    <div class="event-tag">Futbol</div>
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">Fenerbahçe vs Galatasaray</h3>
+                    <div class="event-details">
+                        <svg width="16" height="16" viewBox="0 0 16 17" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.79287 15.6216L7.7966 15.6234C7.92587 15.6808 8.0738 15.681 8.20307 15.6236L8.20553 15.6224C8.22067 15.6155 8.25793 15.5984 8.2802 15.588C8.32753 15.5657 8.3956 15.533 8.4814 15.4902C8.65293 15.4044 8.89587 15.2775 9.18647 15.1107C9.7664 14.7777 10.542 14.2825 11.3201 13.6341C12.8595 12.3512 14.5 10.3905 14.5 7.83331C14.5 4.24346 11.5899 1.33331 8 1.33331C4.41015 1.33331 1.5 4.24346 1.5 7.83331C1.5 10.3905 3.14051 12.3512 4.67991 13.6341C5.45802 14.2825 6.23359 14.7777 6.81353 15.1107C7.10413 15.2775 7.34707 15.4044 7.5186 15.4902C7.60227 15.532 7.742 15.5977 7.79287 15.6216ZM8 5.16665C6.52724 5.16665 5.33333 6.36055 5.33333 7.83331C5.33333 9.30605 6.52724 10.5 8 10.5C9.47273 10.5 10.6667 9.30605 10.6667 7.83331C10.6667 6.36055 9.47273 5.16665 8 5.16665Z" fill="currentColor"/>
+                        </svg>
+                        Rams Park, İstanbul
+                    </div>
+                    <div class="event-details">
+                        <svg width="16" height="16" viewBox="0 0 16 17" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.00001 1.16663C4.3682 1.16663 4.66668 1.46511 4.66668 1.83329V3.83329C4.66668 4.20148 4.3682 4.49996 4.00001 4.49996C3.63182 4.49996 3.33334 4.20148 3.33334 3.83329V1.83329C3.33334 1.46511 3.63182 1.16663 4.00001 1.16663ZM12 1.16663C12.3682 1.16663 12.6667 1.46511 12.6667 1.83329V3.83329C12.6667 4.20148 12.3682 4.49996 12 4.49996C11.6318 4.49996 11.3333 4.20148 11.3333 3.83329V1.83329C11.3333 1.46511 11.6318 1.16663 12 1.16663Z" fill="currentColor"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.5C1 3.39543 1.89543 2.5 3 2.5H13C14.1046 2.5 15 3.39543 15 4.5V13.8333C15 14.9379 14.1046 15.8333 13 15.8333H3C1.89543 15.8333 1 14.9379 1 13.8333V4.5ZM2.33333 6.5V13.8333C2.33333 14.2015 2.63181 14.5 3 14.5H13C13.3682 14.5 13.6667 14.2015 13.6667 13.8333V6.5H2.33333Z" fill="currentColor"/>
+                        </svg>
+                        1 Mart 2024, 21:00
+                    </div>
+                    <div class="event-price">
+                        <div class="price">
+                            150<span class="price-currency">₺</span>
+                        </div>
+                        <a href="https://upbilet.com/detail/fenerbahce-galatasaray" class="cta-button">
+                            Bilet Al
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="message">
+                Daha fazla etkinlik için web sitemizi ziyaret edebilir veya mobil uygulamamızı indirebilirsiniz.
+            </p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://upbilet.com" class="cta-button" style="display: inline-block;">
+                    Tüm Etkinlikleri Gör
+                </a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="https://upbilet.com" class="footer-link">Ana Sayfa</a>
+                <a href="https://upbilet.com/events" class="footer-link">Etkinlikler</a>
+                <a href="https://upbilet.com/support" class="footer-link">Destek</a>
+                <a href="https://upbilet.com/contact" class="footer-link">İletişim</a>
+            </div>
+            
+            <div class="footer-text">
+                <p>Bu e-posta UpBilet üyeliğiniz nedeniyle gönderilmiştir.</p>
+                <p>E-posta almak istemiyorsanız <a href="#" style="color: #ffffff; text-decoration: underline;">buradan</a> aboneliğinizi iptal edebilirsiniz.</p>
+                <p>&copy; 2024 UpBilet. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

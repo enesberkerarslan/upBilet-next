@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="tr" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="tr">
+    <meta name="language" content="Turkish">
+    <meta name="google" content="notranslate">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Spam önleme meta tag'leri -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="X-Mailer" content="UpBilet Mail System">
+    <meta name="List-Unsubscribe" content="mailto:unsubscribe@upbilet.com">
+    <meta name="List-Unsubscribe-Post" content="List-Unsubscribe=One-Click">
+    <title>UpBilet - Hesap Oluşturuldu</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #09090B;
+            background-color: #f8f9fa;
+        }
+        
+        /* Container */
+        .email-container {
+            max-width: 520px;
+            width: 100%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #e1e5e9;
+        }
+        
+        /* Header */
+        .header {
+            background: #615FFF;
+            padding: 18px 10px 14px 10px;
+            text-align: center;
+        }
+        .logo {
+            display: inline-block;
+            margin-bottom: 6px;
+            text-decoration: none !important;
+        }
+        .logo:hover {
+            text-decoration: none !important;
+        }
+        .logo img {
+            height: 60px;
+            width: auto;
+            max-width: 200px;
+            margin: 0;
+            padding: 0;
+            border: none;
+            display: block;
+        }
+        .header-subtitle {
+            color: #ffffff;
+            font-size: 16px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        .welcome-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #ffffff;
+        }
+        
+        /* Content */
+        .content {
+            padding: 28px 18px;
+        }
+        
+        .greeting {
+            font-size: 28px;
+            font-weight: 600;
+            color: #09090B;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .welcome-message {
+            font-size: 16px;
+            color: #52525C;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            text-align: center;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            width: 100%;
+            margin: 30px auto;
+            text-align: center;
+        }
+        
+        .features-row {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .features-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #F4F4F5;
+            width: 45%;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 3%;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            min-height: 150px;
+        }
+        
+        .feature-item:nth-child(2n) {
+            margin-right: 0;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: #378bd0;
+            border-radius: 25px;
+            margin: 0 auto 15px;
+            color: #ffffff;
+            font-size: 24px;
+            line-height: 50px;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #09090B;
+            margin-bottom: 8px;
+        }
+        
+        .feature-desc {
+            font-size: 14px;
+            color: #71717B;
+            line-height: 1.5;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: #615FFF;
+            border-radius: 8px;
+            color: #ffffff;
+        }
+        
+        .cta-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .cta-desc {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background: #ffffff;
+            color: #378bd0;
+            padding: 15px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-block;
+            border: 2px solid #ffffff;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #615FFF;
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            color: #ffffff !important;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+        
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .greeting {
+                font-size: 24px;
+            }
+            
+            .feature-item {
+                padding: 15px !important;
+                width: 100% !important;
+                display: block !important;
+                margin-right: 0 !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .cta-section {
+                padding: 20px;
+                margin: 30px 0;
+            }
+            
+            .footer {
+                padding: 20px 15px;
+            }
+            
+            .footer-link {
+                display: inline-block;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body lang="tr">
+    <div class="email-container" lang="tr" translate="no" class="notranslate" style="max-width: 520px; width: 100%; margin: 0 auto; background-color: #ffffff; border-radius: 10px; border: 1px solid #e1e5e9;">
+        <!-- Header -->
+        <div class="header" style="background: #615FFF; padding: 18px 10px 14px 10px; text-align: center;">
+            <a href="https://upbilet.com" class="logo" style="display: inline-block; text-decoration: none !important;">
+                <img src="https://d118zx96cghsvi.cloudfront.net/uploads/1756063023827-logo.png" alt="UpBilet" style="height: 60px; width: auto; max-width: 200px; margin: 0; padding: 0; border: none; display: block;">
+            </a>
+            <div class="header-subtitle" style="color: #ffffff; font-size: 16px; margin-top: 10px; opacity: 0.9;">Gideceğin her etkinlik bir tık uzağında.</div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content" style="padding: 28px 18px;">
+            <h1 class="greeting" style="font-size: 28px; font-weight: 600; color: #09090B; margin-bottom: 20px; text-align: center;">Hoş Geldiniz, {{userName}}!</h1>
+            
+            <p class="welcome-message" style="font-size: 16px; color: #52525C; margin-bottom: 30px; line-height: 1.7; text-align: center;">
+                UpBilet ailesine katıldığınız için teşekkür ederiz! Artık Türkiye'nin en güvenilir bilet platformunda 
+                futbol, basketbol ve daha birçok etkinlik için biletlerinizi güvenle satın alabilirsiniz.
+            </p>
+            
+          
+            
+            <!-- Features Grid -->
+            <div class="features-grid" style="width: 100%; margin: 30px auto; text-align: center;">
+                <div class="feature-item" style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; border: 1px solid #F4F4F5; width: 45%; display: inline-block; vertical-align: top; margin-right: 3%; margin-bottom: 20px; box-sizing: border-box; min-height: 150px;">
+                    <div class="feature-icon" style="width: 50px; height: 50px; background: #378bd0; border-radius: 25px; margin: 0 auto 15px; color: #ffffff; font-size: 24px; line-height: 50px; text-align: center; display: inline-block;">⚽</div>
+                    <h3 class="feature-title" style="font-size: 16px; font-weight: 600; color: #09090B; margin-bottom: 8px;">Futbol Biletleri</h3>
+                    <p class="feature-desc" style="font-size: 14px; color: #71717B; line-height: 1.5;">Süper Lig ve diğer futbol etkinlikleri için biletler</p>
+                </div>
+                
+                <div class="feature-item" style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; border: 1px solid #F4F4F5; width: 45%; display: inline-block; vertical-align: top; margin-right: 0; margin-bottom: 20px; box-sizing: border-box; min-height: 150px;">
+                    <div class="feature-icon" style="width: 50px; height: 50px; background: #378bd0; border-radius: 25px; margin: 0 auto 15px; color: #ffffff; font-size: 24px; line-height: 50px; text-align: center; display: inline-block;">🏀</div>
+                    <h3 class="feature-title" style="font-size: 16px; font-weight: 600; color: #09090B; margin-bottom: 8px;">Basketbol Biletleri</h3>
+                    <p class="feature-desc" style="font-size: 14px; color: #71717B; line-height: 1.5;">Basketbol Süper Ligi ve turnuva biletleri</p>
+                </div>
+                
+                <div class="feature-item" style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; border: 1px solid #F4F4F5; width: 45%; display: inline-block; vertical-align: top; margin-right: 3%; margin-bottom: 20px; box-sizing: border-box; min-height: 150px;">
+                    <div class="feature-icon" style="width: 50px; height: 50px; background: #378bd0; border-radius: 25px; margin: 0 auto 15px; color: #ffffff; font-size: 24px; line-height: 50px; text-align: center; display: inline-block;">🎵</div>
+                    <h3 class="feature-title" style="font-size: 16px; font-weight: 600; color: #09090B; margin-bottom: 8px;">Konser Biletleri</h3>
+                    <p class="feature-desc" style="font-size: 14px; color: #71717B; line-height: 1.5;">En popüler konserler ve müzik etkinlikleri</p>
+                </div>
+                
+                <div class="feature-item" style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; border: 1px solid #F4F4F5; width: 45%; display: inline-block; vertical-align: top; margin-right: 0; margin-bottom: 20px; box-sizing: border-box; min-height: 150px;">
+                    <div class="feature-icon" style="width: 50px; height: 50px; background: #378bd0; border-radius: 25px; margin: 0 auto 15px; color: #ffffff; font-size: 24px; line-height: 50px; text-align: center; display: inline-block;">🎭</div>
+                    <h3 class="feature-title" style="font-size: 16px; font-weight: 600; color: #09090B; margin-bottom: 8px;">Tiyatro Biletleri</h3>
+                    <p class="feature-desc" style="font-size: 14px; color: #71717B; line-height: 1.5;">Tiyatro, müzikal ve sahne sanatları</p>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section" style="text-align: center; margin: 40px 0; padding: 30px; background: #615FFF; border-radius: 8px; color: #ffffff;">
+                <h2 class="cta-title" style="font-size: 20px; font-weight: 600; margin-bottom: 15px;">İlk Biletinizi Alın</h2>
+                <p class="cta-desc" style="font-size: 16px; margin-bottom: 25px; opacity: 0.9;">Hemen şimdi etkinlikleri keşfedin ve favori etkinliğiniz için bilet alın!</p>
+                <a href="https://upbilet.com" class="cta-button" style="background: #ffffff; color: #378bd0; padding: 15px 30px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 16px; display: inline-block; border: 2px solid #ffffff;">
+                    Etkinlikleri Keşfet
+                </a>
+            </div>
+            
+            <p class="welcome-message" style="font-size: 16px; color: #52525C; margin-bottom: 30px; line-height: 1.7; text-align: center;">
+                Herhangi bir sorunuz olursa müşteri hizmetlerimizle iletişime geçebilirsiniz. 
+                İyi eğlenceler!
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer" style="background: #615FFF; color: #ffffff; padding: 30px 20px; text-align: center;">
+            <div class="footer-links" style="margin-bottom: 20px;">
+                <a href="https://upbilet.com" class="footer-link" style="color: #ffffff !important; text-decoration: none; margin: 0 15px; font-size: 14px;">Ana Sayfa</a>
+                <a href="https://upbilet.com/futbol" class="footer-link" style="color: #ffffff !important; text-decoration: none; margin: 0 15px; font-size: 14px;">Etkinlikler</a>
+                <a href="https://upbilet.com/bilgi/sikca-sorulan-sorular" class="footer-link" style="color: #ffffff !important; text-decoration: none; margin: 0 15px; font-size: 14px;">Sıkça Sorulan Sorular</a>
+            </div>
+            
+            <div class="footer-text" style="font-size: 12px; color: #ffffff; line-height: 1.5;">
+                <p>Bu e-posta UpBilet üyeliğiniz nedeniyle gönderilmiştir.</p>
+                <p>E-posta almak istemiyorsanız <a href="#" style="color: #ffffff; text-decoration: underline;">buradan</a> aboneliğinizi iptal edebilirsiniz.</p>
+                <p>&copy; 2024 UpBilet. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

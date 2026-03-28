@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Next.js (backoffice)
+backoffice/.next/
+backoffice/out/
+backoffice/build/
+
+# Logs & runtime
+backend/logs/
+*.log
+npm-debug.log*
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Uploads / temp (if any under repo)
+backend/uploads/
+tmp/
+temp/
+
+# Test / coverage
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+*.tsbuildinfo

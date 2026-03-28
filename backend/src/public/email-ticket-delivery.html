@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="tr" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="tr">
+    <meta name="language" content="Turkish">
+    <meta name="google" content="notranslate">
+    <meta name="format-detection" content="telephone=no">
+    <title>UpBilet - Bilet Teslim Edildi</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #09090B;
+            background-color: #f8f9fa;
+        }
+        
+        /* Container */
+        .email-container {
+            max-width: 520px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        
+        /* Header */
+        .header {
+            background: #10B981;
+            padding: 18px 10px 14px 10px;
+            text-align: center;
+        }
+        .logo {
+            display: inline-block;
+            margin-bottom: 6px;
+            text-decoration: none !important;
+        }
+        .logo:hover {
+            text-decoration: none !important;
+        }
+        .logo h1 {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .header-subtitle {
+            color: #ffffff;
+            font-size: 16px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        .delivery-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #ffffff;
+        }
+        
+        /* Content */
+        .content {
+            padding: 28px 18px;
+        }
+        
+        .greeting {
+            font-size: 24px;
+            font-weight: 600;
+            color: #09090B;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .delivery-message {
+            font-size: 16px;
+            color: #52525C;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            text-align: center;
+        }
+        
+        /* Ticket Details */
+        .ticket-card {
+            background: #ffffff;
+            border: 2px solid #10B981;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .ticket-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #F4F4F5;
+        }
+        
+        .ticket-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #09090B;
+            margin-bottom: 10px;
+        }
+        
+        .ticket-subtitle {
+            font-size: 14px;
+            color: #71717B;
+        }
+        
+        .ticket-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .detail-icon {
+            width: 20px;
+            height: 20px;
+            color: #10B981;
+            flex-shrink: 0;
+        }
+        
+        .detail-label {
+            font-size: 14px;
+            color: #71717B;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #09090B;
+        }
+        
+        /* Delivery Status */
+        .delivery-status {
+            background: #ECFDF5;
+            border: 1px solid #10B981;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .delivery-status-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #065F46;
+            margin-bottom: 15px;
+        }
+        
+        .delivery-info {
+            font-size: 14px;
+            color: #065F46;
+            margin-bottom: 10px;
+        }
+        
+        .delivery-time {
+            font-size: 12px;
+            color: #52525C;
+        }
+        
+        /* Order Summary */
+        .order-summary {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .order-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #09090B;
+            margin-bottom: 15px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 18px;
+            color: #10B981;
+        }
+        
+        /* Instructions */
+        .instructions {
+            background: #ECFDF5;
+            border: 1px solid #10B981;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .instructions-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #065F46;
+            margin-bottom: 15px;
+        }
+        
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .instructions-list li {
+            padding: 5px 0;
+            color: #065F46;
+            font-size: 14px;
+        }
+        
+        .instructions-list li:before {
+            content: "✓";
+            color: #10B981;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #10B981;
+            color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+        
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .greeting {
+                font-size: 20px;
+            }
+            
+            .ticket-card {
+                padding: 20px;
+            }
+            
+            .ticket-details {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .order-summary {
+                padding: 15px;
+            }
+            
+            .instructions {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body lang="tr">
+    <div class="email-container" lang="tr">
+        <!-- Header -->
+        <div class="header">
+            <a href="https://upbilet.com" class="logo">
+                <svg width="136" height="40" viewBox="0 0 136 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_323_3)">
+                        <path d="M72.5605 24.7485C70.1703 24.7485 68.2255 22.8037 68.2255 20.4135C68.2255 18.0236 70.1703 16.0796 72.5605 16.0796C74.9504 16.0796 76.8955 18.0236 76.8955 20.4135C76.8955 22.8037 74.9504 24.7485 72.5605 24.7485ZM72.5605 10.7958C71.0005 10.7958 69.5286 11.1688 68.2255 11.8295V6.00676H65.4875C64.0814 6.00676 62.9425 7.14636 62.9425 8.55399V29.5843H65.5842C66.39 29.5843 67.1111 29.2214 67.5957 28.653C69.0443 29.5279 70.743 30.0326 72.5605 30.0326C77.873 30.0326 82.1785 25.7264 82.1785 20.4135C82.1785 15.1021 77.8734 10.7958 72.5605 10.7958Z" fill="#ffffff"/>
+                        <path d="M85.0495 30.0323H90.3336V11.7224H85.0495V30.0323Z" fill="#ffffff"/>
+                        <path d="M90.3071 9.10618C90.3071 7.66083 89.1362 6.49141 87.6923 6.49141H85.075V10.2896H90.3071V9.10618Z" fill="#ffffff"/>
+                        <path d="M98.4887 30.0323H93.2046V6.49105H95.8628C97.3125 6.49105 98.4884 7.66587 98.4884 9.11553V30.0323H98.4887Z" fill="#ffffff"/>
+                        <path d="M130.023 25.2396C129.322 25.2396 128.756 24.6712 128.756 23.9707V16.9509C130.176 16.9157 131.318 15.7545 131.318 14.326V11.6972H128.756V9.13205C128.756 7.67305 127.572 6.49033 126.113 6.49033H123.471V25.2396C123.471 27.8864 125.618 30.0326 128.264 30.0326H131.345V25.2396H130.023H130.023Z" fill="#ffffff"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.74662 0.000158999H9.47232L10.5412 1.88453L11.5669 0.000158999H59.3399V36.0372H41.4694V35.2457V30.9639V30.0323H46.1528C51.3367 30.0323 55.5388 25.8307 55.5388 20.6464C55.5388 15.4628 51.3367 11.2604 46.1528 11.2604H43.8689C38.6854 11.2604 34.483 15.4628 34.483 20.6464V30.0323H34.4894V34.4542V35.2457V36.0372H41.4683V36.5103C41.4683 38.4375 39.9054 40.0003 37.9783 40.0003C36.0508 40.0003 34.488 38.4378 34.488 36.5103V36.0372H11.564L10.4948 34.1528L9.46945 36.0372H3.74591C1.69016 36.0372 -0.000572205 34.3515 -0.000572205 32.2907V25.8874C4.34445 25.8874 7.8671 22.3644 7.8671 18.0194C7.8671 13.674 4.34445 10.1514 -0.000572205 10.1514V3.74628C-0.000572205 1.6855 1.68549 -0.000200272 3.74591 -0.000200272L3.74662 0.000158999ZM23.4868 29.598C24.2222 29.3494 25.3435 28.6258 26.3214 27.1348C26.3214 28.4954 27.424 29.598 28.7846 29.598H31.6052V19.141L31.6128 18.6032C31.6128 18.7153 31.6099 18.8303 31.6052 18.9452C31.6052 19.0203 31.6052 19.08 31.6052 19.113V18.9452C31.6052 18.8924 31.6052 18.8342 31.6052 18.7674V11.2777H29.0084C27.525 11.2777 26.3214 12.4812 26.3214 13.9643V21.1159C26.3214 22.9569 24.7668 24.4403 22.9026 24.3239C21.1867 24.2157 19.8941 22.7064 19.8941 20.9895V11.2935C19.8941 11.2849 19.8879 11.2773 19.879 11.2773H14.6257C14.6196 11.2838 14.6164 11.2867 14.6103 11.2935L14.5962 21.2007C14.5962 28.0448 18.5716 31.2686 23.4868 29.5976V29.598ZM45.6858 24.5229H40.4616V20.6464C40.4616 18.5087 42.2005 16.7702 44.3378 16.7702H45.6858C47.8231 16.7702 49.5619 18.5087 49.5619 20.6464C49.5619 22.7837 47.8227 24.5229 45.6858 24.5229Z" fill="#ffffff"/>
+                        <path d="M106.837 19.1334C107.384 17.3669 109.034 16.0793 110.978 16.0793C112.923 16.0793 114.571 17.3669 115.119 19.1334H106.837ZM113.6 23.8658C112.872 24.4198 111.965 24.7488 110.982 24.7488C109.375 24.7488 107.556 23.7379 107.077 22.1308H120.448C120.531 21.6692 120.581 21.1957 120.596 20.7135L120.595 20.4135C120.595 14.8998 115.954 10.4678 110.365 10.8149C105.574 11.1127 101.676 15.0108 101.379 19.7999C101.308 20.9352 101.434 22.0313 101.727 23.0574H101.732C102.934 27.2698 106.934 30.3032 111.595 30.014C115.393 29.7779 118.629 27.2781 119.956 23.8661H113.6L113.6 23.8658Z" fill="#ffffff"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_323_3">
+                            <rect width="136" height="40" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </a>
+            <div class="header-subtitle">Gideceğin her etkinlik bir tık uzağında.</div>
+            <div class="delivery-icon">📦</div>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <h1 class="greeting">Biletiniz Teslim Edildi!</h1>
+            
+            <p class="delivery-message">
+                Biletiniz başarıyla teslim edilmiştir. Aşağıda bilet ve teslimat detaylarınızı bulabilirsiniz.
+            </p>
+            
+            <!-- Ticket Card -->
+            <div class="ticket-card">
+                <div class="ticket-header">
+                    <h2 class="ticket-title">Fenerbahçe vs Galatasaray</h2>
+                    <p class="ticket-subtitle">Süper Lig • 1 Mart 2024</p>
+                </div>
+                
+                <div class="ticket-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="detail-label">Mekan</div>
+                            <div class="detail-value">Rams Park, İstanbul</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="detail-label">Tarih & Saat</div>
+                            <div class="detail-value">1 Mart 2024, 21:00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="detail-label">Bilet Türü</div>
+                            <div class="detail-value">Tribün A - Kategori 1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="detail-label">Koltuk</div>
+                            <div class="detail-value">A-15, Sıra 5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Delivery Status -->
+            <div class="delivery-status">
+                <h3 class="delivery-status-title">Teslimat Durumu</h3>
+                <div class="delivery-info">✅ Biletiniz başarıyla teslim edilmiştir</div>
+                <div class="delivery-info">📧 E-posta adresinize gönderildi</div>
+                <div class="delivery-time">Teslimat Zamanı: 25 Şubat 2024, 14:30</div>
+            </div>
+            
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h3 class="order-title">Sipariş Özeti</h3>
+                <div class="order-item">
+                    <span>Bilet Fiyatı</span>
+                    <span>150 ₺</span>
+                </div>
+                <div class="order-item">
+                    <span>Hizmet Bedeli</span>
+                    <span>15 ₺</span>
+                </div>
+                <div class="order-item">
+                    <span>Toplam</span>
+                    <span>165 ₺</span>
+                </div>
+            </div>
+            
+            <!-- Instructions -->
+            <div class="instructions">
+                <h3 class="instructions-title">Önemli Bilgiler</h3>
+                <ul class="instructions-list">
+                    <li>Biletiniz e-posta adresinize gönderildi</li>
+                    <li>Etkinlik günü biletinizi yazdırın veya mobil cihazınızda gösterin</li>
+                    <li>Etkinlik günü en az 1 saat önce mekanda olun</li>
+                    <li>Kimlik belgenizi yanınızda bulundurun</li>
+                    <li>Bilet transferi etkinlik tarihinden 24 saat öncesine kadar yapılabilir</li>
+                </ul>
+            </div>
+            
+            <p class="delivery-message">
+                Biletiniz teslim edilmiştir. İyi eğlenceler! Herhangi bir sorunuz olursa müşteri hizmetlerimizle iletişime geçebilirsiniz.
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="https://upbilet.com" class="footer-link">Ana Sayfa</a>
+                <a href="https://upbilet.com/events" class="footer-link">Etkinlikler</a>
+                <a href="https://upbilet.com/support" class="footer-link">Destek</a>
+                <a href="https://upbilet.com/contact" class="footer-link">İletişim</a>
+            </div>
+            
+            <div class="footer-text">
+                <p>Bu e-posta UpBilet üyeliğiniz nedeniyle gönderilmiştir.</p>
+                <p>E-posta almak istemiyorsanız <a href="#" style="color: #ffffff; text-decoration: underline;">buradan</a> aboneliğinizi iptal edebilirsiniz.</p>
+                <p>&copy; 2024 UpBilet. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
