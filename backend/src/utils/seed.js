@@ -14,7 +14,6 @@ const createAdminUser = async () => {
     try {
         const existing = await User.findOne({ email: 'admin@upbilet.com' });
         if (existing) {
-            logger.info('Admin kullanıcısı zaten mevcut, atlanıyor.');
             return;
         }
 
@@ -50,9 +49,7 @@ const seedDemoMemberAndListing = async () => {
                 role: 'user',
             });
             logger.info(`Seed üye oluşturuldu: ${member.email} (şifre: ${SEED_SELLER_PASSWORD})`);
-        } else {
-            logger.info('Seed satıcı üye zaten mevcut, atlanıyor.');
-        }
+        } 
 
         const existingBuyer = await Member.findOne({ email: SEED_BUYER_EMAIL });
         if (!existingBuyer) {
@@ -66,9 +63,7 @@ const seedDemoMemberAndListing = async () => {
                 role: 'user',
             });
             logger.info(`Seed alıcı üye oluşturuldu: ${SEED_BUYER_EMAIL} (şifre: ${SEED_SELLER_PASSWORD})`);
-        } else {
-            logger.info('Seed alıcı üye zaten mevcut, atlanıyor.');
-        }
+        } 
 
         let event = await Event.findOne({ status: 'active' }).sort({ createdAt: 1 });
         if (!event) {
@@ -97,7 +92,6 @@ const seedDemoMemberAndListing = async () => {
             eventId: event._id,
         });
         if (existingListing) {
-            logger.info('Seed ilan zaten mevcut, atlanıyor.');
             return;
         }
 

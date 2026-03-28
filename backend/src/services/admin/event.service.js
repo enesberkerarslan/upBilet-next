@@ -1,7 +1,6 @@
 const Event = require('../../models/event.model');
 const Listing = require('../../models/listings.model');
 const { logger } = require('../../utils/logger');
-const cacheService = require('../../utils/cache');
 const { assignEventSlug } = require('../../utils/eventSlug');
 
 class EventService {
@@ -305,21 +304,7 @@ class EventService {
     }
   }
 
-  // Event cache'lerini temizle
-  async clearEventCaches() {
-    try {
-      // Tüm event ile ilgili cache'leri temizle
-      await cacheService.clearEventCache();
-      // Latest events cache'lerini temizle
-      await cacheService.delPattern('events:latest:*');
-      // Homepage cache'ini temizle
-      await cacheService.clearHomepageCache();
-      
-      logger.info('Event cache\'leri temizlendi');
-    } catch (error) {
-      logger.error('Event cache temizleme hatası:', error);
-    }
-  }
+  async clearEventCaches() {}
 
   
 }

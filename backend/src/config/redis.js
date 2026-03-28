@@ -1,3 +1,4 @@
+/** Redis istemcisi — şu an uygulama tarafından import/bağlantı ile kullanılmıyor; yeniden entegre edilecek. */
 const { createClient } = require('redis');
 const { logger } = require('../utils/logger');
 

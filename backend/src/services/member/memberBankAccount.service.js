@@ -1,5 +1,4 @@
 const Member = require('../../models/member.model');
-const cacheService = require('../../utils/cache');
 
 class MemberBankAccountService {
   // Banka hesabı ekle
@@ -10,10 +9,7 @@ class MemberBankAccountService {
     }
     member.bankAccounts.push(bankAccountData);
     await member.save();
-    
-    // Banka hesabı eklendiğinde member profile cache'ini temizle
-    await cacheService.clearMemberProfileCache(memberId);
-    
+
     return { status: 201, body: { success: true, bankAccounts: member.bankAccounts } };
   }
 
@@ -29,10 +25,7 @@ class MemberBankAccountService {
     }
     Object.assign(bankAccount, updateData);
     await member.save();
-    
-    // Banka hesabı güncellendiğinde member profile cache'ini temizle
-    await cacheService.clearMemberProfileCache(memberId);
-    
+
     return { status: 200, body: { success: true, bankAccount } };
   }
 }

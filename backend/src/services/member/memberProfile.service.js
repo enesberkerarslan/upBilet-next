@@ -1,24 +1,13 @@
 const Member = require('../../models/member.model');
 const bcrypt = require('bcryptjs');
-const cacheService = require('../../utils/cache');
 
 class MemberProfileService {
-  // Profil bilgilerini getir
   async getProfile(memberId) {
-    // Cache wrapper kullanarak profil bilgilerini getir
-    const profileData = await cacheService.cacheWrapper(
-      cacheService.getMemberProfileKey(memberId),
-      async () => {
-        const member = await Member.findById(memberId).select('-password');
-        if (!member) {
-          return { status: 404, body: { success: false, error: 'Üye bulunamadı.' } };
-        }
-        return { status: 200, body: { success: true, member } };
-      },
-      1800 // 30 dakika cache
-    );
-    
-    return profileData;
+    const member = await Member.findById(memberId).select('-password');
+    if (!member) {
+      return { status: 404, body: { success: false, error: 'Üye bulunamadı.' } };
+    }
+    return { status: 200, body: { success: true, member } };
   }
 
   // Profil bilgilerini güncelle
@@ -31,10 +20,7 @@ class MemberProfileService {
     if (!member) {
       return { status: 404, body: { success: false, error: 'Üye bulunamadı.' } };
     }
-    
-    // Profil güncellendiğinde cache'i temizle
-    await cacheService.clearMemberProfileCache(memberId);
-    
+
     return { status: 200, body: { success: true, member } };
   }
 
@@ -50,10 +36,7 @@ class MemberProfileService {
     }
     member.password = newPassword;
     await member.save();
-    
-    // Şifre değiştirildiğinde cache'i temizle
-    await cacheService.clearMemberProfileCache(memberId);
-    
+
     return { status: 200, body: { success: true, message: 'Şifre başarıyla değiştirildi.' } };
   }
 
@@ -82,7 +65,6 @@ class MemberProfileService {
       action = 'removed';
     }
     await member.save();
-    await cacheService.clearMemberProfileCache(memberId);
     return { status: 200, body: { success: true, action } };
   }
 
@@ -101,7 +83,6 @@ class MemberProfileService {
       action = 'removed';
     }
     await member.save();
-    await cacheService.clearMemberProfileCache(memberId);
     return { status: 200, body: { success: true, action } };
   }
 
@@ -115,10 +96,7 @@ class MemberProfileService {
     if (!member) {
       return { status: 404, body: { success: false, error: 'Üye bulunamadı.' } };
     }
-    
-    // Telefon değiştirildiğinde cache'i temizle
-    await cacheService.clearMemberProfileCache(memberId);
-    
+
     return { status: 200, body: { success: true, member } };
   }
 }

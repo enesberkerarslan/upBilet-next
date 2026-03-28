@@ -1,5 +1,4 @@
 const Member = require('../../models/member.model');
-const cacheService = require('../../utils/cache');
 
 class MemberAddressService {
   // Adres ekle
@@ -11,10 +10,7 @@ class MemberAddressService {
     }
     member.addresses.push(addressData);
     await member.save();
-    
-    // Adres eklendiğinde member profile cache'ini temizle
-    await cacheService.clearMemberProfileCache(memberId);
-    
+
     return { status: 201, body: { success: true, addresses: member.addresses } };
   }
 
@@ -30,10 +26,7 @@ class MemberAddressService {
     }
     Object.assign(address, updateData);
     await member.save();
-    
-    // Adres güncellendiğinde member profile cache'ini temizle
-    await cacheService.clearMemberProfileCache(memberId);
-    
+
     return { status: 200, body: { success: true, address } };
   }
 }

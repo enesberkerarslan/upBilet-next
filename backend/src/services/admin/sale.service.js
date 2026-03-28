@@ -3,8 +3,6 @@ const Sale = require('../../models/sale.model');
 const Listing = require('../../models/listings.model');
 const Member = require('../../models/member.model');
 const Event = require('../../models/event.model');
-const { sendOrderConfirmedEmail } = require('../../utils/resendMailer');
-const { sendOrderDeliveredEmail } = require('../../utils/resendMailer'); // Added this import
 const { persistSupportAttachments } = require('../../utils/supportAttachments');
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -296,33 +294,6 @@ class SaleService {
       sale.deliveryStatus = 'delivered';
       sale.deliveredAt = new Date();
       sale.status = 'completed'; // Satış tamamlandı
-      
-      // Tüm biletler teslim edildiğinde email gönder
-      try {
-        if (sale.buyer && sale.eventId) {
-          const orderDetails = {
-            orderNumber: sale._id.toString(),
-            eventName: sale.eventId.name,
-            eventDate: sale.eventId.date ? new Date(sale.eventId.date).toLocaleDateString('tr-TR') : 'N/A',
-            eventLocation: sale.eventId.location || 'N/A',
-            ticketQuantity: sale.ticketQuantity,
-            totalAmount: `₺${sale.totalAmount}`,
-            deliveryDate: new Date().toLocaleDateString('tr-TR'),
-            deliveryMethod: 'Dijital Teslimat'
-          };
-          
-          await sendOrderDeliveredEmail(
-            sale.buyer.email, 
-            sale.buyer.name, 
-            orderDetails
-          );
-          
-          console.log('Bilet teslim emaili gönderildi:', sale.buyer.email);
-        }
-      } catch (emailError) {
-        console.error('Bilet teslim emaili gönderilemedi:', emailError);
-        // Email hatası teslim işlemini etkilemez
-      }
     } else {
       // Kısmi teslimat durumu
       const anyDelivered = sale.ticketHolders.some(ticket => ticket.deliveryStatus === 'delivered');
@@ -355,33 +326,6 @@ class SaleService {
     sale.status = 'completed'; // Satış tamamlandı
 
     await sale.save();
-
-    // Biletler teslim edildiğinde email gönder
-    try {
-      if (sale.buyer && sale.eventId) {
-        const orderDetails = {
-          orderNumber: sale._id.toString(),
-          eventName: sale.eventId.name,
-          eventDate: sale.eventId.date ? new Date(sale.eventId.date).toLocaleDateString('tr-TR') : 'N/A',
-          eventLocation: sale.eventId.location || 'N/A',
-          ticketQuantity: sale.ticketQuantity,
-          totalAmount: `₺${sale.totalAmount}`,
-          deliveryDate: new Date().toLocaleDateString('tr-TR'),
-          deliveryMethod: 'Dijital Teslimat'
-        };
-        
-        await sendOrderDeliveredEmail(
-          sale.buyer.email, 
-          sale.buyer.name, 
-          orderDetails
-        );
-        
-        console.log('Bilet teslim emaili gönderildi:', sale.buyer.email);
-      }
-    } catch (emailError) {
-      console.error('Bilet teslim emaili gönderilemedi:', emailError);
-      // Email hatası teslim işlemini etkilemez
-    }
 
     return sale;
   }
@@ -499,23 +443,6 @@ class SaleService {
     sale.status = 'approved';
     sale.approvalDate = new Date();
     sale.approvedBy = adminId;
-
-    try {
-      if (sale.buyer && sale.eventId) {
-        const orderDetails = {
-          orderNumber: sale._id.toString(),
-          eventName: sale.eventId.name,
-          eventDate: sale.eventId.date ? new Date(sale.eventId.date).toLocaleDateString('tr-TR') : 'N/A',
-          eventLocation: sale.eventId.location || 'N/A',
-          ticketQuantity: sale.ticketQuantity,
-          totalAmount: `₺${sale.totalAmount}`,
-          confirmationDate: new Date().toLocaleDateString('tr-TR'),
-        };
-        await sendOrderConfirmedEmail(sale.buyer.email, sale.buyer.name, orderDetails);
-      }
-    } catch (emailError) {
-      console.error('Sipariş onay emaili gönderilemedi:', emailError);
-    }
 
     await sale.save();
     try {

@@ -1,9 +1,6 @@
 const crypto = require('crypto');
 const Member = require('../../models/member.model');
 const ApiError = require('../../utils/api.error');
-const { sendSimpleWelcomeEmail } = require('../../utils/resendMailer');
-const cacheService = require('../../utils/cache');
-
 class MemberService {
 
 
@@ -15,22 +12,10 @@ class MemberService {
     }
     const member = await Member.create({ name, surname, email, password, phone, status: 'active' });
     
-    // Yeni üye oluşturulduğunda cache'i temizle (gelecekteki profil okumaları için)
-    await cacheService.clearMemberProfileCache(member._id);
-    
     const token = member.getSignedJwtToken();
     const memberObj = member.toObject();
     delete memberObj.password;
-    
-    // Hoş geldin emaili gönder - asenkron olarak (register işlemini yavaşlatmaz)
-    sendSimpleWelcomeEmail(email, name)
-      .then(() => {
-        console.log('Hoş geldin emaili gönderildi:', email);
-      })
-      .catch((error) => {
-        console.error('Hoş geldin emaili gönderilemedi:', error);
-      });
-    
+
     return { status: 201, body: { success: true, token, member: memberObj } };
   }
 

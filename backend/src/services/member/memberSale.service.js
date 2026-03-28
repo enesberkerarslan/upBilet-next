@@ -1,6 +1,5 @@
 const Sale = require('../../models/sale.model');
 const Listing = require('../../models/listings.model');
-const { sendOrderCreatedEmail } = require('../../utils/resendMailer');
 const { persistSupportAttachments } = require('../../utils/supportAttachments');
 
 /** Bilet (ticketHolder) başına toplam kanıt; tek istekte yalnızca 1 dosya */
@@ -71,49 +70,9 @@ class MemberSaleService {
         billingInfo: saleData.billingInfo
       });
 
-      //console.log('Creating sale with data:', {
-      //  seller: listing.memberId,
-      //  buyer: saleData.memberId,
-      //  listingId: saleData.listingId
-      //}); // Debug için
 
       await sale.save();
-      
-      // Sipariş oluşturuldu email'i gönder - asenkron olarak
-      try {
-        // Buyer ve event bilgilerini al
-        const populatedSale = await Sale.findById(sale._id)
-          .populate('buyer', 'name email')
-          .populate('eventId', 'name date location');
-        
-        if (populatedSale.buyer && populatedSale.eventId) {
-          const orderDetails = {
-            orderNumber: sale.referenceCode || sale._id.toString(),
-            eventName: populatedSale.eventId.name,
-            eventDate: populatedSale.eventId.date ? new Date(populatedSale.eventId.date).toLocaleDateString('tr-TR') : 'N/A',
-            eventLocation: populatedSale.eventId.location || 'N/A',
-            ticketQuantity: sale.ticketQuantity,
-            totalAmount: `₺${sale.totalAmount}`,
-            orderDate: new Date().toLocaleDateString('tr-TR')
-          };
-          
-          sendOrderCreatedEmail(
-            populatedSale.buyer.email, 
-            populatedSale.buyer.name, 
-            orderDetails
-          )
-          .then(() => {
-            console.log('Sipariş oluşturuldu emaili gönderildi:', populatedSale.buyer.email);
-          })
-          .catch((error) => {
-            console.error('Sipariş oluşturuldu emaili gönderilemedi:', error);
-          });
-        }
-      } catch (emailError) {
-        console.error('Email gönderimi sırasında hata:', emailError);
-        // Email hatası satış işlemini etkilemez
-      }
-      
+
       return sale;
     } catch (error) {
       throw new Error(`Error creating sale: ${error.message}`);
