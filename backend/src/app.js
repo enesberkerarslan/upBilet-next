@@ -38,6 +38,7 @@ const publicEventRoutes = require('./routes/public/publicEvent.routes');
 const publicHomepageRoutes = require('./routes/public/homepage.routes');
 const publicBlogRoutes = require('./routes/public/blog.routes');
 const publicTagRoutes = require('./routes/public/tag.routes');
+const publicNewsletterRoutes = require('./routes/public/newsletter.routes');
 
 const paymentRoutes = require('./routes/payment.routes');
 const healthCheckRoutes = require('../health-check');
@@ -96,6 +97,7 @@ app.use('/api/public/events', publicEventRoutes);
 app.use('/api/public/homepage', publicHomepageRoutes);
 app.use('/api/public/blogs', publicBlogRoutes);
 app.use('/api/public/tags', publicTagRoutes);
+app.use('/api/public/newsletter', publicNewsletterRoutes);
 app.use('/api/payment', paymentRoutes);
 
 // Health check endpoint

@@ -23,7 +23,14 @@ class MemberService {
   async forgotPassword(email) {
     const member = await Member.findOne({ email });
     if (!member) {
-      return { status: 404, body: { success: false, error: 'Bu e-posta ile kayıtlı bir kullanıcı bulunamadı.' } };
+      // Kayıt yoksa da aynı yanıt: e-posta numaralandırmasını önle
+      return {
+        status: 200,
+        body: {
+          success: true,
+          message: 'Şifre sıfırlama talimatları e-posta adresinize gönderildi.',
+        },
+      };
     }
 
     const resetToken = crypto.randomBytes(32).toString('hex');
@@ -31,7 +38,14 @@ class MemberService {
     member.resetPasswordExpire = new Date(Date.now() + 30 * 60 * 1000); // 30 dakika
     await member.save({ validateBeforeSave: false });
 
-    return { status: 200, body: { success: true, message: 'Şifre sıfırlama talimatları e-posta adresinize gönderildi.', resetToken } };
+    const body = {
+      success: true,
+      message: 'Şifre sıfırlama talimatları e-posta adresinize gönderildi.',
+    };
+    if (process.env.NODE_ENV !== 'production') {
+      body.resetToken = resetToken;
+    }
+    return { status: 200, body };
   }
 
   // Şifre sıfırlama

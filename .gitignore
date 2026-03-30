@@ -6,10 +6,11 @@ node_modules/
 .env.*
 !.env.example
 
-# Next.js (backoffice)
+# Next.js
 backoffice/.next/
 backoffice/out/
 backoffice/build/
+frontend/.next/
 
 # Logs & runtime
 backend/logs/
@@ -24,7 +25,6 @@ Thumbs.db
 !.vscode/extensions.json
 
 # Uploads / temp (if any under repo)
-backend/uploads/
 tmp/
 temp/
 

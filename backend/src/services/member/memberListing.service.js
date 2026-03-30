@@ -99,8 +99,11 @@ class MemberListingService {
         };
       }
 
-      // Güncelleme işlemi
-      Object.assign(listing, updateData);
+      const data = { ...updateData };
+      if (data.price != null && data.price !== '' && !Number.isNaN(Number(data.price))) {
+        data.sellerAmount = Number(data.price) * 0.8;
+      }
+      Object.assign(listing, data);
       await listing.save();
 
       return { status: 200, body: { success: true, listing } };

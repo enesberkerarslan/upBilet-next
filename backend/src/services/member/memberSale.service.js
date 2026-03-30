@@ -154,7 +154,7 @@ class MemberSaleService {
       })
         .sort({ saleDate: -1 })
         .select(
-          'saleDate sellerAmount sellerTotalAmount ticketQuantity ticketHolders eventId _id status category block row seat referenceCode'
+          'saleDate sellerAmount sellerTotalAmount ticketQuantity ticketHolders eventId _id status category block row seat referenceCode listingPrice serviceFee serviceFeeKdv totalAmount'
         )
         .populate({
           path: 'eventId',

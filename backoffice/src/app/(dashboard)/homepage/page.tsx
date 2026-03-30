@@ -28,17 +28,16 @@ export default function HomepagePage() {
   const [saving, setSaving] = useState(false);
   const [hero, setHero] = useState<HomePage['hero']>(emptyHero);
   const [banners, setBanners] = useState<HomePage['banners']>([]);
-  const [isPublished, setIsPublished] = useState(false);
+  const [isPublished, setIsPublished] = useState(true);
 
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await homepageService.get();
-        const data = res.data;
-        if (data) {
-          setHero(data.hero ?? emptyHero);
-          setBanners(data.banners ?? []);
-          setIsPublished(data.isPublished ?? false);
+        const doc = await homepageService.get();
+        if (doc) {
+          setHero(doc.hero ?? emptyHero);
+          setBanners(doc.banners ?? []);
+          setIsPublished(doc.isPublished ?? true);
         }
       } catch {
         // first time, no data
