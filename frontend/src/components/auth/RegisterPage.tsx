@@ -32,7 +32,6 @@ export function RegisterPage() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneCountryIso, setPhoneCountryIso] = useState("TR");
   const [phoneNational, setPhoneNational] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -68,7 +67,7 @@ export function RegisterPage() {
       return;
     }
 
-    const dial = getPhoneCountry(phoneCountryIso)?.dial ?? "+90";
+    const dial = getPhoneCountry("TR")?.dial ?? "+90";
     const fullPhone = combineInternationalPhone(dial, phoneNational);
 
     setLoading(true);
@@ -148,14 +147,8 @@ export function RegisterPage() {
         <AuthPhoneField
           id="reg-phone"
           label="Telefon"
-          locale={locale}
-          countryIso={phoneCountryIso}
-          onCountryIsoChange={(iso) => {
-            setPhoneCountryIso(iso);
-            setErrors([]);
-          }}
-          nationalValue={phoneNational}
-          onNationalChange={(v) => {
+          value={phoneNational}
+          onChange={(v) => {
             setPhoneNational(v);
             setErrors([]);
           }}

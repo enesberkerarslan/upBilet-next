@@ -1,6 +1,7 @@
 import type { Locale } from "@/i18n";
 import { fetchEventDetail } from "@/lib/public-fetch";
 import { notFound } from "next/navigation";
+import { CategorySeoCollapsible } from "@/components/category/CategorySeoCollapsible";
 import { DetailEventPanel, type DetailTag } from "@/components/detay/DetailEventPanel";
 import { DetailTicketList, type TicketOption } from "@/components/detay/DetailTicketList";
 import type { Metadata } from "next";
@@ -100,10 +101,7 @@ export default async function DetayPage({ params }: Props) {
 
       {ev.description ? (
         <div className="mt-20 flex w-full flex-col px-4">
-          <div
-            className="seo-content mt-6 w-full max-w-none space-y-3 text-left text-[12px] font-normal text-[#18181B] [&_a]:text-blue-600 [&_a]:underline [&_a]:hover:opacity-80"
-            dangerouslySetInnerHTML={{ __html: ev.description }}
-          />
+          <CategorySeoCollapsible html={ev.description} className="mt-6 w-full" />
         </div>
       ) : null}
     </div>

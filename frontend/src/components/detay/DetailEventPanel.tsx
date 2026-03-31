@@ -39,7 +39,7 @@ export function DetailEventPanel({ locale, name, date, location, tags }: Props) 
 
   return (
     <div className="rounded-3xl bg-white p-6">
-      <h2 className="mb-6 text-center text-lg font-medium">Maç Detayları</h2>
+      <p className="mb-6 text-center text-lg font-medium text-gray-900">Maç Detayları</p>
 
       <div className="match-info">
         <div className="mb-4 flex items-center justify-evenly gap-8">
@@ -54,9 +54,13 @@ export function DetailEventPanel({ locale, name, date, location, tags }: Props) 
             )}
           </div>
         </div>
-        <div className="pb-5 pt-2 text-center text-gray-800">{name}</div>
+        <h1 className="m-0 pb-5 pt-2 text-center text-base font-normal leading-snug text-gray-800 whitespace-pre-line">
+          {name}
+        </h1>
         {location ? (
-          <div className="border-y border-gray-100 py-5 text-center text-sm text-gray-800">{location}</div>
+          <div className="border-y border-gray-100 py-5 text-center text-sm leading-snug text-gray-800 whitespace-pre-line">
+            {location}
+          </div>
         ) : null}
       </div>
 
@@ -97,28 +101,21 @@ export function DetailEventPanel({ locale, name, date, location, tags }: Props) 
 
 function PassoIcon() {
   return (
-    <svg width="30" height="30" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
-      <g clipPath="url(#clip_passo)">
-        <path
-          d="M1.6867 9.59598C1.54493 10.498 2.17875 11.1241 2.95478 11.4361C5.92996 12.6324 10.0702 12.6324 13.0453 11.4361C13.8214 11.1241 14.4552 10.498 14.3135 9.59598C14.2263 9.04165 13.7955 8.58005 13.4763 8.12931C13.0583 7.53165 13.0167 6.87978 13.0167 6.18625C13.0167 3.50605 10.7707 1.33331 8.00008 1.33331C5.2295 1.33331 2.9835 3.50605 2.9835 6.18625C2.98344 6.87978 2.9419 7.53165 2.52382 8.12931C2.20464 8.58005 1.77382 9.04165 1.6867 9.59598Z"
-          stroke="#141B34"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M6 14C6.53075 14.4146 7.23167 14.6667 8 14.6667C8.76833 14.6667 9.46927 14.4146 10 14"
-          stroke="#141B34"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip_passo">
-          <rect width="16" height="16" fill="white" />
-        </clipPath>
-      </defs>
+    <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-0.5 shrink-0">
+      <path
+        d="M1.6867 9.59598C1.54493 10.498 2.17875 11.1241 2.95478 11.4361C5.92996 12.6324 10.0702 12.6324 13.0453 11.4361C13.8214 11.1241 14.4552 10.498 14.3135 9.59598C14.2263 9.04165 13.7955 8.58005 13.4763 8.12931C13.0583 7.53165 13.0167 6.87978 13.0167 6.18625C13.0167 3.50605 10.7707 1.33331 8.00008 1.33331C5.2295 1.33331 2.9835 3.50605 2.9835 6.18625C2.98344 6.87978 2.9419 7.53165 2.52382 8.12931C2.20464 8.58005 1.77382 9.04165 1.6867 9.59598Z"
+        stroke="#141B34"
+        strokeWidth="1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6 14C6.53075 14.4146 7.23167 14.6667 8 14.6667C8.76833 14.6667 9.46927 14.4146 10 14"
+        stroke="#141B34"
+        strokeWidth="1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

@@ -1,8 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { ProfileEmptyPanel } from "@/components/profile/ProfileEmptyPanel";
 import { ProfilePanelHeader } from "@/components/profile/ProfilePanelHeader";
+import {
+  ProfileAddressBankRowIcon,
+  ProfileSidebarMaskedIcon,
+  profileEmptyMaskedIconClass,
+  profileSidebarIconSrc,
+} from "@/components/profile/ProfileSidebarMaskedIcon";
 import { useLocale } from "@/contexts/locale-context";
 import {
   apiAddAddress,
@@ -20,6 +25,9 @@ const emptyForm: AddressPayload = {
   neighborhood: "",
   postalCode: "",
 };
+
+const EMPTY_ICON_BOX =
+  "mb-6 flex h-[104px] w-[104px] shrink-0 items-center justify-center rounded-2xl border border-[#615FFF]/15 bg-white md:h-[112px] md:w-[112px]";
 
 type Props = { initialAddresses?: AddressRecord[] };
 
@@ -72,11 +80,30 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
   }
 
   async function submit() {
-    setSaving(true);
     setErr(null);
+    const payload: AddressPayload = {
+      title: form.title.trim(),
+      address: form.address.trim(),
+      city: form.city.trim(),
+      district: form.district.trim(),
+      neighborhood: form.neighborhood.trim(),
+      postalCode: form.postalCode.trim(),
+    };
+    if (
+      !payload.title ||
+      !payload.address ||
+      !payload.city ||
+      !payload.district ||
+      !payload.neighborhood ||
+      !payload.postalCode
+    ) {
+      setErr(t("profile.formRequiredFields"));
+      return;
+    }
+    setSaving(true);
     try {
       if (modal === "add") {
-        const res = await apiAddAddress(form);
+        const res = await apiAddAddress(payload);
         if (!res.success) {
           setErr(res.error ?? t("profile.errorGeneric"));
           return;
@@ -84,7 +111,7 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
         if (res.addresses) setList(res.addresses as AddressRecord[]);
         else await load();
       } else if (modal && typeof modal === "object" && "edit" in modal) {
-        const res = await apiUpdateAddress(modal.edit._id, form);
+        const res = await apiUpdateAddress(modal.edit._id, payload);
         if (!res.success) {
           setErr(res.error ?? t("profile.errorGeneric"));
           return;
@@ -100,62 +127,69 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
   }
 
   return (
-    <main className="flex w-full flex-1 flex-col rounded-2xl bg-white px-2">
+    <main className="flex w-full flex-1 flex-col rounded-2xl bg-white">
       <ProfilePanelHeader
         title={t("profile.menuAddress")}
         actions={
           <button
             type="button"
             onClick={openAdd}
-            className="rounded-full bg-[#615FFF] px-5 py-2 text-sm font-semibold text-white hover:opacity-90"
+            className="flex items-center gap-2 rounded-full bg-indigo-500 px-6 py-2 text-sm font-medium text-white transition-colors duration-200 ease-out hover:bg-indigo-500/90 hover:shadow-sm active:scale-[0.98]"
           >
-            {t("profile.addressAdd")}
+            <span className="text-lg leading-none">+</span>
+            {t("profile.addressAddLong")}
           </button>
         }
       />
-      <div className="flex min-h-[min(50dvh,420px)] flex-1 flex-col py-4 md:px-6">
-        {loading ? (
-          <div className="flex flex-1 flex-col items-center justify-center py-16">
-            <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900" aria-hidden />
+
+      {loading ? (
+        <div className="flex items-center justify-center py-12">
+          <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-indigo-500" aria-hidden />
+        </div>
+      ) : list.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-24">
+          <div className={EMPTY_ICON_BOX}>
+            <ProfileSidebarMaskedIcon src={profileSidebarIconSrc.address} className={profileEmptyMaskedIconClass} />
           </div>
-        ) : list.length === 0 ? (
-          <ProfileEmptyPanel
-            variant="address"
-            title={t("profile.addressEmptyTitle")}
-            description={t("profile.addressEmptyDesc")}
-          />
-        ) : (
-          <ul className="mx-auto w-full max-w-3xl space-y-3">
-            {list.map((a) => (
-              <li
-                key={a._id}
-                className="flex flex-col gap-2 rounded-2xl border border-gray-100 p-4 shadow-sm sm:flex-row sm:items-start sm:justify-between"
-              >
-                <div>
-                  <p className="font-semibold text-gray-900">{a.title}</p>
-                  <p className="mt-1 text-sm text-gray-600">{a.address}</p>
-                  <p className="mt-2 text-xs text-gray-500">
-                    {a.district}, {a.neighborhood} · {a.city} {a.postalCode}
-                  </p>
+          <div className="mb-2 text-lg font-semibold text-gray-800">{t("profile.addressEmptyTitle")}</div>
+          <div className="max-w-md text-center text-sm text-gray-500">{t("profile.addressEmptyDesc")}</div>
+        </div>
+      ) : (
+        <div className="flex flex-col gap-4 px-4 py-8">
+          {list.map((a) => (
+            <div
+              key={a._id}
+              className="flex items-center justify-between rounded-2xl border border-gray-100 bg-white px-6 py-5 shadow-sm"
+            >
+              <div className="flex min-w-0 flex-1 items-center gap-4">
+                <ProfileAddressBankRowIcon type="address" />
+                <div className="min-w-0">
+                  <div className="text-base font-semibold text-gray-900">{a.title}</div>
+                  <div className="text-xs text-gray-500">
+                    {a.address}, {a.neighborhood}, {a.district}/{a.city}
+                  </div>
                 </div>
+              </div>
+              <div className="relative shrink-0 pl-2">
                 <button
                   type="button"
                   onClick={() => openEdit(a)}
-                  className="shrink-0 rounded-xl border border-[#E4E4E7] px-4 py-2 text-sm font-medium text-[#615FFF] hover:bg-gray-50"
+                  aria-label={t("profile.addressEdit")}
+                  className="cursor-pointer text-xl leading-none text-gray-400 transition-colors duration-200 ease-out hover:text-gray-500"
                 >
-                  {t("profile.addressEdit")}
+                  ...
                 </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {modal ? (
-        <div className="fixed inset-0 z-100 flex items-end justify-center bg-black/40 p-4 sm:items-center">
+        <div className="fixed inset-0 z-100 flex items-end justify-center bg-zinc-900/35 p-4 backdrop-blur-[1px] sm:items-center">
           <div
             role="dialog"
-            className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-2xl bg-white p-6 shadow-xl"
+            className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-3xl border border-gray-100 bg-white p-6 shadow-lg shadow-gray-200/60"
           >
             <h2 className="text-lg font-semibold text-gray-900">
               {modal === "add" ? t("profile.addressAdd") : t("profile.addressEdit")}
@@ -165,7 +199,7 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
               <div className="sm:col-span-2">
                 <label className="mb-1 block text-xs text-gray-500">{t("profile.formAddrTitle")}</label>
                 <input
-                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm"
+                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
                   value={form.title}
                   onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
                 />
@@ -173,7 +207,7 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
               <div className="sm:col-span-2">
                 <label className="mb-1 block text-xs text-gray-500">{t("profile.formAddrLine")}</label>
                 <textarea
-                  className="min-h-[72px] w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm"
+                  className="min-h-[72px] w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
                   value={form.address}
                   onChange={(e) => setForm((f) => ({ ...f, address: e.target.value }))}
                 />
@@ -181,7 +215,7 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
               <div>
                 <label className="mb-1 block text-xs text-gray-500">{t("profile.formCity")}</label>
                 <input
-                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm"
+                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
                   value={form.city}
                   onChange={(e) => setForm((f) => ({ ...f, city: e.target.value }))}
                 />
@@ -189,7 +223,7 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
               <div>
                 <label className="mb-1 block text-xs text-gray-500">{t("profile.formDistrict")}</label>
                 <input
-                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm"
+                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
                   value={form.district}
                   onChange={(e) => setForm((f) => ({ ...f, district: e.target.value }))}
                 />
@@ -197,7 +231,7 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
               <div>
                 <label className="mb-1 block text-xs text-gray-500">{t("profile.formNeighborhood")}</label>
                 <input
-                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm"
+                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
                   value={form.neighborhood}
                   onChange={(e) => setForm((f) => ({ ...f, neighborhood: e.target.value }))}
                 />
@@ -205,7 +239,7 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
               <div>
                 <label className="mb-1 block text-xs text-gray-500">{t("profile.formPostal")}</label>
                 <input
-                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm"
+                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
                   value={form.postalCode}
                   onChange={(e) => setForm((f) => ({ ...f, postalCode: e.target.value }))}
                 />
@@ -215,7 +249,7 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
               <button
                 type="button"
                 onClick={() => setModal(null)}
-                className="rounded-full border border-gray-200 px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                className="rounded-full border border-gray-200 px-5 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:border-gray-300 hover:bg-gray-50 active:scale-[0.98]"
               >
                 {t("profile.cancel")}
               </button>
@@ -223,7 +257,7 @@ export function ProfileAddressPanel({ initialAddresses }: Props = {}) {
                 type="button"
                 disabled={saving}
                 onClick={submit}
-                className="rounded-full bg-[#615FFF] px-5 py-2 text-sm font-semibold text-white disabled:opacity-50"
+                className="rounded-full bg-[#615FFF] px-5 py-2 text-sm font-semibold text-white shadow-sm shadow-indigo-500/20 transition-all duration-200 ease-out hover:bg-[#6d66ff] hover:shadow-md hover:shadow-indigo-500/25 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]"
               >
                 {t("profile.save")}
               </button>

@@ -219,6 +219,7 @@ export default function EventsClient({ initialEvents }: Props) {
       />
 
       <EventFormModal
+        key={formOpen ? (editItem?._id ?? 'create') : 'closed'}
         open={formOpen}
         onClose={() => { setFormOpen(false); setEditItem(null); }}
         onSuccess={refresh}

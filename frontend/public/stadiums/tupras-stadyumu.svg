@@ -1,0 +1,320 @@
+<svg version="1.1" id="venueMap-3913-415" xmlns:svgjs="http://svgjs.com/svgjs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-80 197 450 400" style="width: 100%; height: 100%;" xml:space="preserve">
+<defs>
+  <style type="text/css">@import url('https://fonts.googleapis.com/css?family=Poppins');</style>
+</defs>
+<style type="text/css">
+	.st0{fill:#CCCCCC;}
+	.st1{fill:#FFFFFF;}
+	.st2{font-family:'Poppins';}
+	.st3{font-size:10.6649px;}
+	.st4{fill:#9E9E9E;}
+	.st5{fill:#79b954;}
+	.st6{fill:#9fcd85;}
+	.st7{fill:none;stroke:#FFFFFF;stroke-width:2;}
+	.st8{fill:none;stroke:#FFFFFF;stroke-width:2;}
+	.st9{fill:none;stroke:#FFFFFF;stroke-width:2;}
+	.st10{fill:none;stroke:#FFFFFF;stroke-width:2;}
+	.st11{fill:none;stroke:#FFFFFF;stroke-width:2;}
+	.st12{fill:none;stroke:#FFFFFF;stroke-width:2;}
+	.st13{fill:none;stroke:#FFFFFF;stroke-width:2;}
+	.st14{fill:#262626;}
+	.st15{font-family:'Poppins';}
+	.st16{font-size:12.3292px;}
+</style>
+<g id="A" data-select="zone:1903 Tribünü;zoneid:246;subzone:A;subzoneid:269;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="246:::269" style="cursor:pointer">
+	<path class="st0 svgshp" d="M43.1,288.3h22.2v6.9H43.1V288.3z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 50.4312 294.9904)" class="st1 st2 st3">A</text>
+</g>
+<g id="B" data-select="zone:1903 Tribünü;zoneid:246;subzone:B;subzoneid:270;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="246:::270" style="cursor:pointer">
+	<path class="st0 svgshp" d="M68.5,288.3h37v6.9h-37V288.3z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 83.23 294.9904)" class="st1 st2 st3">B</text>
+</g>
+<g id="C" data-select="zone:1903 Tribünü;zoneid:246;subzone:C;subzoneid:271;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="246:::271" style="cursor:pointer">
+	<path class="st0 svgshp" d="M108.8,288.3h76.1v6.9h-76.1C108.8,295.2,108.8,288.3,108.8,288.3z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 143.0088 294.9904)" class="st1 st2 st3">c</text>
+</g>
+<g id="D" data-select="zone:1903 Tribünü;zoneid:246;subzone:D;subzoneid:272;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="246:::272" style="cursor:pointer">
+	<path class="st0 svgshp" d="M188.1,288.3h37v6.9h-37V288.3z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 202.7871 294.9904)" class="st1 st2 st3">D</text>
+</g>
+<g id="E" data-select="zone:1903 Tribünü;zoneid:246;subzone:E;subzoneid:273;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="246:::273" style="cursor:pointer">
+	<path class="st0 svgshp" d="M228.3,288.3h24.4v6.9h-24.4V288.3z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 236.9375 294.9904)" class="st1 st2 st3">E</text>
+</g>
+<g id="VIP" data-select="zone:VIP;zoneid:247;subzone:VIP;subzoneid:274;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="247:::274" style="cursor:pointer">
+	<path class="st0 svgshp" d="M107.6,470.8h78.3V501h-78.3C107.6,501,107.6,470.8,107.6,470.8z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 138.1655 492.6828)" class="st1 st2 st3">VIP</text>
+</g>
+<g id="114" data-select="zone:Alt Kat;zoneid:245;subzone:114;subzoneid:305;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="245:::305" style="cursor:pointer">
+	<path class="st0 svgshp" d="M68.5,298.4h37v23.3h-37V298.4z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 77.9507 316.7854)" class="st1 st2 st3">114</text>
+</g>
+<g id="115" data-select="zone:Alt Kat;zoneid:245;subzone:115;subzoneid:306;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="245:::306" style="cursor:pointer">
+	<path class="st0 svgshp" d="M108.8,298.4h34.9v23.3h-34.9V298.4z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 117.0977 316.7854)" class="st1 st2 st3">115</text>
+</g>
+<g id="116" data-select="zone:Alt Kat;zoneid:245;subzone:116;subzoneid:307;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="245:::307" style="cursor:pointer">
+	<path class="st0 svgshp" d="M146.8,298.4h38.1v23.3h-38.1V298.4z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 156.7734 316.7854)" class="st1 st2 st3">116</text>
+</g>
+<g id="117" data-select="zone:Alt Kat;zoneid:245;subzone:117;subzoneid:308;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="245:::308" style="cursor:pointer">
+	<path class="st0 svgshp" d="M188.1,298.4h37v23.3h-37V298.4z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 197.5078 316.7854)" class="st1 st2 st3">117</text>
+</g>
+<g id="125" data-select="zone:Alt Kat;zoneid:245;subzone:125;subzoneid:294;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="245:::294" style="cursor:pointer">
+	<path class="st0 svgshp" d="M189.1,470.8h36V501h-36V470.8z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 198.0361 492.6828)" class="st1 st2 st3">125</text>
+</g>
+<g id="102" data-select="zone:Alt Kat;zoneid:245;subzone:102;subzoneid:295;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="245:::295" style="cursor:pointer">
+	<path class="st0 svgshp" d="M68.5,470.8h36V501h-36V470.8z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 77.4214 492.6828)" class="st1 st2 st3">102</text>
+</g>
+<g id="113" data-select="zone:Kenar;zoneid:244;subzone:113;subzoneid:290;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="244:::290" style="cursor:pointer">
+	<path class="st0 svgshp" d="M43.1,298.4h22.2v23.3H43.1V298.4z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 45.1519 316.7854)" class="st1 st2 st3">113</text>
+</g>
+<g id="118" data-select="zone:Kenar;zoneid:244;subzone:118;subzoneid:830;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="244:::830" style="cursor:pointer">
+	<path class="st0 svgshp" d="M228.3,298.4h24.4v23.3h-24.4V298.4z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 231.3643 316.7854)" class="st1 st2 st3">118</text>
+</g>
+<g id="124" data-select="zone:Kenar;zoneid:244;subzone:124;subzoneid:292;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="244:::292" style="cursor:pointer">
+	<path class="st0 svgshp" d="M228.3,470.8h23.3V501h-23.3V470.8z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 230.8359 492.6828)" class="st1 st2 st3">124</text>
+</g>
+<g id="103" data-select="zone:Kenar;zoneid:244;subzone:103;subzoneid:291;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="244:::291" style="cursor:pointer">
+	<path class="st0 svgshp" d="M43.1,470.8h22.2V501H43.1V470.8z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 45.1519 492.6828)" class="st1 st2 st3">103</text>
+</g>
+<g id="413" data-select="zone:Üst Kat;zoneid:243;subzone:413;subzoneid:250;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::250" style="cursor:pointer">
+	<path class="st0 svgshp" d="M38.1,285.1h27.3v-32.3H37.9v32.3C38,285.1,38,285.1,38.1,285.1z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 42.5068 275.7874)" class="st1 st2 st3">413</text>
+</g>
+<g id="414" data-select="zone:Üst Kat;zoneid:243;subzone:414;subzoneid:249;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::249" style="cursor:pointer">
+	<path class="st0 svgshp" d="M68.5,252.8h37v32.3h-37V252.8z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 77.9507 275.7874)" class="st1 st2 st3">414</text>
+</g>
+<g id="415" data-select="zone:Üst Kat;zoneid:243;subzone:415;subzoneid:251;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::251" style="cursor:pointer">
+	<path class="st0 svgshp" d="M108.8,252.8h34.9v32.3h-34.9V252.8z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 117.0977 275.7874)" class="st1 st2 st3">415</text>
+</g>
+<g id="416" data-select="zone:Üst Kat;zoneid:243;subzone:416;subzoneid:252;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::252" style="cursor:pointer">
+	<path class="st0 svgshp" d="M146.8,252.8h38.1v32.3h-38.1V252.8z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 156.7734 275.7874)" class="st1 st2 st3">416</text>
+</g>
+<g id="417" data-select="zone:Üst Kat;zoneid:243;subzone:417;subzoneid:253;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::253" style="cursor:pointer">
+	<path class="st0 svgshp" d="M188.1,252.8h37v32.3h-37V252.8z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 197.5078 275.7874)" class="st1 st2 st3">417</text>
+</g>
+<g id="418" data-select="zone:Üst Kat;zoneid:243;subzone:418;subzoneid:254;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::254" style="cursor:pointer">
+	<path class="st0 svgshp" d="M254.6,285.1c0.7,0,1.4,0,2.4,0.1v-32.4h-28.6v32.3H254.6z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 233.4805 275.8401)" class="st1 st2 st3">418</text>
+</g>
+<g id="428" data-select="zone:Üst Kat;zoneid:243;subzone:428;subzoneid:289;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::289" style="cursor:pointer">
+	<path class="st0 svgshp" d="M254.6,504.1h-26.2v33.3h28.6V504C256.1,504.1,255.4,504.1,254.6,504.1z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 233.4805 527.5442)" class="st1 st2 st3">428</text>
+</g>
+<g id="429" data-select="zone:Üst Kat;zoneid:243;subzone:429;subzoneid:288;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::288" style="cursor:pointer">
+	<path class="st0 svgshp" d="M189.1,504.1h36v33.3h-36V504.1z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 198.0361 527.5979)" class="st1 st2 st3">429</text>
+</g>
+<g id="430" data-select="zone:Üst Kat;zoneid:243;subzone:430;subzoneid:287;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::287" style="cursor:pointer">
+	<path class="st0 svgshp" d="M159.5,504.1h26.4v33.3h-26.4V504.1z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 163.6504 527.5979)" class="st1 st2 st3">430</text>
+</g>
+<g id="shape-5-431">
+	<path class="st4" d="M136.9,504.1h19.8v33.3h-19.8V504.1z"></path>
+</g>
+<g id="401" data-select="zone:Üst Kat;zoneid:243;subzone:401;subzoneid:286;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::286" style="cursor:pointer">
+	<path class="st0 svgshp" d="M107.6,504.1H134v33.3h-26.4C107.6,537.4,107.6,504.1,107.6,504.1z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 111.8076 527.5979)" class="st1 st2 st3">401</text>
+</g>
+<g id="402" data-select="zone:Üst Kat;zoneid:243;subzone:402;subzoneid:285;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::285" style="cursor:pointer">
+	<path class="st0 svgshp" d="M68.5,504.1h36v33.3h-36V504.1z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 77.4214 527.5979)" class="st1 st2 st3">402</text>
+</g>
+<g id="403" data-select="zone:Üst Kat;zoneid:243;subzone:403;subzoneid:284;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="243:::284" style="cursor:pointer">
+	<path class="st0 svgshp" d="M38.1,504.1c-0.4,0-0.8,0-1.2,0v33.3h28.6v-33.3H38.1z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 41.9775 527.5979)" class="st1 st2 st3">403</text>
+</g>
+<g id="119" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:119;subzoneid:264;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::264" style="cursor:pointer">
+	<path class="st0 svgshp" d="M256.7,321.6c7.7,0,13.9,6.3,13.9,13.9v5.1h33.3v-3c0-26.8-21.5-48.7-48.2-49.3v33.3h0.9l0,0H256.7z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 270.7764 321.3352)" class="st1 st2 st3">119</text>
+</g>
+<g id="120" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:120;subzoneid:265;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::265" style="cursor:pointer">
+	<path class="st0 svgshp" d="M270.6,343.9h33.3v26.4h-33.3V343.9z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 278.1816 363.8679)" class="st1 st2 st3">120</text>
+</g>
+<g id="121" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:121;subzoneid:266;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::266" style="cursor:pointer">
+	<path class="st0 svgshp" d="M270.6,373.5h33.3V419h-33.3V373.5z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 278.1816 403.0149)" class="st1 st2 st3">121</text>
+</g>
+<g id="122" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:122;subzoneid:267;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::267" style="cursor:pointer">
+	<path class="st0 svgshp" d="M270.6,422.2h33.3v27.4h-33.3V422.2z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 278.1816 442.6907)" class="st1 st2 st3">122</text>
+</g>
+<g id="123" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:123;subzoneid:268;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::268" style="cursor:pointer">
+	<path class="st0 svgshp" d="M270.6,456.9c0,7.7-6.3,13.9-13.9,13.9h-2.1V501c26.8-0.1,48.5-21.6,49.2-48.2h-33.3V456.9z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 270.2471 483.6897)" class="st1 st2 st3">123</text>
+</g>
+<g id="104" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:104;subzoneid:304;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::304" style="cursor:pointer">
+	<path class="st0 svgshp" d="M36.9,470.8c-0.8,0-1.5-0.1-2.4-0.2l-14.9,26.9c5.8,2.3,11.8,3.5,18.3,3.5h2v-30.1h-3V470.8z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 20.6582 492.5764)" class="st1 st2 st3">104</text>
+</g>
+<g id="105" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:105;subzoneid:303;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::303" style="cursor:pointer">
+	<path class="st0 svgshp" d="M24.5,463L-4,477.3c4.9,8,12.1,14.6,20.9,18.7l14.7-26.4C28.4,468.4,26,466,24.5,463z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 4.6294 486.3869)" class="st1 st2 st3">105</text>
+</g>
+<g id="106" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:106;subzoneid:302;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::302" style="cursor:pointer">
+	<path class="st0 svgshp" d="M23,456.9v-3.1h-34.3c0.3,7.5,2.4,14.5,5.8,20.8l29.1-14.5C23.1,459,23,458,23,456.9z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 -2.9355 465.3323)" class="st1 st2 st3">106</text>
+</g>
+<g id="107" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:107;subzoneid:301;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::301" style="cursor:pointer">
+	<path class="st0 svgshp" d="M-11.3,422.2H23v28.6h-34.4L-11.3,422.2L-11.3,422.2z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 -3.2529 443.2199)" class="st1 st2 st3">107</text>
+</g>
+<g id="108" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:108;subzoneid:296;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::296" style="cursor:pointer">
+	<path class="st0 svgshp" d="M-11.3,373.5H23V419h-34.4L-11.3,373.5L-11.3,373.5z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 -3.2529 403.0149)" class="st1 st2 st3">108</text>
+</g>
+<g id="109" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:109;subzoneid:297;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::297" style="cursor:pointer">
+	<path class="st0 svgshp" d="M-11.3,342.7H23v27.5h-34.4L-11.3,342.7L-11.3,342.7z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 -3.2529 363.3386)" class="st1 st2 st3">109</text>
+</g>
+<g id="110" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:110;subzoneid:298;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::298" style="cursor:pointer">
+	<path class="st0 svgshp" d="M23,335.5c0-0.3,0-0.5,0-0.8l-32-12.3c-1.5,4.8-2.5,10.1-2.5,15.3v2H23V335.5z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 -3.2529 337.7873)" class="st1 st2 st3">110</text>
+</g>
+<g id="111" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:111;subzoneid:299;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::299" style="cursor:pointer">
+	<path class="st0 svgshp" d="M30.8,323.1l-14.4-29.7c-10.9,5.4-19.6,14.6-24.1,26l31.4,12.1C24.7,327.8,27.4,324.8,30.8,323.1z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 2.4072 319.2717)" class="st1 st2 st3">111</text>
+</g>
+<g id="112" data-select="zone:Kale Arkası Alt Kat;zoneid:242;subzone:112;subzoneid:300;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="242:::300" style="cursor:pointer">
+	<path class="st0 svgshp" d="M36.9,321.6h3.1v-33.3h-1.8c-6.7,0-13,1.3-18.7,3.7l14.5,29.9C34.8,321.7,35.8,321.6,36.9,321.6z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 21.8755 307.6867)" class="st1 st2 st3">112</text>
+</g>
+<g id="419" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:419;subzoneid:255;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::255" style="cursor:pointer">
+	<path class="st0 svgshp" d="M277.9,290.6l17.6-28.8c-10.7-5.5-22.7-8.7-35.4-8.9v32.5C266.4,286,272.4,287.9,277.9,290.6z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 268.6602 278.591)" class="st1 st2 st3">419</text>
+</g>
+<g id="420" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:420;subzoneid:256;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::256" style="cursor:pointer">
+	<path class="st0 svgshp" d="M299,309.5l28.4-17.7c-7-11.8-17.1-21.7-29-28.6l-17.7,28.8C288.1,296.3,294.3,302.4,299,309.5z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 294.8984 293.2444)" class="st1 st2 st3">420</text>
+</g>
+<g id="421" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:421;subzoneid:257;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::257" style="cursor:pointer">
+	<path class="st0 svgshp" d="M307.1,337.7v3h31.2v-8.3c0-13.7-3.4-26.3-9.5-37.6l-28.4,17.6C304.7,319.8,307.1,328.5,307.1,337.7z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 310.3467 324.5095)" class="st1 st2 st3">421</text>
+</g>
+<g id="422" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:422;subzoneid:258;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::258" style="cursor:pointer">
+	<path class="st0 svgshp" d="M307.1,343.9h31.2v26.4h-31.2V343.9z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 313.626 363.8679)" class="st1 st2 st3">422</text>
+</g>
+<g id="423" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:423;subzoneid:259;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::259" style="cursor:pointer">
+	<path class="st0 svgshp" d="M307.1,373.5h31.2V419h-31.2V373.5z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 313.626 403.0149)" class="st1 st2 st3">423</text>
+</g>
+<g id="424" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:424;subzoneid:260;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::260" style="cursor:pointer">
+	<path class="st0 svgshp" d="M307.1,422.2h31.2v27.4h-31.2V422.2z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 313.626 442.6907)" class="st1 st2 st3">424</text>
+</g>
+<g id="425" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:425;subzoneid:261;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::261" style="cursor:pointer">
+	<path class="st0 svgshp" d="M297.7,481.5l27.5,20.2c8.2-12.5,13.2-27.5,13.2-43.7V453h-31.2C306.8,463.5,303.4,473.3,297.7,481.5z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 308.917 484.1653)" class="st1 st2 st3">425</text>
+</g>
+<g id="426" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:426;subzoneid:262;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::262" style="cursor:pointer">
+	<path class="st0 svgshp" d="M282,496.3l20.1,28.4c8.2-5.4,15.5-12.2,21.3-20.3l-27.6-20.2C292,488.9,287.3,493.2,282,496.3z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 293.6299 511.3039)" class="st1 st2 st3">426</text>
+</g>
+<g id="427" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:427;subzoneid:263;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::263" style="cursor:pointer">
+	<path class="st0 svgshp" d="M260,503.8v33.5c14.4-0.2,27.8-4.2,39.4-11.1l-20-28.4C273.5,501.1,266.9,503.1,260,503.8z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 270.6172 524.4231)" class="st1 st2 st3">427</text>
+</g>
+<g id="407" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:407;subzoneid:280;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::280" style="cursor:pointer">
+	<path class="st0 svgshp" d="M-46.8,422.2h32.3v28.6h-32.3V422.2z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 -39.7549 443.2199)" class="st1 st2 st3">407</text>
+</g>
+<g id="408" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:408;subzoneid:275;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::275" style="cursor:pointer">
+	<path class="st0 svgshp" d="M-46.8,373.5h32.3V419h-32.3V373.5z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 -39.7549 403.0149)" class="st1 st2 st3">408</text>
+</g>
+<g id="409" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:409;subzoneid:276;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::276" style="cursor:pointer">
+	<path class="st0 svgshp" d="M-46.8,342.7h32.3v27.5h-32.3V342.7z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 -39.7549 363.3386)" class="st1 st2 st3">409</text>
+</g>
+<g id="410" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:410;subzoneid:277;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::277" style="cursor:pointer">
+	<path class="st0 svgshp" d="M-14.5,337.7c0-10.6,3.2-20.5,8.6-28.8l-27-21.6c-8.7,12.8-14,28.3-14,45v7.3h32.3L-14.5,337.7L-14.5,337.7z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 -35.417 320.2771)" class="st1 st2 st3">410</text>
+</g>
+<g id="411" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:411;subzoneid:278;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::278" style="cursor:pointer">
+	<path class="st0 svgshp" d="M9.1,293.7l-19.7-28c-7.8,5-14.8,11.5-20.4,19l26.9,21.6C-0.4,301.4,4,297.1,9.1,293.7z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 -20.0757 292.7683)" class="st1 st2 st3">411</text>
+</g>
+<g id="412" data-select="zone:Kale Arkası Üst Kat;zoneid:241;subzone:412;subzoneid:279;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="241:::279" style="cursor:pointer">
+	<path class="st0 svgshp" d="M34.7,285.2v-32.4h-2.1c-14.8,0-28.7,4-40.5,11.1l19.7,28.2C18.6,288.2,26.4,285.7,34.7,285.2z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 4.3115 279.2785)" class="st1 st2 st3">412</text>
+</g>
+<g id="404" data-select="zone:Misafir;zoneid:248;subzone:404;subzoneid:283;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="248:::283" style="cursor:pointer">
+	<path class="st0 svgshp" d="M18.2,500.2L1.1,531c9.7,4.2,20.3,6.6,31.5,6.6h0.9V504C28.2,503.4,23,502.2,18.2,500.2z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 8.2793 525.6399)" class="st1 st2 st3">404</text>
+</g>
+<g id="405" data-select="zone:Misafir;zoneid:248;subzone:405;subzoneid:282;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="248:::282" style="cursor:pointer">
+	<path class="st0 svgshp" d="M-0.6,487.1l-27.1,22.4c7.2,8.3,15.9,15.2,26,20.1l17.1-30.7C9.2,495.9,3.8,491.9-0.6,487.1z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 -15.3145 515.1653)" class="st1 st2 st3">405</text>
+</g>
+<g id="406" data-select="zone:Misafir;zoneid:248;subzone:406;subzoneid:281;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="248:::281" style="cursor:pointer">
+	<path class="st0 svgshp" d="M-14.4,453.9h-32.4v4.1c0,18.5,6.4,35.5,17,49l27.1-22.4C-9.7,476.2-14,465.5-14.4,453.9z" style="fill:#cccccc;"></path>
+	<text transform="matrix(1 0 0 1 -33.8828 487.2336)" class="st1 st2 st3">406</text>
+</g>
+<g>
+	<g>
+		<rect x="46" y="333.8" class="st5" width="199.4" height="122.7"></rect>
+		<rect x="46" y="333.8" class="st6" width="16.6" height="122.8"></rect>
+		<rect x="82.6" y="333.8" class="st6" width="16.6" height="122.8"></rect>
+		<rect x="119.2" y="333.8" class="st6" width="16.6" height="122.8"></rect>
+		<rect x="155.7" y="333.8" class="st6" width="16.6" height="122.8"></rect>
+		<rect x="192.3" y="333.8" class="st6" width="16.6" height="122.8"></rect>
+		<rect x="228.9" y="333.8" class="st6" width="16.6" height="122.8"></rect>
+	</g>
+	<g>
+		<g>
+			<circle class="st7" cx="145.8" cy="395.1" r="22.9"></circle>
+		</g>
+		<g>
+			<g>
+				<line class="st7" x1="145.8" y1="333.8" x2="145.8" y2="456.5"></line>
+			</g>
+		</g>
+		<g>
+			<g>
+				<line class="st7" x1="245" y1="357.6" x2="213.8" y2="357.6"></line>
+				<line class="st7" x1="213.8" y1="432.6" x2="213.8" y2="357.6"></line>
+				<line class="st7" x1="245" y1="432.6" x2="213.8" y2="432.6"></line>
+			</g>
+		</g>
+		<g>
+			<g>
+				<line class="st7" x1="245" y1="377.8" x2="234.1" y2="377.8"></line>
+				<line class="st7" x1="234.1" y1="412.5" x2="234.1" y2="377.8"></line>
+				<line class="st7" x1="234.1" y1="412.5" x2="245" y2="412.5"></line>
+			</g>
+		</g>
+		<g>
+			<g>
+				<line class="st7" x1="46.7" y1="357.6" x2="77.7" y2="357.6"></line>
+				<line class="st7" x1="77.7" y1="432.6" x2="77.7" y2="357.6"></line>
+				<line class="st7" x1="77.7" y1="432.6" x2="46.7" y2="432.6"></line>
+			</g>
+		</g>
+		<g>
+			<g>
+				<line class="st7" x1="46.7" y1="377.8" x2="58.6" y2="377.8"></line>
+				<line class="st7" x1="58.6" y1="377.8" x2="58.6" y2="412.5"></line>
+				<line class="st7" x1="58.6" y1="412.5" x2="46.7" y2="412.5"></line>
+			</g>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 102.0649 241.282)" class="st14 st15 st16">DOĞU (KAPALI)</text>
+<text transform="matrix(4.489659e-011 1 -1 4.489659e-011 348.3937 344.0383)" class="st14 st15 st16">GÜNEY (ESKİ AÇIK)</text>
+<text transform="matrix(-1.346898e-010 -1 1 -1.346898e-010 -56.7891 449.062)" class="st14 st15 st16">KUZEY (YENİ AÇIK)</text>
+<text transform="matrix(1 0 0 1 96.2949 560.8948)" class="st14 st15 st16">BATI (NUMARALI)</text>
+</svg>

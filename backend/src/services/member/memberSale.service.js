@@ -150,7 +150,7 @@ class MemberSaleService {
     try {
       const sales = await Sale.find({
         seller: sellerId,
-        status: { $nin: ['rejected', 'cancelled'] },
+        status: { $nin: ['rejected', 'cancelled','pending_approval'] },
       })
         .sort({ saleDate: -1 })
         .select(

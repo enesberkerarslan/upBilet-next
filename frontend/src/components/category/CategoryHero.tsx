@@ -1,5 +1,5 @@
 const DEFAULT_BG =
-  "https://d118zx96cghsvi.cloudfront.net/uploads/1755475636416-subscribebg.webp";
+  "https://d6j5di8d46w7x.cloudfront.net/uploads/1774872895151-subs.webp";
 
 export function CategoryHero({ backgroundImage = DEFAULT_BG, title }: { backgroundImage?: string; title: string }) {
   return (
@@ -9,7 +9,7 @@ export function CategoryHero({ backgroundImage = DEFAULT_BG, title }: { backgrou
     >
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative z-10 px-4 text-center text-white">
-        <h1 className="m-0 break-words text-3xl font-semibold leading-tight tracking-wider md:text-4xl md:tracking-widest lg:text-6xl">
+        <h1 className="m-0 wrap-break-word text-3xl font-semibold leading-tight tracking-wider md:text-4xl md:tracking-widest lg:text-6xl">
           {title}
         </h1>
       </div>

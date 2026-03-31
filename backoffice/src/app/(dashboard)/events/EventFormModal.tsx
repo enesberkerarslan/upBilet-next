@@ -34,37 +34,35 @@ const emptyForm = {
   tags: [] as string[],
 };
 
+function formFromEvent(edit: Event | null) {
+  if (!edit) return emptyForm;
+  return {
+    name: edit.name ?? '',
+    description: edit.description ?? '',
+    date: edit.date ? String(edit.date).slice(0, 16) : '',
+    location: edit.location ?? '',
+    image: edit.image ?? '',
+    slug: edit.slug ?? '',
+    metaTitle: (edit as unknown as Record<string, string>).metaTitle ?? '',
+    metaDescription: (edit as unknown as Record<string, string>).metaDescription ?? '',
+    keywords: (edit as unknown as Record<string, string>).keywords ?? '',
+    commission: String(edit.commission ?? 20),
+    comissionCustomer: String(edit.comissionCustomer ?? 20),
+    isMainPage: edit.isMainPage ?? false,
+    tags: edit.tags?.map((t) => (typeof t === 'string' ? t : t._id)) ?? [],
+  };
+}
+
 export default function EventFormModal({ open, onClose, onSuccess, editItem }: Props) {
   const isEdit = !!editItem;
   const [loading, setLoading] = useState(false);
   const [tags, setTags] = useState<Tag[]>([]);
-  const [form, setForm] = useState(emptyForm);
+  /** Parent `key` ile remount: ilk render’da açıklama dolu olsun (useEffect bir frame sonra kalırdı → Tiptap boş kalırdı). */
+  const [form, setForm] = useState(() => formFromEvent(editItem));
 
   useEffect(() => {
     tagService.getAll().then((r) => setTags(r.data ?? [])).catch(() => {});
   }, []);
-
-  useEffect(() => {
-    if (editItem) {
-      setForm({
-        name: editItem.name ?? '',
-        description: editItem.description ?? '',
-        date: editItem.date ? String(editItem.date).slice(0, 16) : '',
-        location: editItem.location ?? '',
-        image: editItem.image ?? '',
-        slug: editItem.slug ?? '',
-        metaTitle: (editItem as unknown as Record<string, string>).metaTitle ?? '',
-        metaDescription: (editItem as unknown as Record<string, string>).metaDescription ?? '',
-        keywords: (editItem as unknown as Record<string, string>).keywords ?? '',
-        commission: String(editItem.commission ?? 20),
-        comissionCustomer: String(editItem.comissionCustomer ?? 20),
-        isMainPage: editItem.isMainPage ?? false,
-        tags: editItem.tags?.map((t) => (typeof t === 'string' ? t : t._id)) ?? [],
-      });
-    } else {
-      setForm(emptyForm);
-    }
-  }, [editItem, open]);
 
   const set = (key: string, val: string | boolean) => setForm((p) => ({ ...p, [key]: val }));
 

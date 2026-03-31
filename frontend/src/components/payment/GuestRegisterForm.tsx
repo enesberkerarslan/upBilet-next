@@ -76,7 +76,7 @@ export function GuestRegisterForm() {
             type="text"
             value={form.firstName}
             onChange={(e) => setForm((f) => ({ ...f, firstName: e.target.value }))}
-            className="mt-1 w-full rounded-md border border-gray-200 bg-white px-4 py-2.5"
+            className="mt-1 w-full rounded-xl border border-gray-200/70 bg-stone-50/50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-indigo-200/90 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100/70"
           />
           {errors.firstName ? <span className="text-xs text-red-500">{errors.firstName}</span> : null}
         </div>
@@ -86,7 +86,7 @@ export function GuestRegisterForm() {
             type="text"
             value={form.lastName}
             onChange={(e) => setForm((f) => ({ ...f, lastName: e.target.value }))}
-            className="mt-1 w-full rounded-md border border-gray-200 bg-white px-4 py-2.5"
+            className="mt-1 w-full rounded-xl border border-gray-200/70 bg-stone-50/50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-indigo-200/90 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100/70"
           />
           {errors.lastName ? <span className="text-xs text-red-500">{errors.lastName}</span> : null}
         </div>
@@ -99,7 +99,7 @@ export function GuestRegisterForm() {
             type="tel"
             value={form.phone}
             onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-            className="mt-1 w-full rounded-md border border-gray-200 bg-white px-4 py-2.5"
+            className="mt-1 w-full rounded-xl border border-gray-200/70 bg-stone-50/50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-indigo-200/90 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100/70"
           />
           {errors.phone ? <span className="text-xs text-red-500">{errors.phone}</span> : null}
         </div>
@@ -109,7 +109,7 @@ export function GuestRegisterForm() {
             type="email"
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-            className="mt-1 w-full rounded-md border border-gray-200 bg-white px-4 py-2.5"
+            className="mt-1 w-full rounded-xl border border-gray-200/70 bg-stone-50/50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-indigo-200/90 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100/70"
           />
           {errors.email ? <span className="text-xs text-red-500">{errors.email}</span> : null}
         </div>
@@ -123,12 +123,12 @@ export function GuestRegisterForm() {
               type={showPassword ? "text" : "password"}
               value={form.password}
               onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
-              className="mt-1 w-full rounded-md border border-gray-200 bg-white px-4 py-2.5"
+              className="mt-1 w-full rounded-xl border border-gray-200/70 bg-stone-50/50 px-4 py-3 pr-14 text-sm text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-indigo-200/90 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100/70"
             />
             <button
               type="button"
               onClick={() => setShowPassword((v) => !v)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-500 transition-colors hover:text-gray-700"
               aria-label="Şifreyi göster"
             >
               {showPassword ? "Gizle" : "Göster"}
@@ -143,12 +143,12 @@ export function GuestRegisterForm() {
               type={showPasswordConfirm ? "text" : "password"}
               value={form.passwordConfirm}
               onChange={(e) => setForm((f) => ({ ...f, passwordConfirm: e.target.value }))}
-              className="mt-1 w-full rounded-md border border-gray-200 bg-white px-4 py-2.5"
+              className="mt-1 w-full rounded-xl border border-gray-200/70 bg-stone-50/50 px-4 py-3 pr-14 text-sm text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-indigo-200/90 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100/70"
             />
             <button
               type="button"
               onClick={() => setShowPasswordConfirm((v) => !v)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-500 transition-colors hover:text-gray-700"
               aria-label="Şifreyi göster"
             >
               {showPasswordConfirm ? "Gizle" : "Göster"}

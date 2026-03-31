@@ -83,16 +83,20 @@ export function EyeSlashGlyph({ className = "h-5 w-5" }: { className?: string })
 export function AuthPasswordToggleButton({
   visible,
   onToggle,
+  ariaLabelShow = "Şifreyi göster",
+  ariaLabelHide = "Şifreyi gizle",
 }: {
   visible: boolean;
   onToggle: () => void;
+  ariaLabelShow?: string;
+  ariaLabelHide?: string;
 }) {
   return (
     <button
       type="button"
       onClick={onToggle}
       className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[#9CA3AF] transition-colors hover:bg-[#F4F4F5] hover:text-[#71717A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#615FFF]/30"
-      aria-label={visible ? "Şifreyi gizle" : "Şifreyi göster"}
+      aria-label={visible ? ariaLabelHide : ariaLabelShow}
     >
       {visible ? <EyeOpenGlyph /> : <EyeSlashGlyph />}
     </button>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { AuthPasswordToggleButton, LockGlyph } from "@/components/auth/auth-form-primitives";
 import { ProfilePanelHeader } from "@/components/profile/ProfilePanelHeader";
 import { useLocale } from "@/contexts/locale-context";
 import { apiChangePassword, apiGetProfile, apiUpdateProfile, type MemberProfile } from "@/lib/api/member-api";
@@ -176,14 +177,17 @@ export function ProfilePersonalPanel({ initialMember }: PersonalProps = {}) {
     }
   }
 
-  const inputClass = "w-full rounded-xl border border-gray-200 px-4 py-3 bg-white text-gray-800 text-sm";
-  const labelClass = "block text-xs text-gray-500 mb-1";
+  const inputClass =
+    "w-full rounded-2xl border border-[#D1D5DB] bg-white px-4 py-3 text-[15px] text-[#18181B] outline-none transition-shadow focus:border-[#615FFF]/50 focus:ring-2 focus:ring-[#615FFF]/20";
+  const passwordRowInputClass =
+    "h-14 w-full rounded-2xl border border-[#D1D5DB] bg-white pl-11 pr-[3.25rem] text-[15px] text-[#18181B] outline-none transition-shadow placeholder:text-[#9CA3AF] focus:border-[#615FFF]/50 focus:ring-2 focus:ring-[#615FFF]/20";
+  const labelClass = "mb-1 block text-xs text-gray-500";
 
   return (
     <div className="w-full">
-      <div className="w-full overflow-hidden rounded-2xl bg-white px-2">
+      <div className="w-full overflow-hidden rounded-2xl bg-white">
         <ProfilePanelHeader title={t("profile.personalTitle")} />
-        <div className="px-6 pb-6 pt-2 md:px-8 md:pb-8">
+        <div className="px-2 pb-6 pt-2 md:px-8 md:pb-8">
         {isLoading ? (
           <div className="flex min-h-[min(50dvh,420px)] flex-col items-center justify-center py-16 text-center">
             <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-indigo-500" aria-hidden />
@@ -291,20 +295,23 @@ export function ProfilePersonalPanel({ initialMember }: PersonalProps = {}) {
               <div>
                 <label className={labelClass}>{t("profile.passoPassword")}</label>
                 <div className="relative">
+                  <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2" aria-hidden>
+                    <LockGlyph />
+                  </span>
                   <input
                     type={showPassoPassword ? "text" : "password"}
-                    className={`${inputClass} pr-10`}
+                    className={passwordRowInputClass}
                     value={form.passoligPassword}
                     onChange={(e) => setForm((f) => ({ ...f, passoligPassword: e.target.value }))}
                   />
-                  <button
-                    type="button"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
-                    onClick={() => setShowPassoPassword((v) => !v)}
-                    aria-label="toggle"
-                  >
-                    {showPassoPassword ? "👁" : "👁‍🗨"}
-                  </button>
+                  <div className="absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center">
+                    <AuthPasswordToggleButton
+                      visible={showPassoPassword}
+                      onToggle={() => setShowPassoPassword((v) => !v)}
+                      ariaLabelShow={t("profile.passwordShowAria")}
+                      ariaLabelHide={t("profile.passwordHideAria")}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -418,106 +425,64 @@ export function ProfilePersonalPanel({ initialMember }: PersonalProps = {}) {
           }}
         >
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12.9168 12.083C15.6782 12.083 17.9168 9.84442 17.9168 7.08301C17.9168 4.32158 15.6782 2.08301 12.9168 2.08301C10.1554 2.08301 7.91683 4.32158 7.91683 7.08301C7.91683 7.81668 8.07485 8.51342 8.35875 9.14109L2.0835 15.4163V17.9163H4.5835V16.2497H6.25016V14.583H7.91683L10.8587 11.6411C11.4864 11.925 12.1832 12.083 12.9168 12.083Z"
-                  stroke="#18181B"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M14.5833 5.41699L13.75 6.25033"
-                  stroke="#18181B"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+            <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2" aria-hidden>
+              <LockGlyph />
             </span>
             <input
               type={showOld ? "text" : "password"}
               placeholder={t("profile.placeholderOldPw")}
-              className="w-full rounded-xl border border-gray-200 bg-white px-12 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+              className={passwordRowInputClass}
               value={modalOldPw}
               onChange={(e) => setModalOldPw(e.target.value)}
             />
-            <button
-              type="button"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
-              onClick={() => setShowOld((v) => !v)}
-            >
-              {showOld ? "👁" : "👁‍🗨"}
-            </button>
+            <div className="absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center">
+              <AuthPasswordToggleButton
+                visible={showOld}
+                onToggle={() => setShowOld((v) => !v)}
+                ariaLabelShow={t("profile.passwordShowAria")}
+                ariaLabelHide={t("profile.passwordHideAria")}
+              />
+            </div>
           </div>
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12.9168 12.083C15.6782 12.083 17.9168 9.84442 17.9168 7.08301C17.9168 4.32158 15.6782 2.08301 12.9168 2.08301C10.1554 2.08301 7.91683 4.32158 7.91683 7.08301C7.91683 7.81668 8.07485 8.51342 8.35875 9.14109L2.0835 15.4163V17.9163H4.5835V16.2497H6.25016V14.583H7.91683L10.8587 11.6411C11.4864 11.925 12.1832 12.083 12.9168 12.083Z"
-                  stroke="#18181B"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M14.5833 5.41699L13.75 6.25033"
-                  stroke="#18181B"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+            <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2" aria-hidden>
+              <LockGlyph />
             </span>
             <input
               type={showNew ? "text" : "password"}
               placeholder={t("profile.placeholderNewPw")}
-              className="w-full rounded-xl border border-gray-200 bg-white px-12 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+              className={passwordRowInputClass}
               value={modalNewPw}
               onChange={(e) => setModalNewPw(e.target.value)}
             />
-            <button
-              type="button"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
-              onClick={() => setShowNew((v) => !v)}
-            >
-              {showNew ? "👁" : "👁‍🗨"}
-            </button>
+            <div className="absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center">
+              <AuthPasswordToggleButton
+                visible={showNew}
+                onToggle={() => setShowNew((v) => !v)}
+                ariaLabelShow={t("profile.passwordShowAria")}
+                ariaLabelHide={t("profile.passwordHideAria")}
+              />
+            </div>
           </div>
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12.9168 12.083C15.6782 12.083 17.9168 9.84442 17.9168 7.08301C17.9168 4.32158 15.6782 2.08301 12.9168 2.08301C10.1554 2.08301 7.91683 4.32158 7.91683 7.08301C7.91683 7.81668 8.07485 8.51342 8.35875 9.14109L2.0835 15.4163V17.9163H4.5835V16.2497H6.25016V14.583H7.91683L10.8587 11.6411C11.4864 11.925 12.1832 12.083 12.9168 12.083Z"
-                  stroke="#18181B"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M14.5833 5.41699L13.75 6.25033"
-                  stroke="#18181B"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+            <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2" aria-hidden>
+              <LockGlyph />
             </span>
             <input
               type={showRepeat ? "text" : "password"}
               placeholder={t("profile.placeholderRepeatPw")}
-              className="w-full rounded-xl border border-gray-200 bg-white px-12 py-3 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+              className={passwordRowInputClass}
               value={modalRepeatPw}
               onChange={(e) => setModalRepeatPw(e.target.value)}
             />
-            <button
-              type="button"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
-              onClick={() => setShowRepeat((v) => !v)}
-            >
-              {showRepeat ? "👁" : "👁‍🗨"}
-            </button>
+            <div className="absolute right-1.5 top-1/2 flex -translate-y-1/2 items-center">
+              <AuthPasswordToggleButton
+                visible={showRepeat}
+                onToggle={() => setShowRepeat((v) => !v)}
+                ariaLabelShow={t("profile.passwordShowAria")}
+                ariaLabelHide={t("profile.passwordHideAria")}
+              />
+            </div>
           </div>
           {modalNewPw && modalRepeatPw && modalNewPw !== modalRepeatPw ? (
             <p className="mb-2 text-xs text-red-500">{t("profile.pwMismatch")}</p>
@@ -525,7 +490,7 @@ export function ProfilePersonalPanel({ initialMember }: PersonalProps = {}) {
           <button
             type="submit"
             disabled={modalNewPw !== modalRepeatPw}
-            className="mt-2 w-full rounded-full bg-indigo-500 py-3 font-semibold text-white transition hover:bg-indigo-600 disabled:opacity-50"
+            className="mt-2 h-14 w-full rounded-2xl bg-[#615FFF] text-base font-bold text-white transition-opacity hover:opacity-95 disabled:opacity-50"
           >
             {t("profile.save")}
           </button>

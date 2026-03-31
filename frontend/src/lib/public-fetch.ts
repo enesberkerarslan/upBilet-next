@@ -9,6 +9,7 @@ export type CategoryTagInfo = {
   description?: string;
   metaTitle?: string;
   metaDescription?: string;
+  keywords?: string;
 };
 
 export type CategoryBundleBody = {

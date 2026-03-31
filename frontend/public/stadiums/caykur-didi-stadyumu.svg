@@ -1,0 +1,267 @@
+<svg version="1.1" id="giresun" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 450 400" style="width: 100%; height: 100%;" xml:space="preserve">
+	
+	 <defs>
+      <style type="text/css">@import url('https://fonts.googleapis.com/css?family=Poppins');</style>
+    </defs>
+
+	
+	<style type="text/css">
+	.st0{fill:#79B954;}
+	.st1{fill:#9FCD85;}
+	.st2{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+	.st3{font-family:'Poppins';}
+	.st4{font-size:8px;}
+	.st5{font-size:11px;}
+	.st6{fill:#CCCCCC;}
+	.st7{fill:#FFFFFF;}
+	.st8{font-family:'Poppins';}
+	.st9{font-size:7.2157px;}
+</style>
+<g>
+	<g>
+		<rect x="115" y="132.2" class="st0" width="220" height="135.5"></rect>
+		<rect x="115" y="132.2" class="st1" width="18.2" height="135.5"></rect>
+		<rect x="155.3" y="132.2" class="st1" width="18.2" height="135.5"></rect>
+		<rect x="195.6" y="132.2" class="st1" width="18.2" height="135.5"></rect>
+		<rect x="236" y="132.2" class="st1" width="18.2" height="135.5"></rect>
+		<rect x="276.4" y="132.2" class="st1" width="18.2" height="135.5"></rect>
+		<rect x="316.7" y="132.2" class="st1" width="18.2" height="135.5"></rect>
+	</g>
+	<g>
+		<circle class="st2" cx="225" cy="200" r="25.2"></circle>
+		<g>
+			<line class="st2" x1="225" y1="132.2" x2="225" y2="267.8"></line>
+		</g>
+		<g>
+			<line class="st2" x1="334.6" y1="158.6" x2="300" y2="158.6"></line>
+			<line class="st2" x1="300" y1="241.5" x2="300" y2="158.6"></line>
+			<line class="st2" x1="300" y1="241.5" x2="334.6" y2="241.5"></line>
+		</g>
+		<g>
+			<line class="st2" x1="334.6" y1="180.9" x2="322.6" y2="180.9"></line>
+			<line class="st2" x1="322.6" y1="219.3" x2="322.6" y2="180.9"></line>
+			<line class="st2" x1="322.6" y1="219.3" x2="334.6" y2="219.3"></line>
+		</g>
+		<g>
+			<line class="st2" x1="115.8" y1="158.6" x2="150" y2="158.6"></line>
+			<line class="st2" x1="150" y1="241.5" x2="150" y2="158.6"></line>
+			<line class="st2" x1="150" y1="241.5" x2="115.8" y2="241.5"></line>
+		</g>
+		<g>
+			<line class="st2" x1="115.8" y1="180.9" x2="129" y2="180.9"></line>
+			<line class="st2" x1="129" y1="219.3" x2="129" y2="180.9"></line>
+			<line class="st2" x1="129" y1="219.3" x2="115.8" y2="219.3"></line>
+		</g>
+	</g>
+</g>
+<g>
+	<text transform="matrix(0 -1 1 0 102.7687 231.6936)" class="st3 st4">SHORTSIDE TIER</text>
+	<text transform="matrix(0 1 -1 0 345.6125 168.3069)" class="st3 st4">SHORTSIDE TIER</text>
+	<text transform="matrix(0 1 -1 0 395.0119 180.8762)" class="st3 st5">GÜNEY</text>
+	<text transform="matrix(8.979319e-11 -1 1 8.979319e-11 54.2959 217.5068)" class="st3 st5">KUZEY</text>
+	<text transform="matrix(1 0 0 1 195.1193 285.1072)" class="st3 st4">LONGSIDE TIER</text>
+	<text transform="matrix(1 0 0 1 212.5041 394.3162)" class="st3 st5">BATI</text>
+	<text transform="matrix(1 0 0 1 195.1193 119.7869)" class="st3 st4">LONGSIDE TIER</text>
+	<text transform="matrix(1 0 0 1 208.4113 13.0212)" class="st3 st5">DOĞU</text>
+	<g id="A10" data-select="zone:Güney Tribün;zoneid:5696;subzone:A10;subzoneid:3770;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="5696:::3770" style="cursor:pointer">
+		<path class="st6 svgshp" d="M374.3,86.2c-4.6,6.6-9.3,13-13.8,19.6c0.4,0.1,1.5,0.5,2.3,1.7c0.4,0.7,0.6,1.4,0.6,1.7c0,3.6,0,7.2,0,10.8
+			h24.4V98.1c-1.1-1.7-2.7-3.8-4.8-5.9C379.7,89.2,376.6,87.3,374.3,86.2z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 372.9152 107.6238)" class="st7 st8 st9">A</text>
+	</g>
+	<g id="B9" data-select="zone:Güney Tribün;zoneid:5696;subzone:B9;subzoneid:3771;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="5696:::3771" style="cursor:pointer">
+		<rect x="363.6" y="120.9" class="st6 svgshp" width="24.4" height="48.3" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 374.3478 147.5398)" class="st7 st8 st9">B</text>
+	</g>
+	<g id="C7" data-select="zone:Güney Tribün;zoneid:5696;subzone:C7;subzoneid:3772;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="5696:::3772" style="cursor:pointer">
+		<rect x="363.6" y="170" class="st6 svgshp" width="24.4" height="31.2" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 374.3478 187.0471)" class="st7 st8 st9">C</text>
+	</g>
+	<g id="D7" data-select="zone:Güney Tribün;zoneid:5696;subzone:D7;subzoneid:3522;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="5696:::3522" style="cursor:pointer">
+		<rect x="363.6" y="203.1" class="st6 svgshp" width="24.4" height="36.7" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 374.3478 224.5876)" class="st7 st8 st9">D</text>
+	</g>
+	<g id="E6" data-select="zone:Güney Tribün;zoneid:5696;subzone:E6;subzoneid:3523;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="5696:::3523" style="cursor:pointer">
+		<rect x="363.6" y="240.8" class="st6 svgshp" width="24.4" height="41.2" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 374.3478 262.8337)" class="st7 st8 st9">E</text>
+	</g>
+	<g id="F4" data-select="zone:Güney Tribün;zoneid:5696;subzone:F4;subzoneid:3524;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="5696:::3524" style="cursor:pointer">
+		<path class="st6 svgshp" d="M376.4,315.9l-15.6-18.3c0.4-0.1,1.5-0.5,2.3-1.7c0.4-0.7,0.6-1.4,0.6-1.7c0-3.6,0-7.2,0-10.8H388v21.9
+			c-1,1.7-2.6,3.8-4.8,5.9C380.7,313.5,378.2,315,376.4,315.9z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 374.3478 297.4597)" class="st7 st8 st9">F</text>
+	</g>
+	<g id="F1" data-select="zone:Kuzey Tribün;zoneid:5695;subzone:F1;subzoneid:3513;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5695:::3513" style="cursor:pointer">
+		<path class="st6 svgshp" d="M74.6,83.5c4.8,6.7,9.6,13.5,14.4,20.3c-0.2,0-1.6-0.1-2.6,1.1c-0.5,0.7-0.6,1.5-0.6,1.7c0,3.6,0,7.2,0,10.8
+			H61.5V95.5c1.1-1.7,2.7-3.8,4.8-5.9C69.3,86.6,72.3,84.7,74.6,83.5z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 70.7794 105.2986)" class="st7 st8 st9">F</text>
+	</g>
+	<g id="E5" data-select="zone:Kuzey Tribün;zoneid:5695;subzone:E5;subzoneid:3514;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5695:::3514" style="cursor:pointer">
+		<rect x="61.3" y="117.8" class="st6 svgshp" width="24.4" height="41.2" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 70.7794 140.3025)" class="st7 st8 st9">E</text>
+	</g>
+	<g id="D6" data-select="zone:Kuzey Tribün;zoneid:5695;subzone:D6;subzoneid:3515;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5695:::3515" style="cursor:pointer">
+		<rect x="61.3" y="159.9" class="st6 svgshp" width="24.4" height="41.2" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 70.7794 182.6755)" class="st7 st8 st9">D</text>
+	</g>
+	<g id="C6" data-select="zone:Kuzey Tribün;zoneid:5695;subzone:C6;subzoneid:3516;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5695:::3516" style="cursor:pointer">
+		<rect x="61.3" y="201.9" class="st6 svgshp" width="24.4" height="41.2" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 70.7794 224.5876)" class="st7 st8 st9">C</text>
+	</g>
+	<g id="B8" data-select="zone:Misafir;zoneid:5698;subzone:B8;subzoneid:3517;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5698:::3517" style="cursor:pointer">
+		<rect x="61.3" y="243.9" class="st6 svgshp" width="24.4" height="38.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 70.7794 264.5046)" class="st7 st8 st9">B</text>
+	</g>
+	<g id="A9" data-select="zone:Misafir;zoneid:5698;subzone:A9;subzoneid:3518;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5698:::3518" style="cursor:pointer">
+		<path class="st6 svgshp" d="M73,315.9l15.6-18.3c-0.4-0.1-1.5-0.5-2.3-1.7c-0.4-0.7-0.6-1.4-0.6-1.7c0-3.6,0-7.2,0-10.8H61.3v21.9
+			c1,1.7,2.6,3.8,4.8,5.9C68.6,313.5,71.1,314.9,73,315.9z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 70.7794 297.4597)" class="st7 st8 st9">A</text>
+	</g>
+	<g id="S" data-select="zone:Yan Tribün;zoneid:5697;subzone:S;subzoneid:3533;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3533" style="cursor:pointer">
+		<path class="st6 svgshp" d="M67.7,334.1c2,2,5.3,4.7,9.9,6.5c4,1.6,7.5,1.9,9.9,1.9c0,7.6,0,15.3,0,22.9c-3.1-2.4-7.4-6.4-11.5-12.5
+			C71.2,345.7,68.9,338.7,67.7,334.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 77.5251 351.4275)" class="st7 st8 st9">S</text>
+	</g>
+	<g id="R" data-select="zone:Yan Tribün;zoneid:5697;subzone:R;subzoneid:3534;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3534" style="cursor:pointer">
+		<path class="st6 svgshp" d="M88.5,367.3c1.9,1.6,4.6,3.5,7.9,5.1c4.1,2,7.9,2.8,10.7,3.2c0-10.2,0-20.5,0-30.7L88.5,343V367.3z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 96.7438 360.7927)" class="st7 st8 st9">R</text>
+	</g>
+	<g id="J" data-select="zone:Yan Tribün;zoneid:5697;subzone:J;subzoneid:3540;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3540" style="cursor:pointer">
+		<path class="st6 svgshp" d="M380.5,334.7c-2,2-5.3,4.7-9.9,6.5c-4,1.6-7.5,1.9-9.9,1.9c0,7.6,0,15.3,0,22.9c3.1-2.4,7.4-6.4,11.5-12.5
+			C376.9,346.3,379.3,339.3,380.5,334.7z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 366.2169 352.3494)" class="st7 st8 st9">J</text>
+	</g>
+	<g id="K" data-select="zone:Yan Tribün;zoneid:5697;subzone:K;subzoneid:3539;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3539" style="cursor:pointer">
+		<path class="st6 svgshp" d="M359.6,367.8c-1.9,1.6-4.6,3.5-7.9,5.1c-4.1,2-7.9,2.8-10.7,3.2c0-10.2,0-20.5,0-30.7l18.6-1.8V367.8z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 348.4074 360.7927)" class="st7 st8 st9">K</text>
+	</g>
+	<g id="S1" data-select="zone:Yan Tribün;zoneid:5697;subzone:S1;subzoneid:3503;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3503" style="cursor:pointer">
+		<path class="st6 svgshp" d="M381.4,66.1c-2.8-2.3-7.5-5.4-14-7.5c-5.7-1.8-10.6-2.2-14-2.2c0-8.8,0-17.6,0-26.4
+			c4.4,2.8,10.5,7.3,16.3,14.4C376.3,52.7,379.7,60.8,381.4,66.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 360.5363 50.8982)" class="st7 st8 st9">S</text>
+	</g>
+	<g id="R1" data-select="zone:Yan Tribün;zoneid:5697;subzone:R1;subzoneid:3502;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3502" style="cursor:pointer">
+		<path class="st6 svgshp" d="M352.1,29.1c-2.2-1.7-5.2-3.8-9.1-5.7c-4.8-2.2-9.1-3.1-12.3-3.5c0,11.3,0,22.6,0,33.9l21.5,2V29.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 339.0421 40.6628)" class="st7 st8 st9">R</text>
+	</g>
+	<g id="P" data-select="zone:Yan Tribün;zoneid:5697;subzone:P;subzoneid:3501;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3501" style="cursor:pointer">
+		<rect x="294.4" y="19" class="st6 svgshp" width="35" height="34.6" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 309.8732 38.2068)" class="st7 st8 st9">P</text>
+	</g>
+	<g id="L" data-select="zone:Yan Tribün;zoneid:5697;subzone:L;subzoneid:3496;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3496" style="cursor:pointer">
+		<rect x="119.7" y="19" class="st6 svgshp" width="35" height="34.6" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 135.2843 38.2068)" class="st7 st8 st9">L</text>
+	</g>
+	<g id="K1" data-select="zone:Yan Tribün;zoneid:5697;subzone:K1;subzoneid:3497;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3497" style="cursor:pointer">
+		<path class="st6 svgshp" d="M96.9,29.1c2.6-1.8,6-3.8,10.1-5.5c4.3-1.8,8.2-2.9,11.4-3.6c0,11.3,0,22.6,0,33.9l-21.5,2L96.9,29.1
+			L96.9,29.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 106.3976 41.533)" class="st7 st8 st9">K</text>
+	</g>
+	<g id="J1" data-select="zone:Yan Tribün;zoneid:5697;subzone:J1;subzoneid:3498;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3498" style="cursor:pointer">
+		<path class="st6 svgshp" d="M67.7,66.1c2.8-2.3,7.5-5.4,14-7.5c5.7-1.8,10.6-2.2,14-2.2c0-8.8,0-17.6,0-26.4c-4.4,2.8-10.5,7.3-16.3,14.4
+			C72.7,52.7,69.4,60.8,67.7,66.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 84.1359 50.8982)" class="st7 st8 st9">J</text>
+	</g>
+	<g id="L1" data-select="zone:Yan Tribün;zoneid:5697;subzone:L1;subzoneid:3538;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3538" style="cursor:pointer">
+		<path class="st6 svgshp" d="M302.2,347.4c6,0.1,12.3-0.1,18.9-0.4c6.3-0.3,12.3-0.8,18-1.4c0,10.6,0,21.2,0,31.9
+			c-2.3,0.8-4.9,1.6-7.8,2.2c-4.7,1-9,1.4-12.6,1.6c-5.5-0.1-11.1-0.1-16.7-0.2C302.2,369.9,302.2,358.6,302.2,347.4z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 319.5187 366.4363)" class="st7 st8 st9">L</text>
+	</g>
+	<g id="P1" data-select="zone:Yan Tribün;zoneid:5697;subzone:P1;subzoneid:3535;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3535" style="cursor:pointer">
+		<path class="st6 svgshp" d="M147.5,347.4c-7.2,0.1-15-0.1-23.2-0.6c-5.1-0.4-10-0.8-14.7-1.4c0.1,10.8,0.1,21.6,0.2,32.5
+			c4.5,1.3,9.9,2.6,16.1,3.2c8.5,1,15.9,0.7,21.7,0C147.5,369.9,147.5,358.6,147.5,347.4z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 126.1544 366.4363)" class="st7 st8 st9">P</text>
+	</g>
+	<g id="O" data-select="zone:Yan Tribün;zoneid:5697;subzone:O;subzoneid:3500;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3500" style="cursor:pointer">
+		<rect x="248.4" y="19" class="st6 svgshp" width="44.4" height="34.6" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 267.5861 38.2068)" class="st7 st8 st9">O</text>
+	</g>
+	<g id="N" data-select="zone:Yan Tribün;zoneid:5697;subzone:N;subzoneid:3499;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3499" style="cursor:pointer">
+		<rect x="201.9" y="19" class="st6 svgshp" width="44.9" height="34.6" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 221.757 38.2068)" class="st7 st8 st9">N</text>
+	</g>
+	<g id="M" data-select="zone:Yan Tribün;zoneid:5697;subzone:M;subzoneid:3495;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3495" style="cursor:pointer">
+		<rect x="156.7" y="19" class="st6 svgshp" width="43.7" height="34.6" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 175.8586 38.2068)" class="st7 st8 st9">M</text>
+	</g>
+	<g id="I1" data-select="zone:Yan Tribün;zoneid:5697;subzone:I1;subzoneid:3512;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3512" style="cursor:pointer">
+		<path class="st6 svgshp" d="M352.6,74.3c4.9-0.2,11,0,17.8,1.5c2.9,0.7,5.5,1.4,7.8,2.2c-6.3,8.5-12.5,17.1-18.7,25.7
+			c-0.8-0.4-1.7-0.7-2.9-1c-1.9-0.5-3.5-0.6-4.9-0.6C352,92.8,352.3,83.5,352.6,74.3z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 359.8449 90.6101)" class="st7 st8 st9">I</text>
+	</g>
+	<g id="H2" data-select="zone:Yan Tribün;zoneid:5697;subzone:H2;subzoneid:3511;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3511" style="cursor:pointer">
+		<rect x="329.3" y="74" class="st6 svgshp" width="21.5" height="28.4" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 336.8937 90.6101)" class="st7 st8 st9">H</text>
+	</g>
+	<g id="G2" data-select="zone:Yan Tribün;zoneid:5697;subzone:G2;subzoneid:3510;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3510" style="cursor:pointer">
+		<rect x="294.4" y="74" class="st6 svgshp" width="34.3" height="28.4" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 309.8732 90.6101)" class="st7 st8 st9">G</text>
+	</g>
+	<g id="C5" data-select="zone:Yan Tribün;zoneid:5697;subzone:C5;subzoneid:3506;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3506" style="cursor:pointer">
+		<rect x="120.8" y="74.3" class="st6 svgshp" width="34.3" height="28.1" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 135.2843 90.6101)" class="st7 st8 st9">C</text>
+	</g>
+	<g id="B7" data-select="zone:Yan Tribün;zoneid:5697;subzone:B7;subzoneid:3505;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3505" style="cursor:pointer">
+		<rect x="97.3" y="74.3" class="st6 svgshp" width="21.6" height="28.1" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 106.3976 90.6101)" class="st7 st8 st9">B</text>
+	</g>
+	<g id="A8" data-select="zone:Yan Tribün;zoneid:5697;subzone:A8;subzoneid:3504;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3504" style="cursor:pointer">
+		<path class="st6 svgshp" d="M72.6,78.8c2.3-1.1,5.1-2.3,8.5-3.2c5.8-1.5,10.9-1.4,14.5-1.1c0,9.3,0,18.6,0,27.9c-0.7-0.1-2-0.4-3.7,0.2
+			c-1,0.4-1.8,0.8-2.2,1.2C84,95.4,78.3,87.1,72.6,78.8z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 86.4391 90.6101)" class="st7 st8 st9">A</text>
+	</g>
+	<g id="H1" data-select="zone:Yan Tribün;zoneid:5697;subzone:H1;subzoneid:3525;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3525" style="cursor:pointer">
+		<polygon class="st6 svgshp" points="118.8,299.6 90.1,299.6 90.1,327.6 119,327.6 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 101.5719 316.449)" class="st7 st8 st9">H</text>
+	</g>
+	<path class="st6 svgshp" d="M89.1,299.4c-5.8,7.9-11.5,15.7-17.4,23.6c2.3,1,5,2,8.1,2.8c3.4,0.9,6.6,1.4,9.2,1.6
+		C89.1,318,89.1,308.7,89.1,299.4z"></path>
+	<g id="B6" data-select="zone:Yan Tribün;zoneid:5697;subzone:B6;subzoneid:3531;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3531" style="cursor:pointer">
+		<rect x="330.2" y="299.6" class="st6 svgshp" width="28.6" height="28" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 342.9005 316.449)" class="st7 st8 st9">B</text>
+	</g>
+	<g id="A7" data-select="zone:Yan Tribün;zoneid:5697;subzone:A7;subzoneid:3532;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3532" style="cursor:pointer">
+		<path class="st6 svgshp" d="M360.3,299.1c5.8,7.9,11.5,15.7,17.4,23.6c-2.3,1-5,2-8.1,2.8c-3.4,0.9-6.6,1.4-9.2,1.6
+			C360.3,317.7,360.3,308.4,360.3,299.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 362.9611 316.1892)" class="st7 st8 st9">A</text>
+	</g>
+	<g id="M1" data-select="zone:Yan Tribün;zoneid:5697;subzone:M1;subzoneid:3537;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3537" style="cursor:pointer">
+		<rect x="246.4" y="347.4" class="st6 svgshp" width="54.5" height="33.7" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 272.4923 366.4363)" class="st7 st8 st9">M</text>
+	</g>
+	<g id="O1" data-select="zone:Yan Tribün;zoneid:5697;subzone:O1;subzoneid:3536;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3536" style="cursor:pointer">
+		<rect x="149" y="347.4" class="st6 svgshp" width="53.6" height="33.7" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 173.4679 366.4363)" class="st7 st8 st9">O</text>
+	</g>
+	<g id="F2" data-select="zone:Yan Tribün;zoneid:5697;subzone:F2;subzoneid:3509;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3509" style="cursor:pointer">
+		<rect x="248.4" y="74" class="st6 svgshp" width="44.9" height="28.4" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 268.5461 90.6101)" class="st7 st8 st9">F</text>
+	</g>
+	<g id="E4" data-select="zone:Yan Tribün;zoneid:5697;subzone:E4;subzoneid:3508;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3508" style="cursor:pointer">
+		<rect x="202.3" y="74" class="st6 svgshp" width="44.5" height="28.4" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 222.5011 90.6101)" class="st7 st8 st9">E</text>
+	</g>
+	<g id="D5" data-select="zone:Yan Tribün;zoneid:5697;subzone:D5;subzoneid:3507;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3507" style="cursor:pointer">
+		<rect x="156.7" y="74" class="st6 svgshp" width="43.7" height="28.4" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 176.3664 90.6101)" class="st7 st8 st9">D</text>
+	</g>
+	<g id="C4" data-select="zone:Yan Tribün;zoneid:5697;subzone:C4;subzoneid:3530;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3530" style="cursor:pointer">
+		<rect x="294.8" y="299.6" class="st6 svgshp" width="34.5" height="28" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 307.4367 316.449)" class="st7 st8 st9">C</text>
+	</g>
+	<g id="G1" data-select="zone:Yan Tribün;zoneid:5697;subzone:G1;subzoneid:3526;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3526" style="cursor:pointer">
+		<rect x="120" y="299.6" class="st6 svgshp" width="34.5" height="28" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 135.2843 316.449)" class="st7 st8 st9">G</text>
+	</g>
+	<g id="D4" data-select="zone:Yan Tribün;zoneid:5697;subzone:D4;subzoneid:3528;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3528" style="cursor:pointer">
+		<rect x="248.8" y="299.6" class="st6 svgshp" width="44.9" height="28" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 268.5714 316.449)" class="st7 st8 st9">D</text>
+	</g>
+	<g id="E3" data-select="zone:Yan Tribün;zoneid:5697;subzone:E3;subzoneid:3529;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3529" style="cursor:pointer">
+		<rect x="202" y="299.6" class="st6 svgshp" width="45.2" height="28" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 223.1281 316.449)" class="st7 st8 st9">E</text>
+	</g>
+	<g id="F3" data-select="zone:Yan Tribün;zoneid:5697;subzone:F3;subzoneid:3527;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5697:::3527" style="cursor:pointer">
+		<rect x="156.5" y="299.6" class="st6 svgshp" width="43.7" height="28" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 175.7902 316.449)" class="st7 st8 st9">F</text>
+	</g>
+</g>
+</svg>

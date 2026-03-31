@@ -37,7 +37,7 @@ function tableTime(dateInput: string) {
 export function EventTable({ events, locale }: { events: PublicEvent[]; locale: Locale }) {
   return (
     <div className="w-full rounded-lg bg-white shadow-sm">
-      <div className="mb-6 flex items-center justify-between p-4 pb-0 md:mb-8 md:p-8">
+      <div className="mb-2 flex items-center justify-between p-4 pb-0 md:mb-3 md:p-8">
         <div className="flex items-center gap-2">
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -45,7 +45,7 @@ export function EventTable({ events, locale }: { events: PublicEvent[]; locale: 
               fill="#9F9FA9"
             />
           </svg>
-          <h2 className="text-lg font-medium text-gray-900 md:text-xl">Etkinlik Takvimi</h2>
+          <h2 className="text-lg font-medium text-gray-900 md:text-xl">Yaklaşan Etkinlikler</h2>
         </div>
         <Image src="/img/logo.svg" alt="UpBilet" width={120} height={32} className="h-6 w-auto md:h-8" />
       </div>
@@ -54,7 +54,7 @@ export function EventTable({ events, locale }: { events: PublicEvent[]; locale: 
         {events.map((event) => {
           const { day, monthYear } = tableDateParts(event.date);
           return (
-            <div key={event._id} className="relative grid grid-cols-12 items-center gap-4 py-5">
+            <div key={event._id} className="relative grid grid-cols-12 items-center gap-4 py-5 first:pt-2">
               <div className="col-span-3 flex items-center gap-3">
                 <span className="truncate text-base font-medium text-black" title={event.name}>
                   {event.name}

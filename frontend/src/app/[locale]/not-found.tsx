@@ -3,12 +3,9 @@ import { headers } from "next/headers";
 import { NotFoundView } from "@/components/layout/NotFoundView";
 import { defaultLocale, locales, type Locale } from "@/i18n";
 import { currentLocaleFromPathname, UPBILET_PATHNAME_HEADER } from "@/lib/locale-path";
+import { notFoundMetadata } from "@/lib/not-found-metadata";
 
-export const metadata: Metadata = {
-  title: "Hata 404 - UpBilet",
-  description: "Aradığınız sayfa bulunamadı.",
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = notFoundMetadata;
 
 type Props = { params?: Promise<{ locale?: string }> };
 

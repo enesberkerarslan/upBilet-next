@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ProfileEmptyPanel } from "@/components/profile/ProfileEmptyPanel";
 import { ProfileListingCreateModal } from "@/components/profile/ProfileListingCreateModal";
 import { ProfilePanelHeader } from "@/components/profile/ProfilePanelHeader";
 import { ProfileListingEditModal } from "@/components/profile/ProfileListingEditModal";
@@ -33,6 +34,21 @@ function listingEventLocation(l: ListingRecord): string {
 
 function listingDisplayId(l: ListingRecord): string {
   return (l.referenceCode && String(l.referenceCode)) || l._id;
+}
+
+/** PATCH responses often send eventId as id string or lean object — keep UI event name/location from the row */
+function mergeListingPatch(prev: ListingRecord, patch: ListingRecord): ListingRecord {
+  const next: ListingRecord = { ...prev, ...patch };
+  if (!("eventId" in patch)) return next;
+  const pe = patch.eventId;
+  const isRichObject =
+    pe != null &&
+    typeof pe === "object" &&
+    String((pe as { name?: string }).name ?? "").trim() !== "";
+  if (!isRichObject && prev.eventId != null) {
+    next.eventId = prev.eventId;
+  }
+  return next;
 }
 
 function listingStatusIcon(status: string | undefined): string {
@@ -173,6 +189,9 @@ export function ProfileListingsPanel({
   );
   const [editTarget, setEditTarget] = useState<ListingRecord | null>(null);
   const [createOpen, setCreateOpen] = useState(false);
+  const [statusToast, setStatusToast] = useState<string | null>(null);
+  /** After leaving SSR initial page, returning to `initialPage` must refetch. */
+  const leftInitialPageRef = useRef(false);
 
   const load = useCallback(
     async (page = 1) => {
@@ -199,9 +218,16 @@ export function ProfileListingsPanel({
   );
 
   useEffect(() => {
-    if (fromServer && currentPage === initialPage) return;
+    if (currentPage !== initialPage) leftInitialPageRef.current = true;
+    if (fromServer && currentPage === initialPage && !leftInitialPageRef.current) return;
     void load(currentPage);
   }, [load, currentPage, fromServer, initialPage]);
+
+  useEffect(() => {
+    if (!statusToast) return;
+    const id = window.setTimeout(() => setStatusToast(null), 3200);
+    return () => window.clearTimeout(id);
+  }, [statusToast]);
 
   const filtered = useMemo(() => filterListings(list, activeTab), [list, activeTab]);
 
@@ -211,10 +237,29 @@ export function ProfileListingsPanel({
   );
 
   async function onToggleStatus(listing: ListingRecord) {
+    const prevStatus = listing.status;
     try {
       const res = await apiToggleListingStatus(listing._id);
-      if (res.success) await load(currentPage);
-      else window.alert(res.error ?? t("profile.errorGeneric"));
+      if (res.success) {
+        const updated = res.listing;
+        setList((items) =>
+          items.map((l) => {
+            if (l._id !== listing._id) return l;
+            if (updated) return mergeListingPatch(l, updated);
+            const ns =
+              prevStatus === "active" ? "inactive" : prevStatus === "inactive" ? "active" : l.status;
+            return { ...l, status: ns };
+          })
+        );
+        const newStatus =
+          updated?.status ??
+          (prevStatus === "active" ? "inactive" : prevStatus === "inactive" ? "active" : undefined);
+        if (newStatus === "inactive") setStatusToast(t("profile.listingToastPaused"));
+        else if (newStatus === "active") setStatusToast(t("profile.listingToastActivated"));
+        else setStatusToast(t("profile.savedOk"));
+      } else {
+        window.alert(res.error ?? t("profile.errorGeneric"));
+      }
     } catch (e) {
       window.alert(e instanceof Error ? e.message : t("profile.errorGeneric"));
     }
@@ -226,13 +271,21 @@ export function ProfileListingsPanel({
   };
 
   return (
-    <main className="flex w-full flex-1 flex-col rounded-2xl bg-white px-2">
+    <main className="relative flex w-full flex-1 flex-col rounded-3xl bg-white">
+      {statusToast ? (
+        <div
+          role="status"
+          className="fixed right-4 top-4 z-100 max-w-[min(90vw,20rem)] rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-800 shadow-lg"
+        >
+          {statusToast}
+        </div>
+      ) : null}
       <ProfilePanelHeader
         title={t("profile.listingsTitle")}
         actions={
           <button
             type="button"
-            className="rounded-[20px] bg-indigo-500 px-6 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+            className="rounded-[20px] bg-indigo-500 px-6 py-2 text-white"
             onClick={() => setCreateOpen(true)}
           >
             {t("profile.listingsCreate")}
@@ -240,7 +293,8 @@ export function ProfileListingsPanel({
         }
       />
 
-      <div className="mb-6 flex gap-2 px-6 pt-4 text-sm">
+      <div className="flex flex-1 flex-col px-4 py-8">
+      <div className="mb-6 flex gap-2 text-sm">
         <button
           type="button"
           className={`flex items-center gap-2 rounded-full px-4 py-2 transition ${
@@ -263,7 +317,7 @@ export function ProfileListingsPanel({
         </button>
       </div>
 
-      <div className="flex min-h-[min(50dvh,420px)] flex-1 flex-col py-4 md:px-6">
+      <div className="flex min-h-[min(50dvh,420px)] flex-1 flex-col">
         {loading ? (
           <div className="flex flex-1 flex-col items-center justify-center py-16">
             <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-indigo-500" aria-hidden />
@@ -272,7 +326,10 @@ export function ProfileListingsPanel({
           <div className="flex flex-1 flex-col items-center justify-center py-16 text-red-500">{error}</div>
         ) : filtered.length > 0 ? (
           filtered.map((listing) => (
-            <div key={listing._id} className="mb-4 w-full max-w-3xl rounded-2xl border bg-white shadow-sm md:mb-6">
+            <div
+              key={listing._id}
+              className="mb-4 w-full rounded-3xl border border-gray-200 bg-white shadow-sm md:mb-6"
+            >
               <div className="hidden p-6 md:block">
                 <div className="mb-3 flex items-center justify-between text-xs text-gray-500">
                   <div className="flex items-center gap-2">
@@ -395,7 +452,7 @@ export function ProfileListingsPanel({
                     {listingStatusShort(listing.status, t)}
                   </span>
                 </div>
-                <div className="mb-3 rounded-lg bg-gray-50 p-3">
+                <div className="mb-3 rounded-2xl bg-gray-50 p-3">
                   <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
                     <div className="flex justify-between">
                       <span className="text-gray-500">{t("profile.category")}:</span>
@@ -455,15 +512,11 @@ export function ProfileListingsPanel({
             </div>
           ))
         ) : (
-          <div className="flex w-full flex-col items-center justify-center py-20">
-            <div className="flex flex-col items-center">
-              <div className="mb-6 rounded-2xl border border-indigo-100 p-8">
-                <img src="/profile/noListings.svg" width={20} height={20} alt="" />
-              </div>
-              <div className="mb-2 mt-5 text-lg font-semibold text-gray-700">{t("profile.emptyListingsTitle")}</div>
-              <div className="mb-6 text-center text-sm text-gray-400">{t("profile.emptyListingsDesc")}</div>
-            </div>
-          </div>
+          <ProfileEmptyPanel
+            variant="listings"
+            title={t("profile.emptyListingsTitle")}
+            description={t("profile.emptyListingsDesc")}
+          />
         )}
       </div>
 
@@ -513,6 +566,7 @@ export function ProfileListingsPanel({
           </nav>
         </div>
       ) : null}
+      </div>
 
       <ProfileListingEditModal
         open={editTarget != null}

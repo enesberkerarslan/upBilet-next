@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { CategoryFeaturedIcon, categoryIconForSlug } from "@/components/category/CategoryFeaturedIcon";
 import { CategoryHero } from "@/components/category/CategoryHero";
+import { CategorySeoCollapsible } from "@/components/category/CategorySeoCollapsible";
 import { EventCard } from "@/components/event/EventCard";
+import { MobileEventCard } from "@/components/event/MobileEventCard";
 import { EventTable } from "@/components/event/EventTable";
 import type { Locale } from "@/i18n";
+import { notFoundMetadata } from "@/lib/not-found-metadata";
 import { fetchCategoryBundle } from "@/lib/public-fetch";
 import { notFound } from "next/navigation";
 import type { PublicEvent } from "@/types/event";
@@ -41,22 +44,54 @@ function stripHtml(html: string) {
   return html ? html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim() : "";
 }
 
+function keywordsToMetaArray(raw: string): string[] | undefined {
+  const parts = raw
+    .split(/[,;]/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return parts.length ? parts : undefined;
+}
+
+function buildCategoryFallbackMeta(displayLabel: string) {
+  const title = `${displayLabel} Biletleri | UpBilet`;
+  const description = `${displayLabel} biletleri için güncel etkinlik tarihleri, mekan ve satış bilgisi UpBilet'te. Güvenli şekilde bilet satın alın.`;
+  const keywords = keywordsToMetaArray(
+    `${displayLabel} biletleri, ${displayLabel} etkinlik biletleri, ${displayLabel} bilet satışı, UpBilet`,
+  );
+  return { title, description, keywords };
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { name: rawName } = await params;
   const slug = decodeURIComponent(rawName);
   const apiTag = slug.charAt(0).toUpperCase() + slug.slice(1);
   const bundle = await fetchCategoryBundle(apiTag);
-  if (!bundle.success) return { title: "Kategori - UpBilet" };
+
+  if (!bundle.success) {
+    return notFoundMetadata;
+  }
 
   const mainTag = bundle.mainPage?.tag ?? bundle.latest?.tag;
-  const title =
-    mainTag?.metaTitle ??
-    `${mainTag?.name ?? categoryTitle(slug)} Biletleri - UpBilet`;
-  const description = stripHtml(mainTag?.metaDescription ?? "");
+  const displayLabel = mainTag?.name ?? categoryTitle(slug);
+
+  const metaTitleTrimmed = mainTag?.metaTitle?.trim() ?? "";
+  const metaDescPlain = stripHtml(mainTag?.metaDescription ?? "");
+  const metaKeywordsTrimmed = mainTag?.keywords?.trim() ?? "";
+  const useApiMeta =
+    Boolean(metaTitleTrimmed) && Boolean(metaDescPlain) && Boolean(metaKeywordsTrimmed);
+
+  const fallback = buildCategoryFallbackMeta(displayLabel);
+
+  const title = useApiMeta ? metaTitleTrimmed : fallback.title;
+  const description = useApiMeta ? metaDescPlain : fallback.description;
+  const keywords = useApiMeta
+    ? keywordsToMetaArray(metaKeywordsTrimmed) ?? [metaKeywordsTrimmed]
+    : fallback.keywords;
 
   return {
     title,
     description,
+    ...(keywords ? { keywords } : {}),
     openGraph: { title, description, url: `https://upbilet.com/kategori/${slug}` },
   };
 }
@@ -76,10 +111,7 @@ export default async function CategoryPage({ params }: Props) {
   const mainPageEvents = (bundle.mainPage?.events ?? []) as PublicEvent[];
   const mainPageTag = bundle.mainPage?.tag;
   const latestTag = bundle.latest?.tag;
-
-  if (!latestEvents.length && !mainPageEvents.length) {
-    notFound();
-  }
+  const hasAnyEvents = latestEvents.length > 0 || mainPageEvents.length > 0;
 
   const fullDescription = mainPageTag?.description || latestTag?.description || "";
   const heroTitle = toTurkishUpperCase(mainPageTag?.name ?? slug);
@@ -91,6 +123,18 @@ export default async function CategoryPage({ params }: Props) {
       <div className="mt-6 md:mt-10">
         <CategoryHero title={heroTitle} />
       </div>
+
+      {!hasAnyEvents ? (
+        <div
+          className="mt-12 rounded-xl border border-dashed border-[#E4E4E7] bg-[#FAFAFA] px-6 py-14 text-center md:mt-16 md:py-16"
+          role="status"
+        >
+          <p className="text-lg font-medium text-[#09090B]">Etkinlik bulunamadı</p>
+          <p className="mt-2 text-sm text-[#71717B]">
+            Bu kategoride şu an listelenen etkinlik yok. Yakında yeni etkinlikler eklenebilir.
+          </p>
+        </div>
+      ) : null}
 
       {mainPageEvents.length > 0 ? (
         <section className="mt-12 flex w-full flex-col md:mt-20">
@@ -107,6 +151,11 @@ export default async function CategoryPage({ params }: Props) {
           <div className="mt-4 hidden grid-cols-2 gap-4 md:grid lg:grid-cols-4">
             {mainPageEvents.slice(0, 4).map((e) => (
               <EventCard key={e._id} event={e} locale={locale} />
+            ))}
+          </div>
+          <div className="mt-4 grid w-full grid-cols-1 gap-4 md:hidden">
+            {mainPageEvents.slice(0, 4).map((e) => (
+              <MobileEventCard key={e._id} event={e} locale={locale} />
             ))}
           </div>
         </section>
@@ -137,10 +186,7 @@ export default async function CategoryPage({ params }: Props) {
       ) : null}
 
       {fullDescription ? (
-        <div
-          className="seo-content mt-16 max-w-none space-y-3 px-1 text-left text-[12px] font-normal text-[#18181B] [&_a]:text-blue-600 [&_a]:underline [&_a]:hover:opacity-80"
-          dangerouslySetInnerHTML={{ __html: fullDescription }}
-        />
+        <CategorySeoCollapsible html={fullDescription} className="mt-16 px-1" />
       ) : null}
     </div>
   );

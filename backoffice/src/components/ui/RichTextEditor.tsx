@@ -7,6 +7,7 @@ import Link from '@tiptap/extension-link';
 import Underline from '@tiptap/extension-underline';
 import Placeholder from '@tiptap/extension-placeholder';
 import type { Editor } from '@tiptap/core';
+import { normalizePastedHtml } from '@/lib/normalize-pasted-html';
 import {
   Bold,
   Italic,
@@ -19,7 +20,9 @@ import {
   Quote,
   Undo2,
   Redo2,
+  Heading1,
   Heading2,
+  Heading3,
   Pilcrow,
 } from 'lucide-react';
 
@@ -35,7 +38,9 @@ function Toolbar({ editor }: { editor: Editor | null }) {
       orderedList: ed?.isActive('orderedList') ?? false,
       blockquote: ed?.isActive('blockquote') ?? false,
       link: ed?.isActive('link') ?? false,
+      h1: ed?.isActive('heading', { level: 1 }) ?? false,
       h2: ed?.isActive('heading', { level: 2 }) ?? false,
+      h3: ed?.isActive('heading', { level: 3 }) ?? false,
     }),
   });
 
@@ -96,11 +101,27 @@ function Toolbar({ editor }: { editor: Editor | null }) {
       <span className="mx-1 h-5 w-px bg-gray-300" aria-hidden />
       <button
         type="button"
+        className={`${btn} ${state?.h1 ? active : ''}`}
+        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+        title="Başlık 1"
+      >
+        <Heading1 size={16} strokeWidth={2.25} />
+      </button>
+      <button
+        type="button"
         className={`${btn} ${state?.h2 ? active : ''}`}
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
         title="Başlık 2"
       >
         <Heading2 size={16} strokeWidth={2.25} />
+      </button>
+      <button
+        type="button"
+        className={`${btn} ${state?.h3 ? active : ''}`}
+        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+        title="Başlık 3"
+      >
+        <Heading3 size={16} strokeWidth={2.25} />
       </button>
       <button
         type="button"
@@ -196,7 +217,7 @@ export default function RichTextEditor({
       immediatelyRender: false,
       extensions: [
         StarterKit.configure({
-          heading: { levels: [2, 3] },
+          heading: { levels: [1, 2, 3] },
         }),
         Underline,
         Link.configure({
@@ -213,6 +234,8 @@ export default function RichTextEditor({
         attributes: {
           class: `prose-mirror-content px-3 py-2 text-sm text-gray-900 ${minHeight} max-w-none focus:outline-none`,
         },
+        /** Word/Outlook MsoHeading → h1–h3; h4+ → h3 (şemayla uyumlu) */
+        transformPastedHTML: (html) => normalizePastedHtml(html),
       },
       onUpdate: ({ editor: ed }) => {
         onChange(ed.getHTML());

@@ -1,0 +1,333 @@
+<svg version="1.1" id="gaziantep_arena" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 450 400" style="width: 100%; height: 100%;" xml:space="preserve">
+
+	 <defs>
+      <style type="text/css">@import url('https://fonts.googleapis.com/css?family=Poppins');</style>
+    </defs>
+
+
+
+	<style type="text/css">
+	.st0{font-family:'Poppins';}
+	.st1{font-size:11px;}
+	.st2{fill:#CCCCCC;}
+	.st3{fill:#FFFFFF;}
+	.st4{font-family:'Poppins';}
+	.st5{font-size:9.3913px;}
+	.st6{font-size:11.7183px;}
+	.st7{font-size:10.5465px;}
+	.st8{font-size:12.0757px;}
+	.st9{font-size:6.166px;}
+	.st10{font-size:9.3746px;}
+	.st11{fill:#79B954;}
+	.st12{fill:#9FCD85;}
+	.st13{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<title>anfieldroad</title>
+<g>
+	<text transform="matrix(0 1 -1 0 434.1445 144.6614)" class="st0 st1">GÜNEY KALE ARKASI</text>
+	<g id="Misafir" data-select="zone:Misafir;zoneid:3622;subzone:Misafir;subzoneid:3623;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="3622:::3623" style="cursor:pointer">
+		<path class="st2 svgshp" d="M103.2,324.7c-27.2-8.6-47-34.1-47-64.1v-2l-34.7,3.6c2.4,44.1,32.4,80.8,72.9,93.4L103.2,324.7z" style="fill:#cccccc;"></path>
+		<text transform="matrix(0.5805 0.8142 -0.8142 0.5805 40.5762 292.4524)" class="st3 st4 st5">MİSAFİR</text>
+	</g>
+	<g id="Vip A Alt" data-select="zone:VIP;zoneid:2817;subzone:Vip A Alt;subzoneid:2877;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2877" style="cursor:pointer">
+		<path class="st2 svgshp" d="M341.4,281.2c-2.1,1.3-4.5,2.1-7.1,2.1h-0.6l11,37.8c6-2,15.2-7.2,20.1-11.2L341.4,281.2z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 344.8145 306.1016)" class="st3 st4 st6">A</text>
+	</g>
+	<g id="Vip A Üst" data-select="zone:VIP;zoneid:2817;subzone:Vip A Üst;subzoneid:2881;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2881" style="cursor:pointer">
+		<path class="st2 svgshp" d="M342.1,325.4c-5.7,1.6-11.8,2.5-18,2.5h-10.4v32.3h9.7c9.6,0,18.9-1.3,27.7-3.8L342.1,325.4z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 326.2031 347.6357)" class="st3 st4 st6">A</text>
+	</g>
+	<g id="Kuzey A Alt" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey A Alt;subzoneid:2868;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2868" style="cursor:pointer">
+		<path class="st2 svgshp" d="M100.3,266.9l-37.5,13.2c1.7,5.3,4.1,10.3,7,14.9l30.6-23.1c-0.1-0.6-0.2-1.2-0.2-1.9L100.3,266.9
+			L100.3,266.9z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 73.6094 284.7549)" class="st3 st0 st7">A</text>
+	</g>
+	<g id="Kuzey A Üst" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey A Üst;subzoneid:2865;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2865" style="cursor:pointer">
+		<path class="st2 svgshp" d="M56.2,230l-34.9,3.4v23.1c0,0.8,0,1.5,0,2.3l34.8-3.6V230H56.2z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 35.4458 248.6904)" class="st3 st4 st6">A</text>
+	</g>
+	<g id="Kuzey B Üst" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey B Üst;subzoneid:2863;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2863" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="56.2,200.3 21.4,200.3 21.4,229.8 56.2,226.4 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 35.457 219.3008)" class="st3 st4 st6">B</text>
+	</g>
+	<g id="Kuzey B Alt" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey B Alt;subzoneid:2867;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2867" style="cursor:pointer">
+		<path class="st2 svgshp" d="M100.3,263.2l0.1-9l-40.6,4.2v2.4c0,5.6,0.7,10.9,1.9,15.9L100.3,263.2z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 72.8408 268.0908)" class="st3 st0 st7">B</text>
+	</g>
+	<g id="Kuzey C Alt" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey C Alt;subzoneid:2866;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2866" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="100.3,225.7 59.7,229.6 59.7,254.7 100.3,250.5 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 74.1699 245.752)" class="st3 st4 st6">C</text>
+	</g>
+	<g id="Kuzey C Üst" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey C Üst;subzoneid:2861;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2861" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="56.2,196.7 56.2,169.4 21.4,167.7 21.4,196.7 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 35.606 187.3589)" class="st3 st4 st6">C</text>
+	</g>
+	<g id="Kuzey D Üst" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey D Üst;subzoneid:2859;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2859" style="cursor:pointer">
+		<path class="st2 svgshp" d="M56.4,166v-27l-34.8-3c-0.1,1.4-0.1,2.8-0.1,4.2v24L56.4,166z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 35.0254 156.0015)" class="st3 st4 st6">D</text>
+	</g>
+	<g id="Kuzey E Üst" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey E Üst;subzoneid:2857;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2857" style="cursor:pointer">
+		<path class="st2 svgshp" d="M21.6,132.4l34.6,3c0.2-6.1,1.1-12,2.8-17.7l-32.6-9.9C24,115.6,22.3,123.8,21.6,132.4z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 36.0493 128.1812)" class="st3 st4 st6">E</text>
+	</g>
+	<g id="Kuzey D Alt" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey D Alt;subzoneid:2864;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2864" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="59.7,226.1 100.5,222.3 100.5,200.4 59.7,200.3 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 72.7979 216.7529)" class="st3 st4 st6">D</text>
+	</g>
+	<g id="Kuzey E Alt" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey E Alt;subzoneid:2862;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2862" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="100.5,196.9 100.5,171.8 59.9,169.7 59.9,196.9 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 75.3994 186.9663)" class="st3 st4 st6">E</text>
+	</g>
+	<g id="Kuzey F Alt" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey F Alt;subzoneid:2860;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2860" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="100.5,168.3 100.5,142.8 59.9,139.3 59.9,166.2 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 74.7666 157.1831)" class="st3 st4 st6">F</text>
+	</g>
+	<g id="Kuzey G Alt" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey G Alt;subzoneid:2858;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2858" style="cursor:pointer">
+		<path class="st2 svgshp" d="M100.3,139.1l0.1-8.7l-37.9-11.6c-1.6,5.4-2.5,11.1-2.8,16.8L100.3,139.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 74.583 134.644)" class="st3 st0 st7">G</text>
+	</g>
+	<g id="Kuzey H Alt" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey H Alt;subzoneid:2856;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2856" style="cursor:pointer">
+		<path class="st2 svgshp" d="M86.1,85.7c-4.6,3.4-8.7,7.3-12.2,11.7l11.4,8.1l7.9-9.4L86.1,85.7z" style="fill:#cccccc;"></path>
+		<path class="st2 svgshp" d="M71.6,100.1c-3.2,4.8-5.9,9.9-7.9,15.4l36.8,11.2v-0.8c0-1.6,0.3-3.2,0.7-4.7L71.6,100.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 76.21 117.9839)" class="st3 st0 st7">H</text>
+	</g>
+	<g id="Kuzey F Üst" data-select="zone:Kuzey Kale Arkası;zoneid:2818;subzone:Kuzey F Üst;subzoneid:2855;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2818:::2855" style="cursor:pointer">
+		<path class="st2 svgshp" d="M52.7,65.8c-11,10.7-19.6,23.9-25,38.6l32.5,9.9c3.3-9.2,8.6-17.5,15.3-24.3L52.7,65.8z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 46.9414 96.8296)" class="st3 st4 st6">F</text>
+	</g>
+	<g id="Maraton G Üst" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton G Üst;subzoneid:2820;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2820" style="cursor:pointer">
+		<path class="st2 svgshp" d="M78,87.6c6.6-6,14.3-10.8,22.9-13.9l-8.5-32.1c-14,4.6-26.6,12.1-37.2,21.8L78,87.6z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 74.4131 68.6128)" class="st3 st4 st6">G</text>
+	</g>
+	<g id="Vip K Üst" data-select="zone:VIP;zoneid:2817;subzone:Vip K Üst;subzoneid:2882;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2882" style="cursor:pointer">
+		<path class="st2 svgshp" d="M387.6,337.9l-20.7-25.5c-6.3,5.2-13.5,9.2-21.4,11.9l9,31.1C366.7,351.6,377.8,345.6,387.6,337.9z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 360.626 337.2578)" class="st3 st4 st6">K</text>
+	</g>
+	<g id="Vip C Alt" data-select="zone:VIP;zoneid:2817;subzone:Vip C Alt;subzoneid:2875;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2875" style="cursor:pointer">
+		<rect x="279.6" y="283.2" class="st2 svgshp" width="30.6" height="41.1" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 290.3027 313.6533)" class="st3 st4 st6">C</text>
+	</g>
+	<g id="Vip G Alt" data-select="zone:VIP;zoneid:2817;subzone:Vip G Alt;subzoneid:2871;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2871" style="cursor:pointer">
+		<rect x="138.5" y="283.2" class="st2 svgshp" width="30.6" height="41.1" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 149.2656 313.6523)" class="st3 st4 st6">G</text>
+	</g>
+	<g id="Vip C Üst" data-select="zone:VIP;zoneid:2817;subzone:Vip C Üst;subzoneid:2879;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2879" style="cursor:pointer">
+		<rect x="138.5" y="327.8" class="st2 svgshp" width="30.6" height="32.3" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 149.8066 347.6367)" class="st3 st4 st6">C</text>
+	</g>
+	<g id="Vip H Alt" data-select="zone:VIP;zoneid:2817;subzone:Vip H Alt;subzoneid:2870;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2870" style="cursor:pointer">
+		<path class="st2 svgshp" d="M135,324.3v-41.1h-16.3l-11.1,39.2c5.1,1.3,10.4,2,15.9,2L135,324.3L135,324.3z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 119.7256 313.6523)" class="st3 st4 st6">H</text>
+	</g>
+	<g id="Vip D Üst" data-select="zone:VIP;zoneid:2817;subzone:Vip D Üst;subzoneid:2878;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2878" style="cursor:pointer">
+		<path class="st2 svgshp" d="M135,327.8l-11.4,0.1c-5.8,0-11.5-0.8-16.8-2.1L98,356.7c8.7,2.4,17.8,3.6,27.3,3.6l9.7-0.1V327.8z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 113.9424 347.6367)" class="st3 st4 st6">D</text>
+	</g>
+	<g id="Vip I Alt" data-select="zone:VIP;zoneid:2817;subzone:Vip I Alt;subzoneid:2869;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2869" style="cursor:pointer">
+		<path class="st2 svgshp" d="M109.5,282.6l-23.3,29.7c5.3,3.9,11.4,7,18.1,9.2l10.8-38.2h-1.6C112.1,283.3,110.8,283.1,109.5,282.6z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 99.6162 308.7695)" class="st3 st4 st6">I</text>
+	</g>
+	<g id="Vip B Alt" data-select="zone:VIP;zoneid:2817;subzone:Vip B Alt;subzoneid:2876;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2876" style="cursor:pointer">
+		<path class="st2 svgshp" d="M341.1,322l-11.3-38.8h-16.1v41.1h10.4C330,324.3,335.7,323.5,341.1,322z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 320.5244 313.6523)" class="st3 st4 st6">B</text>
+	</g>
+	<g id="Vip B Üst" data-select="zone:VIP;zoneid:2817;subzone:Vip B Üst;subzoneid:2880;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2880" style="cursor:pointer">
+		<rect x="279.6" y="327.8" class="st2 svgshp" width="30.6" height="32.3" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 290.9346 347.6357)" class="st3 st4 st6">B</text>
+	</g>
+	<text transform="matrix(1 0 0 1 196.5601 30.8159)" class="st0 st1">MARATON</text>
+	<text transform="matrix(1 0 0 1 216.1514 376.7246)" class="st0 st1">VIP</text>
+	<text transform="matrix(0 -1 1 0 15.0459 253.7217)" class="st0 st1">KUZEY KALE ARKASI</text>
+	<g id="Protokol" data-select="zone:VIP;zoneid:2817;subzone:Protokol;subzoneid:2869;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2869" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="251.8,327.8 242,327.8 203.8,327.8 195.9,327.8 172.6,327.8 172.6,351.6 195.9,351.6 203.8,351.6 
+			242,351.6 251.8,351.6 276.1,351.6 276.1,327.8 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 191.2295 344.3311)" class="st3 st0 st8">PROTOKOL</text>
+	</g>
+	<g id="Basın" data-select="zone:VIP;zoneid:2817;subzone:Basın;subzoneid:2869;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2869" style="cursor:pointer">
+		<rect x="180.5" y="354.5" class="st2 svgshp" width="87.2" height="7.8" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 214.6216 361.0156)" class="st3 st0 st9">BASIN</text>
+	</g>
+	<g id="Güney A Alt" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney A Alt;subzoneid:2853;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2853" style="cursor:pointer">
+		<path class="st2 svgshp" d="M346.4,121.3c0.5,1.4,0.8,2.9,0.8,4.5v1.1l37.1-10.4c-2-5.7-4.7-11.1-8.1-15.9L346.4,121.3z" style="fill:#cccccc;"></path>
+		<path class="st2 svgshp" d="M360.4,84.7l-7.9,12l10.5,8.7l11.1-7.7C370.2,92.7,365.6,88.4,360.4,84.7z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 365.707 117.2954)" class="st3 st4 st6">A</text>
+	</g>
+	<g id="Güney A Üst" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Güney A Üst;subzoneid:2837;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2837" style="cursor:pointer">
+		<path class="st2 svgshp" d="M393.3,63.4c-11.6-10.5-25.7-18.6-41.3-23l-7.9,32.5c9.2,2.8,17.5,7.6,24.4,13.7L393.3,63.4z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 364.4082 65.2817)" class="st3 st4 st6">A</text>
+	</g>
+	<g id="Güney C Alt" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney C Alt;subzoneid:2852;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2852" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="347.2,142.6 347.2,167.9 387.8,165.3 387.8,139.1 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 365.8672 157.7651)" class="st3 st4 st6">C</text>
+	</g>
+	<g id="Güney C Üst" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney C Üst;subzoneid:3127;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::3127" style="cursor:pointer">
+		<path class="st2 svgshp" d="M388.8,118.9c1.5,5.2,2.3,10.7,2.5,16.4l35.6-3.1c-0.6-7.9-2.1-15.5-4.3-22.8L388.8,118.9z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 405.5146 127.3979)" class="st3 st4 st6">C</text>
+	</g>
+	<g id="Güney D Üst" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney D Üst;subzoneid:2840;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2840" style="cursor:pointer">
+		<path class="st2 svgshp" d="M391.4,165.2l35.9-2.3v-22.8c0-1.4,0-2.9-0.1-4.4l-35.9,3L391.4,165.2z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 404.9336 155.2212)" class="st3 st4 st6">D</text>
+	</g>
+	<g id="Güney E Üst" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney E Üst;subzoneid:3128;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::3128" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="391.3,168.6 391.3,196.2 427.1,196.2 427.1,166.4 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 405.957 185.7905)" class="st3 st4 st6">E</text>
+	</g>
+	<g id="Güney F Üst" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney F Üst;subzoneid:2843;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2843" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="391.3,226.9 427.3,229.8 427.3,199.8 391.3,199.7 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 406.1064 217.9238)" class="st3 st4 st6">F</text>
+	</g>
+	<g id="Güney G Üst" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney G Üst;subzoneid:2844;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2844" style="cursor:pointer">
+		<path class="st2 svgshp" d="M391.3,256.6l35.8,3c0-1,0.1-2.1,0.1-3.2v-23.2l-35.9-2.8V256.6z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 404.9766 248.8848)" class="st3 st4 st6">G</text>
+	</g>
+	<g id="Güney H Üst" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney H Üst;subzoneid:2845;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2845" style="cursor:pointer">
+		<path class="st2 svgshp" d="M391.3,260.1v0.5c0,6.3-0.9,12.3-2.5,18.1l32.7,11.5c3-8.6,4.8-17.7,5.4-27.2L391.3,260.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 404.8252 277.0996)" class="st3 st4 st6">H</text>
+	</g>
+	<g id="Güney J Üst" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney J Üst;subzoneid:2846;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2846" style="cursor:pointer">
+		<path class="st2 svgshp" d="M387.8,282.1c-3.7,10.8-10,20.4-18.3,28l20.8,25.6c13.3-11.2,23.6-25.6,30-42.1L387.8,282.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 393.1875 308.8506)" class="st3 st4 st6">J</text>
+	</g>
+	<g id="Güney D Alt" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney D Alt;subzoneid:2851;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2851" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="347.2,171.4 347.2,196.2 387.8,196.2 387.8,168.9 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 365.2871 187.1577)" class="st3 st4 st6">D</text>
+	</g>
+	<g id="Güney E Alt" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney E Alt;subzoneid:2850;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2850" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="347.2,199.7 347.2,223.4 387.9,226.7 387.9,199.8 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 366.3105 215.5771)" class="st3 st4 st6">E</text>
+	</g>
+	<g id="Güney F Alt" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney F Alt;subzoneid:2849;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2849" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="347.2,252.9 387.8,256.3 387.8,230.1 347.2,226.9 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 366.459 245.3604)" class="st3 st4 st6">F</text>
+	</g>
+	<g id="Güney G Alt" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney G Alt;subzoneid:2848;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2848" style="cursor:pointer">
+		<path class="st2 svgshp" d="M347.3,256.5l-0.1,7.5l38.4,13.6c1.5-5.4,2.3-11.1,2.3-16.9V260L347.3,256.5z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 365.7207 269.2666)" class="st3 st4 st7">G</text>
+	</g>
+	<g id="Güney H Alt" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney H Alt;subzoneid:2847;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2847" style="cursor:pointer">
+		<path class="st2 svgshp" d="M377.3,295.6c3-4.5,5.4-9.4,7.2-14.7l-37.2-13.1v2.3c0,1.7-0.3,3.4-0.9,4.9L377.3,295.6z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 365.9951 285.5342)" class="st3 st0 st10">H</text>
+	</g>
+	<g id="Güney B Üst" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney B Üst;subzoneid:2838;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2838" style="cursor:pointer">
+		<path class="st2 svgshp" d="M395.9,65.8L371.1,89c7.5,7.3,13.2,16.3,16.6,26.5l33.7-9.4C416.1,90.7,407.3,77,395.9,65.8z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 393.2197 96.436)" class="st3 st4 st6">B</text>
+	</g>
+	<g id="Güney B Alt" data-select="zone:Güney Kale Arkası;zoneid:2819;subzone:Güney B Alt;subzoneid:2854;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2819:::2854" style="cursor:pointer">
+		<path class="st2 svgshp" d="M347.2,139.1l40.5-3.5c-0.1-5.4-0.9-10.7-2.3-15.8l-38.2,10.7V139.1z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 365.7188 134.646)" class="st3 st4 st7">B</text>
+	</g>
+	<g id="Maraton A Alt" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton A Alt;subzoneid:2823;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2823" style="cursor:pointer">
+		<path class="st2 svgshp" d="M109.3,113.6c0.7-0.2,1.4-0.4,1.9-0.7l-9.5-35.8c-4.5,1.8-8.8,4-12.8,6.6L109.3,113.6z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 96.4941 92.27)" class="st3 st0 st7">A</text>
+	</g>
+	<g id="Maraton C Alt" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton C Alt;subzoneid:2825;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2825" style="cursor:pointer">
+		<rect x="138.5" y="73.3" class="st2 svgshp" width="30.6" height="39.4" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 149.8066 98.0054)" class="st3 st4 st6">C</text>
+	</g>
+	<g id="Maraton D Alt" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton D Alt;subzoneid:2827;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2827" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="172.8,112.8 203.9,112.8 203.8,73.3 172.6,73.3 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 184.4902 97.6118)" class="st3 st4 st6">D</text>
+	</g>
+	<g id="Maraton E Alt" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton E Alt;subzoneid:2829;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2829" style="cursor:pointer">
+		<rect x="207.3" y="73.3" class="st2 svgshp" width="31.2" height="39.4" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 219.2266 97.6118)" class="st3 st4 st6">E</text>
+	</g>
+	<g id="Maraton F Alt" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton F Alt;subzoneid:2830;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2830" style="cursor:pointer">
+		<rect x="242" y="73.3" class="st2 svgshp" width="34.1" height="39.4" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 255.8271 97.6118)" class="st3 st4 st6">F</text>
+	</g>
+	<g id="Maraton G Alt" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton G Alt;subzoneid:2833;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2833" style="cursor:pointer">
+		<rect x="279.6" y="73.3" class="st2 svgshp" width="30.6" height="39.4" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 290.7412 97.6118)" class="st3 st4 st6">G</text>
+	</g>
+	<g id="Maraton H Alt" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton H Alt;subzoneid:2835;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2835" style="cursor:pointer">
+		<path class="st2 svgshp" d="M313.7,73.3v39.4h17l9-37.4c-5-1.3-10.3-2-15.7-2H313.7L313.7,73.3z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 319.9883 97.2212)" class="st3 st4 st6">H</text>
+	</g>
+	<g id="Maraton I Alt" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton I Alt;subzoneid:2836;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2836" style="cursor:pointer">
+		<path class="st2 svgshp" d="M357.6,82.9c-4.5-2.7-9.2-5-14.5-6.7l-8.8,36.5c1.3,0.2,2.3,0.3,3.4,0.6L357.6,82.9z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 344.3623 93.3979)" class="st3 st0 st7">I</text>
+	</g>
+	<g id="Maraton B Alt" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton B Alt;subzoneid:2824;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2824" style="cursor:pointer">
+		<path class="st2 svgshp" d="M105.2,76l9.7,36.7H135V73.3h-11.6C117.1,73.3,110.9,74.2,105.2,76z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 119.2803 97.6118)" class="st3 st4 st6">B</text>
+	</g>
+	<g id="Vip D Alt" data-select="zone:VIP;zoneid:2817;subzone:Vip D Alt;subzoneid:2874;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2874" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="264.5,283.2 264.5,293.9 242,293.9 242,324.3 276.1,324.3 276.1,283.2 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 255.0342 313.6533)" class="st3 st4 st6">D</text>
+	</g>
+	<g id="Vip E Alt" data-select="zone:VIP;zoneid:2817;subzone:Vip E Alt;subzoneid:2873;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2873" style="cursor:pointer">
+		<rect x="207.3" y="293.9" class="st2 svgshp" width="31.2" height="30.4" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 219.2266 313.6533)" class="st3 st4 st6">E</text>
+	</g>
+	<g id="Vip F Alt" data-select="zone:VIP;zoneid:2817;subzone:Vip F Alt;subzoneid:2872;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2817:::2872" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="179.1,283.2 172.6,283.2 172.6,324.3 203.8,324.3 203.8,293.9 179.1,293.9 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 185.2832 313.6533)" class="st3 st4 st6">F</text>
+	</g>
+	<g id="Maraton A Üst" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton A Üst;subzoneid:2821;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2821" style="cursor:pointer">
+		<path class="st2 svgshp" d="M104.3,72.6c6.1-1.8,12.5-2.8,19.2-2.8H135V36.3h-9.8c-10.2,0-20,1.5-29.4,4.2L104.3,72.6z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 113.9844 58.9746)" class="st3 st4 st6">A</text>
+	</g>
+	<g id="Maraton C Üst" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton C Üst;subzoneid:2826;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2826" style="cursor:pointer">
+		<rect x="172.6" y="36.3" class="st2 svgshp" width="31.2" height="33.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 185.0781 58.9746)" class="st3 st4 st6">C</text>
+	</g>
+	<g id="Maraton D Üst" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton D Üst;subzoneid:2828;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2828" style="cursor:pointer">
+		<rect x="207.3" y="36.3" class="st2 svgshp" width="31.2" height="33.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 218.585 58.9746)" class="st3 st4 st6">D</text>
+	</g>
+	<g id="Maraton E Üst" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton E Üst;subzoneid:2831;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2831" style="cursor:pointer">
+		<rect x="242" y="36.3" class="st2 svgshp" width="34.1" height="33.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 255.6758 58.9746)" class="st3 st4 st6">E</text>
+	</g>
+	<g id="Maraton F Üst" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton F Üst;subzoneid:2832;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2832" style="cursor:pointer">
+		<rect x="279.6" y="36.3" class="st2 svgshp" width="30.6" height="33.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 291.4902 58.9746)" class="st3 st4 st6">F</text>
+	</g>
+	<g id="Maraton B Üst" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton B Üst;subzoneid:2822;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2822" style="cursor:pointer">
+		<polygon class="st2 svgshp" points="138.7,69.9 169.1,69.8 169.2,36.4 138.7,36.4 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 150.4355 58.9741)" class="st3 st4 st6">B</text>
+	</g>
+	<g id="Maraton G Üst" data-select="zone:Maraton Tribün;zoneid:2816;subzone:Maraton G Üst;subzoneid:2834;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2816:::2834" style="cursor:pointer">
+		<path class="st2 svgshp" d="M313.7,69.8h10.4c5.7,0,11.2,0.7,16.5,2.1l7.8-32.5c-8-2-16.4-3.1-25-3.1h-9.7L313.7,69.8L313.7,69.8z" style="fill:#cccccc;"></path>
+		<text transform="matrix(1 0 0 1 324.6475 58.9746)" class="st3 st4 st6">G</text>
+	</g>
+</g>
+<g>
+	<g>
+		<rect x="115" y="132.2" class="st11" width="220" height="135.5"></rect>
+		<rect x="115" y="132.2" class="st12" width="18.2" height="135.5"></rect>
+		<rect x="155.2" y="132.2" class="st12" width="18.2" height="135.5"></rect>
+		<rect x="195.6" y="132.2" class="st12" width="18.2" height="135.5"></rect>
+		<rect x="236" y="132.2" class="st12" width="18.2" height="135.5"></rect>
+		<rect x="276.4" y="132.2" class="st12" width="18.2" height="135.5"></rect>
+		<rect x="316.8" y="132.2" class="st12" width="18.2" height="135.5"></rect>
+	</g>
+	<g>
+		<circle class="st13" cx="225" cy="200" r="25.2"></circle>
+		<g>
+			<line class="st13" x1="225" y1="132.2" x2="225" y2="267.8"></line>
+		</g>
+		<g>
+			<line class="st13" x1="334.6" y1="158.6" x2="300.1" y2="158.6"></line>
+			<line class="st13" x1="300.1" y1="241.5" x2="300.1" y2="158.6"></line>
+			<line class="st13" x1="300.1" y1="241.5" x2="334.6" y2="241.5"></line>
+		</g>
+		<g>
+			<line class="st13" x1="334.6" y1="180.8" x2="322.6" y2="180.8"></line>
+			<line class="st13" x1="322.6" y1="219.3" x2="322.6" y2="180.8"></line>
+			<line class="st13" x1="322.6" y1="219.3" x2="334.6" y2="219.3"></line>
+		</g>
+		<g>
+			<line class="st13" x1="115.8" y1="158.6" x2="149.9" y2="158.6"></line>
+			<line class="st13" x1="149.9" y1="241.5" x2="149.9" y2="158.6"></line>
+			<line class="st13" x1="149.9" y1="241.5" x2="115.8" y2="241.5"></line>
+		</g>
+		<g>
+			<line class="st13" x1="115.8" y1="180.8" x2="129" y2="180.8"></line>
+			<line class="st13" x1="129" y1="219.3" x2="129" y2="180.8"></line>
+			<line class="st13" x1="129" y1="219.3" x2="115.8" y2="219.3"></line>
+		</g>
+	</g>
+</g>
+</svg>

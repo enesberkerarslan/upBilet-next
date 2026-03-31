@@ -1,0 +1,312 @@
+<svg version="1.1" id="medical" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 450 400" style="width: 100%; height: 100%;" xml:space="preserve">
+
+	 <defs>
+      <style type="text/css">@import url('https://fonts.googleapis.com/css?family=Poppins');</style>
+    </defs>
+
+	<style type="text/css">
+	.st0{fill:#CCCCCC;}
+	.st1{fill:#FFFFFF;}
+	.st2{font-family:'Poppins';}
+	.st3{font-size:10.92px;}
+	.st4{font-size:9.555px;}
+	.st5{font-size:6.825px;}
+	.st6{font-size:5.46px;}
+	.st7{font-family:'Poppins';}
+	.st8{font-size:2.9385px;}
+	.st9{fill:#CDCCCB;}
+	.st10{font-size:5.8582px;}
+	.st11{font-size:7.5873px;}
+	.st12{font-size:6.0698px;}
+	.st13{font-size:3.1593px;}
+	.st14{font-size:8.19px;}
+	.st15{font-size:11px;}
+	.st16{fill:#79B954;}
+	.st17{fill:#9FCD85;}
+	.st18{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<g id="Kuzey H" data-select="zone:Kuzey Tribün;zoneid:2896;subzone:Kuzey H;subzoneid:2940;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2896:::2940" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="350.6,250.1 350.6,273 340.3,283.3 353.4,313.5 378.1,283.6 378.1,250.1 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 361.0469 281.8057)" class="st1 st2 st3">H</text>
+	</g>
+	<g id="Kuzey I" data-select="zone:Kuzey Tribün;zoneid:2896;subzone:Kuzey I;subzoneid:2943;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2896:::2943" style="cursor:pointer">
+		<rect x="350.6" y="216.5" class="st0 svgshp" width="27.5" height="31.9" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 361.0469 236.5586)" class="st1 st2 st3">I</text>
+	</g>
+	<g id="Kuzey J" data-select="zone:Kuzey Tribün;zoneid:2896;subzone:Kuzey J;subzoneid:2944;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2896:::2944" style="cursor:pointer">
+		<rect x="350.6" y="182.4" class="st0 svgshp" width="27.5" height="32.3" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 361.0469 204.041)" class="st1 st2 st3">J</text>
+	</g>
+	<g id="Kuzey K" data-select="zone:Kuzey Tribün;zoneid:2896;subzone:Kuzey K;subzoneid:2946;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2896:::2946" style="cursor:pointer">
+		<rect x="350.6" y="140.4" class="st0 svgshp" width="27.5" height="40.3" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 361.0469 163.7505)" class="st1 st2 st3">K</text>
+	</g>
+	<g id="Kuzey L" data-select="zone:Kuzey Tribün;zoneid:2896;subzone:Kuzey L;subzoneid:2948;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2896:::2948" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="350.6,138.6 378.1,138.6 378.1,113.3 354.9,88.4 343.2,116 350.6,123.5 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 360.1699 123.4604)" class="st1 st2 st3">L</text>
+	</g>
+	<g id="Misafir G" data-select="zone:Misafir Tribün;zoneid:2949;subzone:Misafir G;subzoneid:2950;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2949:::2950" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="425.5,92.7 374.3,42.4 356,85.8 380.2,111.2 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 384.1156 80.3306)" class="st1 st2 st3">G</text>
+		<text transform="matrix(1 0 0 1 369.3779 91.4067)" class="st1 st2 st4">MİSAFİR</text>
+	</g>
+	<g id="Misafir F" data-select="zone:Misafir Tribün;zoneid:2949;subzone:Misafir F;subzoneid:2951;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2949:::2951" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="426.2,95.2 380.7,113.2 380.7,138.6 426.2,138.6 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 400.3643 120.9868)" class="st1 st2 st3">F</text>
+		<text transform="matrix(1 0 0 1 385.5605 132.0659)" class="st1 st2 st4">MİSAFİR</text>
+	</g>
+	<g id="Kuzey E" data-select="zone:Kuzey Tribün;zoneid:2896;subzone:Kuzey E;subzoneid:2947;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2896:::2947" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="388.8,180.6 388.8,172.2 426.2,172.2 426.2,140.4 380.7,140.4 380.7,180.6 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 400.7441 160.3579)" class="st1 st2 st3">E</text>
+	</g>
+	<g id="Kuzey D" data-select="zone:Kuzey Tribün;zoneid:2896;subzone:Kuzey D;subzoneid:2945;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2896:::2945" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="390.5,174 390.5,182.4 380.7,182.4 380.7,214.7 390.5,214.7 390.5,223.1 426.2,223.1 426.2,174 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 400.7441 203.3818)" class="st1 st2 st3">D</text>
+	</g>
+	<g id="Kuzey C" data-select="zone:Kuzey Tribün;zoneid:2896;subzone:Kuzey C;subzoneid:2941;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2896:::2941" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="426.2,256.6 426.2,224.9 388.8,224.9 388.8,216.5 380.7,216.5 380.7,248.2 390.5,248.2 390.5,256.6 
+					" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 400.7441 244.1113)" class="st1 st2 st3">C</text>
+	</g>
+	<g id="Kuzey B" data-select="zone:Kuzey Tribün;zoneid:2896;subzone:Kuzey B;subzoneid:2942;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2896:::2942" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="388.8,258.4 388.8,250 380.7,250 380.7,283.6 426.2,302.1 426.2,258.4 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 400.7441 278.8965)" class="st1 st2 st3">B</text>
+	</g>
+	<g id="Kuzey A" data-select="zone:Kuzey Tribün;zoneid:2896;subzone:Kuzey A;subzoneid:2939;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2896:::2939" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="380.1,285.3 354.6,316.2 371.3,354.7 425.9,303.8 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 379.8037 322.0332)" class="st1 st2 st3">A</text>
+	</g>
+	<g id="Doğu G" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu G;subzoneid:2938;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2938" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="323.1,323.2 313.3,323.2 313.3,356 369.5,356 352.5,317 323.1,317 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 332.2275 341.9873)" class="st1 st2 st3">G</text>
+	</g>
+	<g id="Doğu F" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu F;subzoneid:2937;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2937" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="311.5,321.5 321.4,321.5 321.4,317 283.9,317 283.9,323.4 274,323.4 274,356 311.5,356 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 289.7471 341.9873)" class="st1 st2 st3">F</text>
+	</g>
+	<g id="Doğu E" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu E;subzoneid:2936;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2936" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="272.3,321.6 282.1,321.6 282.1,317 244.9,317 244.9,323.2 235.1,323.2 235.1,356 272.3,356 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 251.2109 341.9873)" class="st1 st2 st3">E</text>
+	</g>
+	<g id="Doğu D" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu D;subzoneid:2935;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2935" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="233.3,321.5 243.2,321.5 243.2,317 207.6,317 207.6,323.2 197.7,323.2 197.7,356 233.3,356 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 212.6738 341.9873)" class="st1 st2 st3">D</text>
+	</g>
+	<g id="Doğu C" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu C;subzoneid:2934;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2934" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="195.9,321.5 205.8,321.5 205.8,317 169,317 169,323.2 159.2,323.2 159.2,356 195.9,356 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 174.1348 341.9873)" class="st1 st2 st3">C</text>
+	</g>
+	<g id="Doğu B" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu B;subzoneid:2933;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2933" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="120.1,356 157.4,356 157.4,321.5 167.3,321.5 167.3,317 130,317 130,323.2 120.1,323.2 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 135.5957 341.9873)" class="st1 st2 st3">B</text>
+	</g>
+	<g id="Doğu A" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu A;subzoneid:2927;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2927" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="118.4,321.5 128.2,321.5 128.2,317 92.6,317 75.3,355.7 75.7,356 118.4,356 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 97.0596 341.9873)" class="st1 st2 st3">A</text>
+	</g>
+	<g id="Doğu L" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu L;subzoneid:2932;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2932" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="284,313.9 351.2,313.9 338.3,284.1 284,284.1 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 310.1006 301.8457)" class="st1 st2 st3">L</text>
+	</g>
+	<g id="Doğu K" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu K;subzoneid:2931;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2931" style="cursor:pointer">
+		<rect x="244.9" y="284.1" class="st0 svgshp" width="37.4" height="29.8" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 260.4678 301.8457)" class="st1 st2 st3">K</text>
+	</g>
+	<g id="Doğu J" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu J;subzoneid:2930;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2930" style="cursor:pointer">
+		<rect x="207.6" y="284.1" class="st0 svgshp" width="35.6" height="29.8" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 223.0264 301.8457)" class="st1 st2 st3">J</text>
+	</g>
+	<g id="Doğu I" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu I;subzoneid:2929;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2929" style="cursor:pointer">
+		<rect x="169" y="284.1" class="st0 svgshp" width="36.8" height="29.8" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 185.8164 301.8457)" class="st1 st2 st3">I</text>
+	</g>
+	<g id="Doğu H" data-select="zone:Doğu Tribün;zoneid:2894;subzone:Doğu H;subzoneid:2928;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2894:::2928" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="167.3,284.1 107.4,284.1 94,313.9 167.3,313.9 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 130.6377 301.8457)" class="st1 st2 st3">H</text>
+	</g>
+	<g id="Güney G" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney G;subzoneid:2926;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2926" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="71.1,285.3 24.7,305.1 73.6,354 92.9,311.1 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 58.8037 315.9004)" class="st1 st2 st3">G</text>
+	</g>
+	<g id="Güney F" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney F;subzoneid:2924;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2924" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="63.4,248.6 63.4,258.8 23.6,258.8 23.6,302.8 69.3,283.2 69.3,248.6 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 41.4424 278.8965)" class="st1 st2 st3">F</text>
+	</g>
+	<g id="Güney E" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney E;subzoneid:2922;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2922" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="23.6,225.8 23.6,257 61.6,257 61.6,246.8 69.3,246.8 69.3,215.6 63.4,215.6 63.4,225.8 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 41.4424 244.1113)" class="st1 st2 st3">E</text>
+	</g>
+	<g id="Güney D" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney D;subzoneid:2920;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2920" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="61.6,183.8 61.6,173.7 23.6,173.7 23.6,224 61.6,224 61.6,213.8 69.3,213.8 69.3,183.8 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 41.4424 203.3818)" class="st1 st2 st3">D</text>
+	</g>
+	<g id="Güney C" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney C;subzoneid:2918;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2918" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="23.6,139.9 23.6,171.9 63.4,171.9 63.4,182.1 69.3,182.1 69.3,139.9 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 41.4424 160.3579)" class="st1 st2 st3">C</text>
+	</g>
+	<g id="Güney B" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney B;subzoneid:2917;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2917" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="69.3,138.2 69.3,112.8 23.6,95.1 23.6,138.2 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 41.4424 126.5278)" class="st1 st2 st3">B</text>
+	</g>
+	<g id="Güney L" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney L;subzoneid:2925;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2925" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="93.7,309.3 105.3,283.3 95.4,273.5 95.4,248.5 71.9,248.5 71.9,283.6 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 80.709 281.8057)" class="st1 st2 st3">L</text>
+	</g>
+	<g id="Güney K" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney K;subzoneid:2923;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2923" style="cursor:pointer">
+		<rect x="71.9" y="215.4" class="st0 svgshp" width="23.5" height="31.3" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 80.709 236.5586)" class="st1 st2 st3">K</text>
+	</g>
+	<g id="Güney J" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney J;subzoneid:2921;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2921" style="cursor:pointer">
+		<rect x="71.9" y="183.9" class="st0 svgshp" width="23.5" height="29.7" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 80.709 204.041)" class="st1 st2 st3">J</text>
+	</g>
+	<g id="Güney I" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney I;subzoneid:2919;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2919" style="cursor:pointer">
+		<rect x="71.9" y="139.9" class="st0 svgshp" width="23.5" height="42.2" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 80.709 163.7505)" class="st1 st2 st3">I</text>
+	</g>
+	<g id="Batı I" data-select="zone:Batı Tribün;zoneid:2893;subzone:Batı I;subzoneid:2907;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2893:::2907" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="335,77.6 335,114 341.2,114 341.5,114.3 357.1,77.6 		" style="fill:#cccccc;"></polygon>
+		<rect x="322.6" y="77.6" class="st0 svgshp" width="10.7" height="36.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 340.3965 100.2397)" class="st1 st2 st3">I</text>
+	</g>
+	<g id="Vip Silver B" data-select="zone:VIP;zoneid:2897;subzone:Vip Silver B;subzoneid:2914;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2897:::2914" style="cursor:pointer">
+		<rect x="286.5" y="77.6" class="st0 svgshp" width="34.3" height="36.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 298.4039 92.395)" class="st1 st2 st5">VIP</text>
+		<text transform="matrix(1 0 0 1 294.8834 98.4087)" class="st1 st2 st6">SILVER</text>
+		<text transform="matrix(1 0 0 1 301.8692 104.2427)" class="st1 st2 st6">B</text>
+	</g>
+	<g id="Vip Gold B" data-select="zone:VIP;zoneid:2897;subzone:Vip Gold B;subzoneid:2913;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2897:::2913" style="cursor:pointer">
+		<rect x="265.5" y="77.6" class="st0 svgshp" width="19.3" height="36.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 269.868 92.395)" class="st1 st2 st5">VIP</text>
+		<text transform="matrix(1 0 0 1 267.5194 97.9702)" class="st1 st2 st6">GOLD</text>
+		<text transform="matrix(1 0 0 1 273.3343 104.2427)" class="st1 st2 st6">B</text>
+	</g>
+	<g id="VipPlatinum_C" data-select="zone:VIP;zoneid:2897;subzone:VipPlatinum_C;subzoneid:2912;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2897:::2912" style="cursor:pointer">
+		<rect x="246.1" y="77.6" class="st0 svgshp" width="17.7" height="36.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 249.6529 92.395)" class="st1 st2 st5">VIP</text>
+		<text transform="matrix(1 0 0 1 247.1241 96.9531)" class="st1 st7 st8">PLATINUM</text>
+		<text transform="matrix(1 0 0 1 253.1875 104.2427)" class="st1 st2 st6">C</text>
+	</g>
+	<g id="PROTOKOL">
+		<rect x="207.3" y="77.6" class="st9" width="37.1" height="7.6"></rect>
+		<text transform="matrix(1 0 0 1 210.124 83.7295)" class="st1 st7 st10">PROTOKOL</text>
+	</g>
+	<g id="Vip Platinum B" data-select="zone:VIP;zoneid:2897;subzone:Vip Platinum B;subzoneid:2911;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2897:::2911" style="cursor:pointer">
+		<rect x="207.3" y="86.5" class="st0 svgshp" width="37.1" height="27.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 219.9482 96.3351)" class="st1 st2 st11">VIP</text>
+		<text transform="matrix(1 0 0 1 210.2124 102.9049)" class="st1 st2 st12">PLATINUM</text>
+		<text transform="matrix(1 0 0 1 223.8008 109.506)" class="st1 st2 st12">B</text>
+	</g>
+	<g id="Vip Platinum A" data-select="zone:VIP;zoneid:2897;subzone:Vip Platinum A;subzoneid:2910;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2897:::2910" style="cursor:pointer">
+		<rect x="186.3" y="77.6" class="st0 svgshp" width="19.2" height="36.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 190.6436 92.395)" class="st1 st2 st5">VIP</text>
+		<text transform="matrix(1 0 0 1 187.5294 97.4194)" class="st1 st7 st13">PLATINUM</text>
+		<text transform="matrix(1 0 0 1 194.1041 104.2427)" class="st1 st2 st6">A</text>
+	</g>
+	<g id="Vip Gold A" data-select="zone:VIP;zoneid:2897;subzone:Vip Gold A;subzoneid:2909;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2897:::2909" style="cursor:pointer">
+		<rect x="166.8" y="77.6" class="st0 svgshp" width="17.7" height="36.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 170.421 92.395)" class="st1 st2 st5">VIP</text>
+		<text transform="matrix(1 0 0 1 168.0721 97.9702)" class="st1 st2 st6">GOLD</text>
+		<text transform="matrix(1 0 0 1 173.8814 104.2427)" class="st1 st2 st6">A</text>
+	</g>
+	<g id="Vip Silver A" data-select="zone:VIP;zoneid:2897;subzone:Vip Silver A;subzoneid:2908;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2897:::2908" style="cursor:pointer">
+		<rect x="131.3" y="77.6" class="st0 svgshp" width="33.8" height="36.5" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 142.9095 92.395)" class="st1 st2 st5">VIP</text>
+		<text transform="matrix(1 0 0 1 139.389 98.4087)" class="st1 st2 st6">SILVER</text>
+		<text transform="matrix(1 0 0 1 146.3699 104.2427)" class="st1 st2 st6">A</text>
+	</g>
+	<g id="Batı J" data-select="zone:Batı Tribün;zoneid:2893;subzone:Batı J;subzoneid:2906;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2893:::2906" style="cursor:pointer">
+		<rect x="117.3" y="77.6" class="st0 svgshp" width="12.2" height="36.5" style="fill:#cccccc;"></rect>
+		<polygon class="st0 svgshp" points="115.6,77.6 92.3,77.6 107.9,114 115.6,114 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 108.0254 100.2397)" class="st1 st2 st3">J</text>
+	</g>
+	<g id="Güney H" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney H;subzoneid:2916;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2916" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="94.5,88.3 71.9,112.4 71.9,138.2 95.4,138.2 95.4,122.8 105.6,114.3 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 79.833 123.4604)" class="st1 st2 st3">H</text>
+	</g>
+	<g id="Güney A" data-select="zone:Güney Tribün;zoneid:2895;subzone:Güney A;subzoneid:2915;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2895:::2915" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="93.8,86.6 75,42.7 24.3,92.5 71.1,110.7 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 59.0352 88.4165)" class="st1 st2 st3">A</text>
+	</g>
+	<g id="Batı H" data-select="zone:Batı Tribün;zoneid:2893;subzone:Batı H;subzoneid:2898;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2893:::2898" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="77.9,42.4 91.8,75.4 118.8,75.4 118.8,42.4 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 98.3271 62.5806)" class="st1 st2 st3">H</text>
+	</g>
+	<g id="Batı G" data-select="zone:Batı Tribün;zoneid:2893;subzone:Batı G;subzoneid:2899;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2893:::2899" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="121.4,42.4 121.4,75.4 130,75.4 149.9,51.2 149.9,42.4 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 126.5742 62.5806)" class="st1 st2 st3">G</text>
+	</g>
+	<g id="Batı F" data-select="zone:Batı Tribün;zoneid:2893;subzone:Batı F;subzoneid:2900;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2893:::2900" style="cursor:pointer">
+		<rect x="152.5" y="42.4" class="st0 svgshp" width="16.9" height="8.8" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 159.8184 50.1069)" class="st1 st2 st14">F</text>
+	</g>
+	<g id="Batı E" data-select="zone:Batı Tribün;zoneid:2893;subzone:Batı E;subzoneid:2901;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2893:::2901" style="cursor:pointer">
+		<rect x="172" y="42.4" class="st0 svgshp" width="13.1" height="8.8" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 176.6797 50.1069)" class="st1 st2 st14">E</text>
+	</g>
+	<g id="BASIN_71_">
+		<rect x="187.8" y="42.4" class="st9" width="72.5" height="8.8"></rect>
+		<g id="BASIN_41_">
+			<text transform="matrix(1 0 0 1 212.2324 49.9546)" class="st1 st2 st14">BASIN</text>
+		</g>
+	</g>
+	<g id="Batı D" data-select="zone:Batı Tribün;zoneid:2893;subzone:Batı D;subzoneid:2902;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2893:::2902" style="cursor:pointer">
+		<rect x="262.9" y="42.4" class="st0 svgshp" width="15.3" height="8.8" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 268.1318 50.1069)" class="st1 st2 st14">D</text>
+	</g>
+	<g id="Batı C" data-select="zone:Batı Tribün;zoneid:2893;subzone:Batı C;subzoneid:2903;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2893:::2903" style="cursor:pointer">
+		<rect x="280.8" y="42.4" class="st0 svgshp" width="13.1" height="8.8" style="fill:#cccccc;"></rect>
+		<text transform="matrix(1 0 0 1 284.3369 50.1069)" class="st1 st2 st14">C</text>
+	</g>
+	<g id="Batı B" data-select="zone:Batı Tribün;zoneid:2893;subzone:Batı B;subzoneid:2904;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2893:::2904" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="296.6,42.4 296.6,51.2 315.8,75.4 326.2,75.3 326.2,42.4 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 310.1006 62.5806)" class="st1 st2 st3">B</text>
+	</g>
+	<g id="Batı A" data-select="zone:Batı Tribün;zoneid:2893;subzone:Batı A;subzoneid:2905;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2893:::2905" style="cursor:pointer">
+		<polygon class="st0 svgshp" points="371.2,42.4 328.8,42.4 328.8,75.3 357.6,74.9 		" style="fill:#cccccc;"></polygon>
+		<text transform="matrix(1 0 0 1 340.7539 62.5806)" class="st1 st2 st3">A</text>
+	</g>
+	<text transform="matrix(1 0 0 1 185.9578 30.3745)" class="st7 st15">BATI TRİBÜNÜ</text>
+	<text transform="matrix(0 -1 1 0 16.4951 247.1279)" class="st7 st15">GÜNEY TRİBÜNÜ</text>
+	<text transform="matrix(-8.979319e-11 1 -1 -8.979319e-11 433.5059 154.5508)" class="st7 st15">KUZEY TRİBÜNÜ</text>
+	<text transform="matrix(1 0 0 1 181.8647 377.4164)" class="st7 st15">DOĞU TRİBÜNÜ</text>
+</g>
+<g>
+	<g>
+		<rect x="109.8" y="129" class="st16" width="230.3" height="141.9"></rect>
+		<rect x="109.8" y="129" class="st17" width="19.1" height="141.9"></rect>
+		<rect x="152" y="129" class="st17" width="19.1" height="141.9"></rect>
+		<rect x="194.2" y="129" class="st17" width="19.1" height="141.9"></rect>
+		<rect x="236.5" y="129" class="st17" width="19.1" height="141.9"></rect>
+		<rect x="278.8" y="129" class="st17" width="19.1" height="141.9"></rect>
+		<rect x="321.1" y="129" class="st17" width="19.1" height="141.9"></rect>
+	</g>
+	<g>
+		<circle class="st18" cx="225" cy="200" r="26.4"></circle>
+		<g>
+			<line class="st18" x1="225" y1="129" x2="225" y2="271"></line>
+		</g>
+		<g>
+			<line class="st18" x1="339.8" y1="156.6" x2="303.6" y2="156.6"></line>
+			<line class="st18" x1="303.6" y1="243.5" x2="303.6" y2="156.6"></line>
+			<line class="st18" x1="303.6" y1="243.5" x2="339.8" y2="243.5"></line>
+		</g>
+		<g>
+			<line class="st18" x1="339.8" y1="179.9" x2="327.2" y2="179.9"></line>
+			<line class="st18" x1="327.2" y1="220.2" x2="327.2" y2="179.9"></line>
+			<line class="st18" x1="327.2" y1="220.2" x2="339.8" y2="220.2"></line>
+		</g>
+		<g>
+			<line class="st18" x1="110.6" y1="156.6" x2="146.4" y2="156.6"></line>
+			<line class="st18" x1="146.4" y1="243.5" x2="146.4" y2="156.6"></line>
+			<line class="st18" x1="146.4" y1="243.5" x2="110.6" y2="243.5"></line>
+		</g>
+		<g>
+			<line class="st18" x1="110.6" y1="179.9" x2="124.5" y2="179.9"></line>
+			<line class="st18" x1="124.5" y1="220.2" x2="124.5" y2="179.9"></line>
+			<line class="st18" x1="124.5" y1="220.2" x2="110.6" y2="220.2"></line>
+		</g>
+	</g>
+</g>
+</svg>

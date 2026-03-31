@@ -1,0 +1,33 @@
+<svg version="1.1" id="kucukciflik" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 450 400" style="width: 100%; height: 100%;" xml:space="preserve">
+<defs>
+  <style type="text/css">@import url('https://fonts.googleapis.com/css?family=Poppins');</style>
+</defs>
+<style type="text/css">
+	.st0{fill:#262626;}
+	.st1{font-family:'Poppins';}
+	.st2{font-size:16.18px;}
+	.st3{fill:#CCCCCC;}
+	.st4{fill:#FFFFFF;}
+	.st5{font-size:14.17px;}
+	.st6{font-size:24.62px;}
+</style>
+<g id="General" data-select="zone:Genel;zoneid:7541;subzone:General;subzoneid:2613;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="7541:::2613" style="cursor:pointer">
+	<path class="st3 svgshp" d="M48.2,195.8h291.9c3.9,0,7,3.1,7,7v141.9c0,3.9-3.1,7-7,7H48.2c-3.9,0-7-3.1-7-7V202.8
+		C41.2,198.9,44.3,195.8,48.2,195.8z" style="fill:#eba601;"></path>
+	<text transform="matrix(1 0 0 1 162.46 277.9)" class="st4 st1 st5">NORMAL</text>
+</g>
+<g id="Vip Teras" data-select="zone:VIP;zoneid:7542;subzone:Vip Teras;subzoneid:2614;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="7542:::2614" style="cursor:pointer">
+	<path class="st3 svgshp" d="M363.7,129.8h38.1c3.9,0,7,3.1,7,7v207.9c0,3.9-3.1,7-7,7h-38.1c-3.9,0-7-3.1-7-7V136.8
+		C356.7,133,359.9,129.8,363.7,129.8z" style="fill:#fecc03;"></path>
+	<text transform="matrix(6.123234e-17 -1 1 6.123234e-17 386.94 279.6699)" class="st4 st1 st5">VIP - TERAS</text>
+</g>
+<g id="Sahne Onu" data-select="zone:Ön Sahne;zoneid:7540;subzone:Sahne Onu;subzoneid:2612;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="7540:::2612" style="cursor:pointer">
+	<path class="st3 svgshp" d="M74.2,111.3H314c3.9,0,7,3.1,7,7v60c0,3.9-3.1,7-7,7H74.2c-3.9,0-7-3.1-7-7v-60
+		C67.2,114.5,70.3,111.3,74.2,111.3z" style="fill:#fecc03;"></path>
+	<text transform="matrix(1 0 0 1 151.57 152.91)" class="st4 st1 st5">SAHNE ÖNÜ</text>
+</g>
+<g id="sahne">
+	<path class="st3" d="M111.3,2.5c9.3,44.2,48,77.3,94.3,77.3S290.7,46.7,300,2.5H111.3z"></path>
+	<text transform="matrix(1 0 0 1 164.07 48.36)" class="st4 st1 st6">SAHNE</text>
+</g>
+</svg>

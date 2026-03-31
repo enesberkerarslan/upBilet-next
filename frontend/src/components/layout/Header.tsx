@@ -5,6 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import {
+  EventImageFallback,
+  EventSearchRowArrow,
+  SearchLoadingPanel,
+  SearchNoResultsPanel,
+} from "@/components/layout/search-event-dropdown-primitives";
 import { useLocale } from "@/contexts/locale-context";
 import { formatDateTR, formatTimeTR } from "@/lib/date";
 import { navigationItems } from "@/lib/nav-items";
@@ -40,34 +46,38 @@ export function Header() {
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  const performSearch = useCallback(async () => {
-    const query = searchQuery.trim();
-    if (!query) {
+  const performSearchFor = useCallback(async (query: string) => {
+    const q = query.trim();
+    if (!q) {
       setSearchResults([]);
       setShowResults(false);
       return;
     }
     setIsSearching(true);
     setShowResults(true);
+    setSearchResults([]);
     try {
-      const evs = await searchEventsClient(query);
+      const evs = await searchEventsClient(q);
       setSearchResults(evs);
     } catch {
       setSearchResults([]);
     } finally {
       setIsSearching(false);
     }
-  }, [searchQuery]);
+  }, []);
 
-  const handleSearch = () => {
-    if (searchTimeout.current) clearTimeout(searchTimeout.current);
-    if (!searchQuery.trim()) {
-      setSearchResults([]);
-      setShowResults(false);
-      return;
-    }
-    searchTimeout.current = setTimeout(performSearch, 300);
-  };
+  const scheduleSearch = useCallback(
+    (value: string) => {
+      if (searchTimeout.current) clearTimeout(searchTimeout.current);
+      if (!value.trim()) {
+        setSearchResults([]);
+        setShowResults(false);
+        return;
+      }
+      searchTimeout.current = setTimeout(() => void performSearchFor(value), 300);
+    },
+    [performSearchFor]
+  );
 
   const selectEvent = (event: PublicEvent) => {
     setShowResults(false);
@@ -139,22 +149,29 @@ export function Header() {
               <input
                 value={searchQuery}
                 onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  handleSearch();
+                  const v = e.target.value;
+                  setSearchQuery(v);
+                  scheduleSearch(v);
                 }}
                 onFocus={() => searchQuery.trim() && searchResults.length > 0 && setShowResults(true)}
                 onBlur={() => setTimeout(() => setShowResults(false), 200)}
-                type="search"
+                type="text"
+                autoComplete="off"
                 placeholder={t("header.searchPlaceholder")}
+                aria-label={t("header.searchPlaceholder")}
                 className="h-[40px] w-[200px] rounded-full border border-white/20 bg-white pl-10 pr-4 focus:border-white/40 focus:outline-none"
               />
               <div className="absolute left-3 top-1/2 -translate-y-1/2">
-                <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
 
-              {showResults && searchResults.length > 0 ? (
+              {isSearching && showResults && searchQuery.trim() ? (
+                <div className="absolute left-0 top-full z-50 mt-1 w-[560px] rounded-lg border border-gray-200 bg-white shadow-xl">
+                  <SearchLoadingPanel title={t("header.searching")} subtitle={t("header.searchingHint")} />
+                </div>
+              ) : showResults && searchResults.length > 0 ? (
                 <div className="custom-scrollbar absolute left-0 top-full z-50 mt-1 max-h-96 w-[560px] overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-xl">
                   {searchResults.map((event) => (
                     <button
@@ -162,35 +179,37 @@ export function Header() {
                       type="button"
                       onMouseDown={(e) => e.preventDefault()}
                       onClick={() => selectEvent(event)}
-                      className="w-full border-b border-gray-100 p-4 text-left transition-colors last:border-b-0 hover:bg-gray-50"
+                      aria-label={`${event.name} — ${t("header.openEvent")}`}
+                      className="w-full cursor-pointer border-b border-gray-100 p-4 text-left transition-colors last:border-b-0 hover:bg-gray-50"
                     >
                       <div className="flex items-center space-x-4">
-                        <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg">
-                          {event.image?.trim() && !event.image.includes(" ") ? (
-                            <img src={event.image} alt="" className="h-full w-full object-cover" />
-                          ) : (
-                            <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-gray-100 to-gray-200" />
-                          )}
+                        <div className="shrink-0">
+                          <div className="h-12 w-12 overflow-hidden rounded-lg">
+                            {event.image?.trim() && !event.image.includes(" ") ? (
+                              <img
+                                src={event.image}
+                                alt={event.name}
+                                className="h-full w-full object-cover"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            ) : (
+                              <EventImageFallback />
+                            )}
+                          </div>
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h4 className="text-base font-semibold text-gray-900">{event.name}</h4>
+                          <h4 className="text-base font-semibold leading-tight text-gray-900">{event.name}</h4>
                           <p className="mt-1 text-xs text-gray-600">{formatDate(event.date)}</p>
                         </div>
+                        <EventSearchRowArrow />
                       </div>
                     </button>
                   ))}
                 </div>
-              ) : null}
-
-              {showResults && searchQuery.trim() && searchResults.length === 0 && !isSearching ? (
-                <div className="absolute left-0 top-full z-50 mt-1 w-[560px] rounded-lg border border-gray-200 bg-white p-4 shadow-xl">
-                  <p className="text-sm text-gray-600">{t("header.noResults")}</p>
-                </div>
-              ) : null}
-
-              {isSearching && showResults ? (
-                <div className="absolute left-0 top-full z-50 mt-1 w-[560px] rounded-lg border border-gray-200 bg-white p-4 shadow-xl">
-                  <p className="text-sm text-gray-600">{t("header.searching")}</p>
+              ) : showResults && searchQuery.trim() && searchResults.length === 0 ? (
+                <div className="absolute left-0 top-full z-50 mt-1 w-[560px] rounded-lg border border-gray-200 bg-white shadow-xl">
+                  <SearchNoResultsPanel title={t("header.noResults")} subtitle={t("header.noResultsHint")} />
                 </div>
               ) : null}
             </div>

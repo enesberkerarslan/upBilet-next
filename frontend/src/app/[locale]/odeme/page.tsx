@@ -1,30 +1,46 @@
-import { Suspense } from "react";
+import { redirect } from "next/navigation";
+import type { MemberProfile } from "@/lib/api/member-api";
+import { getMemberBearerFromCookies, memberFetchServer } from "@/lib/member-fetch-server";
 import { OdemeFlow } from "@/components/payment/OdemeFlow";
+import { loadOdemeCheckoutData } from "@/lib/odeme-server-data";
 
 type Props = {
+  params: Promise<{ locale: string }>;
   searchParams: Promise<{ id?: string; listingId?: string; quantity?: string }>;
 };
 
-function OdemeFallback() {
-  return (
-    <div className="flex min-h-[300px] flex-col items-center justify-center bg-white">
-      <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-indigo-600" />
-      <p className="text-sm text-gray-600">Yükleniyor…</p>
-    </div>
-  );
-}
-
-async function OdemeWithParams({ searchParams }: Props) {
+export default async function OdemePage({ params, searchParams }: Props) {
+  const { locale } = await params;
   const sp = await searchParams;
   const listingId = sp.id ?? sp.listingId ?? null;
   const quantityRaw = sp.quantity ?? null;
-  return <OdemeFlow listingId={listingId} quantityRaw={quantityRaw} />;
-}
 
-export default function OdemePage(props: Props) {
+  if (!listingId || !quantityRaw) {
+    redirect(`/${locale}`);
+  }
+
+  const quantity = Math.max(1, parseInt(quantityRaw, 10) || 1);
+  const data = await loadOdemeCheckoutData(listingId, quantity);
+  if (!data) {
+    redirect(`/${locale}`);
+  }
+
+  let initialAuthenticated = false;
+  let initialProfile: MemberProfile | null = null;
+  if (await getMemberBearerFromCookies()) {
+    const pr = await memberFetchServer<{ success?: boolean; member?: MemberProfile }>("/profile");
+    if (pr.ok && pr.data?.success && pr.data.member) {
+      initialAuthenticated = true;
+      initialProfile = pr.data.member;
+    }
+  }
+
   return (
-    <Suspense fallback={<OdemeFallback />}>
-      <OdemeWithParams {...props} />
-    </Suspense>
+    <OdemeFlow
+      initialSaleInfo={data.saleInfo}
+      initialEventData={data.event}
+      initialAuthenticated={initialAuthenticated}
+      initialProfile={initialProfile}
+    />
   );
 }

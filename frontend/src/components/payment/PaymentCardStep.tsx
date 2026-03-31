@@ -32,6 +32,7 @@ export type CheckoutSaleInfo = {
 type Props = {
   saleInfo: CheckoutSaleInfo;
   onSuccess: (saleData: Record<string, unknown> & { _id?: string }) => void;
+  checkoutExpired?: boolean;
 };
 
 function mapHolders(drafts: TicketHolderDraft[]) {
@@ -45,7 +46,7 @@ function mapHolders(drafts: TicketHolderDraft[]) {
   }));
 }
 
-export function PaymentCardStep({ saleInfo, onSuccess }: Props) {
+export function PaymentCardStep({ saleInfo, onSuccess, checkoutExpired = false }: Props) {
   const [loading, setLoading] = useState(false);
   const [mounting, setMounting] = useState(true);
   const [successMessage, setSuccessMessage] = useState("");
@@ -55,6 +56,7 @@ export function PaymentCardStep({ saleInfo, onSuccess }: Props) {
   const stripeRef = useRef<Stripe | null>(null);
   const elementsRef = useRef<StripeElements | null>(null);
   const paymentElRef = useRef<{ unmount: () => void } | null>(null);
+  const paymentMountRef = useRef<HTMLDivElement | null>(null);
 
   const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "";
 
@@ -101,7 +103,11 @@ export function PaymentCardStep({ saleInfo, onSuccess }: Props) {
           appearance: { theme: "stripe" },
         });
         const paymentElement = elements.create("payment");
-        paymentElement.mount("#payment-element");
+        const mountNode = paymentMountRef.current;
+        if (cancelled || !mountNode) {
+          return;
+        }
+        paymentElement.mount(mountNode);
 
         stripeRef.current = stripe;
         elementsRef.current = elements;
@@ -139,6 +145,7 @@ export function PaymentCardStep({ saleInfo, onSuccess }: Props) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (checkoutExpired) return;
     const stripe = stripeRef.current;
     const elements = elementsRef.current;
     if (!stripe || !elements) return;
@@ -262,22 +269,25 @@ export function PaymentCardStep({ saleInfo, onSuccess }: Props) {
           </div>
         ) : null}
 
-        {mounting ? (
-          <div className="flex justify-center py-8 text-sm text-gray-500">Ödeme formu yükleniyor…</div>
-        ) : (
-          <form onSubmit={handleSubmit}>
-            <div id="payment-element" className="mb-4" />
-            <button
-              type="submit"
-              disabled={loading || !publishableKey}
-              className="mt-4 w-full rounded-lg bg-black py-3 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-50 md:mt-6"
-            >
-              {loading ? "Ödeme İşleniyor..." : "Öde"}
-            </button>
-            {successMessage ? <div className="mt-2 text-sm text-green-600">{successMessage}</div> : null}
-            {errorMessage ? <div className="mt-2 text-sm text-red-600">{errorMessage}</div> : null}
-          </form>
-        )}
+        <form onSubmit={handleSubmit}>
+          <div className="relative mb-4 min-h-[120px] w-full">
+            {mounting ? (
+              <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-white/90 text-sm text-gray-500">
+                Ödeme formu yükleniyor…
+              </div>
+            ) : null}
+            <div ref={paymentMountRef} className="w-full" />
+          </div>
+          <button
+            type="submit"
+            disabled={loading || !publishableKey || checkoutExpired || mounting}
+            className="mt-4 w-full rounded-lg bg-black py-3 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-50 md:mt-6"
+          >
+            {loading ? "Ödeme İşleniyor..." : checkoutExpired ? "Süre doldu" : "Öde"}
+          </button>
+          {successMessage ? <div className="mt-2 text-sm text-green-600">{successMessage}</div> : null}
+          {errorMessage ? <div className="mt-2 text-sm text-red-600">{errorMessage}</div> : null}
+        </form>
         <div className="mt-3 text-center text-xs text-gray-400 md:mt-4">
           <span className="font-semibold">stripe</span> tarafından desteklenmektedir
           <br />

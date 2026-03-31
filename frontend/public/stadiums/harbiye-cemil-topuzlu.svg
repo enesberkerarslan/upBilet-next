@@ -1,0 +1,147 @@
+<svg version="1.1" id="çizim" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 841.9 595.3" style="width: 100%; height: 100%;" xml:space="preserve">
+<defs>
+  <style type="text/css">@import url('https://fonts.googleapis.com/css?family=Poppins');</style>
+</defs>
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#CCCCCC;}
+	.st2{font-family:'Poppins';}
+	.st3{font-size:9px;}
+	.st4{font-size:7px;}
+	.st5{enable-background:new    ;}
+	.st6{font-family:'Poppins';}
+	.st7{fill:#7B7B7B;}
+	.st8{font-size:12px;}
+</style>
+<path class="st0" d="M120.2,272.1l202-135c0,0,35.5,41.1,95.9,41.1s100.3-41.1,100.3-41.1l202.3,136.4c0,0-92.7,176.1-301.2,176.1
+	S120.2,272.1,120.2,272.1z"></path>
+<g id="E BLOK" data-select="zone:1. Kategori;zoneid:2587;subzone:E BLOK;subzoneid:2634;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2587:::2634" style="cursor:pointer">
+	<path class="st1 svgshp" d="M246.6,219.1l37.3,37.7c2.2,2.2,5.9,2,7.8-0.6l50.5-68.3c1.5-2.1,1.3-5-0.5-6.8l-20.5-20
+		c-1.8-1.8-4.7-2-6.7-0.4l-67.3,50.6C244.7,213.2,244.4,216.9,246.6,219.1z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 280.7464 208.2754)" class="st0 st2 st3">E BLOK</text>
+	</g>
+</g>
+<g id="P BLOK" data-select="zone:6. Kategori;zoneid:2637;subzone:P BLOK;subzoneid:2636;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2637:::2636" style="cursor:pointer">
+	<path class="st1 svgshp" d="M233.1,232.3l23.2,28.3c2.9,3.6,2.7,8.8-0.4,12.2l-61.7,64.9c-3.8,4-10.2,3.8-13.7-0.5l-37.8-45.6
+		c-3.5-4.3-2.5-10.7,2.2-13.7l76.2-47.6C225.1,227.9,230.2,228.7,233.1,232.3z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 184.1172 284.7285)" class="st0 st2 st3">P BLOK</text>
+	</g>
+</g>
+<g id="F BLOK" data-select="zone:6. Kategori;zoneid:2637;subzone:F BLOK;subzoneid:2635;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2637:::2635" style="cursor:pointer">
+	<path class="st1 svgshp" d="M606.4,232.3l-23.2,28.3c-2.9,3.6-2.7,8.8,0.4,12.2l61.7,64.9c3.8,4,10.2,3.8,13.7-0.5l37.8-45.6
+		c3.5-4.3,2.5-10.7-2.2-13.7l-76.2-47.6C614.5,227.9,609.4,228.7,606.4,232.3z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 625.0543 284.7285)" class="st0 st2 st3">F BLOK</text>
+	</g>
+</g>
+<g id="N BLOK" data-select="zone:5. Kategori;zoneid:2600;subzone:N BLOK;subzoneid:2639;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2600:::2639" style="cursor:pointer">
+	<path class="st1 svgshp" d="M259,275.6l-60.8,68.5c-3.1,3.5-2.5,8.9,1.3,11.5l50,35.2c3.8,2.7,9.1,1.4,11.3-2.7l43.6-81.6
+		c1.9-3.5,0.8-7.9-2.5-10.1l-32.7-22.2C265.9,272.1,261.6,272.6,259,275.6z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 238.7669 332.6148)" class="st0 st2 st3">N BLOK</text>
+	</g>
+</g>
+<g id="G BLOK" data-select="zone:5. Kategori;zoneid:2600;subzone:G BLOK;subzoneid:2638;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2600:::2638" style="cursor:pointer">
+	<path class="st1 svgshp" d="M580.6,275.6l60.8,68.5c3.1,3.5,2.5,8.9-1.3,11.5l-50,35.2c-3.8,2.7-9.1,1.4-11.3-2.7l-43.6-81.6
+		c-1.9-3.5-0.8-7.9,2.5-10.1l32.7-22.2C573.7,272.1,578,272.6,580.6,275.6z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 570.9665 332.6148)" class="st0 st2 st3">G BLOK</text>
+	</g>
+</g>
+<g id="M BLOK" data-select="zone:4. Kategori;zoneid:2599;subzone:M BLOK;subzoneid:2640;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2599:::2640" style="cursor:pointer">
+	<path class="st1 svgshp" d="M307.9,309.4l-43.4,82c-2.1,3.9-0.3,8.8,3.9,10.5l57.4,22.5c4.2,1.6,8.8-0.7,10-5.1l23.4-90.5
+		c1-3.7-1-7.5-4.6-8.9l-37.4-14C313.6,304.6,309.7,306.1,307.9,309.4z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 300.097 365.16)" class="st0 st2 st3">M BLOK</text>
+	</g>
+</g>
+<g id="H BLOK" data-select="zone:4. Kategori;zoneid:2599;subzone:H BLOK;subzoneid:2641;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2599:::2641" style="cursor:pointer">
+	<path class="st1 svgshp" d="M531.7,309.4l43.4,82c2.1,3.9,0.3,8.8-3.9,10.5l-57.4,22.5c-4.2,1.6-8.8-0.7-10-5.1l-23.4-90.5
+		c-1-3.7,1-7.5,4.6-8.9l37.4-14C525.9,304.6,529.9,306.1,531.7,309.4z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 507.8392 365.16)" class="st0 st2 st3">H BLOK</text>
+	</g>
+</g>
+<g id="L BLOK" data-select="zone:3. Kategori;zoneid:2598;subzone:L BLOK;subzoneid:2643;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2598:::2643" style="cursor:pointer">
+	<path class="st1 svgshp" d="M363.9,328.6l-23.4,91.7c-1,3.7,1.6,7.5,5.4,8l62.2,8.4c3.9,0.5,7.3-2.5,7.3-6.4v-94.4c0-3.2-2.3-5.9-5.5-6.4
+		l-38.7-5.7C367.8,323.3,364.7,325.4,363.9,328.6z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 366.8404 383.4933)" class="st0 st2 st3">L BLOK</text>
+	</g>
+</g>
+<g id="K BLOK" data-select="zone:3. Kategori;zoneid:2598;subzone:K BLOK;subzoneid:2644;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2598:::2644" style="cursor:pointer">
+	<path class="st1 svgshp" d="M475.7,328.6l23.4,91.7c1,3.7-1.6,7.5-5.4,8l-62.2,8.4c-3.9,0.5-7.3-2.5-7.3-6.4v-94.4c0-3.2,2.3-5.9,5.5-6.4
+		l38.7-5.7C471.8,323.3,474.9,325.4,475.7,328.6z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 442.2648 383.4933)" class="st0 st2 st3">K BLOK</text>
+	</g>
+</g>
+<g id="A BLOK" data-select="zone:1. Kategori;zoneid:2587;subzone:A BLOK;subzoneid:2633;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2587:::2633" style="cursor:pointer">
+	<path class="st1 svgshp" d="M593,219.1l-37.3,37.7c-2.2,2.2-5.9,2-7.8-0.6l-50.5-68.3c-1.5-2.1-1.3-5,0.5-6.8l20.5-20
+		c1.8-1.8,4.7-2,6.7-0.4l67.3,50.6C594.9,213.2,595.2,216.9,593,219.1z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 527.8559 208.2754)" class="st0 st2 st3">A BLOK</text>
+	</g>
+</g>
+<g id="D BLOK" data-select="zone:1. Kategori;zoneid:2587;subzone:D BLOK;subzoneid:2632;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2587:::2632" style="cursor:pointer">
+	<path class="st1 svgshp" d="M300.9,270.3l43.3,22.4c3.4,1.8,7.7,0.1,9-3.5l28.3-78.6c1.1-3.1-0.3-6.5-3.2-7.9l-23.8-11.8
+		c-2.8-1.4-6.3-0.5-8.1,2.1l-47.8,68C296.4,264.1,297.5,268.5,300.9,270.3z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 327.3028 242.7754)" class="st0 st2 st3">D BLOK</text>
+	</g>
+</g>
+<g id="B BLOK" data-select="zone:1. Kategori;zoneid:2587;subzone:B BLOK;subzoneid:2631;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="2587:::2631" style="cursor:pointer">
+	<path class="st1 svgshp" d="M538.7,270.3l-43.3,22.4c-3.4,1.8-7.7,0.1-9-3.5l-28.3-78.6c-1.1-3.1,0.3-6.5,3.2-7.9l23.8-11.8
+		c2.8-1.4,6.3-0.5,8.1,2.1l47.8,68C543.2,264.1,542.1,268.5,538.7,270.3z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 480.7037 242.7754)" class="st0 st2 st3">B BLOK</text>
+	</g>
+</g>
+<g id="C BLOK" data-select="zone:1. Kategori;zoneid:2587;subzone:C BLOK;subzoneid:2602;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2587:::2602" style="cursor:pointer">
+	<path class="st1 svgshp" d="M391.5,211.1l-10,29.4c-0.9,2.7,1.1,5.5,4,5.5h67.9c2.8,0,4.9-2.8,4-5.5l-9.3-29.4c-0.6-1.7-2.2-2.9-4-2.9
+		h-48.6C393.7,208.3,392.1,209.4,391.5,211.1z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 405.4191 228.9144)" class="st0 st2 st3">C BLOK</text>
+	</g>
+</g>
+<g id="SAHNE ÖNÜ" data-select="zone:1. Kategori;zoneid:2587;subzone:SAHNE ÖNÜ;subzoneid:2627;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2587:::2627" style="cursor:pointer">
+	<path class="st1 svgshp" d="M392.1,186.2l-3.6,10.2c-1,2.8,1.1,5.8,4.1,5.8h53.7c3,0,5.1-3,4.1-5.9l-3.9-10.2c-0.6-1.7-2.3-2.8-4.1-2.8
+		h-46.3C394.4,183.3,392.8,184.4,392.1,186.2z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 393.6313 195.9144)" class="st0 st2 st3">SAHNE ÖNÜ</text>
+	</g>
+</g>
+<g id="ÖN LOCA" data-select="zone:1. Kategori;zoneid:2587;subzone:ÖN LOCA;subzoneid:2629;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2587:::2629" style="cursor:pointer">
+	<path class="st1 svgshp" d="M399.1,256.8L399.1,256.8c0,3.2,2.6,5.7,5.7,5.7h30c3.2,0,5.7-2.6,5.7-5.7l0,0c0-3.2-2.6-5.7-5.7-5.7h-30
+		C401.7,251.1,399.1,253.7,399.1,256.8z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 404.2673 259.6643)" class="st0 st2 st4">ÖN LOCA</text>
+	</g>
+</g>
+<g id="C SAĞ BLOK" data-select="zone:1. Kategori;zoneid:2587;subzone:C SAĞ BLOK;subzoneid:2630;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2587:::2630" style="cursor:pointer">
+	<path class="st1 svgshp" d="M453.1,251.1h4.8c2.3,0,4.4,1.4,5.2,3.6l14,35.9c1,2.6-0.9,5.4-3.7,5.4h-20.3c-3.1,0-5.6-2.5-5.6-5.6v-33.7
+		C447.5,253.6,450,251.1,453.1,251.1z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 450.7169 267.9976)" class="st0 st2 st4">C </text>
+		<text transform="matrix(1 0 0 1 450.7169 276.3976)" class="st5"><tspan x="0" y="0" class="st0 st2 st4">SA</tspan><tspan x="8.3" y="0" class="st0 st6 st4">Ğ</tspan><tspan x="12.8" y="0" class="st0 st2 st4"> </tspan></text>
+		<text transform="matrix(1 0 0 1 450.7169 284.7976)" class="st0 st2 st4">BLOK</text>
+	</g>
+</g>
+<g id="C SOL BLOK" data-select="zone:1. Kategori;zoneid:2587;subzone:C SOL BLOK;subzoneid:2628;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="2587:::2628" style="cursor:pointer">
+	<path class="st1 svgshp" d="M386.9,251.1h-4.8c-2.3,0-4.4,1.4-5.2,3.6l-14,35.9c-1,2.6,0.9,5.4,3.7,5.4h20.3c3.1,0,5.6-2.5,5.6-5.6v-33.7
+		C392.5,253.6,390,251.1,386.9,251.1z" style="fill:#cccccc;"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 382.0609 267.9976)" class="st0 st2 st4">C </text>
+		<text transform="matrix(1 0 0 1 375.3609 276.3976)" class="st0 st2 st4">SOL</text>
+		<text transform="matrix(1 0 0 1 370.3609 284.7976)" class="st0 st2 st4">BLOK</text>
+	</g>
+</g>
+<g id="SAHNE">
+	<path class="st7" d="M343.3,110.3V128c0,6.3,5.1,11.3,11.3,11.3H485c6.3,0,11.3-5.1,11.3-11.3v-17.7H343.3z"></path>
+	<g>
+		<text transform="matrix(1 0 0 1 401.5679 128.9423)" class="st0 st2 st8">SAHNE</text>
+	</g>
+</g>
+</svg>

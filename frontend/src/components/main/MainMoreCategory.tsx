@@ -18,7 +18,7 @@ const defaults: BannerItem[] = [
 export function MainMoreCategory({ items, locale }: { items: BannerItem[]; locale: Locale }) {
   const list = items?.length ? items : defaults;
   return (
-    <div className="w-full py-10 md:py-2">
+    <div className="w-full md:mt-15 py-10 md:py-2">
       <div className="mx-auto w-full sm:px-0">
         <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:gap-8">
           {list.map((item, index) => (

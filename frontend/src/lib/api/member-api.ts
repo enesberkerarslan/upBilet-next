@@ -87,6 +87,7 @@ export type TicketHolderRecord = {
 
 export type SaleRecord = {
   _id: string;
+  referenceCode?: string;
   saleDate?: string;
   status?: string;
   totalAmount?: number;

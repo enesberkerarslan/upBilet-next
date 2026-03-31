@@ -91,6 +91,7 @@ export function ProfileListingEditModal({ open, listing, onClose, onSaved, t }: 
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!listing) return;
     setSaving(true);
     try {
       const q = typeof quantity === "number" ? quantity : parseInt(String(quantity), 10);
@@ -134,12 +135,14 @@ export function ProfileListingEditModal({ open, listing, onClose, onSaved, t }: 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="mb-1 block text-xs text-gray-500">{t("profile.editEventName")}</label>
-            <div className="w-full rounded-lg border bg-gray-100 px-3 py-2 text-gray-800">{eventNameFromListing(listing) || "—"}</div>
+            <div className="w-full rounded-lg border border-gray-200 bg-gray-100 px-3 py-2 text-gray-800">
+              {eventNameFromListing(listing) || "—"}
+            </div>
           </div>
           <div className="mb-4">
             <label className="mb-1 block text-xs text-gray-500">{t("profile.editTicketFormat")}</label>
             <select
-              className="w-full rounded-lg border bg-white px-3 py-2"
+              className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
               value={ticketType}
               onChange={(e) => setTicketType(e.target.value)}
             >
@@ -151,7 +154,7 @@ export function ProfileListingEditModal({ open, listing, onClose, onSaved, t }: 
           <div className="mb-4">
             <label className="mb-1 block text-xs text-gray-500">{t("profile.editTicketCategory")}</label>
             <select
-              className="w-full rounded-lg border bg-white px-3 py-2"
+              className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
               value={category}
               onChange={(e) => {
                 setCategory(e.target.value);
@@ -171,7 +174,7 @@ export function ProfileListingEditModal({ open, listing, onClose, onSaved, t }: 
           <div className="mb-4">
             <label className="mb-1 block text-xs text-gray-500">{t("profile.block")}</label>
             <select
-              className="w-full rounded-lg border bg-white px-3 py-2"
+              className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 disabled:opacity-60"
               value={block}
               onChange={(e) => setBlock(e.target.value)}
               disabled={!category || selectedBlocks.length === 0}
@@ -189,17 +192,25 @@ export function ProfileListingEditModal({ open, listing, onClose, onSaved, t }: 
           <div className="mb-4 flex gap-2">
             <div className="flex-1">
               <label className="mb-1 block text-xs text-gray-500">{t("profile.row")}</label>
-              <input className="w-full rounded-lg border bg-white px-3 py-2" value={row} onChange={(e) => setRow(e.target.value)} />
+              <input
+                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                value={row}
+                onChange={(e) => setRow(e.target.value)}
+              />
             </div>
             <div className="flex-1">
               <label className="mb-1 block text-xs text-gray-500">{t("profile.editSeatNo")}</label>
-              <input className="w-full rounded-lg border bg-white px-3 py-2" value={seat} onChange={(e) => setSeat(e.target.value)} />
+              <input
+                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                value={seat}
+                onChange={(e) => setSeat(e.target.value)}
+              />
             </div>
           </div>
           <div className="mb-4">
             <label className="mb-1 block text-xs text-gray-500">{t("profile.editQty")}</label>
             <input
-              className="w-full rounded-lg border bg-gray-50 px-3 py-2"
+              className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
               type="number"
               min={1}
               max={10}
@@ -212,9 +223,9 @@ export function ProfileListingEditModal({ open, listing, onClose, onSaved, t }: 
           </div>
           <div className="mb-4">
             <label className="mb-1 block text-xs text-gray-500">{t("profile.editListPrice")}</label>
-            <div className="flex items-center">
+            <div className="flex items-center rounded-lg border border-gray-200 bg-white px-3 py-2 transition-colors focus-within:border-gray-400 focus-within:ring-2 focus-within:ring-gray-200">
               <input
-                className="w-full rounded-lg border bg-white px-3 py-2"
+                className="min-w-0 flex-1 border-0 bg-transparent py-0.5 outline-none ring-0 focus:outline-none focus:ring-0"
                 type="number"
                 min={0}
                 step="0.01"
@@ -224,14 +235,18 @@ export function ProfileListingEditModal({ open, listing, onClose, onSaved, t }: 
                   setPrice(v === "" ? "" : parseFloat(v));
                 }}
               />
-              <span className="ml-2 font-semibold text-gray-500">TL</span>
+              <span className="ml-2 shrink-0 font-semibold text-gray-500">TL</span>
             </div>
           </div>
           <div className="mb-4">
             <label className="mb-1 block text-xs text-gray-500">{t("profile.editSellerNet")}</label>
-            <div className="flex items-center">
-              <input className="w-full rounded-lg border bg-gray-100 px-3 py-2" readOnly value={sellerNet} />
-              <span className="ml-2 font-semibold text-gray-500">TL</span>
+            <div className="flex items-center rounded-lg border border-gray-200 bg-gray-100 px-3 py-2">
+              <input
+                className="min-w-0 flex-1 border-0 bg-transparent py-0.5 outline-none ring-0 focus:outline-none focus:ring-0"
+                readOnly
+                value={sellerNet}
+              />
+              <span className="ml-2 shrink-0 font-semibold text-gray-500">TL</span>
             </div>
           </div>
           <button

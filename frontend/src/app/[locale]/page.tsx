@@ -6,6 +6,8 @@ import { MobileSearchBar } from "@/components/layout/MobileSearchBar";
 import { HomeHeroSkeleton } from "@/components/main/HomeHeroSkeleton";
 import { MainCategoryBox } from "@/components/main/MainCategoryBox";
 import { MainInfoBox } from "@/components/main/MainInfoBox";
+import { CategoryFeaturedIcon } from "@/components/category/CategoryFeaturedIcon";
+import { FeaturedStarIcon } from "@/components/main/FeaturedStarIcon";
 import { MainMoreCategory } from "@/components/main/MainMoreCategory";
 import { MainSlider } from "@/components/main/MainSlider";
 import { MainSubscribe } from "@/components/main/MainSubscribe";
@@ -78,6 +80,7 @@ export default async function HomePage({ params }: Props) {
           <div className="mb-4 flex items-center justify-between text-lg font-semibold">
             <div className="flex items-center gap-2">
               <span className="hidden text-[#71717B] sm:inline">Öne Çıkan</span>
+              <FeaturedStarIcon />
               <span className="text-[#09090B]">Etkinlikler</span>
             </div>
             <Link
@@ -105,6 +108,9 @@ export default async function HomePage({ params }: Props) {
           <div className="mb-4 flex items-center justify-between text-lg font-semibold">
             <div className="flex items-center gap-2">
               <span className="hidden text-[#71717B] sm:inline">Öne Çıkan</span>
+              <span className="flex shrink-0 items-center [&_svg]:h-[18px] [&_svg]:w-[18px]">
+                <CategoryFeaturedIcon kind="concert" />
+              </span>
               <span className="text-[#09090B]">Konser Etkinlikleri</span>
             </div>
             <Link

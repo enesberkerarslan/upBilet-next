@@ -7,6 +7,12 @@ export function eventName(sale: SaleRecord): string {
   return "";
 }
 
+/** Human-facing sale id: `referenceCode` when set, else Mongo `_id`. */
+export function saleRefDisplay(sale: SaleRecord): string {
+  const code = sale.referenceCode?.trim();
+  return code || sale._id;
+}
+
 export function eventDateLoc(sale: SaleRecord, locale: string): string {
   const e = sale.eventId;
   const raw = e && typeof e === "object" && "date" in e ? (e as { date?: string }).date : undefined;
@@ -69,6 +75,70 @@ export function saleStatusLabel(status: string | undefined, t: (p: string) => st
       return t("profile.stActive");
     default:
       return t("profile.stUnknown");
+  }
+}
+
+/** Icon for sale/ticket progress badges (buyer + seller profile cards). */
+export function saleProgressIconSrc(status: string | undefined): string {
+  switch (status) {
+    case "pending_approval":
+    case "approved":
+    case "active":
+      return "/generalicon/pending.svg";
+    case "completed":
+      return "/generalicon/succesful.svg";
+    case "rejected":
+      return "/generalicon/rejected.svg";
+    default:
+      return "/generalicon/pending.svg";
+  }
+}
+
+/** Buyer “Aldığım Biletler”: onay → bilet bekleniyor → tamamlandı. */
+export function buyerPurchaseStatusLabel(status: string | undefined, t: (p: string) => string): string {
+  switch (status) {
+    case "pending_approval":
+      return t("profile.stPending");
+    case "approved":
+    case "active":
+      return t("profile.ticketsStAwaitingDelivery");
+    case "completed":
+      return t("profile.stCompleted");
+    case "rejected":
+      return t("profile.stRejected");
+    default:
+      return t("profile.stUnknown");
+  }
+}
+
+export function buyerPurchaseStatusClass(status: string | undefined): string {
+  switch (status) {
+    case "completed":
+      return "text-green-600";
+    case "rejected":
+      return "text-red-600";
+    case "pending_approval":
+    case "approved":
+    case "active":
+      return "text-[#FF6900]";
+    default:
+      return "text-gray-500";
+  }
+}
+
+/** Mobile pill background for buyer ticket cards. */
+export function buyerPurchaseStatusBadgeClass(status: string | undefined): string {
+  switch (status) {
+    case "completed":
+      return "bg-green-100 text-green-700";
+    case "rejected":
+      return "bg-red-100 text-red-700";
+    case "pending_approval":
+    case "approved":
+    case "active":
+      return "bg-orange-100 text-orange-700";
+    default:
+      return "bg-gray-100 text-gray-600";
   }
 }
 

@@ -16,9 +16,12 @@ import {
 } from "@/lib/api/member-api";
 import { ProfileEmptyPanel } from "@/components/profile/ProfileEmptyPanel";
 import { ProfilePanelHeader } from "@/components/profile/ProfilePanelHeader";
-import { eventName } from "@/components/profile/profile-utils";
+import { eventName, saleRefDisplay } from "@/components/profile/profile-utils";
 
 type View = "list" | "detail" | "new";
+
+const supportFieldClass =
+  "w-full rounded-2xl border border-[#D1D5DB] bg-white px-4 py-3.5 text-sm text-[#18181B] placeholder:text-[#9CA3AF] outline-none transition-shadow focus:border-[#615FFF]/50 focus:ring-2 focus:ring-[#615FFF]/20";
 
 function formatDt(iso: string | undefined, locale: string) {
   if (!iso) return "";
@@ -57,6 +60,8 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
   const [creating, setCreating] = useState(false);
   const [saleOptions, setSaleOptions] = useState<SaleRecord[]>([]);
   const [actionMsg, setActionMsg] = useState<string | null>(null);
+  const newFileInputRef = useRef<HTMLInputElement>(null);
+  const replyFileInputRef = useRef<HTMLInputElement>(null);
 
   const loadList = useCallback(async () => {
     setLoadingList(true);
@@ -126,13 +131,12 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
     };
   }, [view]);
 
-  const saleLabel = useCallback(
-    (s: SaleRecord) => {
-      const ev = eventName(s);
-      return ev ? `${ev} · ${s._id.slice(-6)}` : s._id;
-    },
-    []
-  );
+  const saleLabel = useCallback((s: SaleRecord) => {
+    const ev = eventName(s).trim();
+    const ref = saleRefDisplay(s);
+    if (ev) return `${ev} · ${ref}`;
+    return ref;
+  }, []);
 
   const statusLabel = useMemo(
     () =>
@@ -205,14 +209,25 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
 
   function onPickReplyFiles(f: FileList | null) {
     if (!f?.length) return;
-    const next = [...replyFiles, ...Array.from(f)].slice(0, 5);
-    setReplyFiles(next);
+    // FileList is live — copy before clearing input or the async setState sees an empty list.
+    const picked = Array.from(f);
+    setReplyFiles((prev) => [...prev, ...picked].slice(0, 5));
+    if (replyFileInputRef.current) replyFileInputRef.current.value = "";
   }
 
   function onPickNewFiles(f: FileList | null) {
     if (!f?.length) return;
-    const next = [...newFiles, ...Array.from(f)].slice(0, 5);
-    setNewFiles(next);
+    const picked = Array.from(f);
+    setNewFiles((prev) => [...prev, ...picked].slice(0, 5));
+    if (newFileInputRef.current) newFileInputRef.current.value = "";
+  }
+
+  function removeNewFile(index: number) {
+    setNewFiles((prev) => prev.filter((_, i) => i !== index));
+  }
+
+  function removeReplyFile(index: number) {
+    setReplyFiles((prev) => prev.filter((_, i) => i !== index));
   }
 
   const refSaleLabel = (d: SupportTopicDetail) => {
@@ -224,7 +239,7 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
   };
 
   return (
-    <main className="flex w-full flex-1 flex-col rounded-2xl bg-white px-2">
+    <main className="flex w-full flex-1 flex-col rounded-2xl bg-white">
       <ProfilePanelHeader
         title={t("profile.supportTitle")}
         actions={
@@ -252,7 +267,7 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
         }
       />
 
-      <div className="flex min-h-[min(50dvh,420px)] flex-1 flex-col py-4 md:px-6">
+      <div className="flex min-h-[min(50dvh,420px)] flex-1 flex-col px-4 py-8">
         {actionMsg ? (
           <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{actionMsg}</div>
         ) : null}
@@ -262,7 +277,7 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
               <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900" aria-hidden />
             </div>
           ) : listErr ? (
-            <div className="mx-auto w-full max-w-3xl rounded-2xl border border-dashed border-red-200/80 bg-red-50/40 px-6 py-10 text-center md:py-12">
+            <div className="w-full rounded-2xl border border-dashed border-red-200/80 bg-red-50/40 px-6 py-10 text-center md:py-12">
               <p className="text-sm font-medium text-red-800">{listErr}</p>
               <button
                 type="button"
@@ -280,43 +295,72 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
              
             />
           ) : (
-            <ul className="flex w-full max-w-3xl flex-col gap-3">
-              {topics.map((row) => (
-                <li key={row._id}>
-                  <button
-                    type="button"
-                    onClick={() => goToTopic(row._id)}
-                    className="flex w-full flex-col gap-1 rounded-2xl border border-gray-200 bg-white p-4 text-left shadow-sm transition hover:border-indigo-200 hover:bg-indigo-50/30 md:flex-row md:items-center md:justify-between"
-                  >
-                    <div>
-                      <p className="font-medium text-gray-900">{row.subject}</p>
-                      <p className="text-xs text-gray-500">
-                        {t("profile.supportUpdated")}: {formatDt(row.updatedAt, locale)}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                          row.status === "closed" ? "bg-gray-100 text-gray-600" : "bg-emerald-50 text-emerald-800"
-                        }`}
-                      >
-                        {statusLabel(row.status)}
-                      </span>
-                      <span className="text-sm font-medium text-indigo-600">{t("profile.supportOpen")} →</span>
-                    </div>
-                  </button>
-                </li>
-              ))}
+            <ul className="flex w-full flex-col gap-3">
+              {topics.map((row) => {
+                const unread = row.unreadForMember === true;
+                return (
+                  <li key={row._id}>
+                    <button
+                      type="button"
+                      onClick={() => goToTopic(row._id)}
+                      aria-label={
+                        unread
+                          ? `${row.subject}. ${t("profile.supportUnreadBadge")}`
+                          : row.subject
+                      }
+                      className={`flex w-full flex-col gap-1 rounded-2xl border p-4 text-left shadow-sm transition md:flex-row md:items-center md:justify-between ${
+                        unread
+                          ? "border-indigo-200 border-l-[3px] border-l-[#615FFF] bg-indigo-50/60 shadow-indigo-100/80 hover:border-indigo-300 hover:bg-indigo-50/90"
+                          : "border-gray-200 bg-white hover:border-indigo-200 hover:bg-indigo-50/30"
+                      }`}
+                    >
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          {unread ? (
+                            <span
+                              className="inline-flex h-2 w-2 shrink-0 rounded-full bg-[#615FFF] shadow-sm shadow-indigo-400/50"
+                              aria-hidden
+                            />
+                          ) : null}
+                          <p
+                            className={`min-w-0 text-gray-900 ${unread ? "font-semibold" : "font-medium"}`}
+                          >
+                            {row.subject}
+                          </p>
+                          {unread ? (
+                            <span className="shrink-0 rounded-full bg-[#615FFF] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
+                              {t("profile.supportUnreadBadge")}
+                            </span>
+                          ) : null}
+                        </div>
+                        <p className="mt-1 text-xs text-gray-500">
+                          {t("profile.supportUpdated")}: {formatDt(row.updatedAt, locale)}
+                        </p>
+                      </div>
+                      <div className="flex shrink-0 items-center gap-2 pt-1 md:pt-0">
+                        <span
+                          className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                            row.status === "closed" ? "bg-gray-100 text-gray-600" : "bg-emerald-50 text-emerald-800"
+                          }`}
+                        >
+                          {statusLabel(row.status)}
+                        </span>
+                        <span className="text-sm font-medium text-indigo-600">{t("profile.supportOpen")} →</span>
+                      </div>
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           )
         ) : null}
 
         {view === "new" ? (
-          <div className="mx-auto w-full max-w-3xl space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+          <div className="w-full space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
             <div>
               <label className="mb-1 block text-xs text-gray-500">{t("profile.supportSubject")}</label>
               <input
-                className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm text-gray-800"
+                className={supportFieldClass}
                 value={newSubject}
                 onChange={(e) => setNewSubject(e.target.value)}
               />
@@ -324,7 +368,7 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
             <div>
               <label className="mb-1 block text-xs text-gray-500">{t("profile.supportMessage")}</label>
               <textarea
-                className="min-h-[120px] w-full rounded-xl border border-gray-200 px-4 py-3 text-sm text-gray-800"
+                className={`min-h-[120px] ${supportFieldClass}`}
                 value={newBody}
                 onChange={(e) => setNewBody(e.target.value)}
               />
@@ -332,7 +376,7 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
             <div>
               <label className="mb-1 block text-xs text-gray-500">{t("profile.supportRelatedSale")}</label>
               <select
-                className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm text-gray-800"
+                className={supportFieldClass}
                 value={newSaleId}
                 onChange={(e) => setNewSaleId(e.target.value)}
               >
@@ -347,14 +391,42 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
             <div>
               <label className="mb-1 block text-xs text-gray-500">{t("profile.supportAttach")}</label>
               <input
+                ref={newFileInputRef}
                 type="file"
                 multiple
                 accept="image/*,.pdf"
-                className="text-sm text-gray-600"
+                className="sr-only"
                 onChange={(e) => onPickNewFiles(e.target.files)}
               />
+              <button
+                type="button"
+                disabled={newFiles.length >= 5}
+                onClick={() => newFileInputRef.current?.click()}
+                className="inline-flex items-center justify-center rounded-2xl border border-[#D1D5DB] bg-white px-4 py-2.5 text-sm font-medium text-[#18181B] transition hover:bg-[#FAFAFA] focus:outline-none focus:ring-2 focus:ring-[#615FFF]/20 disabled:pointer-events-none disabled:opacity-50"
+              >
+                {t("profile.supportPickFiles")}
+              </button>
               {newFiles.length > 0 ? (
-                <p className="mt-1 text-xs text-gray-500">{newFiles.map((f) => f.name).join(", ")}</p>
+                <ul className="mt-3 space-y-2" aria-live="polite">
+                  {newFiles.map((file, i) => (
+                    <li
+                      key={`${file.name}-${i}-${file.size}`}
+                      className="flex items-center justify-between gap-3 rounded-xl border border-gray-100 bg-gray-50 px-3 py-2 text-sm text-gray-800"
+                    >
+                      <span className="min-w-0 flex-1 truncate" title={file.name}>
+                        {file.name}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => removeNewFile(i)}
+                        className="shrink-0 rounded-lg px-2 py-1 text-xs font-medium text-red-600 transition hover:bg-red-50"
+                        aria-label={t("profile.supportRemoveFile")}
+                      >
+                        {t("profile.supportRemoveFile")}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
               ) : null}
             </div>
             <div className="flex justify-end pt-2">
@@ -376,7 +448,7 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
               <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900" aria-hidden />
             </div>
           ) : (
-            <div className="mx-auto flex w-full max-w-3xl flex-col gap-4">
+            <div className="flex w-full flex-col gap-4">
               <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
                 <h2 className="text-base font-semibold text-gray-900">{detail.topic.subject}</h2>
                 <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-500">
@@ -431,18 +503,57 @@ export function ProfileSupportPanel({ initialTopics }: SupportProps = {}) {
               ) : (
                 <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
                   <textarea
-                    className="min-h-[88px] w-full rounded-xl border border-gray-200 px-3 py-2 text-sm"
+                    className={`min-h-[88px] ${supportFieldClass}`}
                     placeholder={t("profile.supportReplyPlaceholder")}
                     value={reply}
                     onChange={(e) => setReply(e.target.value)}
                   />
-                  <div className="mt-3 flex flex-wrap items-center gap-3">
-                    <input type="file" multiple accept="image/*,.pdf" onChange={(e) => onPickReplyFiles(e.target.files)} />
+                  <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end">
+                    <div className="min-w-0 flex-1">
+                      <input
+                        ref={replyFileInputRef}
+                        type="file"
+                        multiple
+                        accept="image/*,.pdf"
+                        className="sr-only"
+                        onChange={(e) => onPickReplyFiles(e.target.files)}
+                      />
+                      <button
+                        type="button"
+                        disabled={replyFiles.length >= 5}
+                        onClick={() => replyFileInputRef.current?.click()}
+                        className="inline-flex w-full items-center justify-center rounded-2xl border border-[#D1D5DB] bg-white px-4 py-2.5 text-sm font-medium text-[#18181B] transition hover:bg-[#FAFAFA] focus:outline-none focus:ring-2 focus:ring-[#615FFF]/20 disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
+                      >
+                        {t("profile.supportPickFiles")}
+                      </button>
+                      {replyFiles.length > 0 ? (
+                        <ul className="mt-2 space-y-2" aria-live="polite">
+                          {replyFiles.map((file, i) => (
+                            <li
+                              key={`${file.name}-${i}-${file.size}`}
+                              className="flex items-center justify-between gap-3 rounded-xl border border-gray-100 bg-gray-50 px-3 py-2 text-sm text-gray-800"
+                            >
+                              <span className="min-w-0 flex-1 truncate" title={file.name}>
+                                {file.name}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => removeReplyFile(i)}
+                                className="shrink-0 rounded-lg px-2 py-1 text-xs font-medium text-red-600 transition hover:bg-red-50"
+                                aria-label={t("profile.supportRemoveFile")}
+                              >
+                                {t("profile.supportRemoveFile")}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
                     <button
                       type="button"
                       disabled={sending}
                       onClick={submitReply}
-                      className="ml-auto rounded-full bg-indigo-500 px-6 py-2 text-sm font-semibold text-white hover:bg-indigo-600 disabled:opacity-50"
+                      className="rounded-full bg-indigo-500 px-6 py-2 text-sm font-semibold text-white hover:bg-indigo-600 disabled:opacity-50 sm:ml-auto"
                     >
                       {t("profile.supportSend")}
                     </button>

@@ -88,10 +88,10 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
                   setDropdownOpen((v) => !v);
                   setFilterOpen(false);
                 }}
-                className="relative flex items-center gap-1 rounded-3xl border border-slate-200 bg-zinc-100 px-3 py-2 text-xs md:gap-2 md:px-4 md:py-3"
+                className="relative flex min-w-[170px] shrink-0 items-center gap-1 rounded-3xl border border-slate-200 bg-zinc-100 px-3 py-2 text-xs md:min-w-[150px] md:gap-2 md:px-4 md:py-3"
               >
                 <PersonIcon />
-                <span className="whitespace-nowrap font-[family-name:var(--font-dm-sans)] text-[13px]">
+                <span className="min-w-0 flex-1 whitespace-nowrap text-left text-[13px]">
                   {selectedPerson === null ? "Kaç kişisiniz?" : `${selectedPerson} Kişi`}
                 </span>
                 <ChevronDownIcon />
@@ -138,16 +138,19 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
                   setFilterOpen((v) => !v);
                   setDropdownOpen(false);
                 }}
-                className="relative flex items-center gap-1 rounded-3xl border border-slate-200 bg-zinc-100 px-3 py-2 text-xs md:gap-2 md:px-4 md:py-3"
+                className="relative flex max-w-[min(100%,14rem)] items-center gap-1 rounded-3xl border border-slate-200 bg-zinc-100 px-3 py-2 text-xs md:max-w-[150px] md:gap-2 md:px-4 md:py-3"
               >
                 <FilterIcon />
-                <span className="font-[family-name:var(--font-dm-sans)] text-[13px]">
+                <span
+                  className="min-w-0 truncate font-[family-name:var(--font-dm-sans)] text-[13px]"
+                  title={selectedFilter === null ? undefined : filterOptions[selectedFilter]}
+                >
                   {selectedFilter === null ? "Sırala" : filterOptions[selectedFilter]}
                 </span>
                 <ChevronDownIcon />
               </button>
               {filterOpen ? (
-                <div className="absolute left-0 top-full z-10 mt-2 w-36 rounded-xl bg-white p-2 shadow-lg md:w-40">
+                <div className="absolute left-0 top-full z-10 mt-2 w-max min-w-[17rem] max-w-[min(100vw-1.5rem,24rem)] overflow-x-auto rounded-xl bg-white p-2 shadow-lg md:min-w-[18rem]">
                   {filterOptions.map((label, idx) => (
                     <button
                       key={`${label}-${idx}`}
@@ -156,9 +159,9 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
                         setSelectedFilter(idx);
                         setFilterOpen(false);
                       }}
-                      className="flex w-full cursor-pointer items-center rounded px-3 py-2"
+                      className="flex w-full min-w-0 cursor-pointer items-center rounded px-3 py-2 text-left"
                     >
-                      <span className="relative flex h-5 w-5 items-center justify-center">
+                      <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
                         <span
                           className={`h-5 w-5 rounded-full border-2 ${
                             selectedFilter === idx ? "border-black" : "border-gray-300"
@@ -169,7 +172,7 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
                         ) : null}
                       </span>
                       <span
-                        className={`ml-2 font-[family-name:var(--font-dm-sans)] text-[13px] ${
+                        className={`ml-2 min-w-0 whitespace-nowrap font-[family-name:var(--font-dm-sans)] text-[13px] ${
                           selectedFilter === idx ? "text-black" : "text-gray-700"
                         }`}
                       >

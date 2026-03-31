@@ -1,13 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "@/contexts/locale-context";
-import { getPublicApiBaseBrowser } from "@/lib/env";
-import { computeCheckoutPricing } from "@/lib/payment-pricing";
-import { formatDateTR, formatTimeTR } from "@/lib/date";
 import { useAuthStore } from "@/stores/auth-store";
 import { apiGetProfile, type MemberProfile } from "@/lib/api/member-api";
+import type { OdemeEventRecord, OdemeSaleInfoBase } from "@/lib/odeme-server-data";
 import { GuestRegisterForm } from "@/components/payment/GuestRegisterForm";
 import { TicketHoldersForm, type TicketHolderDraft } from "@/components/payment/TicketHoldersForm";
 import { PaymentCardStep, type CheckoutSaleInfo } from "@/components/payment/PaymentCardStep";
@@ -16,31 +14,46 @@ import { PaymentResultPanel } from "@/components/payment/PaymentResultPanel";
 const steps = ["Kullanıcı Bilgileri", "Fatura Bilgileri", "Ödeme", "Bitiş"];
 const mobileSteps = ["Kullanıcı", "Fatura", "Ödeme", "Bitiş"];
 
-type SaleInfoBase = Omit<CheckoutSaleInfo, "ticketHolders" | "userEmail">;
+const CHECKOUT_RESERVE_SECONDS = 10 * 60;
 
-type EventRecord = {
-  _id: string;
-  name?: string;
-  date?: string;
-  image?: string;
-  tags?: { name?: string; tag?: string }[];
-};
+function checkoutDeadlineStorageKey(listingId: string, quantity: number) {
+  return `upbilet-checkout-deadline:v1:${listingId}:${quantity}`;
+}
 
-type ListingRecord = {
-  _id: string;
-  eventId: string;
-  price: number;
-  sellerAmount?: number;
-  quantity: number;
-  category: string;
-  block?: string;
-  row?: string;
-  seat?: string;
-};
+/** Var olan son geçerlilik (geçmiş olsa bile); yoksa yeni bitiş yazar. */
+function readOrInitDeadlineMs(storageKey: string): number {
+  const now = Date.now();
+  try {
+    const raw = localStorage.getItem(storageKey);
+    const d = raw ? parseInt(raw, 10) : NaN;
+    if (Number.isFinite(d)) {
+      return d;
+    }
+  } catch {
+    /* ignore */
+  }
+  const fresh = now + CHECKOUT_RESERVE_SECONDS * 1000;
+  try {
+    localStorage.setItem(storageKey, String(fresh));
+  } catch {
+    /* ignore */
+  }
+  return fresh;
+}
+
+function formatCountdown(totalSeconds: number): string {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+}
+
+type SaleInfoBase = OdemeSaleInfoBase;
 
 type Props = {
-  listingId: string | null;
-  quantityRaw: string | null;
+  initialSaleInfo: SaleInfoBase;
+  initialEventData: OdemeEventRecord;
+  initialAuthenticated: boolean;
+  initialProfile: MemberProfile | null;
 };
 
 function emptyHolder(): TicketHolderDraft {
@@ -55,17 +68,37 @@ function emptyHolder(): TicketHolderDraft {
   };
 }
 
-export function OdemeFlow({ listingId, quantityRaw }: Props) {
+export function OdemeFlow({ initialSaleInfo, initialEventData, initialAuthenticated, initialProfile }: Props) {
   const router = useRouter();
   const { href } = useLocale();
   const token = useAuthStore((s) => s.token);
+  const saleInfo = initialSaleInfo;
+  const eventData = initialEventData;
 
-  const [loading, setLoading] = useState(true);
+  const checkoutStorageKey = useMemo(
+    () => checkoutDeadlineStorageKey(saleInfo.listingId, saleInfo.quantity),
+    [saleInfo.listingId, saleInfo.quantity]
+  );
+
+  /** Must start false so SSR + first client paint match (hasHydrated() differs server vs client). */
+  const [persistReady, setPersistReady] = useState(false);
+
+  useEffect(() => {
+    if (useAuthStore.persist.hasHydrated()) {
+      setPersistReady(true);
+      return;
+    }
+    const unsub = useAuthStore.persist.onFinishHydration(() => setPersistReady(true));
+    return unsub;
+  }, []);
+
+  const isLoggedIn = persistReady ? Boolean(token) : initialAuthenticated;
+
   const [currentStep, setCurrentStep] = useState(0);
-  const [saleInfo, setSaleInfo] = useState<SaleInfoBase | null>(null);
-  const [eventData, setEventData] = useState<EventRecord | null>(null);
-  const [ticketHolders, setTicketHolders] = useState<TicketHolderDraft[]>([]);
-  const [profile, setProfile] = useState<MemberProfile | null>(null);
+  const [ticketHolders, setTicketHolders] = useState<TicketHolderDraft[]>(() =>
+    Array.from({ length: initialSaleInfo.quantity }, () => emptyHolder())
+  );
+  const [profile, setProfile] = useState<MemberProfile | null>(initialProfile);
 
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
@@ -73,12 +106,54 @@ export function OdemeFlow({ listingId, quantityRaw }: Props) {
   const [billingWarning, setBillingWarning] = useState(false);
 
   const [paymentResult, setPaymentResult] = useState<Record<string, unknown> | null>(null);
+  const [reserveSecondsLeft, setReserveSecondsLeft] = useState(CHECKOUT_RESERVE_SECONDS);
+  const checkoutRedirectedRef = useRef(false);
+  const currentStepRef = useRef(0);
+  currentStepRef.current = currentStep;
+
+  useLayoutEffect(() => {
+    checkoutRedirectedRef.current = false;
+  }, [checkoutStorageKey]);
+
+  useLayoutEffect(() => {
+    if (typeof window === "undefined" || currentStepRef.current === 3) return;
+    const deadline = readOrInitDeadlineMs(checkoutStorageKey);
+    const sec = Math.max(0, Math.floor((deadline - Date.now()) / 1000));
+    setReserveSecondsLeft(sec);
+  }, [checkoutStorageKey]);
+
+  useEffect(() => {
+    if (currentStep === 3) return;
+
+    const tick = () => {
+      if (checkoutRedirectedRef.current || currentStepRef.current === 3) return;
+      const deadline = readOrInitDeadlineMs(checkoutStorageKey);
+      const sec = Math.max(0, Math.floor((deadline - Date.now()) / 1000));
+      setReserveSecondsLeft(sec);
+      if (sec <= 0) {
+        checkoutRedirectedRef.current = true;
+        try {
+          localStorage.removeItem(checkoutStorageKey);
+        } catch {
+          /* ignore */
+        }
+        router.replace(href("/"));
+      }
+    };
+
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, [checkoutStorageKey, currentStep, router, href]);
+
+  const checkoutExpired = reserveSecondsLeft <= 0;
 
   const handleHoldersChange = useCallback((holders: TicketHolderDraft[]) => {
     setTicketHolders(holders);
   }, []);
 
   useEffect(() => {
+    if (!persistReady) return;
     if (!token) {
       setProfile(null);
       return;
@@ -86,104 +161,51 @@ export function OdemeFlow({ listingId, quantityRaw }: Props) {
     void apiGetProfile().then((r) => {
       if (r.member) setProfile(r.member);
     });
-  }, [token]);
+  }, [token, persistReady]);
 
   useEffect(() => {
-    if (!listingId || !quantityRaw) {
-      router.replace(href("/"));
-      return;
+    const w = typeof window !== "undefined" ? (window as unknown as { dataLayer?: unknown[] }) : null;
+    if (!w?.dataLayer) return;
+    const totalWithKdv = parseFloat(saleInfo.totalPrice);
+    const unit = saleInfo.listingPrice;
+    try {
+      w.dataLayer.push({
+        event: "begin_checkout",
+        ecommerce: {
+          currency: "TRY",
+          value: totalWithKdv,
+          items: [
+            {
+              item_id: saleInfo.listingId,
+              item_name: saleInfo.eventName,
+              category: saleInfo.category,
+              quantity: saleInfo.quantity,
+              price: unit,
+            },
+          ],
+        },
+      });
+    } catch {
+      /* ignore */
     }
-
-    const quantity = Math.max(1, parseInt(quantityRaw, 10) || 1);
-    const base = getPublicApiBaseBrowser();
-
-    (async () => {
-      setLoading(true);
-      try {
-        const listRes = await fetch(`${base}events/getListingById/${listingId}`);
-        const listJson = (await listRes.json()) as { success?: boolean; listing?: ListingRecord };
-        if (!listJson.success || !listJson.listing) {
-          router.replace(href("/"));
-          return;
-        }
-        const listing = listJson.listing;
-
-        const evRes = await fetch(`${base}events/${listing.eventId}`);
-        const evJson = (await evRes.json()) as { success?: boolean; event?: EventRecord };
-        if (!evJson.success || !evJson.event) {
-          router.replace(href("/"));
-          return;
-        }
-        const event = evJson.event;
-
-        const unit = listing.price;
-        const { serviceFee, serviceFeeKdv, totalWithKdv } = computeCheckoutPricing(unit, quantity);
-        const sellerAmt = listing.sellerAmount ?? unit * 0.8;
-
-        const eventDate = event.date
-          ? `${formatDateTR(event.date)} ${formatTimeTR(event.date)}`.trim()
-          : "";
-
-        setEventData(event);
-        setSaleInfo({
-          listingId: String(listing._id),
-          eventId: String(listing.eventId),
-          eventName: event.name || "Etkinlik",
-          eventDate,
-          quantity,
-          image: event.image,
-          category: listing.category,
-          block: listing.block,
-          row: listing.row,
-          seat: listing.seat,
-          listingPrice: unit,
-          sellerAmount: sellerAmt,
-          serviceFee: serviceFee.toFixed(2),
-          serviceFeeKdv: serviceFeeKdv.toFixed(2),
-          totalPrice: totalWithKdv.toFixed(2),
-          billingCity: "",
-          billingDistrict: "",
-          billingAddress: "",
-        });
-        setTicketHolders(Array.from({ length: quantity }, () => emptyHolder()));
-
-        if (typeof window !== "undefined" && (window as unknown as { dataLayer?: unknown[] }).dataLayer) {
-          try {
-            (window as unknown as { dataLayer: unknown[] }).dataLayer.push({
-              event: "begin_checkout",
-              ecommerce: {
-                currency: "TRY",
-                value: totalWithKdv,
-                items: [
-                  {
-                    item_id: String(listing._id),
-                    item_name: event.name,
-                    category: listing.category,
-                    quantity,
-                    price: unit,
-                  },
-                ],
-              },
-            });
-          } catch {
-            /* ignore */
-          }
-        }
-      } catch {
-        router.replace(href("/"));
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, [listingId, quantityRaw, router, href]);
+  }, [
+    saleInfo.listingId,
+    saleInfo.eventName,
+    saleInfo.category,
+    saleInfo.quantity,
+    saleInfo.listingPrice,
+    saleInfo.totalPrice,
+  ]);
 
   const showContinueButton = useMemo(() => {
+    if (checkoutExpired) return false;
     if (currentStep === 2) return false;
-    if (currentStep === 0 && !token) return false;
+    if (currentStep === 0 && !isLoggedIn) return false;
     return true;
-  }, [currentStep, token]);
+  }, [currentStep, isLoggedIn, checkoutExpired]);
 
   function handleContinue() {
+    if (checkoutExpired) return;
     if (currentStep === 1) {
       if (!city.trim() || !district.trim() || !address.trim()) {
         setBillingWarning(true);
@@ -194,18 +216,21 @@ export function OdemeFlow({ listingId, quantityRaw }: Props) {
     setCurrentStep((s) => s + 1);
   }
 
-  const fullSaleInfo: CheckoutSaleInfo | null = saleInfo
-    ? {
-        ...saleInfo,
-        billingCity: currentStep >= 2 ? city : saleInfo.billingCity,
-        billingDistrict: currentStep >= 2 ? district : saleInfo.billingDistrict,
-        billingAddress: currentStep >= 2 ? address : saleInfo.billingAddress,
-        ticketHolders,
-        userEmail: profile?.email,
-      }
-    : null;
+  const fullSaleInfo: CheckoutSaleInfo = {
+    ...saleInfo,
+    billingCity: currentStep >= 2 ? city : saleInfo.billingCity,
+    billingDistrict: currentStep >= 2 ? district : saleInfo.billingDistrict,
+    billingAddress: currentStep >= 2 ? address : saleInfo.billingAddress,
+    ticketHolders,
+    userEmail: profile?.email,
+  };
 
   function onPaymentSuccess(saleData: Record<string, unknown> & { _id?: string }) {
+    try {
+      localStorage.removeItem(checkoutDeadlineStorageKey(saleInfo.listingId, saleInfo.quantity));
+    } catch {
+      /* ignore */
+    }
     setPaymentResult(saleData);
     setCurrentStep(3);
     if (typeof window !== "undefined" && (window as unknown as { dataLayer?: unknown[] }).dataLayer) {
@@ -231,14 +256,6 @@ export function OdemeFlow({ listingId, quantityRaw }: Props) {
         /* ignore */
       }
     }
-  }
-
-  if (loading) {
-    return (
-      <div className="flex min-h-[300px] flex-col items-center justify-center bg-white transition-opacity duration-300">
-        <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-indigo-600" />
-      </div>
-    );
   }
 
   return (
@@ -293,17 +310,17 @@ export function OdemeFlow({ listingId, quantityRaw }: Props) {
       >
         <div className={currentStep === 3 ? "col-span-1" : "col-span-1 lg:col-span-2"}>
           {currentStep === 0 ? (
-            <div className="rounded-2xl text-center">
-              {!token ? (
+            !isLoggedIn ? (
+              <div className="rounded-2xl text-center">
                 <GuestRegisterForm />
-              ) : (
-                <TicketHoldersForm
-                  quantity={saleInfo?.quantity ?? 1}
-                  eventTags={eventData?.tags}
-                  onChange={handleHoldersChange}
-                />
-              )}
-            </div>
+              </div>
+            ) : (
+              <TicketHoldersForm
+                quantity={saleInfo.quantity}
+                eventTags={eventData.tags}
+                onChange={handleHoldersChange}
+              />
+            )
           ) : null}
 
           {currentStep === 1 ? (
@@ -342,8 +359,8 @@ export function OdemeFlow({ listingId, quantityRaw }: Props) {
             </div>
           ) : null}
 
-          {currentStep === 2 && fullSaleInfo ? (
-            <PaymentCardStep saleInfo={fullSaleInfo} onSuccess={onPaymentSuccess} />
+          {currentStep === 2 ? (
+            <PaymentCardStep saleInfo={fullSaleInfo} checkoutExpired={checkoutExpired} onSuccess={onPaymentSuccess} />
           ) : null}
 
           {currentStep === 3 ? (
@@ -352,90 +369,110 @@ export function OdemeFlow({ listingId, quantityRaw }: Props) {
         </div>
 
         {currentStep !== 3 ? (
-          <div className="order-last col-span-1 lg:order-none">
-            {!saleInfo ? (
-              <div className="flex h-[300px] items-center justify-center rounded-2xl bg-white p-4 shadow md:h-[400px] md:p-6">
-                <div className="flex flex-col items-center">
-                  <div className="mb-4 h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-indigo-600 md:h-12 md:w-12" />
-                  <div className="text-sm text-gray-600">Bilet bilgileri yükleniyor...</div>
+          <div className="order-last col-span-1 flex flex-col gap-4 md:gap-5 lg:order-none">
+            <div className="rounded-2xl bg-white p-4 shadow md:p-5">
+              <div
+                className={`rounded-xl border px-3 py-3 text-center md:px-4 md:py-4 ${
+                  checkoutExpired
+                    ? "border-red-200 bg-red-50"
+                    : reserveSecondsLeft <= 120
+                      ? "border-amber-200 bg-amber-50"
+                      : "border-gray-200/80 bg-stone-50/60"
+                }`}
+              >
+                <div className="text-xs font-medium uppercase tracking-wide text-gray-500">Rezervasyon süresi</div>
+                <div
+                  className={`mt-1 font-mono text-2xl font-semibold tabular-nums md:text-3xl ${
+                    checkoutExpired ? "text-red-600" : reserveSecondsLeft <= 120 ? "text-amber-800" : "text-gray-900"
+                  }`}
+                >
+                  {formatCountdown(reserveSecondsLeft)}
                 </div>
+                {checkoutExpired ? (
+                  <p className="mt-2 text-xs text-red-700">Süre doldu. Sayfayı yenileyerek tekrar deneyin.</p>
+                ) : (
+                  <p className="mt-2 text-xs text-gray-500">Ödeme adımını bu süre içinde tamamlayın</p>
+                )}
               </div>
-            ) : (
-              <div className="rounded-2xl bg-white p-4 md:p-6">
-                <div className="mb-4 border-b border-gray-200 pb-2 text-center text-lg font-bold text-gray-800 md:text-base">
-                  Ödeme Detayları
+            </div>
+
+            <div className="rounded-2xl bg-white p-4 shadow md:p-6">
+              <div className="mb-4 border-b border-gray-200 pb-2 text-center text-lg font-bold text-gray-800 md:text-base">
+                Ödeme Detayları
+              </div>
+              {saleInfo.eventName ? (
+                <div className="mb-4 border-b border-gray-200 pb-2 text-center text-base text-gray-800 md:text-md">
+                  {saleInfo.eventName}
                 </div>
-                {saleInfo.eventName ? (
-                  <div className="mb-4 border-b border-gray-200 pb-2 text-center text-base text-gray-800 md:text-md">
-                    {saleInfo.eventName}
+              ) : null}
+
+              <div className="mb-4 space-y-1 border-b border-gray-200 pb-2 text-sm text-gray-600 md:mb-5">
+                <div className="flex justify-between">
+                  <span>Etkinlik Tarihi:</span>
+                  <span>{saleInfo.eventDate}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Kategori:</span>
+                  <span>{saleInfo.category}</span>
+                </div>
+                {saleInfo.block ? (
+                  <div className="flex justify-between">
+                    <span>Blok:</span>
+                    <span>{saleInfo.block}</span>
                   </div>
                 ) : null}
-
-                <div className="mb-4 space-y-1 border-b border-gray-200 pb-2 text-sm text-gray-600 md:mb-5">
+                {saleInfo.row ? (
                   <div className="flex justify-between">
-                    <span>Etkinlik Tarihi:</span>
-                    <span>{saleInfo.eventDate}</span>
+                    <span>Sıra:</span>
+                    <span>{saleInfo.row}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Kategori:</span>
-                    <span>{saleInfo.category}</span>
-                  </div>
-                  {saleInfo.block ? (
-                    <div className="flex justify-between">
-                      <span>Blok:</span>
-                      <span>{saleInfo.block}</span>
-                    </div>
-                  ) : null}
-                  {saleInfo.row ? (
-                    <div className="flex justify-between">
-                      <span>Sıra:</span>
-                      <span>{saleInfo.row}</span>
-                    </div>
-                  ) : null}
-                </div>
-
-                <div className="space-y-3 text-sm md:space-y-4">
-                  <div className="flex justify-between">
-                    <span>Bilet Adedi</span>
-                    <span>{saleInfo.quantity}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Teklif Bilet Fiyatı</span>
-                    <span>{saleInfo.listingPrice} TL</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Toplam Fiyat</span>
-                    <span>{saleInfo.listingPrice * saleInfo.quantity} TL</span>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <span>Hizmet Bedeli:</span>
-                    <span>{saleInfo.serviceFee} TL</span>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <span>KDV:</span>
-                    <span>{saleInfo.serviceFeeKdv} TL</span>
-                  </div>
-                  <div className="flex justify-between border-t pt-3 font-medium md:pt-4">
-                    <span>Ödenecek Tutar</span>
-                    <span>{saleInfo.totalPrice} TL</span>
-                  </div>
-                </div>
-
-                {currentStep === 1 && billingWarning ? (
-                  <div className="mb-2 mt-3 text-sm font-medium text-red-500">Lütfen tüm fatura alanlarını doldurunuz.</div>
-                ) : null}
-
-                {showContinueButton ? (
-                  <button
-                    type="button"
-                    onClick={handleContinue}
-                    className="mt-4 w-full rounded-lg bg-indigo-600 py-3 text-sm font-medium text-white hover:bg-indigo-700 md:mt-6 md:py-3"
-                  >
-                    Devam Et
-                  </button>
                 ) : null}
               </div>
-            )}
+
+              <div className="space-y-3 text-sm md:space-y-4">
+                <div className="flex justify-between">
+                  <span>Bilet Adedi</span>
+                  <span>{saleInfo.quantity}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Teklif Bilet Fiyatı</span>
+                  <span>{saleInfo.listingPrice} TL</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Toplam Fiyat</span>
+                  <span>{saleInfo.listingPrice * saleInfo.quantity} TL</span>
+                </div>
+                <div className="flex justify-between text-xs">
+                  <span>Hizmet Bedeli:</span>
+                  <span>{saleInfo.serviceFee} TL</span>
+                </div>
+                <div className="flex justify-between text-xs">
+                  <span>KDV:</span>
+                  <span>{saleInfo.serviceFeeKdv} TL</span>
+                </div>
+                <div className="flex justify-between border-t pt-3 font-medium md:pt-4">
+                  <span>Ödenecek Tutar</span>
+                  <span>{saleInfo.totalPrice} TL</span>
+                </div>
+              </div>
+
+              {checkoutExpired ? (
+                <div className="mb-2 mt-3 text-sm font-medium text-red-600">Süre dolduğu için devam edemezsiniz.</div>
+              ) : null}
+              {currentStep === 1 && billingWarning ? (
+                <div className="mb-2 mt-3 text-sm font-medium text-red-500">Lütfen tüm fatura alanlarını doldurunuz.</div>
+              ) : null}
+
+              {showContinueButton ? (
+                <button
+                  type="button"
+                  onClick={handleContinue}
+                  className="mt-4 w-full rounded-lg bg-indigo-600 py-3 text-sm font-medium text-white hover:bg-indigo-700 md:mt-6 md:py-3"
+                >
+                  Devam Et
+                </button>
+              ) : null}
+            </div>
           </div>
         ) : null}
       </div>

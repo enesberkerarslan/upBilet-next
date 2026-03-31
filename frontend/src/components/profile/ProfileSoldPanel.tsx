@@ -10,6 +10,8 @@ import {
   eventName,
   formatProfileUtcDateTime,
   formatSaleDate,
+  saleProgressIconSrc,
+  saleRefDisplay,
   sellerSaleStatusClass,
   sellerSaleStatusLabel,
 } from "@/components/profile/profile-utils";
@@ -17,21 +19,6 @@ import { useLocale } from "@/contexts/locale-context";
 import { apiGetMySales, type SaleRecord } from "@/lib/api/member-api";
 
 type Props = { initialSales?: SaleRecord[] };
-
-function statusIconSrc(status: string | undefined): string {
-  switch (status) {
-    case "pending_approval":
-    case "approved":
-    case "active":
-      return "/generalicon/pending.svg";
-    case "completed":
-      return "/generalicon/succesful.svg";
-    case "rejected":
-      return "/generalicon/rejected.svg";
-    default:
-      return "/generalicon/pending.svg";
-  }
-}
 
 function eventLocation(ticket: SaleRecord): string {
   const e = ticket.eventId;
@@ -72,9 +59,9 @@ export function ProfileSoldPanel({ initialSales }: Props = {}) {
   }, [fromServer, load]);
 
   return (
-    <main className="flex w-full flex-1 flex-col rounded-2xl bg-white px-2">
+    <main className="flex w-full flex-1 flex-col rounded-3xl bg-white">
       <ProfilePanelHeader title={t("profile.soldPanelTitle")} />
-      <div className="flex min-h-[min(50dvh,420px)] flex-1 flex-col py-4 md:px-6">
+      <div className="flex min-h-[min(50dvh,420px)] flex-1 flex-col px-4 py-8">
         {loading ? (
           <div className="flex flex-1 flex-col items-center justify-center py-16">
             <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900" aria-hidden />
@@ -103,13 +90,16 @@ export function ProfileSoldPanel({ initialSales }: Props = {}) {
           />
         ) : (
           list.map((ticket) => (
-            <div key={ticket._id} className="mb-4 w-full max-w-3xl rounded-2xl border bg-white shadow-sm md:mb-6">
+            <div
+              key={ticket._id}
+              className="mb-4 w-full rounded-3xl border border-gray-200 bg-white shadow-sm md:mb-6"
+            >
               <div className="hidden p-6 md:block">
                 <div className="mb-3 flex items-center justify-between text-xs text-gray-500">
                   <div className="flex items-center gap-2">
                     <span>{ticket.saleDate ? formatProfileUtcDateTime(ticket.saleDate, locale) : ""}</span>
                     <span>•</span>
-                    <span>{ticket._id}</span>
+                    <span className="font-mono text-[11px]">{saleRefDisplay(ticket)}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="flex items-center gap-2 rounded px-2 py-1 text-xs">
@@ -159,7 +149,7 @@ export function ProfileSoldPanel({ initialSales }: Props = {}) {
                       {Number(ticket.sellerTotalAmount ?? 0).toFixed(2)} TL
                     </span>
                     <span className={`flex items-center pt-2 text-xs ${sellerSaleStatusClass(ticket.status)}`}>
-                      <img src={statusIconSrc(ticket.status)} alt="" className="mr-2 h-[13px] w-[13px]" />
+                      <img src={saleProgressIconSrc(ticket.status)} alt="" className="mr-2 h-[13px] w-[13px]" />
                       {sellerSaleStatusLabel(ticket.status, t)}
                     </span>
                   </div>
@@ -177,7 +167,7 @@ export function ProfileSoldPanel({ initialSales }: Props = {}) {
                 <div className="mb-3 flex items-start justify-between">
                   <div className="flex-1">
                     <div className="mb-1.5 flex items-center gap-2">
-                      <span className="text-xs text-gray-400">{ticket._id}</span>
+                      <span className="break-all font-mono text-xs text-gray-400">{saleRefDisplay(ticket)}</span>
                     </div>
                     <h3 className="text-sm font-semibold leading-tight text-gray-800">{eventName(ticket)}</h3>
                     <div className="mt-2 flex items-center gap-1">
@@ -196,11 +186,11 @@ export function ProfileSoldPanel({ initialSales }: Props = {}) {
                             : "bg-gray-100 text-gray-400"
                     }`}
                   >
-                    <img src={statusIconSrc(ticket.status)} className="h-3 w-3" alt="" />
+                    <img src={saleProgressIconSrc(ticket.status)} className="h-3 w-3" alt="" />
                     {sellerSaleStatusLabel(ticket.status, t)}
                   </span>
                 </div>
-                <div className="mb-3 rounded-lg bg-gray-50 p-3">
+                <div className="mb-3 rounded-2xl bg-gray-50 p-3">
                   <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
                     <div className="flex justify-between">
                       <span className="text-gray-500">{t("profile.category")}:</span>

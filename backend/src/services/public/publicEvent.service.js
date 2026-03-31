@@ -96,6 +96,7 @@ class PublicEventService {
             description: tag.description,
             metaTitle: tag.metaTitle,
             metaDescription: tag.metaDescription,
+            keywords: tag.keywords,
           },
         },
       };
@@ -170,6 +171,7 @@ class PublicEventService {
             description: tag.description,
             metaTitle: tag.metaTitle,
             metaDescription: tag.metaDescription,
+            keywords: tag.keywords,
           },
         },
       };
