@@ -123,7 +123,7 @@ export function TicketHoldersForm({ quantity, eventTags, onChange }: Props) {
               key={i}
               type="button"
               onClick={() => setActiveIndex(i)}
-              className={`relative flex h-11 min-w-[2.75rem] items-center justify-center rounded-xl px-3 text-sm font-semibold transition-all ${
+              className={`relative flex h-11 min-w-11 items-center justify-center rounded-xl px-3 text-sm font-semibold transition-all ${
                 active
                   ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/25"
                   : "border border-gray-200/80 bg-stone-50/50 text-gray-800 hover:border-indigo-200 hover:bg-white"

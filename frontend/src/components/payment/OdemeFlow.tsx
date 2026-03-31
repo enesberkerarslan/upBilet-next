@@ -369,7 +369,7 @@ export function OdemeFlow({ initialSaleInfo, initialEventData, initialAuthentica
         </div>
 
         {currentStep !== 3 ? (
-          <div className="order-last col-span-1 flex flex-col gap-4 md:gap-5 lg:order-none">
+          <div className="order-last col-span-1 flex flex-col gap-4 md:gap-5 lg:order-0">
             <div className="rounded-2xl bg-white p-4 shadow md:p-5">
               <div
                 className={`rounded-xl border px-3 py-3 text-center md:px-4 md:py-4 ${

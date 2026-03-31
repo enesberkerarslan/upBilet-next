@@ -119,7 +119,7 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
                         ) : null}
                       </span>
                       <span
-                        className={`ml-2 font-[family-name:var(--font-dm-sans)] text-[13px] ${
+                        className={`ml-2 font-(family-name:--font-dm-sans) text-[13px] ${
                           selectedPerson === n ? "text-black" : "text-gray-700"
                         }`}
                       >
@@ -142,7 +142,7 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
               >
                 <FilterIcon />
                 <span
-                  className="min-w-0 truncate font-[family-name:var(--font-dm-sans)] text-[13px]"
+                  className="min-w-0 truncate font-(family-name:--font-dm-sans) text-[13px]"
                   title={selectedFilter === null ? undefined : filterOptions[selectedFilter]}
                 >
                   {selectedFilter === null ? "Sırala" : filterOptions[selectedFilter]}
@@ -150,7 +150,7 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
                 <ChevronDownIcon />
               </button>
               {filterOpen ? (
-                <div className="absolute left-0 top-full z-10 mt-2 w-max min-w-[17rem] max-w-[min(100vw-1.5rem,24rem)] overflow-x-auto rounded-xl bg-white p-2 shadow-lg md:min-w-[18rem]">
+                <div className="absolute left-0 top-full z-10 mt-2 w-max min-w-68 max-w-[min(100vw-1.5rem,24rem)] overflow-x-auto rounded-xl bg-white p-2 shadow-lg md:min-w-[18rem]">
                   {filterOptions.map((label, idx) => (
                     <button
                       key={`${label}-${idx}`}
@@ -172,7 +172,7 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
                         ) : null}
                       </span>
                       <span
-                        className={`ml-2 min-w-0 whitespace-nowrap font-[family-name:var(--font-dm-sans)] text-[13px] ${
+                        className={`ml-2 min-w-0 whitespace-nowrap font-(family-name:--font-dm-sans) text-[13px] ${
                           selectedFilter === idx ? "text-black" : "text-gray-700"
                         }`}
                       >
@@ -194,7 +194,7 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
           action={
             <Link
               href={homeHref}
-              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-br from-[#667eea] to-[#764ba2] px-6 py-3 text-sm font-medium text-white shadow-[0_4px_12px_rgba(102,126,234,0.3)] transition hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(102,126,234,0.4)]"
+              className="inline-flex items-center gap-2 rounded-lg bg-linear-to-br from-[#667eea] to-[#764ba2] px-6 py-3 text-sm font-medium text-white shadow-[0_4px_12px_rgba(102,126,234,0.3)] transition hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(102,126,234,0.4)]"
             >
               <ArrowLeftIcon />
               Anasayfaya Geri Dön
@@ -209,7 +209,7 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
             <button
               type="button"
               onClick={() => setSelectedFilter(0)}
-              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-br from-[#667eea] to-[#764ba2] px-6 py-3 text-sm font-medium text-white shadow-[0_4px_12px_rgba(102,126,234,0.3)] transition hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(102,126,234,0.4)]"
+              className="inline-flex items-center gap-2 rounded-lg bg-linear-to-br from-[#667eea] to-[#764ba2] px-6 py-3 text-sm font-medium text-white shadow-[0_4px_12px_rgba(102,126,234,0.3)] transition hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(102,126,234,0.4)]"
             >
               <ArrowRightIcon />
               Tüm Biletleri Göster
