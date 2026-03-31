@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002/api';
+import { getBackendApiBase } from '@/lib/backend-api-base';
 
 async function handler(req: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   const { path } = await params;
   const token = req.cookies.get('admin_token')?.value;
-  const url = `${API_URL}/${path.join('/')}${req.nextUrl.search}`;
+  const url = `${getBackendApiBase()}/${path.join('/')}${req.nextUrl.search}`;
 
   const incomingContentType = req.headers.get('content-type');
 

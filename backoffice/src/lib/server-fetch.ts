@@ -1,6 +1,5 @@
 import { cookies } from 'next/headers';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002/api';
+import { getBackendApiBase } from '@/lib/backend-api-base';
 
 /**
  * Backend response formatları (controller bazında farklılık var):
@@ -17,7 +16,7 @@ export async function serverFetch<T>(path: string, options?: RequestInit): Promi
   const cookieStore = await cookies();
   const token = cookieStore.get('admin_token')?.value;
 
-  const res = await fetch(`${API_URL}${path}`, {
+  const res = await fetch(`${getBackendApiBase()}${path}`, {
     ...options,
     headers: {
       'Content-Type': 'application/json',
