@@ -65,9 +65,6 @@ export default async function BlogDetailPage({ params }: Props) {
     ? new Date(blog.createdAt).toLocaleDateString("tr-TR", { timeZone: "UTC" })
     : "";
 
-  const coverSrc = blog.coverImageUrl?.trim();
-  const showCover = Boolean(coverSrc && !coverSrc.includes(" "));
-
   return (
     <div className="mx-auto mt-6 w-full min-w-0 max-w-5xl overflow-x-hidden p-4 md:mt-10 md:p-8">
       <div className="mb-6">

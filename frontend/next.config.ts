@@ -12,6 +12,7 @@ const profileSlugRedirects: { from: string; to: string }[] = [
 ];
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   async redirects() {
     const locales = ["tr", "en"] as const;
     const prefixed = profileSlugRedirects.flatMap(({ from, to }) =>

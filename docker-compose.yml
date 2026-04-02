@@ -22,11 +22,28 @@ services:
     networks:
       - internal
 
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://api.upbilet.com/api}
+        NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:-}
+        NEXT_PUBLIC_GA_MEASUREMENT_ID: ${NEXT_PUBLIC_GA_MEASUREMENT_ID:-G-DNECS3XMVV}
+    environment:
+      # SSR / Route Handler: container içinden backend (tarayıcı hâlâ NEXT_PUBLIC_* kullanır)
+      API_URL: ${FRONTEND_API_URL:-http://backend:3002/api}
+    restart: unless-stopped
+    expose:
+      - "3005"
+    networks:
+      - internal
+
   nginx:
     image: nginx:alpine
     depends_on:
       - backend
       - backoffice
+      - frontend
     ports:
       - "80:80"
     volumes:

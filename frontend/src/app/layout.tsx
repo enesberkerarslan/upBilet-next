@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { GoogleOAuthHandler } from "@/components/auth/GoogleOAuthHandler";
 import { SITE_URL } from "@/lib/site-url";
+
+/** Boş string verilirse kapalı; yoksa env veya varsayılan G-DNECS3XMVV */
+const GA_MEASUREMENT_ID_RAW = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID =
+  GA_MEASUREMENT_ID_RAW === ""
+    ? null
+    : GA_MEASUREMENT_ID_RAW?.trim() || "G-DNECS3XMVV";
 
 const dmSans = DM_Sans({
   subsets: ["latin", "latin-ext"],
@@ -34,6 +42,9 @@ export default function RootLayout({
       >
         <GoogleOAuthHandler />
         {children}
+        {GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   );
