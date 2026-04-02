@@ -11,13 +11,13 @@ export function Footer() {
       <div className="container mx-auto max-w-[1280px] flex-col px-4 md:px-6">
         <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-6 md:gap-8">
           <div className="col-span-2 flex flex-col gap-2 lg:col-span-1">
-            <Link href={href("/")}>
+            <Link href={href("/")} prefetch={false}>
               <Image src="/img/logo.svg" alt="UpBilet" width={128} height={32} className="mb-2 w-24 md:mb-4 md:w-32" />
             </Link>
             <div className="flex items-center gap-2">
               <Image src="/generalicon/mail.svg" alt="" width={20} height={20} className="h-[18px] w-[18px]" />
-              <a href="mailto:destek@upbilet.com" className="text-xs md:text-sm">
-                destek@upbilet.com
+              <a href="mailto:info@upbilet.com" className="text-xs md:text-sm">
+              info@upbilet.com
               </a>
             </div>
           </div>

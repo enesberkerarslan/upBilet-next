@@ -146,9 +146,9 @@ export function ProfileListingEditModal({ open, listing, onClose, onSaved, t }: 
               value={ticketType}
               onChange={(e) => setTicketType(e.target.value)}
             >
+              <option value="e-ticket">{t("profile.ticketTypeE")}</option>
               <option value="paper">{t("profile.ticketTypePaper")}</option>
               <option value="pdf">{t("profile.ticketTypePdf")}</option>
-              <option value="e-ticket">{t("profile.ticketTypeE")}</option>
             </select>
           </div>
           <div className="mb-4">

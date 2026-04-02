@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const { errorHandler } = require('./middleware/error');
 const { logger } = require('./utils/logger');
+const redisClient = require('./config/redis');
 const { createAdminUser, seedDemoMemberAndListing } = require('./utils/seed');
 const passport = require('./config/passport');
 
@@ -112,6 +113,11 @@ mongoose
   .connect(process.env.MONGODB_URI)
   .then(async () => {
     console.log('MongoDB bağlantısı başarılı');
+    try {
+      await redisClient.connect();
+    } catch (e) {
+      logger.warn('Redis bağlanamadı; anasayfa bundle önbelleği devre dışı: %s', e.message);
+    }
     await createAdminUser();
     await seedDemoMemberAndListing();
     const PORT = process.env.PORT || 3000;

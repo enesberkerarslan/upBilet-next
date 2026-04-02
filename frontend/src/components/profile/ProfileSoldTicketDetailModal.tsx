@@ -247,8 +247,8 @@ export function ProfileSoldTicketDetailModal({ open, ticket, locale, onClose, t,
                     <div className="text-sm font-medium text-blue-800">{t("profile.modalSupportTitle")}</div>
                     <p className="mt-1 text-xs text-blue-600">
                       {t("profile.modalSupportBeforeEmail")}{" "}
-                      <a href="mailto:destek@upbilet.com" className="font-semibold underline">
-                        destek@upbilet.com
+                      <a href="mailto:info@upbilet.com" className="font-semibold underline">
+                      info@upbilet.com
                       </a>{" "}
                       {t("profile.modalSupportAfterEmail")}
                     </p>

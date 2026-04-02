@@ -4,6 +4,7 @@ import { BlogCard, blogCardDate, blogFirstImage, blogPlainExcerpt } from "@/comp
 import type { Locale } from "@/i18n";
 import { fetchBlogsPage } from "@/lib/public-fetch";
 import { localizedPath } from "@/lib/locale-path";
+import { SITE_URL } from "@/lib/site-url";
 import type { PublicBlog } from "@/types/blog";
 
 type Props = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     title: "Blog - UpBilet",
     description:
       "UpBilet blog sayfasında etkinlik haberleri, bilet satışı ipuçları ve sektör güncellemeleri hakkında güncel içerikler.",
-    url: "https://upbilet.com/blog",
+    url: `${SITE_URL}/blog`,
   },
 };
 

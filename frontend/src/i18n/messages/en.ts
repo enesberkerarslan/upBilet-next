@@ -10,10 +10,22 @@ export const en = {
     close: "Close",
     login: "Log in",
     register: "Sign up",
+    sellTicket: "Sell your ticket",
     profile: "Profile",
     admin: "Admin",
     logout: "Log out",
     openEvent: "Go to event",
+    sidebarLegalTitle: "Help & legal",
+    sidebarFaq: "FAQ",
+    sidebarTerms: "Terms of use",
+    sidebarCookies: "Cookie policy",
+    sidebarBlog: "Blog",
+    sidebarRegister: "Sign up",
+  },
+  home: {
+    metaTitle: "UpBilet | Football, concerts & live event tickets",
+    metaDescription:
+      "From match days to concerts, theatre and comedy—browse live events with clear pricing and secure checkout. Find your next ticket on UpBilet.",
   },
   auth: {
     forgotPassword: {
@@ -24,15 +36,11 @@ export const en = {
       placeholder: "Your email address",
       submit: "Send reset link",
       loading: "…",
-      back: "Back to sign in",
-      backPrefix: "Remember your password?",
       errEmail: "Please enter your email.",
       errInvalid: "Please enter a valid email address.",
       success:
         "If an account exists for that address, we have sent password reset instructions. Check your inbox and spam folder.",
       errGeneric: "Something went wrong. Please try again.",
-      devResetIntro: "Dev: when email is not sent in this environment, open this ",
-      devResetLink: "password reset link",
     },
     resetPassword: {
       title: "Set a new password",
@@ -307,6 +315,21 @@ export const en = {
     supportUnreadBadge: "New reply",
     metaDescription:
       "Manage your tickets, listings, payouts, and account settings on your UpBilet profile.",
+  },
+  eventDetail: {
+    stadiumPlanTitle: "Stadium seating plan",
+    stadiumPlanNotFound: "Stadium plan not available",
+    stadiumPlanAlt: "Event stadium seating map",
+    stadiumPlanLoadError: "Could not load stadium plan.",
+    stadiumPlanSelectedPrefix: "Selected block:",
+    stadiumPlanSoldOut: "Sold out",
+    stadiumPlanHoverCount: "{{count}} tickets are available.",
+    stadiumPlanHoverPriceFrom: "Prices start from {{price}}.",
+    ticketListSortDefault: "Sort",
+    ticketListMapSelectionLine: "Block {{block}} — {{zone}}",
+    ticketListMapFilterHint: "Area selected on map",
+    ticketListAllInSelection: "All in this area",
+    ticketListClearMapSelection: "Clear",
   },
   lang: {
     tr: "TR",

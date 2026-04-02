@@ -182,6 +182,7 @@ export interface Blog {
   slug: string;
   metaTitle: string;
   metaDescription: string;
+  coverImageUrl?: string;
   content: { text?: string; imageUrl?: string }[];
   createdAt: string;
 }

@@ -45,22 +45,6 @@ class SaleController {
   }
 
   /** Üye ID'sine göre satıcı / alıcı satışlar (admin üye detayı) */
-  async createTestSale(req, res) {
-    try {
-      const { listingId, buyerMemberId, quantity } = req.body;
-      if (!listingId || !buyerMemberId) {
-        return res.status(400).json({
-          success: false,
-          message: 'listingId ve buyerMemberId zorunludur',
-        });
-      }
-      const sale = await saleService.createTestSale({ listingId, buyerMemberId, quantity });
-      res.status(201).json({ success: true, data: sale });
-    } catch (error) {
-      res.status(400).json({ success: false, message: error.message });
-    }
-  }
-
   async getSalesByMember(req, res) {
     try {
       const { memberId } = req.query;

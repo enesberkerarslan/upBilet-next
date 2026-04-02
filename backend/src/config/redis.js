@@ -1,4 +1,4 @@
-/** Redis istemcisi — şu an uygulama tarafından import/bağlantı ile kullanılmıyor; yeniden entegre edilecek. */
+/** Redis istemcisi — `app.js` içinde `connect()` çağrılır; kullanılamazsa servisler doğrudan DB’ye döner. */
 const { createClient } = require('redis');
 const { logger } = require('../utils/logger');
 

@@ -14,9 +14,20 @@ export type HomepagePayload = {
 
 const noStore: RequestInit = { cache: "no-store" };
 
-async function fetchJsonOk(url: string, init?: RequestInit): Promise<unknown | null> {
+/**
+ * Anasayfa bundle herkese aynı. Next dev bazen aynı navigasyonda ardışık/paralel birden fazla SSR turu çalıştırıyor.
+ * - Paralel: `inflight` tek `fetch`.
+ * - İlki bitip ikincisi hemen sonra: kısa süreli `recent` ile ikinci kez backend’e gitme.
+ */
+const RECENT_REUSE_MS = 500;
+let homepageBundleInflight: Promise<HomepagePayload> | null = null;
+let recentPayload: HomepagePayload | null = null;
+let recentResolvedAt = 0;
+
+async function fetchHomepageBundleJson(): Promise<unknown | null> {
   try {
-    const r = await fetch(url, { ...noStore, ...init });
+    const base = getPublicApiBaseServer();
+    const r = await fetch(`${base}homepage/bundle`, { ...noStore });
     if (!r.ok) return null;
     return await r.json();
   } catch {
@@ -24,35 +35,34 @@ async function fetchJsonOk(url: string, init?: RequestInit): Promise<unknown | n
   }
 }
 
-export async function fetchHomepageData(): Promise<HomepagePayload> {
-  const base = getPublicApiBaseServer();
-
+async function loadHomepageDataOnce(): Promise<HomepagePayload> {
   try {
-    const [footballMainPage, concert, footballResponse, homepageRes] = await Promise.all([
-      fetchJsonOk(`${base}events/mainpage/tag/Futbol/mainpage`),
-      fetchJsonOk(`${base}events/mainpage/tag/Konser/mainpage`),
-      fetchJsonOk(`${base}events/mainpage/tag/Futbol`),
-      // CMS anasayfa: panelden kayıt sonrası eski boş yanıtı 60 sn cache’ten vermesin
-      fetchJsonOk(`${base}homepage`),
-    ]);
+    const raw = await fetchHomepageBundleJson();
+    if (!raw || typeof raw !== "object") {
+      return {
+        success: false,
+        football: null,
+        concert: null,
+        footballResponse: null,
+        homepage: null,
+      };
+    }
 
-    const raw = homepageRes as Record<string, unknown> | null;
+    const o = raw as Record<string, unknown>;
     const homepage =
-      (raw?.homepage as HomepagePayload["homepage"]) ||
-      (raw?.body as { homepage?: HomepagePayload["homepage"] } | undefined)?.homepage ||
+      (o.homepage as HomepagePayload["homepage"]) ||
+      (o.body as { homepage?: HomepagePayload["homepage"] } | undefined)?.homepage ||
       null;
 
-    const anyBlock =
-      footballMainPage != null ||
-      concert != null ||
-      footballResponse != null ||
-      homepage != null;
+    const football = (o.football as HomepagePayload["football"]) ?? null;
+    const concert = (o.concert as HomepagePayload["concert"]) ?? null;
+    const footballResponse = (o.footballResponse as HomepagePayload["footballResponse"]) ?? null;
 
     return {
-      success: anyBlock,
-      football: (footballMainPage as HomepagePayload["football"]) ?? null,
-      concert: (concert as HomepagePayload["concert"]) ?? null,
-      footballResponse: (footballResponse as HomepagePayload["footballResponse"]) ?? null,
+      success: o.success === true,
+      football,
+      concert,
+      footballResponse,
       homepage,
     };
   } catch (e) {
@@ -66,4 +76,23 @@ export async function fetchHomepageData(): Promise<HomepagePayload> {
       error: e instanceof Error ? e.message : "Unknown error",
     };
   }
+}
+
+export function fetchHomepageData(): Promise<HomepagePayload> {
+  const now = Date.now();
+  if (recentPayload !== null && now - recentResolvedAt < RECENT_REUSE_MS) {
+    return Promise.resolve(recentPayload);
+  }
+  if (!homepageBundleInflight) {
+    homepageBundleInflight = loadHomepageDataOnce()
+      .then((p) => {
+        recentPayload = p;
+        recentResolvedAt = Date.now();
+        return p;
+      })
+      .finally(() => {
+        homepageBundleInflight = null;
+      });
+  }
+  return homepageBundleInflight;
 }

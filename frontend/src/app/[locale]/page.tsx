@@ -1,5 +1,6 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import type { Locale } from "@/i18n";
+import { getMessages, type Locale } from "@/i18n";
 import { EventCard } from "@/components/event/EventCard";
 import { MobileEventCard } from "@/components/event/MobileEventCard";
 import { MobileSearchBar } from "@/components/layout/MobileSearchBar";
@@ -14,9 +15,44 @@ import { MainSubscribe } from "@/components/main/MainSubscribe";
 import { fetchHomepageData } from "@/lib/homepage-data";
 import { hasBothTeamNames, isHeroRenderable, type HeroFields } from "@/lib/hero-utils";
 import { localizedPath } from "@/lib/locale-path";
+import { SITE_URL } from "@/lib/site-url";
 import type { PublicEvent } from "@/types/event";
 
 type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale = raw as Locale;
+  const messages = getMessages(locale);
+  const title = messages.home.metaTitle;
+  const description = messages.home.metaDescription;
+  const path = locale === "tr" ? "/" : "/en";
+  const canonical = `${SITE_URL}${path === "/" ? "" : path}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical,
+      languages: {
+        tr: `${SITE_URL}/`,
+        en: `${SITE_URL}/en`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: path,
+      siteName: "UpBilet",
+      locale: locale === "tr" ? "tr_TR" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
 
 export default async function HomePage({ params }: Props) {
   const { locale: raw } = await params;

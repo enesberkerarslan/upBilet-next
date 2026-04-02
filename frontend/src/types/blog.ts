@@ -9,6 +9,8 @@ export type PublicBlog = {
   slug: string;
   metaTitle: string;
   metaDescription: string;
+  /** Kapak görseli; kart ve detayda öncelikli */
+  coverImageUrl?: string;
   content?: BlogContentBlock[];
   createdAt?: string;
 };

@@ -57,7 +57,7 @@ export default function Page() {
                   />
                   <FaqItem
                     question="Yanlış kategori seçtim, değişiklik mümkün mü?"
-                    answer="Destek ekibimizle destek@upbilet.com adresi üzerinden iletişime geçebilirsiniz. Satıcının onayıyla değişiklik sağlanabilir."
+                    answer="Destek ekibimizle info@upbilet.com adresi üzerinden iletişime geçebilirsiniz. Satıcının onayıyla değişiklik sağlanabilir."
                   />
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default function Page() {
                 <div className="space-y-3 sm:space-y-4">
                   <FaqItem
                     question="Destek ekibine nasıl ulaşırım?"
-                    answer="Her türlü soru ve yardım talebiniz için destek@upbilet.com adresine mail atabilir ya da kullanıcı panelinizden canlı destek talebinde bulunabilirsiniz."
+                    answer="Her türlü soru ve yardım talebiniz için info@upbilet.com adresine mail atabilir ya da kullanıcı panelinizden canlı destek talebinde bulunabilirsiniz."
                   />
                 </div>
               </div>

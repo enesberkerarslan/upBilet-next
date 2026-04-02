@@ -10,10 +10,22 @@ export const tr = {
     close: "Kapat",
     login: "Giriş Yap",
     register: "Kayıt Ol",
+    sellTicket: "Biletini sat",
     profile: "Profil",
     admin: "Admin",
     logout: "Çıkış Yap",
     openEvent: "Etkinliğe git",
+    sidebarLegalTitle: "Yardım ve yasal",
+    sidebarFaq: "Sıkça Sorulan Sorular",
+    sidebarTerms: "Kullanım Sözleşmesi",
+    sidebarCookies: "Çerez Politikası",
+    sidebarBlog: "Blog",
+    sidebarRegister: "Kayıt Ol",
+  },
+  home: {
+    metaTitle: "UpBilet | Futbol, Konser ve Canlı Etkinlik Biletleri",
+    metaDescription:
+      "Maçtan konsere, tiyatrodan stand-up’a kadar güncel etkinlik biletleri. Güvenli ödeme, şeffaf fiyat ve kolay arama ile aradığınız bileti UpBilet’te bulun.",
   },
   auth: {
     forgotPassword: {
@@ -24,15 +36,11 @@ export const tr = {
       placeholder: "E-posta adresiniz",
       submit: "Bağlantı gönder",
       loading: "…",
-      back: "Girişe dön",
-      backPrefix: "Parolanızı hatırladınız mı?",
       errEmail: "E-posta adresinizi giriniz.",
       errInvalid: "Lütfen geçerli bir e-posta adresi giriniz.",
       success:
         "İsteğiniz alındı. Bu adresle bir hesabınız varsa, şifre sıfırlama talimatlarını e-posta ile gönderdik. Gelen kutunuzu ve spam klasörünü kontrol edin.",
       errGeneric: "İşlem sırasında bir hata oluştu. Lütfen tekrar deneyin.",
-      devResetIntro: "Geliştirici: e-posta gönderilmediği ortamda ",
-      devResetLink: "şifre sıfırlama bağlantısı",
     },
     resetPassword: {
       title: "Yeni şifre belirle",
@@ -312,6 +320,21 @@ export const tr = {
     supportUnreadBadge: "Yeni yanıt",
     metaDescription:
       "UpBilet profilinizde biletlerinizi, ilanlarınızı, ödemelerinizi ve hesap ayarlarınızı yönetin.",
+  },
+  eventDetail: {
+    stadiumPlanTitle: "Stadyum planı",
+    stadiumPlanNotFound: "Stadyum planı bulunamadı",
+    stadiumPlanAlt: "Etkinlik stadyum oturma planı",
+    stadiumPlanLoadError: "Stadyum planı yüklenemedi.",
+    stadiumPlanSelectedPrefix: "Seçilen blok:",
+    stadiumPlanSoldOut: "Tükenmiştir",
+    stadiumPlanHoverCount: "{{count}} adet bilet bulunmaktadır.",
+    stadiumPlanHoverPriceFrom: "{{price}}'den başlayan fiyatlarla.",
+    ticketListSortDefault: "Sırala",
+    ticketListMapSelectionLine: "Blok {{block}} — {{zone}}",
+    ticketListMapFilterHint: "Haritadan seçilen alan",
+    ticketListAllInSelection: "Bu alanda tümü",
+    ticketListClearMapSelection: "Temizle",
   },
   lang: {
     tr: "TR",

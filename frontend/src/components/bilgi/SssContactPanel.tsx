@@ -5,7 +5,7 @@ import { useState } from "react";
 export function SssContactPanel() {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const email = "destek@upbilet.com";
+  const email = "info@upbilet.com";
 
   async function copyEmail() {
     try {

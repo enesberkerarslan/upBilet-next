@@ -18,6 +18,12 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  /** Kapak görseli (liste + detay) */
+  coverImageUrl: {
+    type: String,
+    default: '',
+    trim: true,
+  },
   content: [{
     text: {
       type: String

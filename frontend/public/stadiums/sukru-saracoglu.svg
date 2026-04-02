@@ -164,102 +164,102 @@
         <path class="st14" d="M159,546.6h-1l-4.2-6.5l0,0c0.1,0.8,0.1,1.4,0.1,2v4.4h-0.8v-7.7h1l4.2,6.5l0,0c0-0.1,0-0.4,0-0.9s0-0.9,0-1.1v-4.4h0.9v7.5h-0.1L159,546.6L159,546.6z">
         </path>
     </g>
-    <g id="A" data-select="zone:1907;zoneid:5119;subzone:A;subzoneid:5133;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5133" style="cursor:pointer">
+    <g id="1907-A" data-select="zone:1907;zoneid:5119;subzone:1907-A;subzoneid:5133;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5133" style="cursor:pointer">
         <path class="st15 svgshp" d="M292.9,506.1h-7.8v9.9h16.8v-2l-9.2-8v0.1H292.9z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 287.615 513.6601)" class="st14 st16 st17">A</text>
     </g>
-    <g id="B" data-select="zone:1907;zoneid:5119;subzone:B;subzoneid:5132;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5132" style="cursor:pointer">
+    <g id="1907-B" data-select="zone:1907;zoneid:5119;subzone:1907-B;subzoneid:5132;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5132" style="cursor:pointer">
         <path class="st15 svgshp" d="M263.1,506.1h18.8v9.9h-18.8V506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 269.3914 513.6601)" class="st14 st16 st17">B</text>
     </g>
-    <g id="C" data-select="zone:1907;zoneid:5119;subzone:C;subzoneid:5131;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5131" style="cursor:pointer">
+    <g id="1907-C" data-select="zone:1907;zoneid:5119;subzone:1907-C;subzoneid:5131;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5131" style="cursor:pointer">
         <path class="st15 svgshp" d="M240.9,506.1h19v9.9h-19L240.9,506.1L240.9,506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 245.865 513.6601)" class="st14 st16 st17">C</text>
     </g>
-    <g id="D" data-select="zone:1907;zoneid:5119;subzone:D;subzoneid:5130;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5130" style="cursor:pointer">
+    <g id="1907-D" data-select="zone:1907;zoneid:5119;subzone:1907-D;subzoneid:5130;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5130" style="cursor:pointer">
         <path class="st15 svgshp" d="M218.3,506.1h19.4v9.9h-19.4V506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 223.7488 513.6601)" class="st14 st16 st17">D</text>
     </g>
-    <g id="E" data-select="zone:1907;zoneid:5119;subzone:E;subzoneid:5129;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5129" style="cursor:pointer">
+    <g id="1907-E" data-select="zone:1907;zoneid:5119;subzone:1907-E;subzoneid:5129;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5129" style="cursor:pointer">
         <path class="st15 svgshp" d="M195,506.1h20v9.9h-20V506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 202.0925 513.6601)" class="st14 st16 st17">E</text>
     </g>
-    <g id="F" data-select="zone:1907;zoneid:5119;subzone:F;subzoneid:5128;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5128" style="cursor:pointer">
+    <g id="1907-F" data-select="zone:1907;zoneid:5119;subzone:1907-F;subzoneid:5128;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5128" style="cursor:pointer">
         <path class="st15 svgshp" d="M170.4,506.1h21.5v9.9h-21.4v-9.9H170.4z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 178.4402 513.6601)" class="st14 st16 st17">F</text>
     </g>
-    <g id="G" data-select="zone:1907;zoneid:5119;subzone:G;subzoneid:5127;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5127" style="cursor:pointer">
+    <g id="1907-G" data-select="zone:1907;zoneid:5119;subzone:1907-G;subzoneid:5127;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5127" style="cursor:pointer">
         <path class="st15 svgshp" d="M150.3,506.1h16.9v9.9h-16.9V506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 152.696 513.6601)" class="st14 st16 st17">G</text>
     </g>
-    <g id="H" data-select="zone:1907;zoneid:5119;subzone:H;subzoneid:5126;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5126" style="cursor:pointer">
+    <g id="1907-H" data-select="zone:1907;zoneid:5119;subzone:1907-H;subzoneid:5126;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5126" style="cursor:pointer">
         <path class="st15 svgshp" d="M125.4,506.1h21.7v9.9h-21.7V506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 132.0456 513.6601)" class="st14 st16 st17">H</text>
     </g>
-    <g id="I" data-select="zone:1907;zoneid:5119;subzone:I;subzoneid:5125;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5125" style="cursor:pointer">
+    <g id="1907-I" data-select="zone:1907;zoneid:5119;subzone:1907-I;subzoneid:5125;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5125" style="cursor:pointer">
         <path class="st15 svgshp" d="M103.4,506.1h18.8v9.9h-18.8V506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 110.9607 513.6601)" class="st14 st16 st17">I</text>
     </g>
-    <g id="J" data-select="zone:1907;zoneid:5119;subzone:J;subzoneid:5124;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5124" style="cursor:pointer">
+    <g id="1907-J" data-select="zone:1907;zoneid:5119;subzone:1907-J;subzoneid:5124;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5124" style="cursor:pointer">
         <path class="st15 svgshp" d="M81.9,506.1h18.2v9.9H81.9V506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 89.2414 513.6601)" class="st14 st16 st17">J</text>
     </g>
-    <g id="K" data-select="zone:1907;zoneid:5119;subzone:K;subzoneid:5123;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5123" style="cursor:pointer">
+    <g id="1907-K" data-select="zone:1907;zoneid:5119;subzone:1907-K;subzoneid:5123;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5123" style="cursor:pointer">
         <path class="st15 svgshp" d="M59.6,506.1h19v9.9h-19C59.7,516,59.7,506.1,59.6,506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 65.1746 513.6601)" class="st14 st16 st17">K</text>
     </g>
-    <g id="L" data-select="zone:1907;zoneid:5119;subzone:L;subzoneid:5122;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5122" style="cursor:pointer">
+    <g id="1907-L" data-select="zone:1907;zoneid:5119;subzone:1907-L;subzoneid:5122;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5122" style="cursor:pointer">
         <path class="st15 svgshp" d="M35.6,506.1h20.9v9.9H35.6V506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 42.969 513.6601)" class="st14 st16 st17">L</text>
     </g>
-    <g id="M" data-select="zone:1907;zoneid:5119;subzone:M;subzoneid:5121;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5121" style="cursor:pointer">
+    <g id="1907-M" data-select="zone:1907;zoneid:5119;subzone:1907-M;subzoneid:5121;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5121" style="cursor:pointer">
         <path class="st15 svgshp" d="M14.7,506.1h17.6v9.9H14.7V506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 18.4431 513.6601)" class="st14 st16 st17">M</text>
     </g>
-    <g id="N" data-select="zone:1907;zoneid:5119;subzone:N;subzoneid:5120;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5120" style="cursor:pointer">
+    <g id="1907-N" data-select="zone:1907;zoneid:5119;subzone:1907-N;subzoneid:5120;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="5119:::5120" style="cursor:pointer">
         <path class="st15 svgshp" d="M-3.4,506.1l-7.7,6.5v3.4h22.6v-9.9H-3.4L-3.4,506.1z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 -4.1873 513.6601)" class="st14 st16 st17">N</text>
     </g>
-    <g id="C" data-select="zone:Alt Kat;zoneid:157;subzone:C;subzoneid:881;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::881" style="cursor:pointer">
+    <g id="AK-C" data-select="zone:Alt Kat;zoneid:157;subzone:AK-C;subzoneid:881;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::881" style="cursor:pointer">
         <path class="st15 svgshp" d="M61.3,293h28.2v15.6H61.3V293z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 72.0027 304.5542)" class="st14 st16 st17">C</text>
     </g>
-    <g id="D" data-select="zone:Alt Kat;zoneid:157;subzone:D;subzoneid:880;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::880" style="cursor:pointer">
+    <g id="AK-D" data-select="zone:Alt Kat;zoneid:157;subzone:AK-D;subzoneid:880;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::880" style="cursor:pointer">
         <path class="st15 svgshp" d="M92.7,293h31.8v15.6H92.7V293z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 104.5871 304.5542)" class="st14 st16 st17">D</text>
     </g>
-    <g id="E" data-select="zone:Alt Kat;zoneid:157;subzone:E;subzoneid:879;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::879" style="cursor:pointer">
+    <g id="AK-E" data-select="zone:Alt Kat;zoneid:157;subzone:AK-E;subzoneid:879;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::879" style="cursor:pointer">
         <path class="st15 svgshp" d="M127.8,293h34.2v15.6h-34.2V293z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 141.7839 304.5542)" class="st14 st16 st17">E</text>
     </g>
-    <g id="F" data-select="zone:Alt Kat;zoneid:157;subzone:F;subzoneid:878;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::878" style="cursor:pointer">
+    <g id="AK-F" data-select="zone:Alt Kat;zoneid:157;subzone:AK-F;subzoneid:878;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::878" style="cursor:pointer">
         <path class="st15 svgshp" d="M165.3,293h34v15.6h-34V293z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 179.2468 304.5542)" class="st14 st16 st17">F</text>
     </g>
-    <g id="G" data-select="zone:Alt Kat;zoneid:157;subzone:G;subzoneid:877;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::877" style="cursor:pointer">
+    <g id="AK-G" data-select="zone:Alt Kat;zoneid:157;subzone:AK-G;subzoneid:877;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::877" style="cursor:pointer">
         <path class="st15 svgshp" d="M202.4,293h28.8v15.6h-28.8V293z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 212.8962 304.5542)" class="st14 st16 st17">G</text>
     </g>
-    <g id="C1" data-select="zone:Alt Kat;zoneid:157;subzone:C1;subzoneid:886;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::886" style="cursor:pointer">
+    <g id="AK-C1" data-select="zone:Alt Kat;zoneid:157;subzone:AK-C1;subzoneid:886;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::886" style="cursor:pointer">
         <path class="st15 svgshp" d="M198.8,487.5h26.6v15.3h-26.6V487.5z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 205.2507 498.5713)" class="st14 st16 st17">C1</text>
     </g>
-    <g id="D1" data-select="zone:Alt Kat;zoneid:157;subzone:D1;subzoneid:885;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::885" style="cursor:pointer">
+    <g id="AK-D1" data-select="zone:Alt Kat;zoneid:157;subzone:AK-D1;subzoneid:885;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::885" style="cursor:pointer">
         <path class="st15 svgshp" d="M170,487.5h25.3v15.3H170V487.5z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 175.4353 498.5713)" class="st14 st16 st17">D1</text>
     </g>
-    <g id="E1" data-select="zone:Alt Kat;zoneid:157;subzone:E1;subzoneid:884;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::884" style="cursor:pointer">
+    <g id="AK-E1" data-select="zone:Alt Kat;zoneid:157;subzone:AK-E1;subzoneid:884;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::884" style="cursor:pointer">
         <path class="st15 svgshp" d="M122.9,487.5H167v15.3h-44.1C122.9,502.8,122.9,487.5,122.9,487.5z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 138.8108 498.5713)" class="st14 st16 st17">E1</text>
     </g>
-    <g id="F1" data-select="zone:Alt Kat;zoneid:157;subzone:F1;subzoneid:883;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::883" style="cursor:pointer">
+    <g id="AK-F1" data-select="zone:Alt Kat;zoneid:157;subzone:AK-F1;subzoneid:883;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::883" style="cursor:pointer">
         <path class="st15 svgshp" d="M94.9,487.5h24.7v6.5H94.9V487.5z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 101.1926 493.1807)" class="st14 st16 st17">F1</text>
     </g>
-    <g id="G1" data-select="zone:Alt Kat;zoneid:157;subzone:G1;subzoneid:882;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::882" style="cursor:pointer">
+    <g id="AK-G1" data-select="zone:Alt Kat;zoneid:157;subzone:AK-G1;subzoneid:882;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="157:::882" style="cursor:pointer">
         <path class="st15 svgshp" d="M66.8,487.5h24.9v6.5H66.8V487.5z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 71.9587 493.1807)" class="st14 st16 st17">G1</text>
     </g>
-    <g id="A" data-select="zone:Kenar;zoneid:156;subzone:A;subzoneid:869;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::869" style="cursor:pointer">
+    <g id="Kenar-A" data-select="zone:Kenar;zoneid:156;subzone:Kenar-A;subzoneid:869;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::869" style="cursor:pointer">
         <path class="st15 svgshp" d="M30.4,293H-2.3L21,312.8c2-2,5-3.7,9.4-4.1C30.4,308.7,30.4,293,30.4,293z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 13.8352 304.5542)" class="st14 st16 st17">A</text>
     </g>
-    <g id="B" data-select="zone:Kenar;zoneid:156;subzone:B;subzoneid:870;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::870" style="cursor:pointer">
+    <g id="Kenar-B" data-select="zone:Kenar;zoneid:156;subzone:Kenar-B;subzoneid:870;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::870" style="cursor:pointer">
         <path class="st15 svgshp" d="M33.6,293h24.5v15.6H33.6V293z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 42.2268 304.5542)" class="st14 st16 st17">B</text>
     </g>
-    <g id="H" data-select="zone:Kenar;zoneid:156;subzone:H;subzoneid:872;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::872" style="cursor:pointer">
+    <g id="Kenar-H" data-select="zone:Kenar;zoneid:156;subzone:Kenar-H;subzoneid:872;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::872" style="cursor:pointer">
         <path class="st15 svgshp" d="M234.5,293h22.9v15.6h-22.9V293z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 238.1628 304.5542)" class="st14 st16 st17">H</text>
     </g>
-    <g id="I" data-select="zone:Kenar;zoneid:156;subzone:I;subzoneid:871;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::871" style="cursor:pointer">
+    <g id="Kenar-I" data-select="zone:Kenar;zoneid:156;subzone:Kenar-I;subzoneid:871;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::871" style="cursor:pointer">
         <path class="st15 svgshp" d="M260.4,308.5c1.7-0.1,5.2,0.2,8.1,2.6l22-18h-30.1V308.5z" style="fill:#fecc03;">
         </path><text transform="matrix(1 0 0 1 269.0857 304.5542)" class="st14 st16 st17">I</text>
     </g>
-    <g id="A1" data-select="zone:Kenar;zoneid:156;subzone:A1;subzoneid:873;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::873" style="cursor:pointer">
+    <g id="Kenar-A1" data-select="zone:Kenar;zoneid:156;subzone:Kenar-A1;subzoneid:873;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::873" style="cursor:pointer">
         <path class="st15 svgshp" d="M258.4,502.8h30.7l-21.4-18.5c-2.3,1.5-5.3,2.6-9.5,3v15.5H258.4z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 263.0789 498.5713)" class="st14 st16 st17">A1</text>
     </g>
-    <g id="B1" data-select="zone:Kenar;zoneid:156;subzone:B1;subzoneid:874;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::874" style="cursor:pointer">
+    <g id="Kenar-B1" data-select="zone:Kenar;zoneid:156;subzone:Kenar-B1;subzoneid:874;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::874" style="cursor:pointer">
         <path class="st15 svgshp" d="M255.1,502.8v-15.3c-0.2,0-0.3,0-0.5,0h-26.1v15.3H255.1z" style="fill:#fecc03;">
         </path><text transform="matrix(1 0 0 1 235.1081 498.5713)" class="st14 st16 st17">B1</text>
     </g>
-    <g id="H1" data-select="zone:Kenar;zoneid:156;subzone:H1;subzoneid:875;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::875" style="cursor:pointer">
+    <g id="Kenar-H1" data-select="zone:Kenar;zoneid:156;subzone:Kenar-H1;subzoneid:875;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::875" style="cursor:pointer">
         <path class="st15 svgshp" d="M37.6,487.5h25.9v15.3H37.6V487.5z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 43.342 498.5713)" class="st14 st16 st17">H1</text>
     </g>
-    <g id="I1" data-select="zone:Kenar;zoneid:156;subzone:I1;subzoneid:876;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::876" style="cursor:pointer">
+    <g id="Kenar-I1" data-select="zone:Kenar;zoneid:156;subzone:Kenar-I1;subzoneid:876;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="156:::876" style="cursor:pointer">
         <path class="st15 svgshp" d="M34.4,487.5h-2.3c0,0-5.2,0-9.6-3.4L0.4,502.7h34.1L34.4,487.5L34.4,487.5z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 15.9021 498.5713)" class="st14 st16 st17">I1</text>
     </g>
     <g id="Maraton Üst C" data-select="zone:Üst Kat;zoneid:155;subzone:Maraton Üst C;subzoneid:164;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="155:::164" style="cursor:pointer">
@@ -316,53 +316,53 @@
     <g id="Fenerium Üst I1" data-select="zone:Üst Kenar;zoneid:154;subzone:Fenerium Üst I1;subzoneid:189;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="154:::189" style="cursor:pointer">
         <path class="st15 svgshp" d="M-14.3,519.2v-4l-26.4,22.2c5.3,5.6,13.2,10.2,25.1,11.2h11.4v-29.3h-10.1C-14.3,519.3-14.3,519.2-14.3,519.2z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 -25.0564 540.7148)" class="st14 st16 st17">I1</text>
     </g>
-    <g id="A1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:A1;subzoneid:835;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::835" style="cursor:pointer">
+    <g id="OKUL-A1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-A1;subzoneid:835;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::835" style="cursor:pointer">
         <path class="st15 svgshp" d="M305.3,303l37.1-14.4c-0.1-5.8-1.3-17.5-8.2-26.9l-28.9,23.6V303z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 317.0808 289.1397)" class="st14 st16 st17">A1</text>
     </g>
-    <g id="B1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:B1;subzoneid:839;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::839" style="cursor:pointer">
+    <g id="OKUL-B1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-B1;subzoneid:839;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::839" style="cursor:pointer">
         <path class="st15 svgshp" d="M305.3,321.7h37v-29.6c0,0,0,0,0-0.1l-37,14.4V321.7z" style="fill:#fecc03;"></path>
         <text transform="matrix(1 0 0 1 317.0271 313.7154)" class="st14 st16 st17">B1</text>
     </g>
-    <g id="C1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:C1;subzoneid:838;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::838" style="cursor:pointer">
+    <g id="OKUL-C1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-C1;subzoneid:838;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::838" style="cursor:pointer">
         <path class="st15 svgshp" d="M305.3,325h37v35.6h-37V325z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 317.0271 349.6084)" class="st14 st16 st17">C1</text>
     </g>
-    <g id="D1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:D1;subzoneid:841;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::841" style="cursor:pointer">
+    <g id="OKUL-D1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-D1;subzoneid:841;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::841" style="cursor:pointer">
         <path class="st15 svgshp" d="M305.3,363.8h37v33.1h-37V363.8z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 316.4216 387.1724)" class="st14 st16 st17">D1</text>
     </g>
-    <g id="E1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:E1;subzoneid:843;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::843" style="cursor:pointer">
+    <g id="OKUL-E1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-E1;subzoneid:843;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::843" style="cursor:pointer">
         <path class="st15 svgshp" d="M305.3,400h37v33.7h-37V400z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 317.6326 423.7119)" class="st14 st16 st17">E1</text>
     </g>
-    <g id="F1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:F1;subzoneid:846;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::846" style="cursor:pointer">
+    <g id="OKUL-F1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-F1;subzoneid:846;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::846" style="cursor:pointer">
         <path class="st15 svgshp" d="M305.3,437.1h37v34.7h-37V437.1z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 317.6326 461.2754)" class="st14 st16 st17">F1</text>
     </g>
-    <g id="G1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:G1;subzoneid:847;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::847" style="cursor:pointer">
+    <g id="OKUL-G1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-G1;subzoneid:847;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::847" style="cursor:pointer">
         <path class="st15 svgshp" d="M305.3,493.4l37,16.6v-35.1h-37V493.4z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 316.4216 493.1807)" class="st14 st16 st17">G1</text>
     </g>
-    <g id="H1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:H1;subzoneid:850;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::850" style="cursor:pointer">
+    <g id="OKUL-H1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-H1;subzoneid:850;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::850" style="cursor:pointer">
         <path class="st15 svgshp" d="M305.3,512.4l27.6,23.8c4.5-5.2,8.1-12.5,9.3-22.7L305.4,497v15.4H305.3L305.3,512.4z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 316.366 520.128)" class="st14 st16 st17">H1</text>
     </g>
-    <g id="I1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:I1;subzoneid:836;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::836" style="cursor:pointer">
+    <g id="OKUL-I1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-I1;subzoneid:836;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::836" style="cursor:pointer">
         <path class="st15 svgshp" d="M272.1,315.9l30-11.7v-16.5l-31.4,25.7C271.1,314.1,271.6,315,272.1,315.9z" style="fill:#eba601;"></path><text transform="matrix(0.866 0.3 -0.6 0.866 281.2927 307.5064)" class="st14 st16 st17">I1</text>
     </g>
-    <g id="J1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:J1;subzoneid:840;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::840" style="cursor:pointer">
+    <g id="OKUL-J1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-J1;subzoneid:840;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::840" style="cursor:pointer">
         <path class="st15 svgshp" d="M273.5,321.7h28.6v-14l-29,11.3C273.3,319.9,273.4,320.8,273.5,321.7z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 284.2927 320.5064)" class="st14 st16 st17">J1</text>
     </g>
-    <g id="K1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:K1;subzoneid:837;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::837" style="cursor:pointer">
+    <g id="OKUL-K1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-K1;subzoneid:837;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::837" style="cursor:pointer">
         <path class="st15 svgshp" d="M273.6,325.1v35.4h28.3v-35.6h-28.3C273.6,325,273.6,325.1,273.6,325.1z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 281.1336 349.5005)" class="st14 st16 st17">K1</text>
     </g>
-    <g id="L1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:L1;subzoneid:842;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::842" style="cursor:pointer">
+    <g id="OKUL-L1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-L1;subzoneid:842;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::842" style="cursor:pointer">
         <path class="st15 svgshp" d="M273.6,363.8h28.3v33.1h-28.3V363.8z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 281.7371 387.1724)" class="st14 st16 st17">L1</text>
     </g>
-    <g id="M1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:M1;subzoneid:844;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::844" style="cursor:pointer">
+    <g id="OKUL-M1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-M1;subzoneid:844;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::844" style="cursor:pointer">
         <path class="st15 svgshp" d="M273.6,400h28.3v33.7h-28.3V400z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 279.9226 423.7119)" class="st14 st16 st17">M1</text>
     </g>
-    <g id="N1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:N1;subzoneid:845;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::845" style="cursor:pointer">
+    <g id="OKUL-N1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-N1;subzoneid:845;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::845" style="cursor:pointer">
         <path class="st15 svgshp" d="M273.6,437.1h28.3v34.7h-28.3V437.1z" style="fill:#fecc03;"></path><text transform="matrix(1 0 0 1 280.5281 461.2754)" class="st14 st16 st17">N1</text>
     </g>
-    <g id="O1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:O1;subzoneid:849;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::849" style="cursor:pointer">
+    <g id="OKUL-O1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-O1;subzoneid:849;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::849" style="cursor:pointer">
         <path class="st15 svgshp" d="M272.5,478.8l29.5,13.3v-17h-28.5C273.5,476,273.1,477.4,272.5,478.8z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 284.031 483.4785)" class="st14 st16 st17">O1</text>
     </g>
-    <g id="P1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:P1;subzoneid:848;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::848" style="cursor:pointer">
+    <g id="OKUL-P1" data-select="zone:Kale Arkası Spor Toto;zoneid:801;subzone:OKUL-P1;subzoneid:848;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="801:::848" style="cursor:pointer">
         <path class="st15 svgshp" d="M270.3,482.2l31.7,27.5v-14.1l-31.1-14C270.6,481.8,270.5,482,270.3,482.2z" style="fill:#fecc03;"></path><text transform="matrix(0.866 0.3 -0.6 0.866 284.031 495.4785)" class="st14 st16 st17">P1</text>
     </g>
     <g id="Kuzey A" data-select="zone:Kale Arkası Kuzey;zoneid:800;subzone:Kuzey A;subzoneid:829;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="800:::829" style="cursor:pointer">
@@ -401,23 +401,23 @@
     <g id="Kuzey N" data-select="zone:Kale Arkası Kuzey;zoneid:800;subzone:Kuzey N;subzoneid:818;noTicket:#cccccc;ticket:#eba601;selected:#fecc03" data-id="800:::818" style="cursor:pointer">
         <path class="st15 svgshp" d="M-11.2,341.5h27.8v16.7h-27.8C-11.2,358.2-11.2,341.5-11.2,341.5z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 -1.6008 353.0572)" class="st14 st16 st17">N</text>
     </g>
-    <g id="F" data-select="zone:Misafir;zoneid:158;subzone:F;subzoneid:855;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::855" style="cursor:pointer">
+    <g id="Misafir-F" data-select="zone:Misafir;zoneid:158;subzone:Misafir-F;subzoneid:855;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::855" style="cursor:pointer">
         <path class="st15 svgshp" d="M-51.1,323.4h36.6v14.9h-36.6V323.4z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 -35.6272 334.7338)" class="st14 st16 st17">F</text>
     </g>
-    <g id="G" data-select="zone:Misafir;zoneid:158;subzone:G;subzoneid:854;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::854" style="cursor:pointer">
+    <g id="Misafir-G" data-select="zone:Misafir;zoneid:158;subzone:Misafir-G;subzoneid:854;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::854" style="cursor:pointer">
         <path class="st15 svgshp" d="M-14.3,305.6l-36.6-16.8v31.4h36.6C-14.4,320.2-14.4,305.6-14.3,305.6z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 -36.5798 312.3677)" class="st14 st16 st17">G</text>
     </g>
-    <g id="H" data-select="zone:Misafir;zoneid:158;subzone:H;subzoneid:851;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::851" style="cursor:pointer">
+    <g id="Misafir-H" data-select="zone:Misafir;zoneid:158;subzone:Misafir-H;subzoneid:851;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::851" style="cursor:pointer">
         <path class="st15 svgshp" d="M-14.3,286.9l-29.1-24.7c-4,5.5-6.9,12.9-7.5,23l36.6,16.8C-14.4,302-14.4,286.9-14.3,286.9z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 -38.9583 286.8218)" class="st14 st16 st17">H</text>
     </g>
-    <g id="N" data-select="zone:Misafir;zoneid:158;subzone:N;subzoneid:856;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::856" style="cursor:pointer">
+    <g id="Misafir-N" data-select="zone:Misafir;zoneid:158;subzone:Misafir-N;subzoneid:856;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::856" style="cursor:pointer">
         <path class="st15 svgshp" d="M-11.2,323.4h27.8v14.9h-27.8C-11.2,338.3-11.2,323.4-11.2,323.4z" style="fill:#eba601;"></path><text transform="matrix(1 0 0 1 -1.6008 334.7338)" class="st14 st16 st17">N</text>
     </g>
-    <g id="O" data-select="zone:Misafir;zoneid:158;subzone:O;subzoneid:853;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::853" style="cursor:pointer">
+    <g id="Misafir-O" data-select="zone:Misafir;zoneid:158;subzone:Misafir-O;subzoneid:853;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::853" style="cursor:pointer">
         <path class="st15 svgshp" d="M17.1,320l-28.3-12.9v13h28.3C17.1,320,17.1,320,17.1,320z" style="fill:#eba601;">
         </path><text transform="matrix(1 0 0 1 -9.3767 317.4868)" class="st14 st16 st17">O</text>
     </g>
-    <g id="P" data-select="zone:Misafir;zoneid:158;subzone:P;subzoneid:852;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::852" style="cursor:pointer">
+    <g id="Misafir-P" data-select="zone:Misafir;zoneid:158;subzone:Misafir-P;subzoneid:852;noTicket:#cccccc;ticket:#eba601;selected:#fecc03;" data-id="158:::852" style="cursor:pointer">
         <path class="st15 svgshp" d="M19.1,315.4l-30.2-25.7v13.8L18.1,317C18.4,316.4,18.7,315.8,19.1,315.4z" style="fill:#eba601;"></path><text transform="matrix(0.866 0.5 -0.5 0.866 -7.1435 302.7861)" class="st14 st16 st17">P</text>
     </g>
 </svg>

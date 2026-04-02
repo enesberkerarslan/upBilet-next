@@ -15,9 +15,6 @@ router.get('/filter/event', saleController.getSalesByEvent);
 // Üyeye göre satışlar (satıcı / alıcı ayrımı)
 router.get('/filter/member', saleController.getSalesByMember);
 
-// Test satışı (gerçek ödeme yok) — /:id'den önce tanımlı olmalı
-router.post('/test', saleController.createTestSale);
-
 // Admin: bilet satırına kanıt dosyası (multipart files[]) — /:id'den önce
 router.post(
   '/:id/ticket-holders/:ticketIndex/seller-proof',

@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Locale } from "@/i18n";
+import { getMessages, translate } from "@/i18n";
 import { localizedPath } from "@/lib/locale-path";
 import { getZoneColor } from "@/lib/detay-zone-colors";
 import { TicketPurchaseModal, type ModalTicket } from "@/components/detay/TicketPurchaseModal";
+import { useStadiumSelection } from "@/components/detay/StadiumSelectionContext";
+import { filterTicketsByStadiumSelection } from "@/lib/stadium-selection-scope";
 
 export type TicketOption = {
   id: string;
@@ -21,11 +24,14 @@ type Props = {
   locale: Locale;
   eventName: string;
   tickets: TicketOption[];
+  /** Etkinlik stadyum planı — bilet modalında vurgu için */
+  stadiumPlanSrc?: string | null;
 };
 
 const filterLabels = ["Tümü", "Ucuzdan Pahalıya", "Pahalıdan Ucuza"] as const;
 
-export function DetailTicketList({ locale, eventName, tickets }: Props) {
+export function DetailTicketList({ locale, eventName, tickets, stadiumPlanSrc }: Props) {
+  const stadiumCtx = useStadiumSelection();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState<number | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -34,13 +40,71 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
   const personRef = useRef<HTMLDivElement>(null);
   const filterRef = useRef<HTMLDivElement>(null);
 
-  const filterOptions = useMemo(() => {
+  const ticketsForFilters = useMemo(
+    () =>
+      stadiumCtx
+        ? filterTicketsByStadiumSelection(tickets, stadiumCtx.selection, stadiumCtx.baseAvailability)
+        : tickets,
+    [tickets, stadiumCtx]
+  );
+
+  /** Harita seçimine göre daralan listede değil; etkinlikteki tüm kategoriler (dropdown sabit kalsın). */
+  const eventCategories = useMemo(() => {
     const cats = [...new Set(tickets.map((t) => t.category).filter(Boolean))];
-    return [...filterLabels, ...cats];
-  }, [tickets]);
+    cats.sort((a, b) => a.localeCompare(b, locale === "en" ? "en" : "tr"));
+    return cats;
+  }, [tickets, locale]);
+
+  const filterOptions = useMemo(() => [...filterLabels, ...eventCategories], [eventCategories]);
+
+  const messages = getMessages(locale);
+  const mapSelectionKey = stadiumCtx?.selection
+    ? `${stadiumCtx.selection.blockId}\n${stadiumCtx.selection.zone}`
+    : "";
+
+  useEffect(() => {
+    if (mapSelectionKey) setSelectedFilter(0);
+    else setSelectedFilter(null);
+  }, [mapSelectionKey]);
+
+  const mapSelectionLine = useMemo(() => {
+    if (!stadiumCtx?.selection) return null;
+    return translate(messages, "eventDetail.ticketListMapSelectionLine")
+      .replace("{{block}}", stadiumCtx.selection.blockId)
+      .replace("{{zone}}", stadiumCtx.selection.zone);
+  }, [messages, stadiumCtx?.selection]);
+
+  const filterButtonLabel = useMemo(() => {
+    if (!stadiumCtx?.selection) {
+      return selectedFilter === null
+        ? translate(messages, "eventDetail.ticketListSortDefault")
+        : filterOptions[selectedFilter] ?? translate(messages, "eventDetail.ticketListSortDefault");
+    }
+    const sf = selectedFilter;
+    const tail =
+      sf === null || sf === 0
+        ? translate(messages, "eventDetail.ticketListAllInSelection")
+        : sf === 1 || sf === 2
+          ? filterLabels[sf]
+          : (filterOptions[sf] ?? translate(messages, "eventDetail.ticketListAllInSelection"));
+    return `${mapSelectionLine} · ${tail}`;
+  }, [
+    stadiumCtx?.selection,
+    selectedFilter,
+    filterOptions,
+    mapSelectionLine,
+    messages,
+  ]);
+
+  /** Harita seçiliyken pill çok uzamasın; tam metin title ile. */
+  const filterButtonDisplay = useMemo(() => {
+    if (!stadiumCtx?.selection) return filterButtonLabel;
+    if (filterButtonLabel.length <= 10) return filterButtonLabel;
+    return `${filterButtonLabel.slice(0, 10)}...`;
+  }, [stadiumCtx?.selection, filterButtonLabel]);
 
   const filteredTickets = useMemo(() => {
-    let list = [...tickets];
+    let list = [...ticketsForFilters];
     if (selectedPerson !== null) {
       list = list.filter((t) => t.quantity >= selectedPerson);
     }
@@ -49,7 +113,7 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
     if (selectedFilter === 2) return list.sort((a, b) => b.price - a.price);
     const cat = filterOptions[selectedFilter];
     return list.filter((t) => t.category === cat);
-  }, [tickets, selectedPerson, selectedFilter, filterOptions]);
+  }, [ticketsForFilters, selectedPerson, selectedFilter, filterOptions]);
 
   const handleClickOutside = useCallback((e: MouseEvent) => {
     const t = e.target as Node;
@@ -138,19 +202,47 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
                   setFilterOpen((v) => !v);
                   setDropdownOpen(false);
                 }}
-                className="relative flex max-w-[min(100%,14rem)] items-center gap-1 rounded-3xl border border-slate-200 bg-zinc-100 px-3 py-2 text-xs md:max-w-[150px] md:gap-2 md:px-4 md:py-3"
+                className={`relative flex items-center gap-1 rounded-3xl border border-slate-200 bg-zinc-100 px-3 py-2 text-xs md:gap-2 md:px-4 md:py-3 ${
+                  stadiumCtx?.selection
+                    ? "max-w-38 shrink-0 md:max-w-40"
+                    : "max-w-[min(100%,14rem)] md:max-w-[150px]"
+                }`}
               >
                 <FilterIcon />
                 <span
-                  className="min-w-0 truncate font-(family-name:--font-dm-sans) text-[13px]"
-                  title={selectedFilter === null ? undefined : filterOptions[selectedFilter]}
+                  className="min-w-0 whitespace-nowrap font-(family-name:--font-dm-sans) text-[13px]"
+                  title={filterButtonLabel}
                 >
-                  {selectedFilter === null ? "Sırala" : filterOptions[selectedFilter]}
+                  {filterButtonDisplay}
                 </span>
                 <ChevronDownIcon />
               </button>
               {filterOpen ? (
                 <div className="absolute left-0 top-full z-10 mt-2 w-max min-w-68 max-w-[min(100vw-1.5rem,24rem)] overflow-x-auto rounded-xl bg-white p-2 shadow-lg md:min-w-[18rem]">
+                  {mapSelectionLine && stadiumCtx ? (
+                    <div className="mb-1 border-b border-slate-100 px-2 pb-2 pt-0.5">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="min-w-0 flex-1">
+                          <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">
+                            {translate(messages, "eventDetail.ticketListMapFilterHint")}
+                          </p>
+                          <p className="mt-0.5 text-[13px] font-medium leading-snug text-slate-800">
+                            {mapSelectionLine}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            stadiumCtx.setSelection(null);
+                            setFilterOpen(false);
+                          }}
+                          className="shrink-0 rounded-lg px-2 py-1 text-[12px] font-semibold text-slate-600 underline decoration-slate-300 underline-offset-2 hover:text-slate-900"
+                        >
+                          {translate(messages, "eventDetail.ticketListClearMapSelection")}
+                        </button>
+                      </div>
+                    </div>
+                  ) : null}
                   {filterOptions.map((label, idx) => (
                     <button
                       key={`${label}-${idx}`}
@@ -189,7 +281,7 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
 
       {tickets.length === 0 ? (
         <NoTicketsMessage
-          title="Etkinliğe ait bilet bulunamadı"
+          title="Etkinliğe ait biletler tükendi"
           description="Bu etkinlik için şu anda satışta bilet bulunmamaktadır."
           action={
             <Link
@@ -199,6 +291,32 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
               <ArrowLeftIcon />
               Anasayfaya Geri Dön
             </Link>
+          }
+        />
+      ) : ticketsForFilters.length === 0 ? (
+        <NoTicketsMessage
+          title="Seçilen alanda satışta bilet yok"
+          description="Haritadan başka bir blok seçebilir veya tüm biletlere dönmek için sıfırlayın."
+          action={
+            stadiumCtx?.selection ? (
+              <button
+                type="button"
+                onClick={() => stadiumCtx.setSelection(null)}
+                className="inline-flex items-center gap-2 rounded-lg bg-linear-to-br from-[#667eea] to-[#764ba2] px-6 py-3 text-sm font-medium text-white shadow-[0_4px_12px_rgba(102,126,234,0.3)] transition hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(102,126,234,0.4)]"
+              >
+                <ArrowRightIcon />
+                Tüm biletleri göster
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setSelectedFilter(0)}
+                className="inline-flex items-center gap-2 rounded-lg bg-linear-to-br from-[#667eea] to-[#764ba2] px-6 py-3 text-sm font-medium text-white shadow-[0_4px_12px_rgba(102,126,234,0.3)] transition hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(102,126,234,0.4)]"
+              >
+                <ArrowRightIcon />
+                Tüm Biletleri Göster
+              </button>
+            )
           }
         />
       ) : filteredTickets.length === 0 ? (
@@ -291,6 +409,7 @@ export function DetailTicketList({ locale, eventName, tickets }: Props) {
         ticket={modalTicket}
         matchName={eventName}
         onClose={() => setModalTicket(null)}
+        stadiumPlanSrc={stadiumPlanSrc}
       />
     </div>
   );

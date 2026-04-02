@@ -1,6 +1,8 @@
 const crypto = require('crypto');
 const Member = require('../../models/member.model');
 const ApiError = require('../../utils/api.error');
+const { logger } = require('../../utils/logger');
+const { sendPasswordResetEmail, sendWelcomeEmail } = require('../../utils/resend-mail');
 class MemberService {
 
 
@@ -11,7 +13,12 @@ class MemberService {
       return { status: 400, body: { success: false, error: 'Bu e-posta ile zaten bir hesap var.' } };
     }
     const member = await Member.create({ name, surname, email, password, phone, status: 'active' });
-    
+
+    const welcomeMail = await sendWelcomeEmail({ to: member.email, name, surname });
+    if (!welcomeMail.ok && !welcomeMail.skipped) {
+      logger.error('Hoş geldin e-postası gönderilemedi (üye: %s)', member.email);
+    }
+
     const token = member.getSignedJwtToken();
     const memberObj = member.toObject();
     delete memberObj.password;
@@ -37,6 +44,11 @@ class MemberService {
     member.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
     member.resetPasswordExpire = new Date(Date.now() + 30 * 60 * 1000); // 30 dakika
     await member.save({ validateBeforeSave: false });
+
+    const mailResult = await sendPasswordResetEmail({ to: member.email, resetToken });
+    if (!mailResult.ok && !mailResult.skipped) {
+      logger.error('Şifre sıfırlama e-postası gönderilemedi (üye: %s)', member.email);
+    }
 
     const body = {
       success: true,
@@ -74,7 +86,6 @@ class MemberService {
 
   // Login işlemi
   async login(email, password) {
-    console.log(email, password);
     try {
       // Email ile üyeyi bul ve password alanını da seç
       const member = await Member.findOne({ email: { $regex: new RegExp(`^${email}$`, 'i') } }).select('+password');
@@ -94,10 +105,10 @@ class MemberService {
         throw new ApiError(401, 'Hesabınız aktif değil. Lütfen yönetici ile iletişime geçin.');
       }
 
-      // JWT token oluştur
-      const token = member.getSignedJwtToken();
       member.lastLogin = new Date();
-      // Hassas bilgileri çıkar
+      await member.save();
+
+      const token = member.getSignedJwtToken();
       const memberData = member.toObject();
       delete memberData.password;
 

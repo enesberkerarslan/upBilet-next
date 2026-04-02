@@ -314,7 +314,7 @@ export function ProfileListingCreateModal({ open, onClose, onCreated, t }: Props
   const [row, setRow] = useState("");
   const [seatNumber, setSeatNumber] = useState("");
   const [ticketQuantity, setTicketQuantity] = useState(1);
-  const [ticketFormat, setTicketFormat] = useState("paper");
+  const [ticketFormat, setTicketFormat] = useState("e-ticket");
   const [venueStructure, setVenueStructure] = useState<{ categories?: VenueCategory[] } | null>(null);
   const [venueFieldError, setVenueFieldError] = useState("");
 
@@ -351,7 +351,7 @@ export function ProfileListingCreateModal({ open, onClose, onCreated, t }: Props
     setRow("");
     setSeatNumber("");
     setTicketQuantity(1);
-    setTicketFormat("paper");
+    setTicketFormat("e-ticket");
     setVenueStructure(null);
     setVenueFieldError("");
     setPrice("");
@@ -772,9 +772,9 @@ export function ProfileListingCreateModal({ open, onClose, onCreated, t }: Props
                   onChange={(e) => setTicketFormat(e.target.value)}
                   className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 transition-colors focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
                 >
+                  <option value="e-ticket">{t("profile.ticketTypeE")}</option>
                   <option value="paper">{t("profile.ticketTypePaper")}</option>
                   <option value="pdf">{t("profile.ticketTypePdf")}</option>
-                  <option value="e-ticket">{t("profile.ticketTypeE")}</option>
                 </select>
               </div>
               <div className="mb-4">

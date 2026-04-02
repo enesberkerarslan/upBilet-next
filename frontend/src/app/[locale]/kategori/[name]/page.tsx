@@ -7,6 +7,7 @@ import { MobileEventCard } from "@/components/event/MobileEventCard";
 import { EventTable } from "@/components/event/EventTable";
 import type { Locale } from "@/i18n";
 import { notFoundMetadata } from "@/lib/not-found-metadata";
+import { SITE_URL } from "@/lib/site-url";
 import { fetchCategoryBundle } from "@/lib/public-fetch";
 import { notFound } from "next/navigation";
 import type { PublicEvent } from "@/types/event";
@@ -92,7 +93,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     ...(keywords ? { keywords } : {}),
-    openGraph: { title, description, url: `https://upbilet.com/kategori/${slug}` },
+    openGraph: { title, description, url: `${SITE_URL}/kategori/${slug}` },
   };
 }
 

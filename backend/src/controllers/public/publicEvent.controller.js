@@ -5,7 +5,7 @@ class PublicEventController {
   async getAllEvents(req, res) {
     try {
       const result = await publicEventService.getAllEvents();
-      res.json(result);
+      res.status(result.status).json(result.body);
     } catch (error) {
       res.status(500).json({
         success: false,
@@ -19,7 +19,7 @@ class PublicEventController {
     try {
       const { tagId } = req.params;
       const result = await publicEventService.getEventsByTag(tagId);
-      res.json(result);
+      res.status(result.status).json(result.body);
     } catch (error) {
       res.status(500).json({
         success: false,

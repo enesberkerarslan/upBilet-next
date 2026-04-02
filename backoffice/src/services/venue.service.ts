@@ -11,6 +11,12 @@ export const venueService = {
     return data;
   },
 
+  /** EtkinlikAlanı etiketi `_id` (Tag) ile mekan tribün/blok yapısı */
+  getByVenueTagId: async (venueTagId: string) => {
+    const { data } = await api.get(`/venue-structures/venue/${encodeURIComponent(venueTagId)}`);
+    return data;
+  },
+
   create: async (payload: Record<string, unknown>) => {
     const { data } = await api.post('/venue-structures', payload);
     return data;

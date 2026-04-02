@@ -4,9 +4,35 @@ import type { Locale } from "@/i18n";
 import { localizedPath } from "@/lib/locale-path";
 import type { PublicEvent } from "@/types/event";
 
+/** ISO stringdeki takvim/saat (API/DB JSON — örn. ...T20:30:00.000Z) — yerel timezone'a çevrilmez. */
+const ISO_PREFIX_RE = /^(\d{4})-(\d{2})-(\d{2})[Tt](\d{2}):(\d{2})/;
+
+function parseEventDateFromDb(dateInput: string) {
+  const s = String(dateInput || "").trim();
+  const m = s.match(ISO_PREFIX_RE);
+  if (m) {
+    return {
+      year: Number(m[1]),
+      monthIndex: Number(m[2]) - 1,
+      day: Number(m[3]),
+      hour: Number(m[4]),
+      minute: Number(m[5]),
+    };
+  }
+  const date = new Date(s);
+  if (Number.isNaN(date.getTime())) return null;
+  return {
+    year: date.getUTCFullYear(),
+    monthIndex: date.getUTCMonth(),
+    day: date.getUTCDate(),
+    hour: date.getUTCHours(),
+    minute: date.getUTCMinutes(),
+  };
+}
+
 function tableDateParts(dateInput: string) {
-  const date = new Date(String(dateInput || "").replace("Z", ""));
-  if (Number.isNaN(date.getTime())) return { day: "", monthYear: "" };
+  const p = parseEventDateFromDb(dateInput);
+  if (!p) return { day: "", monthYear: "" };
   const months = [
     "Ocak",
     "Şubat",
@@ -21,17 +47,17 @@ function tableDateParts(dateInput: string) {
     "Kasım",
     "Aralık",
   ];
-  const day = String(date.getUTCDate()).padStart(2, "0");
-  const monthYear = `${months[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+  const day = String(p.day).padStart(2, "0");
+  const monthYear = `${months[p.monthIndex]} ${p.year}`;
   return { day, monthYear };
 }
 
 function tableTime(dateInput: string) {
-  const date = new Date(String(dateInput || "").replace("Z", ""));
-  if (Number.isNaN(date.getTime())) return "";
-  const h = String(date.getUTCHours()).padStart(2, "0");
-  const m = String(date.getUTCMinutes()).padStart(2, "0");
-  return `${h}:${m}`;
+  const p = parseEventDateFromDb(dateInput);
+  if (!p) return "";
+  const h = String(p.hour).padStart(2, "0");
+  const min = String(p.minute).padStart(2, "0");
+  return `${h}:${min}`;
 }
 
 export function EventTable({ events, locale }: { events: PublicEvent[]; locale: Locale }) {

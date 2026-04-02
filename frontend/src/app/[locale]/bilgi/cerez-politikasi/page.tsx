@@ -113,8 +113,8 @@ export default function Page() {
             <div className="rounded-lg bg-blue-50 p-4">
               <p className="text-gray-700">
                 <strong>Email:</strong>{" "}
-                <a href="mailto:destek@upbilet.com" className="text-blue-600 hover:underline">
-                  destek@upbilet.com
+                <a href="mailto:info@upbilet.com" className="text-blue-600 hover:underline">
+                  info@upbilet.com
                 </a>
               </p>
             </div>

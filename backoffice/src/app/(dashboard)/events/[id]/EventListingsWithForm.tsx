@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { Plus, Ticket, Pencil, Copy, ToggleLeft, Trash2, FlaskConical } from 'lucide-react';
+import { Plus, Ticket, Pencil, Copy, ToggleLeft, Trash2 } from 'lucide-react';
 import Table from '@/components/ui/Table';
 import Badge, { statusVariant } from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
@@ -14,16 +14,7 @@ import { Listing, Member } from '@/types';
 import { formatCurrency, formatDateTime } from '@/lib/utils';
 import { buildDuplicateListingPayload, sellerNetFromListPrice } from '@/lib/listing-duplicate';
 import EventListingFormModal from './EventListingFormModal';
-import TestSaleModal from './TestSaleModal';
 import CopyableRef from '@/components/ui/CopyableRef';
-
-function memberLabel(m: Member | string | undefined | null): string {
-  if (m && typeof m === 'object' && 'name' in m) {
-    return `${m.name} ${m.surname}`.trim();
-  }
-  if (typeof m === 'string' && m) return m;
-  return '-';
-}
 
 function ListingPriceInput({
   listing,
@@ -115,16 +106,22 @@ interface Props {
   listings: Listing[];
   members: Member[];
   sellerCommissionPercent: number;
+  venueTagId?: string | null;
 }
 
-export default function EventListingsWithForm({ eventId, listings, members, sellerCommissionPercent }: Props) {
+export default function EventListingsWithForm({
+  eventId,
+  listings,
+  members,
+  sellerCommissionPercent,
+  venueTagId = null,
+}: Props) {
   const router = useRouter();
   const [formOpen, setFormOpen] = useState(false);
   const [editListing, setEditListing] = useState<Listing | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<Listing | null>(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [copyingId, setCopyingId] = useState<string | null>(null);
-  const [testListing, setTestListing] = useState<Listing | null>(null);
 
   const closeModal = () => {
     setFormOpen(false);
@@ -202,9 +199,20 @@ export default function EventListingsWithForm({ eventId, listings, members, sell
       ),
     },
     {
-      key: 'member',
-      header: 'Satıcı',
-      render: (row: Listing) => <span className="whitespace-nowrap">{memberLabel(row.memberId)}</span>,
+      key: 'category',
+      header: 'Kategori',
+      className: 'max-w-[10rem]',
+      render: (row: Listing) => (
+        <span className="text-gray-900">{row.category?.trim() || '—'}</span>
+      ),
+    },
+    {
+      key: 'block',
+      header: 'Blok',
+      className: 'max-w-[10rem]',
+      render: (row: Listing) => (
+        <span className="text-gray-700">{row.block?.trim() || '—'}</span>
+      ),
     },
     {
       key: 'price',
@@ -269,23 +277,6 @@ export default function EventListingsWithForm({ eventId, listings, members, sell
       header: 'İşlemler',
       render: (row: Listing) => (
         <div className="flex flex-wrap items-center gap-1.5">
-          <Button
-            size="sm"
-            variant="outline"
-            className="h-8 min-w-0 justify-center gap-1 px-2"
-            icon={<FlaskConical size={14} />}
-            onClick={() => setTestListing(row)}
-            disabled={row.status !== 'active' || (row.quantity ?? 0) - (row.soldQuantity ?? 0) < 1}
-            title={
-              row.status !== 'active'
-                ? 'Sadece aktif ilanlarda test satışı'
-                : (row.quantity ?? 0) - (row.soldQuantity ?? 0) < 1
-                  ? 'Kontenjan yok'
-                  : 'Ödeme olmadan test satışı oluştur'
-            }
-          >
-            Test satış
-          </Button>
           <Button
             size="sm"
             variant="outline"
@@ -369,6 +360,7 @@ export default function EventListingsWithForm({ eventId, listings, members, sell
         eventId={eventId}
         members={members}
         sellerCommissionPercent={sellerCommissionPercent}
+        venueTagId={venueTagId}
         listingToEdit={editListing}
         onSuccess={() => router.refresh()}
       />
@@ -381,14 +373,6 @@ export default function EventListingsWithForm({ eventId, listings, members, sell
         title="İlanı sil"
         description="Bu ilanı kalıcı olarak silmek istediğinize emin misiniz?"
         confirmLabel="Sil"
-      />
-
-      <TestSaleModal
-        open={!!testListing}
-        onClose={() => setTestListing(null)}
-        listing={testListing}
-        members={members}
-        onSuccess={() => router.refresh()}
       />
     </section>
   );

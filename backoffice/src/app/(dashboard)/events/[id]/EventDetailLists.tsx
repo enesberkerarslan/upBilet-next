@@ -22,6 +22,8 @@ interface Props {
   members: Member[];
   /** Etkinlikteki satıcı komisyonu (%); ilan formunda satıcı tutarı buna göre hesaplanır */
   sellerCommissionPercent: number;
+  /** EtkinlikAlanı etiketi — mekan kategori/blok seçimi için */
+  venueTagId?: string | null;
 }
 
 export default function EventDetailLists({
@@ -30,6 +32,7 @@ export default function EventDetailLists({
   sales,
   members,
   sellerCommissionPercent,
+  venueTagId = null,
 }: Props) {
   const saleColumns = [
     {
@@ -95,6 +98,7 @@ export default function EventDetailLists({
         listings={listings}
         members={members}
         sellerCommissionPercent={sellerCommissionPercent}
+        venueTagId={venueTagId}
       />
 
       <section>

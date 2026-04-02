@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { listingService } from '@/services/listing.service';
+import { venueService } from '@/services/venue.service';
 import { Listing, Member } from '@/types';
 import { formatCurrency } from '@/lib/utils';
 import { listingMemberId } from '@/lib/listing-member';
@@ -13,9 +14,9 @@ import Input from '@/components/ui/Input';
 import Select from '@/components/ui/Select';
 
 const TICKET_TYPES = [
+  { value: 'e-ticket', label: 'E-bilet' },
   { value: 'paper', label: 'Basılı (paper)' },
   { value: 'pdf', label: 'PDF' },
-  { value: 'e-ticket', label: 'E-bilet' },
 ];
 
 const STATUS_OPTIONS = [
@@ -24,16 +25,21 @@ const STATUS_OPTIONS = [
   { value: 'inactive', label: 'Pasif' },
 ];
 
+type VenueBlock = { _id?: string; name: string };
+type VenueCategory = { _id: string; name: string; blocks?: VenueBlock[] };
+type VenueStructureDoc = { _id?: string; venueId?: string; categories?: VenueCategory[] };
+
 interface Props {
   open: boolean;
   onClose: () => void;
   eventId: string;
   members: Member[];
-  /** Etkinlik ayarı: Satıcı komisyon (%) — liste fiyatından satıcı tutarı türetilir */
+  /** Etkinlik satıcı komisyon (%) */
   sellerCommissionPercent: number;
   onSuccess: () => void;
-  /** Doluysa düzenleme modu */
   listingToEdit?: Listing | null;
+  /** EtkinlikAlanı etiketi _id — tanımlıysa kategori/blok açılır listeden */
+  venueTagId?: string | null;
 }
 
 export default function EventListingFormModal({
@@ -44,6 +50,7 @@ export default function EventListingFormModal({
   sellerCommissionPercent,
   onSuccess,
   listingToEdit = null,
+  venueTagId = null,
 }: Props) {
   const isEdit = !!listingToEdit;
   const commissionPct = Number.isFinite(sellerCommissionPercent) ? sellerCommissionPercent : 20;
@@ -52,11 +59,128 @@ export default function EventListingFormModal({
   const [price, setPrice] = useState('');
   const [ticketType, setTicketType] = useState('e-ticket');
   const [quantity, setQuantity] = useState('1');
-  const [category, setCategory] = useState('');
-  const [block, setBlock] = useState('');
   const [row, setRow] = useState('');
   const [seat, setSeat] = useState('');
   const [status, setStatus] = useState('active');
+
+  const [structure, setStructure] = useState<VenueStructureDoc | null>(null);
+  const [structureLoading, setStructureLoading] = useState(false);
+  const [structureError, setStructureError] = useState('');
+  const [selectedCategoryId, setSelectedCategoryId] = useState('');
+  const [selectedBlockName, setSelectedBlockName] = useState('');
+  const [manualCategory, setManualCategory] = useState('');
+  const [manualBlock, setManualBlock] = useState('');
+  const [editUseManual, setEditUseManual] = useState(false);
+
+  const categories = structure?.categories ?? [];
+  const pickerBase = Boolean(venueTagId && categories.length > 0);
+  const showPicker = pickerBase && !editUseManual;
+
+  const blockOptions = useMemo(() => {
+    if (!selectedCategoryId || !categories.length) return [];
+    const cat = categories.find((c) => c._id === selectedCategoryId);
+    const blocks = cat?.blocks ?? [];
+    return blocks.map((b) => ({ value: b.name, label: b.name }));
+  }, [selectedCategoryId, categories]);
+
+  const categorySelectOptions = useMemo(
+    () => categories.map((c) => ({ value: c._id, label: c.name })),
+    [categories]
+  );
+
+  useEffect(() => {
+    if (!open || !venueTagId) {
+      setStructure(null);
+      setStructureError('');
+      setStructureLoading(false);
+      return;
+    }
+    let cancelled = false;
+    setStructureLoading(true);
+    setStructureError('');
+    (async () => {
+      try {
+        const doc = (await venueService.getByVenueTagId(venueTagId)) as VenueStructureDoc;
+        if (!cancelled) {
+          setStructure(doc?.categories ? doc : null);
+        }
+      } catch {
+        if (!cancelled) {
+          setStructure(null);
+          setStructureError('Mekan yapısı yüklenemedi. Kategori ve blok metin olarak girilebilir.');
+        }
+      } finally {
+        if (!cancelled) setStructureLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [open, venueTagId]);
+
+  useEffect(() => {
+    if (!open) return;
+    if (listingToEdit) {
+      setMemberId(listingMemberId(listingToEdit));
+      setPrice(listingToEdit.price != null ? String(listingToEdit.price) : '');
+      setTicketType(listingToEdit.ticketType || 'e-ticket');
+      setQuantity(String(listingToEdit.quantity ?? 1));
+      setRow(listingToEdit.row ?? '');
+      setSeat(listingToEdit.seat ?? '');
+      setStatus(listingToEdit.status || 'active');
+    } else {
+      setMemberId('');
+      setPrice('');
+      setTicketType('e-ticket');
+      setQuantity('1');
+      setRow('');
+      setSeat('');
+      setStatus('active');
+    }
+  }, [open, listingToEdit]);
+
+  useEffect(() => {
+    if (!open) return;
+    if (listingToEdit && categories.length > 0) {
+      const matched = categories.some((c) => c.name === listingToEdit.category);
+      setEditUseManual(!matched);
+    } else {
+      setEditUseManual(false);
+    }
+  }, [open, listingToEdit, categories]);
+
+  useEffect(() => {
+    if (!open) return;
+    if (listingToEdit) {
+      if (categories.length > 0) {
+        const cat = categories.find((c) => c.name === listingToEdit.category);
+        if (cat) {
+          setSelectedCategoryId(cat._id);
+          const b = listingToEdit.block?.trim();
+          setSelectedBlockName(
+            b && cat.blocks?.some((x) => x.name === b) ? b : ''
+          );
+          setManualCategory('');
+          setManualBlock('');
+        } else {
+          setSelectedCategoryId('');
+          setSelectedBlockName('');
+          setManualCategory(listingToEdit.category ?? '');
+          setManualBlock(listingToEdit.block ?? '');
+        }
+      } else {
+        setSelectedCategoryId('');
+        setSelectedBlockName('');
+        setManualCategory(listingToEdit.category ?? '');
+        setManualBlock(listingToEdit.block ?? '');
+      }
+    } else {
+      setSelectedCategoryId('');
+      setSelectedBlockName('');
+      setManualCategory('');
+      setManualBlock('');
+    }
+  }, [open, listingToEdit, categories]);
 
   const memberOptions = members.filter((m) => {
     if (m.status === 'active') return true;
@@ -66,31 +190,6 @@ export default function EventListingFormModal({
     value: m._id,
     label: `${m.name} ${m.surname} — ${m.email}`,
   }));
-
-  useEffect(() => {
-    if (!open) return;
-    if (listingToEdit) {
-      setMemberId(listingMemberId(listingToEdit));
-      setPrice(listingToEdit.price != null ? String(listingToEdit.price) : '');
-      setTicketType(listingToEdit.ticketType || 'e-ticket');
-      setQuantity(String(listingToEdit.quantity ?? 1));
-      setCategory(listingToEdit.category ?? '');
-      setBlock(listingToEdit.block ?? '');
-      setRow(listingToEdit.row ?? '');
-      setSeat(listingToEdit.seat ?? '');
-      setStatus(listingToEdit.status || 'active');
-    } else {
-      setMemberId('');
-      setPrice('');
-      setTicketType('e-ticket');
-      setQuantity('1');
-      setCategory('');
-      setBlock('');
-      setRow('');
-      setSeat('');
-      setStatus('active');
-    }
-  }, [open, listingToEdit]);
 
   const parsedListPrice = parseFloat(price.replace(',', '.'));
   const listPriceOk = price.trim() !== '' && !Number.isNaN(parsedListPrice) && parsedListPrice >= 0;
@@ -128,9 +227,24 @@ export default function EventListingFormModal({
       toast.error(`Adet, satılan adetten (${soldMin}) küçük olamaz.`);
       return;
     }
-    if (!category.trim()) {
-      toast.error('Kategori zorunlu (ör. Tribün, VIP).');
-      return;
+
+    let categoryOut = '';
+    let blockOut: string | undefined;
+    if (showPicker) {
+      const cat = categories.find((c) => c._id === selectedCategoryId);
+      categoryOut = (cat?.name ?? '').trim();
+      if (!categoryOut) {
+        toast.error('Bilet kategorisi seçin.');
+        return;
+      }
+      blockOut = selectedBlockName.trim() || undefined;
+    } else {
+      categoryOut = manualCategory.trim();
+      if (!categoryOut) {
+        toast.error('Kategori zorunludur.');
+        return;
+      }
+      blockOut = manualBlock.trim() || undefined;
     }
 
     setLoading(true);
@@ -142,8 +256,8 @@ export default function EventListingFormModal({
           sellerAmount: s,
           ticketType,
           quantity: q,
-          category: category.trim(),
-          block: block.trim() || undefined,
+          category: categoryOut,
+          block: blockOut,
           row: row.trim() || undefined,
           seat: seat.trim() || undefined,
           status,
@@ -157,8 +271,8 @@ export default function EventListingFormModal({
           sellerAmount: s,
           ticketType,
           quantity: q,
-          category: category.trim(),
-          block: block.trim() || undefined,
+          category: categoryOut,
+          block: blockOut,
           row: row.trim() || undefined,
           seat: seat.trim() || undefined,
           status,
@@ -250,16 +364,53 @@ export default function EventListingFormModal({
           </div>
         </div>
 
-        <Input
-          label="Kategori *"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          placeholder="Örn. Maraton Alt, VIP, Mavi tribün"
-          required
-        />
+        {venueTagId && structureLoading ? (
+          <p className="text-sm text-gray-500">Mekan kategorileri yükleniyor…</p>
+        ) : null}
+        {structureError ? <p className="text-sm text-amber-800 bg-amber-50 border border-amber-100 rounded-lg p-2">{structureError}</p> : null}
+
+        {showPicker ? (
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Select
+              label="Bilet kategorisi *"
+              value={selectedCategoryId}
+              onChange={(e) => {
+                setSelectedCategoryId(e.target.value);
+                setSelectedBlockName('');
+              }}
+              options={categorySelectOptions}
+              placeholder="Kategori seçin"
+              required
+            />
+            <Select
+              label="Blok"
+              value={selectedBlockName}
+              onChange={(e) => setSelectedBlockName(e.target.value)}
+              options={blockOptions}
+              placeholder={blockOptions.length ? 'Blok seçin (opsiyonel)' : 'Bu kategoride blok tanımlı değil'}
+              disabled={!selectedCategoryId || blockOptions.length === 0}
+            />
+          </div>
+        ) : (
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Input
+              label="Kategori *"
+              value={manualCategory}
+              onChange={(e) => setManualCategory(e.target.value)}
+              placeholder="Örn. Üst Kat, VIP"
+              required
+            />
+            <Input label="Blok" value={manualBlock} onChange={(e) => setManualBlock(e.target.value)} placeholder="Opsiyonel" />
+          </div>
+        )}
+
+        {editUseManual && pickerBase && listingToEdit ? (
+          <p className="text-xs text-gray-500">
+            İlandaki kategori mevcut mekan listesinde yok; metin alanları kullanılıyor.
+          </p>
+        ) : null}
 
         <div className="grid gap-4 sm:grid-cols-3">
-          <Input label="Blok" value={block} onChange={(e) => setBlock(e.target.value)} placeholder="Opsiyonel" />
           <Input label="Sıra" value={row} onChange={(e) => setRow(e.target.value)} placeholder="Opsiyonel" />
           <Input label="Koltuk" value={seat} onChange={(e) => setSeat(e.target.value)} placeholder="Opsiyonel" />
         </div>

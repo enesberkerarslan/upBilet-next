@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { CategorySeoCollapsible } from "@/components/category/CategorySeoCollapsible";
 import { DetailEventPanel, type DetailTag } from "@/components/detay/DetailEventPanel";
 import { DetailTicketList, type TicketOption } from "@/components/detay/DetailTicketList";
+import { StadiumSelectionProvider } from "@/components/detay/StadiumSelectionContext";
+import { resolveStadiumPlanPath } from "@/lib/stadium-svg";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -80,23 +82,39 @@ export default async function DetayPage({ params }: Props) {
       ticketType: l.ticketType,
     }));
 
+  const venueTag = ev.tags?.find((t) => t.tag === "EtkinlikAlanı");
+  const venueTagName = venueTag?.name?.trim() || null;
+  const venueTagSlug = venueTag?.slug?.trim() || null;
+  const locationTrim = ev.location?.trim() || null;
+  const stadiumPlanPath =
+    resolveStadiumPlanPath({ venueName: venueTagName, venueSlug: venueTagSlug }) ??
+    (locationTrim ? resolveStadiumPlanPath({ venueName: locationTrim, venueSlug: null }) : null);
+
   return (
-    <div className="match-detail pb-5 pt-[50px]">
+    <div className="match-detail pb-5 pt-3 lg:pt-[50px]">
       <div className="relative">
-        <div className="detail-container mx-auto grid max-w-[1200px] grid-cols-1 gap-5 md:gap-5 lg:grid-cols-[1fr_1.5fr]">
-          <div className="left-section">
-            <DetailEventPanel
-              locale={locale}
-              name={ev.name}
-              date={ev.date}
-              location={ev.location}
-              tags={ev.tags}
-            />
+        <StadiumSelectionProvider rawListings={rawList}>
+          <div className="detail-container mx-auto grid max-w-[1200px] grid-cols-1 gap-5 md:gap-5 lg:grid-cols-[1fr_1.5fr]">
+            <div className="left-section min-w-0 w-full">
+              <DetailEventPanel
+                locale={locale}
+                name={ev.name}
+                date={ev.date}
+                location={ev.location}
+                tags={ev.tags}
+                listingsForStadium={rawList}
+              />
+            </div>
+            <div className="right-section">
+              <DetailTicketList
+                locale={locale}
+                eventName={ev.name}
+                tickets={tickets}
+                stadiumPlanSrc={stadiumPlanPath}
+              />
+            </div>
           </div>
-          <div className="right-section">
-            <DetailTicketList locale={locale} eventName={ev.name} tickets={tickets} />
-          </div>
-        </div>
+        </StadiumSelectionProvider>
       </div>
 
       {ev.description ? (

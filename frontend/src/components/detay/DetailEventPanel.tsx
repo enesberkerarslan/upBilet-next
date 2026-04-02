@@ -1,9 +1,24 @@
 import { formatDateTR, formatTimeTR } from "@/lib/date";
 import type { Locale } from "@/i18n";
+import { getMessages, translate } from "@/i18n";
 import Link from "next/link";
 import { localizedPath } from "@/lib/locale-path";
+import {
+  STADIUM_NO_LISTINGS_AVAILABILITY,
+  stadiumListingAvailabilityFromListings,
+  stadiumListingSummariesFromListings,
+} from "@/lib/stadium-listing-availability";
+import { resolveStadiumPlanPath } from "@/lib/stadium-svg";
+import { StadiumPlanInteractive } from "@/components/detay/StadiumPlanInteractive";
 
-export type DetailTag = { name?: string; tag?: string };
+export type DetailTag = { name?: string; tag?: string; slug?: string };
+
+type ListingForStadium = {
+  block?: string | null;
+  category?: string | null;
+  quantity?: number | null;
+  price?: number | null;
+};
 
 type Props = {
   locale: Locale;
@@ -11,6 +26,8 @@ type Props = {
   date?: string | null;
   location?: string | null;
   tags?: DetailTag[];
+  /** Blok bazlı stok — SVG ile eşleşen `block` alanları */
+  listingsForStadium?: ListingForStadium[];
 };
 
 function formatDateOnly(iso: string): string {
@@ -19,7 +36,7 @@ function formatDateOnly(iso: string): string {
     const parts = full.split(" ");
     if (parts.length < 3) return full;
     const [day, month, year] = parts;
-    return `${day} ${String(month).toUpperCase()} ${year}`;
+    return `${day} ${month} ${year}`;
   } catch {
     return "";
   }
@@ -33,15 +50,70 @@ function hasPassoTag(tags: DetailTag[] | undefined): boolean {
   });
 }
 
-export function DetailEventPanel({ locale, name, date, location, tags }: Props) {
+/** `DetailTicketList` ile aynı satırlar — eksik fiyat/kategori kayıtları stok modunu kapatıp haritayı hep sarı boyuyordu */
+function listingsEligibleForTicketGrid(rows: ListingForStadium[]) {
+  return rows.filter(
+    (l) =>
+      l.price != null &&
+      l.quantity != null &&
+      (l.category ?? "").trim() !== ""
+  );
+}
+
+export function DetailEventPanel({ locale, name, date, location, tags, listingsForStadium }: Props) {
   const passo = hasPassoTag(tags);
   const sssHref = localizedPath(locale, "/bilgi/sikca-sorulan-sorular");
+  const messages = getMessages(locale);
+  const venueTag = tags?.find((t) => t.tag === "EtkinlikAlanı");
+  const venueTagName = venueTag?.name?.trim() || null;
+  const venueTagSlug = venueTag?.slug?.trim() || null;
+  const locationTrim = location?.trim() || null;
+  /** Etiket adı kısa kalırsa (ör. "Antalya Stadyumu") location’daki tam mekan adı hiç okunmuyordu. */
+  const stadiumPlanPath =
+    resolveStadiumPlanPath({ venueName: venueTagName, venueSlug: venueTagSlug }) ??
+    (locationTrim ? resolveStadiumPlanPath({ venueName: locationTrim, venueSlug: null }) : null);
+  const showStadiumPlan =
+    Boolean(venueTag?.name?.trim() || venueTag?.slug?.trim()) || Boolean(location?.trim());
+
+  const mapListings =
+    listingsForStadium == null ? null : listingsEligibleForTicketGrid(listingsForStadium);
+
+  const listingAvailability =
+    mapListings == null
+      ? undefined
+      : mapListings.length === 0
+        ? STADIUM_NO_LISTINGS_AVAILABILITY
+        : stadiumListingAvailabilityFromListings(mapListings);
+
+  const listingSummaries =
+    mapListings != null && mapListings.length > 0
+      ? stadiumListingSummariesFromListings(mapListings)
+      : { byBlock: {}, byCategory: {} };
+
+  const dateTimeMobile =
+    date && formatDateOnly(date)
+      ? `${formatDateOnly(date)} ${formatTimeTR(date)}`.trim()
+      : date
+        ? formatTimeTR(date)
+        : null;
+
+  const locationDateMobile = [location?.trim(), dateTimeMobile].filter(Boolean).join(" - ");
 
   return (
-    <div className="rounded-3xl bg-white p-6">
-      <p className="mb-6 text-center text-lg font-medium text-gray-900">Maç Detayları</p>
+    <div className="overflow-hidden rounded-3xl bg-white p-4 lg:p-6">
+      <p className="mb-6 hidden text-center text-lg font-medium text-gray-900 md:block">Maç Detayları</p>
 
-      <div className="match-info">
+      {/* Mobil: isim → konum - tarih/saat; stadyum hemen altında */}
+      <div className="match-info md:hidden">
+        <h1 className="m-0 text-lg font-semibold leading-snug text-gray-900 whitespace-pre-line">{name}</h1>
+        {locationDateMobile ? (
+          <p className="mt-1 text-sm leading-snug text-gray-600 whitespace-pre-line">{locationDateMobile}</p>
+        ) : date ? (
+          <p className="mt-1 text-sm text-gray-500">Tarih yakında</p>
+        ) : null}
+      </div>
+
+      <div className="match-info hidden md:block">
         <div className="mb-4 flex items-center justify-evenly gap-8">
           <div className="text-center">
             {date ? (
@@ -64,7 +136,31 @@ export function DetailEventPanel({ locale, name, date, location, tags }: Props) 
         ) : null}
       </div>
 
-      <div className="mt-4 flex flex-col gap-3 border-t border-gray-100 pt-4">
+      {showStadiumPlan ? (
+        <div
+          className={
+            location
+              ? "mt-2 -mx-4 lg:mt-6 lg:-mx-6"
+              : "mt-2 -mx-4 border-t border-gray-100 pt-2 lg:mt-6 lg:-mx-6 lg:pt-5"
+          }
+        >
+          {stadiumPlanPath ? (
+            <StadiumPlanInteractive
+              src={stadiumPlanPath}
+              alt={translate(messages, "eventDetail.stadiumPlanAlt")}
+              locale={locale}
+              listingAvailability={listingAvailability}
+              listingSummaries={listingSummaries}
+            />
+          ) : (
+            <p className="rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-4 py-8 text-center text-sm text-gray-500">
+              {translate(messages, "eventDetail.stadiumPlanNotFound")}
+            </p>
+          )}
+        </div>
+      ) : null}
+
+      <div className="mt-3 flex flex-col gap-3 border-t border-gray-100 pt-3 lg:mt-4 lg:pt-4">
         {passo ? (
           <>
             <div className="flex items-start gap-3 p-2">

@@ -21,7 +21,7 @@ export default function Page() {
   );
   html = html.replace(
     '<span id="contact-info-email"></span>',
-    '<a href="mailto:destek@upbilet.com" class="text-blue-600 underline hover:opacity-80">destek@upbilet.com</a>',
+    '<a href="mailto:" class="text-blue-600 underline hover:opacity-80">info@upbilet.com</a>',
   );
 
   return (

@@ -1,6 +1,6 @@
 import { formatDateTR, formatTimeTR } from "@/lib/date";
 import { getPublicApiBaseServer } from "@/lib/env";
-import { computeCheckoutPricing } from "@/lib/payment-pricing";
+import { clampPercent0to100, computeCheckoutPricing } from "@/lib/payment-pricing";
 import type { CheckoutSaleInfo } from "@/components/payment/PaymentCardStep";
 
 export type OdemeEventRecord = {
@@ -9,6 +9,10 @@ export type OdemeEventRecord = {
   date?: string;
   image?: string;
   tags?: { name?: string; tag?: string }[];
+  /** Satıcı komisyonu % (şema: commission) */
+  commission?: number;
+  /** Alıcı hizmet bedeli % — şemada yazım: comissionCustomer */
+  comissionCustomer?: number;
 };
 
 type ListingRecord = {
@@ -42,8 +46,13 @@ export async function loadOdemeCheckoutData(
     const event = evJson.event;
 
     const unit = listing.price;
-    const { serviceFee, serviceFeeKdv, totalWithKdv } = computeCheckoutPricing(unit, quantity);
-    const sellerAmt = listing.sellerAmount ?? unit * 0.8;
+    const customerPct = clampPercent0to100(event.comissionCustomer, 20);
+    const { serviceFee, serviceFeeKdv, totalWithKdv } = computeCheckoutPricing(unit, quantity, {
+      customerCommissionPercent: customerPct,
+    });
+    const sellerCommissionPct = clampPercent0to100(event.commission, 20);
+    const sellerAmt =
+      listing.sellerAmount ?? unit * (1 - sellerCommissionPct / 100);
 
     const eventDate = event.date ? `${formatDateTR(event.date)} ${formatTimeTR(event.date)}`.trim() : "";
 

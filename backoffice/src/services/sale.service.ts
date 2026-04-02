@@ -120,10 +120,4 @@ export const saleService = {
     }
     return json;
   },
-
-  /** Gerçek ödeme yok; ilan + alıcı ile test satışı (admin) */
-  createTest: async (body: { listingId: string; buyerMemberId: string; quantity?: number }) => {
-    const { data } = await api.post('/sales/test', body);
-    return data as { success?: boolean; data?: unknown; message?: string };
-  },
 };

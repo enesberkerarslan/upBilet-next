@@ -89,7 +89,7 @@ class EventService {
   async getEventById(id) {
     try {
       const event = await Event.findById(id)
-        .populate('tags', 'name')
+        .populate('tags', 'name tag slug')
         .populate('createdBy', 'name email')
         .lean();
       
@@ -106,7 +106,7 @@ class EventService {
   async getEventBySlug(slug) {
     try {
       const event = await Event.findOne({ slug })
-        .populate('tags', 'name')
+        .populate('tags', 'name tag slug')
         .populate('createdBy', 'name email')
         .lean();
       

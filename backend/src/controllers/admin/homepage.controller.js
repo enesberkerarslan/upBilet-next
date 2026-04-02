@@ -14,10 +14,6 @@ class AdminHomepageController {
   async upsert(req, res) {
     try {
       const { status, body } = await homepageService.upsertHomepage(req.body);
-      
-      // Cache temizleme artık service'de yapılıyor, burada tekrar yapmaya gerek yok
-      // await publicHomepageService.clearCache();
-      
       res.status(status).json(body);
     } catch (error) {
       res.status(500).json({ success: false, message: error.message });

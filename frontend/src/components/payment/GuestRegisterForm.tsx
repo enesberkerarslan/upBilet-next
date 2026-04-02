@@ -68,56 +68,56 @@ export function GuestRegisterForm() {
   }
 
   return (
-    <div className="rounded-2xl bg-white p-4 md:p-6">
+    <div className="rounded-2xl bg-white p-4 text-left md:p-6">
       <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
         <div>
-          <label className="text-sm text-gray-600">Adınız</label>
+          <label className="block text-sm text-gray-600">Adınız</label>
           <input
             type="text"
             value={form.firstName}
             onChange={(e) => setForm((f) => ({ ...f, firstName: e.target.value }))}
             className="mt-1 w-full rounded-xl border border-gray-200/70 bg-stone-50/50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-indigo-200/90 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100/70"
           />
-          {errors.firstName ? <span className="text-xs text-red-500">{errors.firstName}</span> : null}
+          {errors.firstName ? <span className="mt-0.5 block text-xs text-red-500">{errors.firstName}</span> : null}
         </div>
         <div>
-          <label className="text-sm text-gray-600">Soyadınız</label>
+          <label className="block text-sm text-gray-600">Soyadınız</label>
           <input
             type="text"
             value={form.lastName}
             onChange={(e) => setForm((f) => ({ ...f, lastName: e.target.value }))}
             className="mt-1 w-full rounded-xl border border-gray-200/70 bg-stone-50/50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-indigo-200/90 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100/70"
           />
-          {errors.lastName ? <span className="text-xs text-red-500">{errors.lastName}</span> : null}
+          {errors.lastName ? <span className="mt-0.5 block text-xs text-red-500">{errors.lastName}</span> : null}
         </div>
       </div>
 
       <div className="mt-3 grid grid-cols-1 gap-3 md:mt-4 md:grid-cols-2 md:gap-4">
         <div>
-          <label className="text-sm text-gray-600">Telefonunuz</label>
+          <label className="block text-sm text-gray-600">Telefonunuz</label>
           <input
             type="tel"
             value={form.phone}
             onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
             className="mt-1 w-full rounded-xl border border-gray-200/70 bg-stone-50/50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-indigo-200/90 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100/70"
           />
-          {errors.phone ? <span className="text-xs text-red-500">{errors.phone}</span> : null}
+          {errors.phone ? <span className="mt-0.5 block text-xs text-red-500">{errors.phone}</span> : null}
         </div>
         <div>
-          <label className="text-sm text-gray-600">E-Posta Adresi</label>
+          <label className="block text-sm text-gray-600">E-Posta Adresi</label>
           <input
             type="email"
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
             className="mt-1 w-full rounded-xl border border-gray-200/70 bg-stone-50/50 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 transition-all duration-200 focus:border-indigo-200/90 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-100/70"
           />
-          {errors.email ? <span className="text-xs text-red-500">{errors.email}</span> : null}
+          {errors.email ? <span className="mt-0.5 block text-xs text-red-500">{errors.email}</span> : null}
         </div>
       </div>
 
       <div className="mt-3 grid grid-cols-1 gap-3 md:mt-4 md:grid-cols-2 md:gap-4">
         <div>
-          <label className="text-sm text-gray-600">Şifre</label>
+          <label className="block text-sm text-gray-600">Şifre</label>
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
@@ -134,10 +134,10 @@ export function GuestRegisterForm() {
               {showPassword ? "Gizle" : "Göster"}
             </button>
           </div>
-          {errors.password ? <span className="text-xs text-red-500">{errors.password}</span> : null}
+          {errors.password ? <span className="mt-0.5 block text-xs text-red-500">{errors.password}</span> : null}
         </div>
         <div>
-          <label className="text-sm text-gray-600">Şifre (Tekrardan)</label>
+          <label className="block text-sm text-gray-600">Şifre (Tekrardan)</label>
           <div className="relative">
             <input
               type={showPasswordConfirm ? "text" : "password"}
@@ -154,33 +154,39 @@ export function GuestRegisterForm() {
               {showPasswordConfirm ? "Gizle" : "Göster"}
             </button>
           </div>
-          {errors.passwordConfirm ? <span className="text-xs text-red-500">{errors.passwordConfirm}</span> : null}
+          {errors.passwordConfirm ? (
+            <span className="mt-0.5 block text-xs text-red-500">{errors.passwordConfirm}</span>
+          ) : null}
         </div>
       </div>
 
       <div className="mt-3 md:mt-4">
-        <div className="flex items-center gap-2">
+        <div className="flex items-start gap-2">
           <input
             type="checkbox"
             className="h-4 w-4 shrink-0 rounded border-gray-300 accent-[#7950F2]"
             checked={form.termsAccepted}
             onChange={(e) => setForm((f) => ({ ...f, termsAccepted: e.target.checked }))}
           />
-          <span className="text-sm">
+          <span className="text-sm leading-snug">
             Kullanım Koşulları ve KVKK&apos;yı kabul ediyorum.
             <span className="text-[#FB2C36]">*</span>
           </span>
         </div>
-        {errors.termsAccepted ? <span className="text-xs text-red-500">{errors.termsAccepted}</span> : null}
+        {errors.termsAccepted ? (
+          <span className="mt-1 block pl-6 text-xs text-red-500">{errors.termsAccepted}</span>
+        ) : null}
 
-        <div className="mt-2 flex items-center gap-2">
+        <div className="mt-2 flex items-start gap-2">
           <input
             type="checkbox"
             className="h-4 w-4 shrink-0 rounded border-gray-300 accent-[#7950F2]"
             checked={form.marketingConsent}
             onChange={(e) => setForm((f) => ({ ...f, marketingConsent: e.target.checked }))}
           />
-          <span className="text-sm">Benimle e-posta, telefon yoluyla iletişime geçmenize izin veriyorum.</span>
+          <span className="text-sm leading-snug">
+            Benimle e-posta, telefon yoluyla iletişime geçmenize izin veriyorum.
+          </span>
         </div>
       </div>
 
@@ -188,7 +194,7 @@ export function GuestRegisterForm() {
         type="button"
         disabled={loading}
         onClick={handleRegister}
-        className="mt-4 w-full rounded-lg bg-[#7950F2] py-3.5 text-base font-medium text-white hover:bg-[#6039D1] disabled:opacity-60 md:mt-6 md:text-lg"
+        className="mt-4 w-full rounded-lg bg-[#7950F2] py-3.5 text-center text-base font-medium text-white hover:bg-[#6039D1] disabled:opacity-60 md:mt-6 md:text-lg"
       >
         {loading ? "…" : "Hesabı Oluştur"}
       </button>

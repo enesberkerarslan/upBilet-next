@@ -2,6 +2,8 @@ import Image from "next/image";
 import type { PublicBlog } from "@/types/blog";
 
 export function blogFirstImage(b: PublicBlog | null | undefined, fallback = "/img/logo.svg") {
+  const cover = b?.coverImageUrl?.trim();
+  if (cover && !cover.includes(" ")) return cover;
   const url = b?.content?.find((i) => i.imageUrl)?.imageUrl?.trim();
   if (url && !url.includes(" ")) return url;
   return fallback;

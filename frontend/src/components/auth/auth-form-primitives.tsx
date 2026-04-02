@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 export function AuthInputField({
   label,
   id,
@@ -212,17 +210,6 @@ function GoogleIcon({ className = "h-9 w-9" }: { className?: string }) {
   );
 }
 
-function FacebookIcon({ className = "h-9 w-9" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" aria-hidden>
-      <path
-        fill="#1877F2"
-        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-      />
-    </svg>
-  );
-}
-
 export function AuthSocialButtons({
   onGoogle,
   mode = "login",
@@ -230,32 +217,16 @@ export function AuthSocialButtons({
   onGoogle: () => void;
   mode?: "login" | "register";
 }) {
-  const [notice, setNotice] = useState("");
   const googleAria = mode === "register" ? "Google ile kayıt ol" : "Google ile giriş yap";
-  const facebookAria = mode === "register" ? "Facebook ile kayıt ol" : "Facebook ile giriş yap";
-  const fbNotice =
-    mode === "register"
-      ? "Facebook ile kayıt ol yakında kullanıma sunulacak."
-      : "Facebook ile giriş yap yakında kullanıma sunulacak.";
 
   const tileClass =
-    "flex h-[4.75rem] flex-1 items-center justify-center rounded-xl border border-[#E4E4E7] bg-white transition-colors hover:border-[#615FFF]/40 hover:bg-[#FAFAFA]";
+    "flex h-[4.75rem] w-full items-center justify-center rounded-xl border border-[#E4E4E7] bg-white transition-colors hover:border-[#615FFF]/40 hover:bg-[#FAFAFA]";
 
   return (
     <div className="flex flex-col gap-3">
-      {notice ? (
-        <p className="text-center text-xs text-[#71717A]" role="status">
-          {notice}
-        </p>
-      ) : null}
-      <div className="flex gap-3">
-        <button type="button" onClick={onGoogle} className={tileClass} aria-label={googleAria}>
-          <GoogleIcon />
-        </button>
-        <button type="button" onClick={() => setNotice(fbNotice)} className={tileClass} aria-label={facebookAria}>
-          <FacebookIcon />
-        </button>
-      </div>
+      <button type="button" onClick={onGoogle} className={tileClass} aria-label={googleAria}>
+        <GoogleIcon />
+      </button>
     </div>
   );
 }

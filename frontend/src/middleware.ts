@@ -4,8 +4,9 @@ import { UPBILET_PATHNAME_HEADER } from "@/lib/locale-path";
 
 const STATIC_ROOTS = new Set(["img", "icons", "profile", "generalicon", "admin"]);
 
+/** Son segmentte nokta + uzantı (ör. .webmanifest, .svg) — rewrite edilmesin */
 function hasFileExtension(pathname: string): boolean {
-  return /\.[a-z0-9]{2,5}$/i.test(pathname);
+  return /\.[a-z0-9]{2,}$/i.test(pathname);
 }
 
 function nextWithPathname(request: NextRequest, pathname: string) {

@@ -3,6 +3,25 @@ const Listing = require('../../models/listings.model');
 const mongoose = require('mongoose');
 const Tag = require('../../models/tag.model');
 const VenueStructure = require('../../models/venueStructure.model');
+const redisClient = require('../../config/redis');
+const { publicReadCacheTtlSec } = require('../../config/publicReadCacheTtl');
+const { logger } = require('../../utils/logger');
+
+function publicEventMainpageMainpageKey(tagName) {
+  return `public:events:mp-main:${String(tagName || '').toLowerCase()}`;
+}
+
+function publicEventLatestKey(tagName) {
+  return `public:events:latest:${String(tagName || '').toLowerCase()}`;
+}
+
+function publicEventSlugKey(slug) {
+  return `public:events:slug:${String(slug || '').toLowerCase()}`;
+}
+
+function publicEventListingsKey(eventId) {
+  return `public:events:listings:${String(eventId)}`;
+}
 
 function escapeRegex(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -112,7 +131,8 @@ class PublicEventService {
     }
   }
 
-  async getMainPageEventsByTagMainPage(tagName) {
+  /** Önbelleksiz: mainpage/tag/:tagName/mainpage */
+  async _getMainPageEventsByTagMainPageCore(tagName) {
     try {
       const normalized = String(tagName || '').toLowerCase();
       const tag = await Tag.findOne({
@@ -185,6 +205,63 @@ class PublicEventService {
         },
       };
     }
+  }
+
+  async getMainPageEventsByTagMainPage(tagName) {
+    const ttl = publicReadCacheTtlSec();
+    const key = publicEventMainpageMainpageKey(tagName);
+
+    if (redisClient.isConnected) {
+      try {
+        const cached = await redisClient.get(key);
+        if (
+          cached &&
+          typeof cached === 'object' &&
+          'status' in cached &&
+          'body' in cached
+        ) {
+          logger.info(
+            'Public events mainpage/mainpage: Redis HIT (anahtar=%s)',
+            key
+          );
+          return cached;
+        }
+        logger.info(
+          'Public events mainpage/mainpage: Redis MISS (anahtar=%s)',
+          key
+        );
+      } catch (e) {
+        logger.warn(
+          'Public events mainpage/mainpage: Redis okuma hatası — %s',
+          e.message
+        );
+      }
+    } else {
+      logger.info(
+        'Public events mainpage/mainpage: Redis bağlı değil (anahtar=%s)',
+        key
+      );
+    }
+
+    const result = await this._getMainPageEventsByTagMainPageCore(tagName);
+
+    if (result.status === 200 && redisClient.isConnected && ttl > 0) {
+      try {
+        await redisClient.set(key, result, ttl);
+        logger.info(
+          'Public events mainpage/mainpage: Redis’e yazıldı (TTL=%ds, anahtar=%s)',
+          ttl,
+          key
+        );
+      } catch (e) {
+        logger.warn(
+          'Public events mainpage/mainpage: Redis yazma atlandı — %s',
+          e.message
+        );
+      }
+    }
+
+    return result;
   }
 
   async getMainPageEvents() {
@@ -291,14 +368,15 @@ class PublicEventService {
     }
   }
 
-  async getEventBySlug(slug) {
+  /** Önbelleksiz: slug/:slug */
+  async _getEventBySlugCore(slug) {
     try {
       const event = await Event.findOne({
         slug,
         status: 'active',
       })
         .select('-listingCount -salesCount -createdBy -createdAt -updatedAt')
-        .populate('tags', 'name tag');
+        .populate('tags', 'name tag slug');
 
       if (!event) {
         return {
@@ -329,31 +407,117 @@ class PublicEventService {
     }
   }
 
-  async getListingByEventId(eventId) {
-    try {
-      if (!mongoose.Types.ObjectId.isValid(eventId)) {
-        throw new Error('Geçersiz event ID formatı');
+  async getEventBySlug(slug) {
+    const ttl = publicReadCacheTtlSec();
+    const key = publicEventSlugKey(slug);
+
+    if (redisClient.isConnected) {
+      try {
+        const cached = await redisClient.get(key);
+        if (
+          cached &&
+          typeof cached === 'object' &&
+          'status' in cached &&
+          'body' in cached
+        ) {
+          logger.info('Public events slug: Redis HIT (anahtar=%s)', key);
+          return cached;
+        }
+        logger.info('Public events slug: Redis MISS (anahtar=%s)', key);
+      } catch (e) {
+        logger.warn('Public events slug: Redis okuma hatası — %s', e.message);
       }
+    } else {
+      logger.info('Public events slug: Redis bağlı değil (anahtar=%s)', key);
+    }
 
-      const listings = await Listing.find({
-        eventId: new mongoose.Types.ObjectId(eventId),
-        status: 'active',
-      })
-        .select('_id eventId price ticketType quantity category block row status')
-        .sort({ price: 1 });
+    const result = await this._getEventBySlugCore(slug);
 
-      if (!listings || listings.length === 0) {
-        return {
-          success: true,
-          listing: [],
-          message: 'Bu etkinlik için aktif ilan bulunamadı',
-        };
+    if (result.status === 200 && redisClient.isConnected && ttl > 0) {
+      try {
+        await redisClient.set(key, result, ttl);
+        logger.info(
+          'Public events slug: Redis’e yazıldı (TTL=%ds, anahtar=%s)',
+          ttl,
+          key
+        );
+      } catch (e) {
+        logger.warn('Public events slug: Redis yazma atlandı — %s', e.message);
       }
+    }
 
+    return result;
+  }
+
+  /** Önbelleksiz: getListingByEventId/:eventId (valid ObjectId varsayılır) */
+  async _getListingByEventIdCore(eventId) {
+    const listings = await Listing.find({
+      eventId: new mongoose.Types.ObjectId(eventId),
+      status: 'active',
+    })
+      .select('_id eventId price ticketType quantity category block row status')
+      .sort({ price: 1 });
+
+    if (!listings || listings.length === 0) {
       return {
         success: true,
-        listing: listings,
+        listing: [],
+        message: 'Bu etkinlik için aktif ilan bulunamadı',
       };
+    }
+
+    return {
+      success: true,
+      listing: listings,
+    };
+  }
+
+  async getListingByEventId(eventId) {
+    if (!mongoose.Types.ObjectId.isValid(eventId)) {
+      throw new Error('Geçersiz event ID formatı');
+    }
+
+    const ttl = publicReadCacheTtlSec();
+    const key = publicEventListingsKey(eventId);
+
+    if (redisClient.isConnected) {
+      try {
+        const cached = await redisClient.get(key);
+        if (
+          cached &&
+          typeof cached === 'object' &&
+          cached.success === true &&
+          Array.isArray(cached.listing)
+        ) {
+          logger.info('Public events listings: Redis HIT (anahtar=%s)', key);
+          return cached;
+        }
+        logger.info('Public events listings: Redis MISS (anahtar=%s)', key);
+      } catch (e) {
+        logger.warn('Public events listings: Redis okuma hatası — %s', e.message);
+      }
+    } else {
+      logger.info('Public events listings: Redis bağlı değil (anahtar=%s)', key);
+    }
+
+    try {
+      const result = await this._getListingByEventIdCore(eventId);
+      if (redisClient.isConnected && ttl > 0) {
+        try {
+          await redisClient.set(key, result, ttl);
+          logger.info(
+            'Public events listings: Redis’e yazıldı (TTL=%ds, anahtar=%s)',
+            ttl,
+            key
+          );
+        } catch (e) {
+          logger.warn(
+            'Public events listings: Redis yazma atlandı — %s',
+            e.message
+          );
+        }
+      }
+      return result;
     } catch (error) {
       console.error('İlanlar getirilirken hata:', error);
       throw error;
@@ -392,7 +556,8 @@ class PublicEventService {
     }
   }
 
-  async getLatestEvents(tagName) {
+  /** Önbelleksiz: latest/:tagName */
+  async _getLatestEventsCore(tagName) {
     try {
       let query = { status: 'active' };
 
@@ -442,6 +607,48 @@ class PublicEventService {
         },
       };
     }
+  }
+
+  async getLatestEvents(tagName) {
+    const ttl = publicReadCacheTtlSec();
+    const key = publicEventLatestKey(tagName);
+
+    if (redisClient.isConnected) {
+      try {
+        const cached = await redisClient.get(key);
+        if (
+          cached &&
+          typeof cached === 'object' &&
+          'status' in cached &&
+          'body' in cached
+        ) {
+          logger.info('Public events latest: Redis HIT (anahtar=%s)', key);
+          return cached;
+        }
+        logger.info('Public events latest: Redis MISS (anahtar=%s)', key);
+      } catch (e) {
+        logger.warn('Public events latest: Redis okuma hatası — %s', e.message);
+      }
+    } else {
+      logger.info('Public events latest: Redis bağlı değil (anahtar=%s)', key);
+    }
+
+    const result = await this._getLatestEventsCore(tagName);
+
+    if (result.status === 200 && redisClient.isConnected && ttl > 0) {
+      try {
+        await redisClient.set(key, result, ttl);
+        logger.info(
+          'Public events latest: Redis’e yazıldı (TTL=%ds, anahtar=%s)',
+          ttl,
+          key
+        );
+      } catch (e) {
+        logger.warn('Public events latest: Redis yazma atlandı — %s', e.message);
+      }
+    }
+
+    return result;
   }
 
   async clearEventCache() {}

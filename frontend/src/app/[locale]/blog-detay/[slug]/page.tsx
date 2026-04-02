@@ -4,6 +4,7 @@ import { BlogCard, blogCardDate, blogFirstImage, blogPlainExcerpt } from "@/comp
 import type { Locale } from "@/i18n";
 import { fetchBlogBySlug, fetchBlogsPage } from "@/lib/public-fetch";
 import { localizedPath } from "@/lib/locale-path";
+import { SITE_URL } from "@/lib/site-url";
 import { notFound } from "next/navigation";
 import type { PublicBlog } from "@/types/blog";
 
@@ -32,10 +33,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
   if (!description) description = "UpBilet blog sayfasında etkinlik haberleri ve güncel içerikler.";
 
+  const cover = blog.coverImageUrl?.trim();
+  const ogImages =
+    cover && /^https?:\/\//i.test(cover) ? [{ url: cover, alt: blog.title }] : undefined;
+
   return {
     title,
     description,
-    openGraph: { title, description, type: "article", url: `https://upbilet.com/blog-detay/${slug}` },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `${SITE_URL}/blog-detay/${slug}`,
+      ...(ogImages ? { images: ogImages } : {}),
+    },
   };
 }
 
@@ -54,20 +65,39 @@ export default async function BlogDetailPage({ params }: Props) {
     ? new Date(blog.createdAt).toLocaleDateString("tr-TR", { timeZone: "UTC" })
     : "";
 
+  const coverSrc = blog.coverImageUrl?.trim();
+  const showCover = Boolean(coverSrc && !coverSrc.includes(" "));
+
   return (
-    <div className="mx-auto mt-6 w-full max-w-5xl p-4 md:mt-10 md:p-8">
+    <div className="mx-auto mt-6 w-full min-w-0 max-w-5xl overflow-x-hidden p-4 md:mt-10 md:p-8">
       <div className="mb-6">
-        <h1 className="mb-2 text-2xl font-bold leading-tight">{blog.title}</h1>
+        <h1 className="mb-2 text-3xl font-bold leading-tight tracking-tight text-[#09090B] md:text-4xl">
+          {blog.title}
+        </h1>
         <div className="flex items-center gap-2 pt-2 text-base text-gray-500">
           <span>{dateStr}</span>
         </div>
       </div>
 
-      <div className="blog-content text-lg text-gray-800">
+      {(() => {
+        const cover = blog.coverImageUrl?.trim();
+        if (!cover || cover.includes(" ")) return null;
+        return (
+          <div className="mb-8 overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-100 shadow-sm">
+            <img
+              src={cover}
+              alt=""
+              className="max-h-[min(28rem,70vh)] w-full object-cover"
+            />
+          </div>
+        );
+      })()}
+
+      <div className="blog-content min-w-0 max-w-full text-base text-gray-800 md:text-lg">
         {(blog.content ?? []).map((block, i) => (
           <div key={`block-${i}`} className="mb-8">
             {block.text ? (
-              <div className="mb-4" dangerouslySetInnerHTML={{ __html: block.text }} />
+              <div className="blog-content-block mb-4" dangerouslySetInnerHTML={{ __html: block.text }} />
             ) : null}
             {block.imageUrl ? (
               <img

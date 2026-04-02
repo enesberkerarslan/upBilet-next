@@ -8,6 +8,7 @@ import Modal from '@/components/ui/Modal';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import RichTextEditor from '@/components/ui/RichTextEditor';
+import MediaUrlPickerField from '@/components/ui/MediaUrlPickerField';
 
 interface Props {
   open: boolean;
@@ -18,13 +19,14 @@ interface Props {
 
 function formFromBlog(edit: Blog | null) {
   if (!edit) {
-    return { title: '', metaTitle: '', metaDescription: '', contentText: '' };
+    return { title: '', metaTitle: '', metaDescription: '', coverImageUrl: '', contentText: '' };
   }
   const textBlock = edit.content?.find((c) => c != null && typeof c === 'object' && 'text' in c);
   return {
     title: edit.title,
     metaTitle: edit.metaTitle,
     metaDescription: edit.metaDescription,
+    coverImageUrl: (edit.coverImageUrl ?? '').trim(),
     contentText: typeof textBlock?.text === 'string' ? textBlock.text : '',
   };
 }
@@ -46,6 +48,7 @@ export default function BlogFormModal({ open, onClose, onSuccess, editItem }: Pr
         title: form.title,
         metaTitle: form.metaTitle,
         metaDescription: form.metaDescription,
+        coverImageUrl: form.coverImageUrl.trim(),
         content: form.contentText ? [{ text: form.contentText }] : [],
       };
       if (isEdit) {
@@ -71,6 +74,12 @@ export default function BlogFormModal({ open, onClose, onSuccess, editItem }: Pr
         <Input label="Başlık *" value={form.title} onChange={(e) => set('title', e.target.value)} placeholder="Blog başlığı" />
         <Input label="Meta Başlık" value={form.metaTitle} onChange={(e) => set('metaTitle', e.target.value)} placeholder="SEO başlığı" />
         <Input label="Meta Açıklama" value={form.metaDescription} onChange={(e) => set('metaDescription', e.target.value)} placeholder="SEO açıklaması" />
+        <MediaUrlPickerField
+          label="Kapak görseli"
+          value={form.coverImageUrl}
+          onChange={(url) => set('coverImageUrl', url)}
+          placeholder="https://... veya Medyadan seç"
+        />
         <RichTextEditor
           label="İçerik"
           value={form.contentText}

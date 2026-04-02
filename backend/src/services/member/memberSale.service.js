@@ -1,6 +1,10 @@
 const Sale = require('../../models/sale.model');
 const Listing = require('../../models/listings.model');
+const Member = require('../../models/member.model');
+const Event = require('../../models/event.model');
 const { persistSupportAttachments } = require('../../utils/supportAttachments');
+const { logger } = require('../../utils/logger');
+const { sendPurchaseConfirmationEmail } = require('../../utils/resend-mail');
 
 /** Bilet (ticketHolder) başına toplam kanıt; tek istekte yalnızca 1 dosya */
 const MAX_SELLER_PROOF_PER_TICKET = 5;
@@ -72,6 +76,45 @@ class MemberSaleService {
 
 
       await sale.save();
+
+      const payOk =
+        String(sale.paymentStatus || saleData.paymentStatus || '')
+          .toLowerCase() === 'completed';
+      if (payOk) {
+        try {
+          const buyer = await Member.findById(saleData.memberId)
+            .select('email name surname')
+            .lean();
+          if (buyer?.email) {
+            let eventName = '';
+            if (saleData.eventName && String(saleData.eventName).trim()) {
+              eventName = String(saleData.eventName).trim();
+            } else {
+              const ev = await Event.findById(sale.eventId).select('name').lean();
+              eventName = ev?.name ? String(ev.name) : '';
+            }
+            const currency = (sale.stripePayment?.paymentCurrency || 'TRY').toUpperCase();
+            const mailResult = await sendPurchaseConfirmationEmail({
+              to: buyer.email,
+              name: buyer.name,
+              surname: buyer.surname,
+              referenceCode: sale.referenceCode,
+              eventName,
+              ticketQuantity: sale.ticketQuantity,
+              totalAmount: sale.totalAmount,
+              currency,
+            });
+            if (!mailResult.ok && !mailResult.skipped) {
+              logger.error(
+                'Satın alma onay e-postası gönderilemedi (ref: %s)',
+                sale.referenceCode || sale._id
+              );
+            }
+          }
+        } catch (e) {
+          logger.error('Satın alma onay e-postası hatası: %s', e.message);
+        }
+      }
 
       return sale;
     } catch (error) {

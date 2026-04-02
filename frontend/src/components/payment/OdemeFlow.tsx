@@ -311,7 +311,7 @@ export function OdemeFlow({ initialSaleInfo, initialEventData, initialAuthentica
         <div className={currentStep === 3 ? "col-span-1" : "col-span-1 lg:col-span-2"}>
           {currentStep === 0 ? (
             !isLoggedIn ? (
-              <div className="rounded-2xl text-center">
+              <div className="rounded-2xl text-left">
                 <GuestRegisterForm />
               </div>
             ) : (
