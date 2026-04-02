@@ -1,4 +1,24 @@
 import type { Locale } from "@/i18n";
+
+function eventSeoFallbackPlainText(
+  locale: Locale,
+  name: string | undefined,
+  location: string | undefined,
+): string {
+  const eventName =
+    name?.trim() || (locale === "en" ? "Event" : "Etkinlik");
+  const loc = location?.trim() || "";
+  if (locale === "en") {
+    let s = `Visit UpBilet for ${eventName} tickets.`;
+    if (loc) s += ` Buy tickets for the event at ${loc}.`;
+    s += " Pay securely with instant ticket delivery.";
+    return s;
+  }
+  let s = `${eventName} biletleri için UpBilet'i ziyaret edin.`;
+  if (loc) s += ` ${loc}'da gerçekleşecek etkinliğe biletinizi satın alın.`;
+  s += " Güvenli ödeme ve anında bilet teslimatı ile biletinizi satın alın.";
+  return s;
+}
 import { fetchEventDetail } from "@/lib/public-fetch";
 import { notFound } from "next/navigation";
 import { CategorySeoCollapsible } from "@/components/category/CategorySeoCollapsible";
@@ -14,8 +34,14 @@ function stripHtml(html: string): string {
   return html ? html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim() : "";
 }
 
+/** `<p></p>` gibi “dolu” ama görünür metni olmayan HTML’i ele */
+function hasVisibleHtmlBody(html: string | undefined): boolean {
+  return stripHtml(html ?? "").length > 0;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug: rawSlug } = await params;
+  const { slug: rawSlug, locale: rawLocale } = await params;
+  const locale = rawLocale as Locale;
   const slug = decodeURIComponent(rawSlug);
   const { success, event } = await fetchEventDetail(slug);
   if (!success || !event) {
@@ -28,16 +54,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description?: string;
     location?: string;
   };
-  const title = ev.metaTitle || (ev.name ? `${ev.name} Biletleri - UpBilet` : "Etkinlik Detayı - UpBilet");
+  const titleFromApi = ev.metaTitle?.trim();
+  const title = titleFromApi
+    ? titleFromApi
+    : ev.name?.trim()
+      ? `${ev.name.trim()} Biletleri - UpBilet`
+      : "Etkinlik Detayı - UpBilet";
   let description = "";
-  if (ev.metaDescription) description = stripHtml(ev.metaDescription);
-  else if (ev.description) description = stripHtml(ev.description);
-  else {
-    const eventName = ev.name || "Etkinlik";
-    const location = ev.location || "";
-    description = `${eventName} biletleri için UpBilet'i ziyaret edin.`;
-    if (location) description += ` ${location}'da gerçekleşecek etkinliğe biletinizi satın alın.`;
-    description += " Güvenli ödeme ve anında bilet teslimatı ile biletinizi satın alın.";
+  if (ev.metaDescription?.trim()) description = stripHtml(ev.metaDescription);
+  if (!description.trim()) {
+    description = eventSeoFallbackPlainText(locale, ev.name, ev.location);
   }
   return { title, description };
 }
@@ -117,11 +143,15 @@ export default async function DetayPage({ params }: Props) {
         </StadiumSelectionProvider>
       </div>
 
-      {ev.description ? (
-        <div className="mt-20 flex w-full flex-col px-4">
+      <div className="mt-20 flex w-full flex-col px-4">
+        {hasVisibleHtmlBody(ev.description) && ev.description ? (
           <CategorySeoCollapsible html={ev.description} className="mt-6 w-full" />
-        </div>
-      ) : null}
+        ) : (
+          <p className="seo-content mt-6 max-w-none text-left text-[12px] font-normal leading-relaxed text-[#18181B]">
+            {eventSeoFallbackPlainText(locale, ev.name, ev.location)}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
