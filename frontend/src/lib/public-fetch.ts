@@ -135,70 +135,99 @@ export async function fetchBlogBySlug(slug: string): Promise<PublicBlog | null> 
   }
 }
 
-const SITEMAP_FETCH_INIT = { next: { revalidate: 3600 } } as const;
+/** Sitemap her üretimde API’den taze veri alsın (boş/ hatalı yanıt uzun süre cache’lenmesin). */
+const SITEMAP_FETCH_INIT = { cache: "no-store" as const };
+
+function normalizeApiBase(url: string): string {
+  return url.replace(/\/+$/, "");
+}
+
+/**
+ * SSR’da önce getPublicApiBaseServer() (Docker’da genelde http://backend:3002/api/public/).
+ * O taban localhost / hata verirse aynı isteği NEXT_PUBLIC_API_URL + /public/ ile dene (canlı API).
+ */
+function sitemapApiBases(): string[] {
+  const primary = normalizeApiBase(getPublicApiBaseServer());
+  const out: string[] = [`${primary}/`];
+  const pub = process.env.NEXT_PUBLIC_API_URL?.trim().replace(/\/+$/, "");
+  if (pub) {
+    const alt = `${pub}/public`;
+    const altNorm = normalizeApiBase(alt);
+    if (altNorm !== primary) out.push(`${altNorm}/`);
+  }
+  return out;
+}
 
 /** Aktif etkinlik slug’ları (sitemap). */
 export async function fetchAllPublicEventsForSitemap(): Promise<{ slug: string; date?: string }[]> {
-  const base = getPublicApiBaseServer();
-  try {
-    const r = await fetch(`${base}events/`, SITEMAP_FETCH_INIT);
-    const data = (await r.json()) as {
-      success?: boolean;
-      events?: { slug?: string; date?: string }[];
-      body?: { success?: boolean; events?: { slug?: string; date?: string }[] };
-    };
-    const raw = Array.isArray(data?.events) ? data.events : data?.body?.events;
-    if (!r.ok || !Array.isArray(raw)) return [];
-    return raw
-      .filter((e) => typeof e?.slug === "string" && e.slug.length > 0)
-      .map((e) => ({ slug: e.slug as string, date: e.date }));
-  } catch (e) {
-    console.error("Sitemap events fetch error:", e);
-    return [];
+  for (const base of sitemapApiBases()) {
+    try {
+      const r = await fetch(`${base}events/`, SITEMAP_FETCH_INIT);
+      const data = (await r.json()) as {
+        success?: boolean;
+        events?: { slug?: string; date?: string }[];
+        body?: { success?: boolean; events?: { slug?: string; date?: string }[] };
+      };
+      const raw = Array.isArray(data?.events) ? data.events : data?.body?.events;
+      if (!r.ok || !Array.isArray(raw)) continue;
+      return raw
+        .filter((e) => typeof e?.slug === "string" && e.slug.length > 0)
+        .map((e) => ({ slug: e.slug as string, date: e.date }));
+    } catch (e) {
+      console.error("Sitemap events fetch error:", base, e);
+    }
   }
+  return [];
 }
 
 /** Public etiket / kategori slug’ları (sitemap). */
 export async function fetchAllPublicTagsForSitemap(): Promise<{ slug: string }[]> {
-  const base = getPublicApiBaseServer();
-  try {
-    const r = await fetch(`${base}tags/`, SITEMAP_FETCH_INIT);
-    const data = (await r.json()) as { success?: boolean; tags?: { slug?: string }[] };
-    if (!r.ok || !data.success || !Array.isArray(data.tags)) return [];
-    return data.tags
-      .filter((t) => typeof t?.slug === "string" && t.slug.length > 0)
-      .map((t) => ({ slug: t.slug as string }));
-  } catch (e) {
-    console.error("Sitemap tags fetch error:", e);
-    return [];
+  for (const base of sitemapApiBases()) {
+    try {
+      const r = await fetch(`${base}tags/`, SITEMAP_FETCH_INIT);
+      const data = (await r.json()) as { success?: boolean; tags?: { slug?: string }[] };
+      if (!r.ok || !data.success || !Array.isArray(data.tags)) continue;
+      return data.tags
+        .filter((t) => typeof t?.slug === "string" && t.slug.length > 0)
+        .map((t) => ({ slug: t.slug as string }));
+    } catch (e) {
+      console.error("Sitemap tags fetch error:", base, e);
+    }
   }
+  return [];
 }
 
 /** Tüm blog yazısı slug’ları (sayfalı). */
 export async function fetchAllBlogSlugsForSitemap(): Promise<{ slug: string }[]> {
-  const base = getPublicApiBaseServer();
   const limit = 50;
-  let page = 1;
-  let totalPages = 1;
-  const out: { slug: string }[] = [];
-  try {
-    while (page <= totalPages) {
-      const r = await fetch(`${base}blogs?page=${page}&limit=${limit}`, SITEMAP_FETCH_INIT);
-      const data = (await r.json()) as {
-        success?: boolean;
-        blogs?: { slug?: string }[];
-        totalPages?: number;
-      };
-      if (!r.ok || !data.success || !Array.isArray(data.blogs)) break;
-      totalPages = Math.max(1, data.totalPages ?? 1);
-      for (const b of data.blogs) {
-        if (typeof b?.slug === "string" && b.slug.length > 0) out.push({ slug: b.slug });
+  for (const base of sitemapApiBases()) {
+    let page = 1;
+    let totalPages = 1;
+    const out: { slug: string }[] = [];
+    try {
+      let okBase = false;
+      while (page <= totalPages) {
+        const r = await fetch(`${base}blogs?page=${page}&limit=${limit}`, SITEMAP_FETCH_INIT);
+        const data = (await r.json()) as {
+          success?: boolean;
+          blogs?: { slug?: string }[];
+          totalPages?: number;
+        };
+        if (!r.ok || !data.success || !Array.isArray(data.blogs)) {
+          okBase = false;
+          break;
+        }
+        okBase = true;
+        totalPages = Math.max(1, data.totalPages ?? 1);
+        for (const b of data.blogs) {
+          if (typeof b?.slug === "string" && b.slug.length > 0) out.push({ slug: b.slug });
+        }
+        page += 1;
       }
-      page += 1;
+      if (okBase) return out;
+    } catch (e) {
+      console.error("Sitemap blogs fetch error:", base, e);
     }
-  } catch (e) {
-    console.error("Sitemap blogs fetch error:", e);
-    return [];
   }
-  return out;
+  return [];
 }
