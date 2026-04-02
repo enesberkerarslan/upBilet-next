@@ -13,7 +13,6 @@ const zoneColors: Record<string, { ticket: string }> = {
 export function getZoneColor(category: string | undefined | null): string {
   const c = (category ?? "").trim();
   if (!c) return "#7ac2ee";
-  if (c === "Alt Kat Kenar") return zoneColors.Kenar.ticket;
   if (zoneColors[c]) return zoneColors[c].ticket;
   for (const [zoneName, colors] of Object.entries(zoneColors)) {
     if (c.includes(zoneName)) return colors.ticket;
