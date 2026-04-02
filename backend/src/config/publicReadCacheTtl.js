@@ -4,7 +4,7 @@
  */
 function publicReadCacheTtlSec() {
   const n = parseInt(process.env.HOMEPAGE_BUNDLE_CACHE_TTL_SEC ?? '', 10);
-  return Number.isFinite(n) && n > 0 ? n : 300;
+  return Number.isFinite(n) && n > 0 ? n : 120;
 }
 
 module.exports = { publicReadCacheTtlSec };

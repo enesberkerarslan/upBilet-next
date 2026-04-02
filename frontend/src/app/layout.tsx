@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   description:
     "UpBilet ile güvenli bilet alım satımı yapın. Futbol, basketbol ve tüm etkinlik biletleri.",
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/favicon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
