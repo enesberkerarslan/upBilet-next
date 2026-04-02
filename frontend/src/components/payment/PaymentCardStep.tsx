@@ -35,6 +35,12 @@ type Props = {
   checkoutExpired?: boolean;
 };
 
+/**
+ * Stripe publishable key tarayıcıda zaten görünür (pk_...).
+ * Env tanımlıysa öncelik NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY’dedir; boşsa burası kullanılır.
+ */
+const STRIPE_PUBLISHABLE_FALLBACK = "pk_live_51PpdMdLqJZPoWugGRYSGJwM0RVEKlpHhcYyVo7juXazVW6lHVwIoU5oFqjzVchv10vhfrRS3oB1iPQXQunrxjYkR00pP7FOT61";
+
 function mapHolders(drafts: TicketHolderDraft[]) {
   return drafts.map((d) => ({
     name: d.name || "",
@@ -58,7 +64,10 @@ export function PaymentCardStep({ saleInfo, onSuccess, checkoutExpired = false }
   const paymentElRef = useRef<{ unmount: () => void } | null>(null);
   const paymentMountRef = useRef<HTMLDivElement | null>(null);
 
-  const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "";
+  const publishableKey = (
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||
+    STRIPE_PUBLISHABLE_FALLBACK
+  ).trim();
 
   useEffect(() => {
     if (!publishableKey) {
