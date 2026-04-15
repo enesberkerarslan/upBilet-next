@@ -8,7 +8,7 @@ class EventService {
   async getAllEvents(query = {}) {
     //console.log('getAllEvents fonksiyonu çağrıldı');
     try {
-      const { status, search, sort = '-createdAt' } = query;
+      const { status, search, sort = 'date' } = query;
       
       //logger.info('EventService: Etkinlikler getiriliyor', {
       //  filters: { status, search, sort },

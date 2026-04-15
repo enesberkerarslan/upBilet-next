@@ -1,0 +1,12 @@
+ ssh -i "C:\Users\pc\Desktop\enes.pem" ubuntu@ec2-3-123-1-107.eu-central-1.compute.amazonaws.com
+
+
+ docker compose down -v
+
+
+docker compose build backend
+docker compose build  backoffice
+docker compose compose build  frontend
+
+
+docker compose up -d

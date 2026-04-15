@@ -1,12 +1,31 @@
 import type { Locale } from "@/i18n";
+import { fetchEventDetail } from "@/lib/public-fetch";
+import { SITE_URL } from "@/lib/site-url";
+import { notFound } from "next/navigation";
+import { CategorySeoCollapsible } from "@/components/category/CategorySeoCollapsible";
+import { DetailEventPanel, type DetailTag } from "@/components/detay/DetailEventPanel";
+import { DetailTicketList, type TicketOption } from "@/components/detay/DetailTicketList";
+import { StadiumSelectionProvider } from "@/components/detay/StadiumSelectionContext";
+import { resolveStadiumPlanPath } from "@/lib/stadium-svg";
+import type { Metadata } from "next";
+
+type Props = { params: Promise<{ locale: string; slug: string }> };
+
+type EventSeoFields = {
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string;
+  name?: string;
+  description?: string;
+  location?: string;
+};
 
 function eventSeoFallbackPlainText(
   locale: Locale,
   name: string | undefined,
   location: string | undefined,
 ): string {
-  const eventName =
-    name?.trim() || (locale === "en" ? "Event" : "Etkinlik");
+  const eventName = name?.trim() || (locale === "en" ? "Event" : "Etkinlik");
   const loc = location?.trim() || "";
   if (locale === "en") {
     let s = `Visit UpBilet for ${eventName} tickets.`;
@@ -19,19 +38,25 @@ function eventSeoFallbackPlainText(
   s += " Güvenli ödeme ve anında bilet teslimatı ile biletinizi satın alın.";
   return s;
 }
-import { fetchEventDetail } from "@/lib/public-fetch";
-import { notFound } from "next/navigation";
-import { CategorySeoCollapsible } from "@/components/category/CategorySeoCollapsible";
-import { DetailEventPanel, type DetailTag } from "@/components/detay/DetailEventPanel";
-import { DetailTicketList, type TicketOption } from "@/components/detay/DetailTicketList";
-import { StadiumSelectionProvider } from "@/components/detay/StadiumSelectionContext";
-import { resolveStadiumPlanPath } from "@/lib/stadium-svg";
-import type { Metadata } from "next";
-
-type Props = { params: Promise<{ locale: string; slug: string }> };
 
 function stripHtml(html: string): string {
   return html ? html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim() : "";
+}
+
+function keywordsToMetaArray(raw: string): string[] | undefined {
+  const parts = raw
+    .split(/[,;]/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return parts.length ? parts : undefined;
+}
+
+function buildDetailFallbackKeywords(displayName: string | undefined): string[] | undefined {
+  const n = displayName?.trim();
+  if (!n) return undefined;
+  return keywordsToMetaArray(
+    `${n} biletleri, ${n} etkinlik biletleri, ${n} bilet satışı, UpBilet`,
+  );
 }
 
 /** `<p></p>` gibi “dolu” ama görünür metni olmayan HTML’i ele */
@@ -47,25 +72,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!success || !event) {
     return { title: "Etkinlik bulunamadı | UpBilet" };
   }
-  const ev = event as {
-    metaTitle?: string;
-    metaDescription?: string;
-    name?: string;
-    description?: string;
-    location?: string;
+
+  const ev = event as EventSeoFields;
+  const metaTitleTrimmed = ev.metaTitle?.trim() ?? "";
+  const metaDescPlain = stripHtml(ev.metaDescription ?? "");
+  const metaKeywordsTrimmed = ev.keywords?.trim() ?? "";
+
+  const fallbackTitle = ev.name?.trim()
+    ? `${ev.name.trim()} Biletleri - UpBilet`
+    : "Etkinlik Detayı - UpBilet";
+  const fallbackDescription = eventSeoFallbackPlainText(locale, ev.name, ev.location);
+
+  const title = metaTitleTrimmed ? metaTitleTrimmed : fallbackTitle;
+  const description = metaDescPlain ? metaDescPlain : fallbackDescription;
+
+  const parsedApiKeywords = keywordsToMetaArray(metaKeywordsTrimmed);
+  const keywords = parsedApiKeywords ?? buildDetailFallbackKeywords(ev.name);
+
+  return {
+    title,
+    description,
+    ...(keywords ? { keywords } : {}),
+    openGraph: { title, description, url: `${SITE_URL}/detay/${slug}` },
   };
-  const titleFromApi = ev.metaTitle?.trim();
-  const title = titleFromApi
-    ? titleFromApi
-    : ev.name?.trim()
-      ? `${ev.name.trim()} Biletleri - UpBilet`
-      : "Etkinlik Detayı - UpBilet";
-  let description = "";
-  if (ev.metaDescription?.trim()) description = stripHtml(ev.metaDescription);
-  if (!description.trim()) {
-    description = eventSeoFallbackPlainText(locale, ev.name, ev.location);
-  }
-  return { title, description };
 }
 
 export default async function DetayPage({ params }: Props) {
@@ -76,7 +105,7 @@ export default async function DetayPage({ params }: Props) {
 
   if (!success || !event) notFound();
 
-  const ev = event as {
+  const ev = event as EventSeoFields & {
     _id: string;
     name: string;
     image?: string;
@@ -116,6 +145,9 @@ export default async function DetayPage({ params }: Props) {
     resolveStadiumPlanPath({ venueName: venueTagName, venueSlug: venueTagSlug }) ??
     (locationTrim ? resolveStadiumPlanPath({ venueName: locationTrim, venueSlug: null }) : null);
 
+  const metaDescPlainForBody = stripHtml(ev.metaDescription ?? "").trim();
+  const seoFallback = eventSeoFallbackPlainText(locale, ev.name, ev.location);
+
   return (
     <div className="match-detail pb-5 pt-3 lg:pt-[50px]">
       <div className="relative">
@@ -146,9 +178,13 @@ export default async function DetayPage({ params }: Props) {
       <div className="mt-20 flex w-full flex-col px-4">
         {hasVisibleHtmlBody(ev.description) && ev.description ? (
           <CategorySeoCollapsible html={ev.description} className="mt-6 w-full" />
+        ) : metaDescPlainForBody ? (
+          <p className="seo-content mt-6 max-w-none text-left text-[12px] font-normal leading-relaxed text-[#18181B]">
+            {metaDescPlainForBody}
+          </p>
         ) : (
           <p className="seo-content mt-6 max-w-none text-left text-[12px] font-normal leading-relaxed text-[#18181B]">
-            {eventSeoFallbackPlainText(locale, ev.name, ev.location)}
+            {seoFallback}
           </p>
         )}
       </div>

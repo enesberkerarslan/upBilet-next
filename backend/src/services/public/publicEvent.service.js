@@ -27,6 +27,44 @@ function escapeRegex(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+const PUBLIC_EVENTS_TIMEZONE = process.env.PUBLIC_EVENTS_TIMEZONE || 'Europe/Istanbul';
+
+/**
+ * Liste uçlarında kullanılır: TZ’deki takvim gününün başlangıcı (o gün ve sonrası).
+ * Örn. 15 Nisan’da 14 Nisan tarihli etkinlikler dönmez.
+ */
+function minPublicEventDateStart() {
+  const now = Date.now();
+  const calendar = new Intl.DateTimeFormat('en-CA', {
+    timeZone: PUBLIC_EVENTS_TIMEZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date(now));
+
+  const label = (ms) =>
+    new Intl.DateTimeFormat('en-CA', {
+      timeZone: PUBLIC_EVENTS_TIMEZONE,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(new Date(ms));
+
+  let low = now - 72 * 3600000;
+  let high = now + 24 * 3600000;
+  while (label(low) >= calendar) low -= 24 * 3600000;
+  while (label(high) < calendar) high += 24 * 3600000;
+
+  let left = low;
+  let right = high;
+  while (right - left > 1000) {
+    const mid = Math.floor((left + right) / 2);
+    if (label(mid) < calendar) left = mid;
+    else right = mid;
+  }
+  return new Date(right);
+}
+
 class PublicEventService {
   async getAllEvents() {
     const events = await Event.find({ status: 'active' })
@@ -58,6 +96,7 @@ class PublicEventService {
     const events = await Event.find({
       tags: tagObjectId,
       status: 'active',
+      date: { $gte: minPublicEventDateStart() },
     })
       .select('-listingCount -salesCount -createdBy -createdAt -updatedAt')
       .sort({ date: 1 })
@@ -97,6 +136,7 @@ class PublicEventService {
         tags: tag._id,
         status: 'active',
         isMainPage: false,
+        date: { $gte: minPublicEventDateStart() },
       })
         .select('-listingCount -salesCount -createdBy -createdAt -updatedAt')
         .sort({ date: 1 })
@@ -157,6 +197,7 @@ class PublicEventService {
         tags: tag._id,
         status: 'active',
         isMainPage: true,
+        date: { $gte: minPublicEventDateStart() },
       })
         .select('-listingCount -salesCount -createdBy -createdAt -updatedAt')
         .sort({ date: 1 })
@@ -167,6 +208,7 @@ class PublicEventService {
         events = await Event.find({
           tags: tag._id,
           status: 'active',
+          date: { $gte: minPublicEventDateStart() },
         })
           .select('-listingCount -salesCount -createdBy -createdAt -updatedAt')
           .sort({ date: 1 })
@@ -268,6 +310,7 @@ class PublicEventService {
     const events = await Event.find({
       status: 'active',
       isMainPage: true,
+      date: { $gte: minPublicEventDateStart() },
     })
       .select('-listingCount -salesCount -createdBy -createdAt -updatedAt')
       .sort({ date: 1 })
@@ -297,6 +340,7 @@ class PublicEventService {
     const safe = escapeRegex(q);
     const baseFilter = {
       status: 'active',
+      date: { $gte: minPublicEventDateStart() },
       $or: [
         { name: { $regex: safe, $options: 'i' } },
         { description: { $regex: safe, $options: 'i' } },
@@ -559,7 +603,10 @@ class PublicEventService {
   /** Önbelleksiz: latest/:tagName */
   async _getLatestEventsCore(tagName) {
     try {
-      let query = { status: 'active' };
+      let query = {
+        status: 'active',
+        date: { $gte: minPublicEventDateStart() },
+      };
 
       if (tagName) {
         const normalized = String(tagName || '').toLowerCase();
@@ -587,7 +634,7 @@ class PublicEventService {
       const events = await Event.find(query)
         .select('-listingCount -salesCount -createdBy -createdAt -updatedAt')
         .sort({ date: 1 })
-        .limit(6)
+        .limit(10)
         .populate('tags', 'name tag');
 
       return {

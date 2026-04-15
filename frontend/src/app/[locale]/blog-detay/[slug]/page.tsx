@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const cover = blog.coverImageUrl?.trim();
   const ogImages =
-    cover && /^https?:\/\//i.test(cover) ? [{ url: cover, alt: blog.title }] : undefined;
+    cover && /^https?:\/\//i.test(cover) ? [{ url: cover, alt: slug }] : undefined;
 
   return {
     title,
@@ -83,7 +83,7 @@ export default async function BlogDetailPage({ params }: Props) {
           <div className="mb-8 overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-100 shadow-sm">
             <img
               src={cover}
-              alt=""
+              alt={slug}
               className="max-h-[min(28rem,70vh)] w-full object-cover"
             />
           </div>
@@ -99,7 +99,7 @@ export default async function BlogDetailPage({ params }: Props) {
             {block.imageUrl ? (
               <img
                 src={block.imageUrl}
-                alt=""
+                alt={slug}
                 className="h-80 w-full rounded-2xl object-cover shadow-md"
               />
             ) : null}

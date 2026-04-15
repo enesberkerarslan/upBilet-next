@@ -78,15 +78,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const metaTitleTrimmed = mainTag?.metaTitle?.trim() ?? "";
   const metaDescPlain = stripHtml(mainTag?.metaDescription ?? "");
   const metaKeywordsTrimmed = mainTag?.keywords?.trim() ?? "";
-  const useApiMeta =
-    Boolean(metaTitleTrimmed) && Boolean(metaDescPlain) && Boolean(metaKeywordsTrimmed);
+  const useApiMeta = Boolean(metaTitleTrimmed) && Boolean(metaDescPlain);
 
   const fallback = buildCategoryFallbackMeta(displayLabel);
 
   const title = useApiMeta ? metaTitleTrimmed : fallback.title;
   const description = useApiMeta ? metaDescPlain : fallback.description;
+  const parsedApiKeywords = keywordsToMetaArray(metaKeywordsTrimmed);
   const keywords = useApiMeta
-    ? keywordsToMetaArray(metaKeywordsTrimmed) ?? [metaKeywordsTrimmed]
+    ? (parsedApiKeywords ?? fallback.keywords)
     : fallback.keywords;
 
   return {
